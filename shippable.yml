@@ -59,10 +59,12 @@ build:
     image_name: czhujer/shippable-c6ruby
     image_tag: v0.2
     pull: true
-    options: "-e HOME=/root --entrypoint='rvm list'"
+    options: "-e HOME=/root"
+#    options: "-e HOME=/root --entrypoint='rvm list'"
 #  ci:
 #    - mkdir -p shippable/testresults
 #    - mkdir -p shippable/codecoverage
 #    - pwd
 #    - rvm list
+#    - bundle install $SHIPPABLE_BUNDLER_ARGS
 #    - bundle exec rake test
