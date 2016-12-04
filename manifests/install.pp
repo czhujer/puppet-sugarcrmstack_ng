@@ -4,7 +4,7 @@
 #
 class sugarcrmstack_ng::install {
 
-  if($::sugarcrmstack_ng::manage_utils_packages)
+  if($::sugarcrmstack_ng::manage_utils_packages){
     package { $::sugarcrmstack_ng::utils_packages:
       ensure => installed,
 #    require => [ Package["epel-repo"],

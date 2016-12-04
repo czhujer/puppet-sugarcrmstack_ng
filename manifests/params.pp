@@ -6,7 +6,7 @@
 class sugarcrmstack_ng::params {
   case $::osfamily {
     'RedHat', 'Amazon': {
-      $manage_utils_packages = true,
+      $manage_utils_packages = true
       $utils_packages = ["iotop", "iftop", "iptraf", "sysstat", 
 	        "zip", "lsscsi", "unzip",
 	        "links", "lynx", "policycoreutils-python",
