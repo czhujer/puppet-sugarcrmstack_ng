@@ -18,7 +18,7 @@ class sugarcrmstack_ng::params {
       $service_name = 'sugarcrmstack_ng'
     }
     default: {
-      fail('"${::operatingsystem} not supported")
+      fail("${::operatingsystem} not supported")
     }
   }
 }
