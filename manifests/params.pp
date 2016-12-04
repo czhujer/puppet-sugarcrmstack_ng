@@ -8,17 +8,17 @@ class sugarcrmstack_ng::params {
     'RedHat', 'Amazon': {
       $manage_utils_packages = true
       $utils_packages = ['iotop', 'iftop', 'iptraf', 'sysstat',
-	        "zip", "lsscsi", "unzip",
-	        "links", "lynx", "policycoreutils-python",
-	        "htop", "bind-utils", "wget", "telnet", "lsof",
-	        "irqbalance", "vim-minimal", "yum-utils",
-	        "traceroute", "vim-enhanced", "hal", "cpuspeed",
-	        "numad", "yum-cron", "apachetop", "nano"]
+	        'zip', 'lsscsi', 'unzip',
+	        'links', 'lynx', 'policycoreutils-python',
+	        'htop', 'bind-utils', 'wget', 'telnet', 'lsof',
+	        'irqbalance', 'vim-minimal', 'yum-utils',
+	        'traceroute', 'vim-enhanced', 'hal', 'cpuspeed',
+	        'numad', 'yum-cron', 'apachetop', 'nano']
       $package_name = 'sugarcrmstack_ng'
       $service_name = 'sugarcrmstack_ng'
     }
     default: {
-      fail("${::operatingsystem} not supported")
+      fail('"${::operatingsystem} not supported")
     }
   }
 }
