@@ -8,7 +8,7 @@ group :test do
   gem "puppetlabs_spec_helper"
   gem "metadata-json-lint"
   gem "rspec-puppet-facts"
-  gem 'rubocop', '0.33.0'
+  gem 'rubocop', '0.46.0'
   gem 'simplecov', '>= 0.11.0'
   gem 'simplecov-console'
 
@@ -21,6 +21,8 @@ group :test do
   gem 'puppet-lint-resource_reference_syntax'
 
   gem 'json_pure', '<= 2.0.1' if RUBY_VERSION < '2.0.0'
+
+  gem 'rspec_junit_formatter'
 end
 
 group :development do
