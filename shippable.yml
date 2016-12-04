@@ -1,6 +1,6 @@
 #language: ruby
 language: none
-bundler_args: --without development system_tests
+#bundler_args: --without development system_tests
 
 rvm:
 # - 1.8.7
@@ -65,6 +65,6 @@ build:
     - mkdir -p shippable/codecoverage
     - pwd
     - rvm list
-    - bundle install $SHIPPABLE_BUNDLER_ARGS
-    - bundle exec rake test
-    - python/sample.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
+#    - bundle install $SHIPPABLE_BUNDLER_ARGS
+#    - bundle exec rake test
+#    - python/sample.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
