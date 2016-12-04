@@ -1,0 +1,14 @@
+language: ruby
+
+#env:                                                
+#  - #env1=foo                           
+#  - #env2=bar
+
+matrix:
+
+build:
+  pre_ci_boot:
+    image_name: centos
+    image_tag: centos6.8
+    pull: true
+#    options: "-e HOME=/root"                #optional
