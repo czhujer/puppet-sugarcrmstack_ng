@@ -68,6 +68,8 @@ build:
     - bundle install $SHIPPABLE_BUNDLER_ARGS
     - bundle exec rake test
 #   python/sample.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
-  post_ci:
-    - pwd
-    - rvm list
+
+# doesnt works with custom images
+#  post_ci:
+#    - pwd
+#    - rvm list
