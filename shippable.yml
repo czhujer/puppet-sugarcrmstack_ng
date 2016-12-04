@@ -1,4 +1,5 @@
-language: ruby
+#language: ruby
+language: none
 
 rvm:
 # - 1.8.7
