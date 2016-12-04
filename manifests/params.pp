@@ -14,8 +14,6 @@ class sugarcrmstack_ng::params {
 	        'irqbalance', 'vim-minimal', 'yum-utils',
 	        'traceroute', 'vim-enhanced', 'hal', 'cpuspeed',
 	        'numad', 'yum-cron', 'apachetop', 'nano']
-      $package_name = 'sugarcrmstack_ng'
-      $service_name = 'sugarcrmstack_ng'
     }
     default: {
       fail("${::operatingsystem} not supported")
