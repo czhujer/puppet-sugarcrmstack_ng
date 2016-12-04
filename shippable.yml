@@ -1,5 +1,5 @@
-#language: ruby
-language: none
+language: ruby
+#language: none
 bundler_args: --without development system_tests
 
 rvm:
