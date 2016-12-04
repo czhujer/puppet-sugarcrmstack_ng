@@ -12,3 +12,8 @@ build:
     image_tag: centos6.8
     pull: true
 #    options: "-e HOME=/root"                #optional
+  ci:
+    - gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+    - curl -sSL https://get.rvm.io | bash -s stable
+    - mkdir -p shippable/testresults
+    - mkdir -p shippable/codecoverage
