@@ -4,7 +4,7 @@
 #
 class sugarcrmstack_ng::install {
 
-  package { $::sugarcrmstack_ng::package_name:
-    ensure => present,
-  }
+#  package { $::sugarcrmstack_ng::package_name:
+#    ensure => present,
+#  }
 }
