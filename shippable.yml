@@ -69,6 +69,6 @@ build:
     - bundle exec rake test
 #   python/sample.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
 
-  post_ci:
-    - pwd
-    - rvm list
+#  post_ci:
+#    - pwd
+#    - rvm list
