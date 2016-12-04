@@ -11,6 +11,7 @@ describe 'sugarcrmstack_ng' do
         context "sugarcrmstack_ng class without any parameters" do
           it { is_expected.to compile.with_all_deps }
 
+          it { is_expected.to contain_class('sugarcrmstack_ng') }
           it { is_expected.to contain_class('sugarcrmstack_ng::params') }
           it { is_expected.to contain_class('sugarcrmstack_ng::install').that_comes_before('sugarcrmstack_ng::config') }
           it { is_expected.to contain_class('sugarcrmstack_ng::config') }
