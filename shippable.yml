@@ -60,9 +60,9 @@ build:
     image_tag: v0.2
     pull: true
     options: "-e HOME=/root --entrypoint='rvm list'"
-
+#
   ci:
-    - mkdir -p shippable/testresults
-    - mkdir -p shippable/codecoverage
+#    - mkdir -p shippable/testresults
+#    - mkdir -p shippable/codecoverage
     - pwd
     - rvm list
