@@ -57,13 +57,14 @@ matrix:
 build:
   pre_ci_boot:
     image_name: czhujer/shippable-c6ruby
-    image_tag: v0.2
+    image_tag: v0.2.1
     pull: true
     options: "-e HOME=/root --entrypoint='rvm list'"
 #
   ci:
     - mkdir -p shippable/testresults
     - mkdir -p shippable/codecoverage
+    - rm Gemfile.lock || true
     - bundle install $SHIPPABLE_BUNDLER_ARGS
     - bundle exec rake test
   post_ci:
