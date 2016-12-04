@@ -39,7 +39,7 @@ describe 'sugarcrmstack_ng' do
           it { is_expected.to contain_package('unzip').with_ensure('installed') }
           it { is_expected.to contain_package('vim-enhanced').with_ensure('installed') }
           it { is_expected.to contain_package('vim-minimal').with_ensure('installed') }
-          it { is_expected.to contain_package('vwget').with_ensure('installed') }
+          it { is_expected.to contain_package('wget').with_ensure('installed') }
           it { is_expected.to contain_package('yum-cron').with_ensure('installed') }
           it { is_expected.to contain_package('yum-utils').with_ensure('installed') }
           it { is_expected.to contain_package('zip').with_ensure('installed') }
