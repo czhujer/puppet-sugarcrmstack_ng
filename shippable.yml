@@ -61,10 +61,10 @@ build:
     pull: true
     options: "-e HOME=/root"
 #    options: "-e HOME=/root --entrypoint='rvm list'"
-#  ci:
-#    - mkdir -p shippable/testresults
-#    - mkdir -p shippable/codecoverage
-#    - pwd
-#    - rvm list
-#    - bundle install $SHIPPABLE_BUNDLER_ARGS
-#    - bundle exec rake test
+  ci:
+    - mkdir -p shippable/testresults
+    - mkdir -p shippable/codecoverage
+    - pwd
+    - rvm list
+    - bundle install $SHIPPABLE_BUNDLER_ARGS
+    - bundle exec rake test
