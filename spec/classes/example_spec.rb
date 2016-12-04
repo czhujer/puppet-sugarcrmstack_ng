@@ -16,7 +16,7 @@ describe 'sugarcrmstack_ng' do
           it { is_expected.to contain_class('sugarcrmstack_ng::config') }
           it { is_expected.to contain_class('sugarcrmstack_ng::service').that_subscribes_to('sugarcrmstack_ng::config') }
 
-          it { is_expected.to contain_service('sugarcrmstack_ng') }
+          #it { is_expected.to contain_service('sugarcrmstack_ng') }
           it { is_expected.to contain_package('sugarcrmstack_ng').with_ensure('present') }
         end
       end
