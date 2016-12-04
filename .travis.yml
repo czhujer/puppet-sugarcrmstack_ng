@@ -23,8 +23,6 @@ env:
   - PUPPET_GEM_VERSION="~> 3.6.0" STRICT_VARIABLES=yes
   - PUPPET_GEM_VERSION="~> 3.7.0" STRICT_VARIABLES=yes
   - PUPPET_GEM_VERSION="~> 3.8.0" STRICT_VARIABLES=yes FUTURE_PARSER=yes
-  #matrix:
-  - OS_TYPE=centos OS_VERSION=6
 matrix:
   exclude:
   # Ruby 1.9.3
