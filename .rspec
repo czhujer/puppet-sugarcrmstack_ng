@@ -1,4 +1,4 @@
 --format documentation
 --color
 --format RspecJunitFormatter
---out ~/shippable/testresults/rspec.xml
+--out /root/shippable/testresults/rspec.xml
