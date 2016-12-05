@@ -65,6 +65,7 @@ build:
     - mkdir -p shippable/testresults
     - mkdir -p shippable/codecoverage
     - rm Gemfile.lock || true
+    - source /etc/profile.d/rvm.sh; rvm use $SHIPPABLE_RUBY
     - source /etc/profile.d/rvm.sh; bundle install $SHIPPABLE_BUNDLER_ARGS
     - source /etc/profile.d/rvm.sh; bundle exec rake test
   post_ci:
