@@ -65,8 +65,10 @@ build:
     - mkdir -p shippable/testresults
     - mkdir -p shippable/codecoverage
     - rm Gemfile.lock || true
-    - bundle install $SHIPPABLE_BUNDLER_ARGS
-    - bundle exec rake test
+    - source /etc/profile.d/rvm.sh; bundle install $SHIPPABLE_BUNDLER_ARGS
+    - source /etc/profile.d/rvm.sh; bundle exec rake test
   post_ci:
     - pwd
     - ll -lh shippable/testresults
+    - ll -lh shippable/codecoverage
+
