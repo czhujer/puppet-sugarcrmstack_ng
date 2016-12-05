@@ -23,7 +23,7 @@ group :test do
   gem 'json_pure', '<= 2.0.1' if RUBY_VERSION < '2.0.0'
 
   gem 'rspec_junit_formatter'
-  gem 'simplecov-json'
+  gem 'simplecov-cobertura'
 end
 
 group :development do
