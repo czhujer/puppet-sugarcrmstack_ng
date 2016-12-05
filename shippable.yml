@@ -70,7 +70,7 @@ build:
     - wget https://raw.githubusercontent.com/czhujer/docker-shippable-c6ruby/master/puppet-fix/syck_node_monkeypatch.rb -O /usr/local/rvm/gems/ruby-$SHIPPABLE_RUBY/gems/puppet-3.8.7/lib/puppet/vendor/safe_yaml/lib/safe_yaml/syck_node_monkeypatch.rb || true
     - source /etc/profile.d/rvm.sh; bundle exec rake test
   post_ci:
-    - pwd
     - ll -lh shippable/testresults
     - ll -lh shippable/codecoverage
-
+    - source /etc/profile.d/rvm.sh; gem list
+    - source /etc/profile.d/rvm.sh; puppet module list
