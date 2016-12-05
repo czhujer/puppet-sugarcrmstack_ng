@@ -65,9 +65,9 @@ build:
     - mkdir -p shippable/testresults
     - mkdir -p shippable/codecoverage
     - rm Gemfile.lock || true
-    - wget https://raw.githubusercontent.com/czhujer/docker-shippable-c6ruby/master/puppet-fix/syck_node_monkeypatch.rb -O /usr/local/rvm/gems/ruby-$SHIPPABLE_RUBY/gems/puppet-3.8.7/lib/puppet/vendor/safe_yaml/lib/safe_yaml/syck_node_monkeypatch.rb || true
     - source /etc/profile.d/rvm.sh; rvm use $SHIPPABLE_RUBY
     - source /etc/profile.d/rvm.sh; bundle install $SHIPPABLE_BUNDLER_ARGS
+    - wget https://raw.githubusercontent.com/czhujer/docker-shippable-c6ruby/master/puppet-fix/syck_node_monkeypatch.rb -O /usr/local/rvm/gems/ruby-$SHIPPABLE_RUBY/gems/puppet-3.8.7/lib/puppet/vendor/safe_yaml/lib/safe_yaml/syck_node_monkeypatch.rb || true
     - source /etc/profile.d/rvm.sh; bundle exec rake test
   post_ci:
     - pwd
