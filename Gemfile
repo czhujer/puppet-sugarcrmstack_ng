@@ -24,6 +24,8 @@ group :test do
 
   gem 'rspec_junit_formatter'
   gem 'simplecov-cobertura'
+
+  gem "r10k", if RUBY_VERSION < '2.0.0'
 end
 
 group :development do
