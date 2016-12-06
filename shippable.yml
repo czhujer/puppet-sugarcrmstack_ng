@@ -99,4 +99,5 @@ build:
     - ls -lh shippable/testresults
     - ls -lh shippable/codecoverage
     - source /etc/profile.d/rvm.sh; gem list
+    - source /etc/profile.d/rvm.sh; bundle exec rake test --tasks
     - source /etc/profile.d/rvm.sh; puppet module list
