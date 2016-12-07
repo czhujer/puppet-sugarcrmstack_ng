@@ -1,14 +1,14 @@
 source ENV['GEM_SOURCE'] || "https://rubygems.org"
 
 group :test do
-  gem "rake"
+  gem "rake", '<= 11.0' if RUBY_VERSION < '1.9.3' || '< 12.0'
   gem "puppet", ENV['PUPPET_GEM_VERSION'] || '~> 3.8.0'
   gem "rspec", '< 3.2.0'
   gem "rspec-puppet"
   gem "puppetlabs_spec_helper"
   gem "metadata-json-lint"
   gem "rspec-puppet-facts"
-  gem 'rubocop', '0.33.0'
+  gem 'rubocop', '0.46.0'
   gem 'simplecov', '>= 0.11.0'
   gem 'simplecov-console'
 
@@ -21,6 +21,11 @@ group :test do
   gem 'puppet-lint-resource_reference_syntax'
 
   gem 'json_pure', '<= 2.0.1' if RUBY_VERSION < '2.0.0'
+
+  gem 'rspec_junit_formatter'
+  gem 'simplecov-cobertura'
+
+  gem "r10k"		    if RUBY_VERSION >= '2.0.0'
 end
 
 group :development do
