@@ -27,7 +27,7 @@ exclude_paths = [
 
 # Coverage from puppetlabs-spec-helper requires rcov which
 # doesn't work in anything since 1.8.7
-Rake::Task[:coverage].clear
+#Rake::Task[:coverage].clear
 
 Rake::Task[:lint].clear
 
@@ -52,12 +52,16 @@ desc "Populate CONTRIBUTORS file"
 task :contributors do
   system("git log --format='%aN' | sort -u > CONTRIBUTORS")
 end
-
-desc "Run syntax, lint, and spec tests."
-task :test => [
+test_tasks = [
   :metadata_lint,
   :syntax,
   :lint,
   :rubocop,
   :spec,
 ]
+
+if Puppet.version.to_f <= 3.8
+  test_tasks.delete(:rubocop)
+end
+desc "Run syntax, lint, and spec tests."
+task :test => test_tasks

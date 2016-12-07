@@ -5,12 +5,15 @@ include RspecPuppetFacts
 
 require 'simplecov'
 require 'simplecov-console'
+require 'simplecov-cobertura'
 
 SimpleCov.start do
   add_filter '/spec'
   add_filter '/vendor'
+  coverage_dir 'shippable/codecoverage'
   formatter SimpleCov::Formatter::MultiFormatter.new([
     SimpleCov::Formatter::HTMLFormatter,
+    SimpleCov::Formatter::CoberturaFormatter,
     SimpleCov::Formatter::Console
   ])
 end

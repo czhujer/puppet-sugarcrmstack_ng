@@ -5,10 +5,4 @@
 #
 class sugarcrmstack_ng::service {
 
-  service { $::sugarcrmstack_ng::service_name:
-    ensure     => running,
-    enable     => true,
-    hasstatus  => true,
-    hasrestart => true,
-  }
 }
