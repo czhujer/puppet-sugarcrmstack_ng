@@ -97,6 +97,7 @@ build:
     - source /etc/profile.d/rvm.sh; bundle exec rake test
     - source /etc/profile.d/rvm.sh; bundle exec r10k puppetfile check -v
     - source /etc/profile.d/rvm.sh; r10k puppetfile install -v
+    - source /etc/profile.d/rvm.sh; puppet apply tests/init.pp --test --noop
   post_ci:
     - ls -lh shippable/testresults
     - ls -lh shippable/codecoverage
