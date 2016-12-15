@@ -99,6 +99,8 @@ build:
     - source /etc/profile.d/rvm.sh; r10k puppetfile install -v
     - ln -s $HOME/src/github.com/$REPO_NAME /etc/puppet/modules/sugarcrmstack_ng
     - source /etc/profile.d/rvm.sh; puppet module list
+    - ls -lh /etc/puppet/modules/
+    - ls -lh /etc/puppet/modules/sugarcrmstack_ng
     - source /etc/profile.d/rvm.sh; puppet apply tests/init.pp --test --noop
   post_ci:
     - ls -lh shippable/testresults
