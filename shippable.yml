@@ -101,6 +101,7 @@ build:
     - source /etc/profile.d/rvm.sh; puppet module list
     - ls -lh /etc/puppet/modules/
     - ls -lh /etc/puppet/modules/sugarcrmstack_ng
+    - ls -lh /etc/puppet/modules/sugarcrmstack_ng/*
     - source /etc/profile.d/rvm.sh; puppet apply tests/init.pp --test --noop
   post_ci:
     - ls -lh shippable/testresults
