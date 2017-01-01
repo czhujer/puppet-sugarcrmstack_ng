@@ -63,5 +63,8 @@ test_tasks = [
 if Puppet.version.to_f <= 3.8
   test_tasks.delete(:rubocop)
 end
+if Puppet.version.to_f <= 5
+  test_tasks.delete(:rubocop)
+end
 desc "Run syntax, lint, and spec tests."
 task :test => test_tasks
