@@ -31,7 +31,7 @@ class sugarcrmstack_ng::install {
   # install utils packages
   if($::sugarcrmstack_ng::manage_utils_packages){
     package { $::sugarcrmstack_ng::utils_packages:
-      ensure => 'installed',
+      ensure  => 'installed',
       require => $require_utils_packages,
 #                Ini_setting['remi repo exclude packages'],
 #                Ini_setting['centos base repo exclude packages 2'],
