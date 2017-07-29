@@ -13,14 +13,26 @@
 class sugarcrmstack_ng (
   $manage_utils_packages = $::sugarcrmstack_ng::params::manage_utils_packages,
   $utils_packages = $::sugarcrmstack_ng::params::utils_packages,
+  $apache_php_enable = $::sugarcrmstack_ng::params::apache_php_enable,
+  $sugar_version = $::sugarcrmstack_ng::params::sugar_version,
 #  $package_name = $::sugarcrmstack_ng::params::package_name,
 #  $service_name = $::sugarcrmstack_ng::params::service_name,
 ) inherits ::sugarcrmstack_ng::params {
 
   # validate parameters here
 
-  class { '::sugarcrmstack_ng::install': } ->
-  class { '::sugarcrmstack_ng::config': } ~>
-  class { '::sugarcrmstack_ng::service': } ->
-  Class['::sugarcrmstack_ng']
+  # run
+  if ($::sugarcrmstack_ng::apache_php_enable){
+    class { '::sugarcrmstack_ng::install': } ->
+    class { '::sugarcrmstack_ng::config': } ->
+    class { '::sugarcrmstack_ng::apache_php': } ~>
+    class { '::sugarcrmstack_ng::service': } ->
+    Class['::sugarcrmstack_ng']
+  }
+  else{
+    class { '::sugarcrmstack_ng::install': } ->
+    class { '::sugarcrmstack_ng::config': } ~>
+    class { '::sugarcrmstack_ng::service': } ->
+    Class['::sugarcrmstack_ng']
+  }
 }

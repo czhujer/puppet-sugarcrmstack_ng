@@ -37,9 +37,9 @@ PuppetLint.configuration.disable_class_inherits_from_params_class
 PuppetLint.configuration.disable_class_parameter_defaults
 PuppetLint.configuration.fail_on_warnings = true
 
-PuppetLint::RakeTask.new :lint do |config|
-  config.ignore_paths = exclude_paths
-end
+#DS PuppetLint::RakeTask.new :lint do |config|
+#  config.ignore_paths = exclude_paths
+#DS end
 
 PuppetSyntax.exclude_paths = exclude_paths
 
@@ -61,6 +61,9 @@ test_tasks = [
 ]
 
 if Puppet.version.to_f <= 3.8
+  test_tasks.delete(:rubocop)
+end
+if Puppet.version.to_f <= 5
   test_tasks.delete(:rubocop)
 end
 desc "Run syntax, lint, and spec tests."

@@ -17,10 +17,12 @@ mod 'java',
 mod 'stdlib',
   :git => 'https://github.com/puppetlabs/puppetlabs-stdlib',
   :tag => '4.12.0'
-  
+
 mod 'jenkins',
-  :git => 'https://github.com/jenkinsci/puppet-jenkins',
-  :tag => 'v1.7.0'
+#  :git => 'https://github.com/jenkinsci/puppet-jenkins',
+#  :tag => 'v1.7.0'
+  :git => 'https://github.com/SugarFactory/puppet-jenkins',
+  :branch => 'master'
 
 mod 'archive',
   :git => 'https://github.com/voxpupuli/puppet-archive',
@@ -119,21 +121,24 @@ mod 'logstash_reporter',
   :tag => '0.1.0'
 
 mod 'beats',
-  :git => 'https://github.com/SugarFactory/puppet-beats'
+  :git => 'https://github.com/SugarFactory/puppet-beats',
+  :branch => 'master'
 
 mod 'nodejs',
   :git => 'https://github.com/voxpupuli/puppet-nodejs',
   :tag => 'v1.3.0'
 
 mod 'zabbixagent',
-  :git => 'https://github.com/H-Software/puppet-zabbixagent'
+  :git => 'https://github.com/H-Software/puppet-zabbixagent',
+  :branch => 'master'
 
 mod 'sugarcrmstack',
 #  :git => 'git@github.com:SugarFactory/puppet-sugarcrm-stack.git'
   :local => true
 
 mod 'gpg_key',
-  :git => 'https://github.com/treydock/puppet-gpg_key'
+  :git => 'https://github.com/treydock/puppet-gpg_key',
+  :branch => 'master'
 #  ,
 #  :tag => '0.0.3'
 
@@ -166,3 +171,6 @@ mod 'cron',
   :tag => 'v0.1.0'
 
 mod 'maestrodev-wget', '1.7.3'
+
+mod 'arioch-redis', '1.2.4'
+
