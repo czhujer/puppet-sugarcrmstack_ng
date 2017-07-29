@@ -9,7 +9,7 @@ class sugarcrmstack_ng::params {
   case $::osfamily {
     'RedHat', 'Amazon': {
       $manage_utils_packages = true
-      
+
       if ($::operatingsystemmajrelease in ['7']){
         $utils_packages = ['iotop', 'iftop', 'iptraf', 'sysstat',
                 'zip', 'lsscsi', 'unzip',

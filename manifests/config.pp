@@ -18,7 +18,7 @@ class sugarcrmstack_ng::config {
         setting => 'enabled',
         value   => '1',
       }
-    
+
     }
   }
 
