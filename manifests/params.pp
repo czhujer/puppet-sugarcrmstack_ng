@@ -5,6 +5,7 @@
 #
 class sugarcrmstack_ng::params {
   $apache_php_enable = true
+  $sugar_version     = "7.9"
   case $::osfamily {
     'RedHat', 'Amazon': {
       $manage_utils_packages = true
