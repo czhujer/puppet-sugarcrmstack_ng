@@ -15,6 +15,20 @@ class sugarcrmstack_ng::install {
     $require_utils_packages = Yumrepo['epel']
   }
 
+  # install remi repo
+  if ($::sugarcrmstack_ng::apache_php_enable){
+    if ($::operatingsystemmajrelease in ['7']){
+      if ( !defined(Yumrepo['remi-php56']) and !defined(Package['remi-release'])){
+        package { 'remi-release':
+          ensure   => 'installed',
+          source   => 'http://rpms.famillecollet.com/enterprise/remi-release-7.rpm',
+          provider => 'rpm',
+        }
+      }
+    }
+  }
+
+  # install utils packages
   if($::sugarcrmstack_ng::manage_utils_packages){
     package { $::sugarcrmstack_ng::utils_packages:
       ensure => 'installed',

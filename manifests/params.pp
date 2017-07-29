@@ -4,6 +4,7 @@
 # It sets variables according to platform.
 #
 class sugarcrmstack_ng::params {
+  $apache_php_enable = true
   case $::osfamily {
     'RedHat', 'Amazon': {
       $manage_utils_packages = true
