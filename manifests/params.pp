@@ -7,13 +7,25 @@ class sugarcrmstack_ng::params {
   case $::osfamily {
     'RedHat', 'Amazon': {
       $manage_utils_packages = true
-      $utils_packages = ['iotop', 'iftop', 'iptraf', 'sysstat',
+      
+      if ($::operatingsystemmajrelease in ['7']){
+        $utils_packages = ['iotop', 'iftop', 'iptraf', 'sysstat',
+                'zip', 'lsscsi', 'unzip',
+                'links', 'lynx', 'policycoreutils-python',
+                'htop', 'bind-utils', 'wget', 'telnet', 'lsof',
+                'irqbalance', 'vim-minimal', 'yum-utils',
+                'traceroute', 'vim-enhanced',
+                'numad', 'yum-cron', 'apachetop', 'nano']
+      }
+      else{
+        $utils_packages = ['iotop', 'iftop', 'iptraf', 'sysstat',
                 'zip', 'lsscsi', 'unzip',
                 'links', 'lynx', 'policycoreutils-python',
                 'htop', 'bind-utils', 'wget', 'telnet', 'lsof',
                 'irqbalance', 'vim-minimal', 'yum-utils',
                 'traceroute', 'vim-enhanced', 'hal', 'cpuspeed',
                 'numad', 'yum-cron', 'apachetop', 'nano']
+      }
     }
     default: {
       fail("${::operatingsystem} not supported")
