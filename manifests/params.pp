@@ -16,7 +16,7 @@ class sugarcrmstack_ng::params {
                 'links', 'lynx', 'policycoreutils-python',
                 'htop', 'bind-utils', 'wget', 'telnet', 'lsof',
                 'irqbalance', 'vim-minimal', 'yum-utils',
-                'traceroute', 'vim-enhanced',
+                'traceroute', 'vim-enhanced', 'net-tools',
                 'numad', 'yum-cron', 'apachetop', 'nano']
       }
       else{
