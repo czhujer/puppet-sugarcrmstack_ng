@@ -23,16 +23,16 @@ class sugarcrmstack_ng (
 
   # run
   if ($::sugarcrmstack_ng::apache_php_enable){
-    class { '::sugarcrmstack_ng::install': } ->
-    class { '::sugarcrmstack_ng::config': } ->
-    class { '::sugarcrmstack_ng::apache_php': } ~>
-    class { '::sugarcrmstack_ng::service': } ->
-    Class['::sugarcrmstack_ng']
+    class { '::sugarcrmstack_ng::install': }
+    -> class { '::sugarcrmstack_ng::config': }
+    -> class { '::sugarcrmstack_ng::apache_php': }
+    ~> class { '::sugarcrmstack_ng::service': }
+    -> Class['::sugarcrmstack_ng']
   }
   else{
-    class { '::sugarcrmstack_ng::install': } ->
-    class { '::sugarcrmstack_ng::config': } ~>
-    class { '::sugarcrmstack_ng::service': } ->
-    Class['::sugarcrmstack_ng']
+    class { '::sugarcrmstack_ng::install': }
+    -> class { '::sugarcrmstack_ng::config': }
+    ~> class { '::sugarcrmstack_ng::service': }
+    -> Class['::sugarcrmstack_ng']
   }
 }
