@@ -8,7 +8,7 @@ moduledir '/etc/puppet/modules'
 
 mod 'apt',
   :git => 'https://github.com/puppetlabs/puppetlabs-apt',
-  :tag => '2.2.2'
+  :tag => '2.4.0'
 
 mod 'java',
   :git => 'https://github.com/puppetlabs/puppetlabs-java',
@@ -29,8 +29,8 @@ mod 'archive',
   :tag => 'v1.1.2'
 
 mod 'zypprepo',
-  :git => 'https://github.com/deadpoint/puppet-zypprepo'
-#  :tag => '1.0.2'
+  :git => 'https://github.com/voxpupuli/puppet-zypprepo',
+  :tag => 'v2.0.0'
 
 mod 'staging',
   :git => 'https://github.com/voxpupuli/puppet-staging',
@@ -156,7 +156,7 @@ mod 'git',
 
 mod 'apache',
   :git => 'https://github.com/puppetlabs/puppetlabs-apache.git',
-  :tag => '1.10.0'
+  :tag => '1.11.0'
 
 mod 'php',
   :git => 'https://github.com/thias/puppet-php.git',
@@ -174,3 +174,6 @@ mod 'maestrodev-wget', '1.7.3'
 
 mod 'arioch-redis', '1.2.4'
 
+mod 'sugarcrmstack_ng',
+  :git => 'https://github.com/SugarFactory/puppet-sugarcrmstack_ng',
+  :tag => 'v0.2'
