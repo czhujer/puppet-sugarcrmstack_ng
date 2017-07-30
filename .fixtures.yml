@@ -7,5 +7,6 @@ fixtures:
     php:    "https://github.com/thias/puppet-php"
     vcsrepo: "https://github.com/puppetlabs/puppetlabs-vcsrepo"
     composer: "https://github.com/tPl0ch/puppet-composer"
+    git:    "https://github.com/puppetlabs/puppetlabs-git"
   symlinks:
     sugarcrmstack_ng: "#{source_dir}"
