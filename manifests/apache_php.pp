@@ -1,32 +1,62 @@
+# Class: apache_php
+# ===========================
+#
+# Full description of class apache_php here.
+#
+# Parameters
+# ----------
+#
+# * `sample parameter`
+#   Explanation of what this parameter affects and what it defaults to.
+#   e.g. "Specify one or more upstream ntp servers as an array."
+#
 class sugarcrmstack_ng::apache_php (
+  $apache_php_enable = $::sugarcrmstack_ng::params::apache_php_enable,
+  $sugar_version = $::sugarcrmstack_ng::params::sugar_version,
+  #
+  $apache_php_php_pkg_version = $sugarcrmstack_ng::params::apache_php_php_pkg_version,
+  $apache_php_php_pkg_build = $sugarcrmstack_ng::params::apache_php_php_pkg_build,
+  $apache_php_php_error_reporting = $sugarcrmstack_ng::params::apache_php_php_error_reporting,
+  $apache_php_apache_https_port = $sugarcrmstack_ng::params::apache_php_apache_https_port,
+  $apache_php_apache_http_port = $sugarcrmstack_ng::params::apache_php_apache_http_port,
+  $apache_php_php_memory_limit = $sugarcrmstack_ng::params::apache_php_php_memory_limit,
+  $apache_php_php_max_execution_time = $sugarcrmstack_ng::params::apache_php_php_max_execution_time,
+  $apache_php_php_upload_max_filesize = $sugarcrmstack_ng::params::apache_php_php_upload_max_filesize,
+  $apache_php_manage_firewall = $sugarcrmstack_ng::params::apache_php_manage_firewall,
+  $apache_php_apache_http_redirect = $sugarcrmstack_ng::params::apache_php_apache_http_redirect,
+  $apache_php_apache_default_mods =$sugarcrmstack_ng::params::apache_php_apache_default_mods,
+  $apache_php_php_cache_engine = $sugarcrmstack_ng::params::apache_php_php_cache_engine,
+  $apache_php_php_session_save_handler = $sugarcrmstack_ng::params::apache_php_php_session_save_handler,
+  $apache_php_php_session_save_path = $sugarcrmstack_ng::params::apache_php_php_session_save_path,
+  $apache_php_apache_manage_user = $sugarcrmstack_ng::params::apache_php_apache_manage_user,
 ) inherits sugarcrmstack_ng::params {
 
-  if ($::sugarcrmstack_ng::apache_php_enable){
+  if ($apache_php_enable){
 
-    if ($::sugarcrmstack_ng::sugar_version == "7.5" or $::sugarcrmstack_ng::sugar_version == "7.9"){
+    if ($sugar_version == '7.5' or $sugar_version == '7.9'){
 
-      class {'sugarcrmstack::apachephpng':
-        php_pkg_version         => "5.6.31",
-        php_pkg_build           => "1",
-        php_error_reporting     => "E_ALL & ~E_DEPRECATED & ~E_STRICT & ~E_NOTICE & ~E_WARNING",
-        apache_https_port       => "443",
-        apache_http_port        => "80",
-        php_memory_limit        => "1024M",
-        php_max_execution_time  => '300',
-        php_upload_max_filesize => "100M",
-        manage_firewall         => false,
+      class {'::sugarcrmstack::apachephpng':
+        php_pkg_version          => $apache_php_php_pkg_version,
+        php_pkg_build            => $apache_php_php_pkg_build,
+        php_error_reporting      => $apache_php_php_error_reporting,
+        apache_https_port        => $apache_php_apache_https_port,
+        apache_http_port         => $apache_php_apache_http_port,
+        php_memory_limit         => $apache_php_php_memory_limit,
+        php_max_execution_time   => $apache_php_php_max_execution_time,
+        php_upload_max_filesize  => $apache_php_php_upload_max_filesize,
+        manage_firewall          => $apache_php_manage_firewall,
         #
-        apache_http_redirect    => true,
-        apache_default_mods     => [ "actions", "authn_core", "cache", "ext_filter", "mime", "mime_magic", "rewrite", "speling", "suexec", "version", "vhost_alias", "auth_digest", "authn_anon", "authn_dbm", "authz_dbm", "authz_owner", "expires", "include", "logio", "substitute", "usertrack", "authn_alias", "authn_default", "alias", "authn_file", "autoindex", "dav", "dav_fs", "dir", "negotiation", "setenvif", "auth_basic", "authz_user", "authz_groupfile", "env", "authz_default",],
-        php_cache_engine        => "opcache+apcu",
-        #php_session_save_handler => 'redis',
-        #php_session_save_path    => 'tcp://127.0.0.1:6379',
+        apache_http_redirect     => $apache_php_apache_http_redirect,
+        apache_default_mods      => $apache_php_apache_default_mods,
+        php_cache_engine         => $apache_php_php_cache_engine,
+        php_session_save_handler => $apache_php_php_session_save_handler,
+        php_session_save_path    => $apache_php_php_session_save_path,
         #
-        #apache_manage_user       => false,
+        apache_manage_user       => $apache_php_apache_manage_user,
       }
     }
     else{
-      fail("Class['sugarcrmstack_ng::apache_php']: This class is compatible only with sugar_version 7.5 or 7.9 (not ${sugarcrmstack_ng::sugar_version})")
+      fail("Class['sugarcrmstack_ng::apache_php']: This class is compatible only with sugar_version 7.5 or 7.9 (not ${sugar_version})")
     }
   }
 

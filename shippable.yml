@@ -96,6 +96,8 @@ build:
     - source /etc/profile.d/rvm.sh; bundle install $SHIPPABLE_BUNDLER_ARGS
 #    - wget https://raw.githubusercontent.com/czhujer/docker-shippable-c6ruby/master/puppet-fix/syck_node_monkeypatch.rb -O /usr/local/rvm/gems/ruby-$SHIPPABLE_RUBY/gems/puppet-3.8.7/lib/puppet/vendor/safe_yaml/lib/safe_yaml/syck_node_monkeypatch.rb || true
     - PUPPET=`ls /usr/local/rvm/gems/ruby-$SHIPPABLE_RUBY/gems/puppet* -d|head -1 |awk '{split($0,a,"/"); print a[8]}' |tr '\n' ' ' |tr -d ' '`; [[ $PUPPET =~ ^puppet-3\.[0-9]\. ]] && wget https://raw.githubusercontent.com/czhujer/docker-shippable-c6ruby/master/puppet-fix/syck_node_monkeypatch.rb -O /usr/local/rvm/gems/ruby-$SHIPPABLE_RUBY/gems/$PUPPET/lib/puppet/vendor/safe_yaml/lib/safe_yaml/syck_node_monkeypatch.rb || true
+#    - mkdir -p /etc/puppet/modules/sugarcrmstack_ng/spec/fixtures/modules/sugarcrmstack/manifests && wget 'https://raw.githubusercontent.com/SugarFactory/puppet-sugarcrmstack/master/include/service-apache-php-ng.pp?token=ABi-rzBN-oZxmP489S3FyTL6g7kauubQks5Zhrc-wA%3D%3D' -O /etc/puppet/modules/sugarcrmstack_ng/spec/fixtures/modules/sugarcrmstack/manifests/apachephpng.pp
+    - mkdir -p /root/src/github.com/SugarFactory/puppet-sugarcrmstack_ng/spec/fixtures/modules/sugarcrmstack/manifests && wget 'https://raw.githubusercontent.com/SugarFactory/puppet-sugarcrmstack/master/include/service-apache-php-ng.pp?token=ABi-rzBN-oZxmP489S3FyTL6g7kauubQks5Zhrc-wA%3D%3D' -O /root/src/github.com/SugarFactory/puppet-sugarcrmstack_ng/spec/fixtures/modules/sugarcrmstack/manifests/apachephpng.pp
     - rm -f /usr/bin/lsb_release
     - source /etc/profile.d/rvm.sh; bundle exec rake test
     - source /etc/profile.d/rvm.sh; bundle exec r10k puppetfile check -v

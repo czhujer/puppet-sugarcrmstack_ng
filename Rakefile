@@ -37,9 +37,9 @@ PuppetLint.configuration.disable_class_inherits_from_params_class
 PuppetLint.configuration.disable_class_parameter_defaults
 PuppetLint.configuration.fail_on_warnings = true
 
-#DS PuppetLint::RakeTask.new :lint do |config|
-#  config.ignore_paths = exclude_paths
-#DS end
+PuppetLint::RakeTask.new :lint do |config|
+  config.ignore_paths = exclude_paths
+end
 
 PuppetSyntax.exclude_paths = exclude_paths
 
