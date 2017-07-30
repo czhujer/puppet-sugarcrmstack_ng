@@ -4,5 +4,6 @@ fixtures:
     inifile: "https://github.com/puppetlabs/puppetlabs-inifile"
     apache: "https://github.com/puppetlabs/puppetlabs-apache"
     concat: "https://github.com/puppetlabs/puppetlabs-concat"
+    php:    "https://github.com/thias/puppet-php"
   symlinks:
     sugarcrmstack_ng: "#{source_dir}"
