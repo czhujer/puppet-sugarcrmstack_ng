@@ -17,7 +17,7 @@ class sugarcrmstack_ng::apache_php (
 
     if ($::sugarcrmstack_ng::sugar_version == "7.5" or $::sugarcrmstack_ng::sugar_version == "7.9"){
 
-      class {'$::sugarcrmstack::apachephpng':
+      class {'::sugarcrmstack::apachephpng':
         php_pkg_version         => "5.6.31",
         php_pkg_build           => "1",
         php_error_reporting     => "E_ALL & ~E_DEPRECATED & ~E_STRICT & ~E_NOTICE & ~E_WARNING",
