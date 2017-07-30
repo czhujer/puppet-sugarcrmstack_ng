@@ -8,7 +8,7 @@ moduledir '/etc/puppet/modules'
 
 mod 'apt',
   :git => 'https://github.com/puppetlabs/puppetlabs-apt',
-  :tag => '2.2.2'
+  :tag => '2.4.0'
 
 mod 'java',
   :git => 'https://github.com/puppetlabs/puppetlabs-java',
