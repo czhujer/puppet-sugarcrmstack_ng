@@ -21,7 +21,7 @@ class sugarcrmstack_ng::params {
 
         $apache_php_apache_default_mods = [ 'actions', 'authn_core', 'cache', 'ext_filter', 'mime', 'mime_magic', 'rewrite', 'speling', 'suexec',
                                       'version', 'vhost_alias', 'auth_digest', 'authn_anon', 'authn_dbm', 'authz_dbm', 'authz_owner',
-                                      'expires', 'include', 'logio', 'substitute', 'usertrack', 'authn_default', 'alias',
+                                      'expires', 'include', 'logio', 'substitute', 'usertrack', 'alias',
                                       'authn_file', 'autoindex', 'dav', 'dav_fs', 'dir', 'negotiation', 'setenvif', 'auth_basic',
                                       'authz_user', 'authz_groupfile', 'env', ]
 
