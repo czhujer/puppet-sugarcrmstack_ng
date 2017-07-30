@@ -25,7 +25,7 @@ class sugarcrmstack_ng::apache_php (
         apache_http_port         => $::sugarcrmstack_ng::params::apache_php_apache_http_port,
         php_memory_limit         => $::sugarcrmstack_ng::params::apache_php_php_memory_limit,
         php_max_execution_time   => $::sugarcrmstack_ng::params::apache_php_php_max_execution_time,
-        php_upload_max_filesize  => $::sugarcrmstack_ng::params::apache_php_php_upload_max_filesize
+        php_upload_max_filesize  => $::sugarcrmstack_ng::params::apache_php_php_upload_max_filesize,
         manage_firewall          => $::sugarcrmstack_ng::params::apache_php_manage_firewall,
         #
         apache_http_redirect     => $::sugarcrmstack_ng::params::apache_php_apache_http_redirect,
