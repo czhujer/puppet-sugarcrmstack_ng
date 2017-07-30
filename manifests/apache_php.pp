@@ -19,7 +19,7 @@ class sugarcrmstack_ng::apache_php (
 
       class {'::sugarcrmstack::apachephpng':
         php_pkg_version          => $::sugarcrmstack_ng::params::apache_php_php_pkg_version,
-        php_pkg_build            => $::sugarcrmstack_ng::params::apache_php_php_pkg_build
+        php_pkg_build            => $::sugarcrmstack_ng::params::apache_php_php_pkg_build,
         php_error_reporting      => $::sugarcrmstack_ng::params::apache_php_php_error_reporting,
         apache_https_port        => $::sugarcrmstack_ng::params::apache_php_apache_https_port,
         apache_http_port         => $::sugarcrmstack_ng::params::apache_php_apache_http_port,
