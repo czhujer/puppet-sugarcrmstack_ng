@@ -18,6 +18,13 @@ class sugarcrmstack_ng::params {
                 'irqbalance', 'vim-minimal', 'yum-utils',
                 'traceroute', 'vim-enhanced', 'net-tools',
                 'numad', 'yum-cron', 'apachetop', 'nano']
+
+        $apache_php_apache_default_mods = [ 'actions', 'authn_core', 'cache', 'ext_filter', 'mime', 'mime_magic', 'rewrite', 'speling', 'suexec',
+                                      'version', 'vhost_alias', 'auth_digest', 'authn_anon', 'authn_dbm', 'authz_dbm', 'authz_owner',
+                                      'expires', 'include', 'logio', 'substitute', 'usertrack', 'authn_alias', 'authn_default', 'alias',
+                                      'authn_file', 'autoindex', 'dav', 'dav_fs', 'dir', 'negotiation', 'setenvif', 'auth_basic',
+                                      'authz_user', 'authz_groupfile', 'env', ]
+
       }
       else{
         $utils_packages = ['iotop', 'iftop', 'iptraf', 'sysstat',
@@ -27,6 +34,13 @@ class sugarcrmstack_ng::params {
                 'irqbalance', 'vim-minimal', 'yum-utils',
                 'traceroute', 'vim-enhanced', 'hal', 'cpuspeed',
                 'numad', 'yum-cron', 'apachetop', 'nano']
+
+        $apache_php_apache_default_mods = [ 'actions', 'authn_core', 'cache', 'ext_filter', 'mime', 'mime_magic', 'rewrite', 'speling', 'suexec',
+                                      'version', 'vhost_alias', 'auth_digest', 'authn_anon', 'authn_dbm', 'authz_dbm', 'authz_owner',
+                                      'expires', 'include', 'logio', 'substitute', 'usertrack', 'authn_alias', 'authn_default', 'alias',
+                                      'authn_file', 'autoindex', 'dav', 'dav_fs', 'dir', 'negotiation', 'setenvif', 'auth_basic',
+                                      'authz_user', 'authz_groupfile', 'env', 'authz_default',]
+
       }
     }
     default: {
@@ -44,11 +58,6 @@ class sugarcrmstack_ng::params {
   $apache_php_php_upload_max_filesize = '100M'
   $apache_php_manage_firewall = false
   $apache_php_apache_http_redirect = true
-  $apache_php_apache_default_mods = [ 'actions', 'authn_core', 'cache', 'ext_filter', 'mime', 'mime_magic', 'rewrite', 'speling', 'suexec',
-                                      'version', 'vhost_alias', 'auth_digest', 'authn_anon', 'authn_dbm', 'authz_dbm', 'authz_owner',
-                                      'expires', 'include', 'logio', 'substitute', 'usertrack', 'authn_alias', 'authn_default', 'alias',
-                                      'authn_file', 'autoindex', 'dav', 'dav_fs', 'dir', 'negotiation', 'setenvif', 'auth_basic',
-                                      'authz_user', 'authz_groupfile', 'env', 'authz_default',]
   $apache_php_php_cache_engine = 'opcache+apcu'
   $apache_php_php_session_save_handler = 'files'
   $apache_php_php_session_save_path = '/var/lib/php/session'
