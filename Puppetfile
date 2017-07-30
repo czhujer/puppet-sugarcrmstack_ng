@@ -25,7 +25,7 @@ mod 'jenkins',
   :branch => 'master'
 
 mod 'archive',
-  :git => 'https://github.com/voxpupuli/puppet-archive',
+  :git => 'https://github.com/voxpopuli/puppet-archive',
   :tag => 'v1.1.2'
 
 mod 'zypprepo',
