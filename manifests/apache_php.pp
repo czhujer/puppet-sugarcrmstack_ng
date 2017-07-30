@@ -38,7 +38,7 @@ class sugarcrmstack_ng::apache_php (
       class {'::sugarcrmstack::apachephpng':
         php_pkg_version          => $apache_php_php_pkg_version,
         php_pkg_build            => $apache_php_php_pkg_build,
-        php_error_reporting      => $pache_php_php_error_reporting,
+        php_error_reporting      => $apache_php_php_error_reporting,
         apache_https_port        => $apache_php_apache_https_port,
         apache_http_port         => $apache_php_apache_http_port,
         php_memory_limit         => $apache_php_php_memory_limit,
