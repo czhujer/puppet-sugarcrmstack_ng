@@ -3,5 +3,6 @@ fixtures:
     stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
     inifile: "https://github.com/puppetlabs/puppetlabs-inifile"
     apache: "https://github.com/puppetlabs/puppetlabs-apache"
+    concat: "https://github.com/puppetlabs/puppetlabs-concat"
   symlinks:
     sugarcrmstack_ng: "#{source_dir}"
