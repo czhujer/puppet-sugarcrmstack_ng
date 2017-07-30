@@ -33,7 +33,7 @@ class sugarcrmstack_ng::apache_php (
 
   if ($apache_php_enable){
 
-    if ($sugar_version == "7.5" or $sugar_version == "7.9"){
+    if ($sugar_version == '7.5' or $sugar_version == '7.9'){
 
       class {'::sugarcrmstack::apachephpng':
         php_pkg_version          => $apache_php_php_pkg_version,
@@ -52,7 +52,7 @@ class sugarcrmstack_ng::apache_php (
         php_session_save_handler => $apache_php_php_session_save_handler,
         php_session_save_path    => $apache_php_php_session_save_path,
         #
-        apache_manage_user       => $apache_php_apache_manage_user
+        apache_manage_user       => $apache_php_apache_manage_user,
       }
     }
     else{
