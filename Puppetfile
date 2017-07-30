@@ -29,7 +29,7 @@ mod 'archive',
   :tag => 'v1.1.2'
 
 mod 'zypprepo',
-  :git => 'https://github.com/voxpopuli/puppet-zypprepo'
+  :git => 'https://github.com/voxpopuli/puppet-zypprepo',
   :tag => 'v2.0.0'
 
 mod 'staging',
