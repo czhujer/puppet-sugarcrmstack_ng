@@ -104,7 +104,7 @@ class sugarcrmstack_ng::install {
     }
 
     package { $mysql_server_packages_old:
-      ensure   => 'absent',
+      ensure   => 'purged',
       provider => 'yum',
     }
   }
