@@ -62,4 +62,6 @@ class sugarcrmstack_ng::params {
   $apache_php_php_session_save_handler = 'files'
   $apache_php_php_session_save_path = '/var/lib/php/session'
   $apache_php_apache_manage_user = false
+  $apache_php_manage_phpmyadmin_config = true
+  $apache_php_manage_phpmyadmin_files = true
 }

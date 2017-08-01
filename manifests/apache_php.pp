@@ -29,6 +29,8 @@ class sugarcrmstack_ng::apache_php (
   $apache_php_php_session_save_handler = $sugarcrmstack_ng::params::apache_php_php_session_save_handler,
   $apache_php_php_session_save_path = $sugarcrmstack_ng::params::apache_php_php_session_save_path,
   $apache_php_apache_manage_user = $sugarcrmstack_ng::params::apache_php_apache_manage_user,
+  $apache_php_manage_phpmyadmin_config = $sugarcrmstack_ng::params::apache_php_manage_phpmyadmin_config,
+  $apache_php_manage_phpmyadmin_files = $sugarcrmstack_ng::params::apache_php_manage_phpmyadmin_files,
 ) inherits sugarcrmstack_ng::params {
 
   if ($apache_php_enable){
