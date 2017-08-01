@@ -39,7 +39,15 @@ class sugarcrmstack_ng (
   # validate parameters here
 
   # run
-  if ($::sugarcrmstack_ng::apache_php_enable){
+  if ($::sugarcrmstack_ng::apache_php_enable and $::sugarcrmstack_ng::mysql_server_enable){
+    class { '::sugarcrmstack_ng::install': }
+    -> class { '::sugarcrmstack_ng::config': }
+    -> class { '::sugarcrmstack_ng::apache_php': }
+    -> class { '::sugarcrmstack_ng::mysql_server': }
+    ~> class { '::sugarcrmstack_ng::service': }
+    -> Class['::sugarcrmstack_ng']
+  }
+  elsif ($::sugarcrmstack_ng::apache_php_enable){
     class { '::sugarcrmstack_ng::install': }
     -> class { '::sugarcrmstack_ng::config': }
     -> class { '::sugarcrmstack_ng::apache_php': }
