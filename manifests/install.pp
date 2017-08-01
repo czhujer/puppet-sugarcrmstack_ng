@@ -77,7 +77,10 @@ class sugarcrmstack_ng::install {
   if ($::sugarcrmstack_ng::mysql_server_enable){
 
     if ($::operatingsystemmajrelease in ['7'] and $::sugarcrmstack_ng::mysql_server_use_pxc == true) {
-      $mysql_server_packages_old = ["mariadb", "mariadb-server", "mariadb-libs", "mysql-community-server", "mysql-community-client" ]
+      $mysql_server_packages_old = ["mariadb", "mariadb-server", "mariadb-libs",
+                                    "mysql-community-server", "mysql-community-client",
+                                    "mysql-community-common", "mysql-community-libs",
+                                   ]
     }
     elsif ($::operatingsystemmajrelease in ['7'] and $::sugarcrmstack_ng::mysql_server_use_pxc == false) {
       $mysql_server_packages_old = ["mariadb", "mariadb-server", "mariadb-libs",
