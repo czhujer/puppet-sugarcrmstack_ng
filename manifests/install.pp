@@ -28,6 +28,40 @@ class sugarcrmstack_ng::install {
     }
   }
 
+  # install mysql/percona repo
+  if ($::sugarcrmstack_ng::mysql_server_enable){
+    if($::sugarcrmstack_ng::mysql_server_use_pxc){
+
+      package { "percona-release":
+        provider => rpm,
+        ensure   => installed,
+        source   => "https://www.percona.com/redir/downloads/percona-release/redhat/0.1-4/percona-release-0.1-4.noarch.rpm",
+      }
+
+    }
+    else{
+
+      if ($::operatingsystemmajrelease in ['7']){
+        package { 'mysql-repo':
+          name     => 'mysql-community-release',
+          ensure   => 'el7-5',
+          provider => 'rpm',
+          #source => 'http://repo.mysql.com/mysql-community-release-el7.rpm'
+          source  => 'https://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm',
+        }
+      }
+      else{
+        package { 'mysql-repo':
+          name     => 'mysql-community-release',
+          ensure   => 'el6-7',
+          provider => 'rpm',
+          #source => 'http://repo.mysql.com/mysql-community-release-el6.rpm'
+          source  => 'https://repo.mysql.com/mysql-community-release-el6-7.noarch.rpm',
+        }
+      }
+    }
+  }
+
   # install utils packages
   if($::sugarcrmstack_ng::manage_utils_packages){
     package { $::sugarcrmstack_ng::utils_packages:
