@@ -34,6 +34,13 @@ class sugarcrmstack_ng (
   $apache_php_apache_manage_user = $sugarcrmstack_ng::params::apache_php_apache_manage_user,
   $apache_php_manage_phpmyadmin_config = $sugarcrmstack_ng::params::apache_php_manage_phpmyadmin_config,
   $apache_php_manage_phpmyadmin_files = $sugarcrmstack_ng::params::apache_php_manage_phpmyadmin_files,
+  #
+  $mysql_server_service_manage = $sugarcrmstack_ng::params::mysql_server_service_manage,
+  $mysql_server_service_enabled = $sugarcrmstack_ng::params::mysql_server_service_enabled,
+  $mysql_server_service_restart = $sugarcrmstack_ng::params::mysql_server_service_restart,
+  $mysql_server_config_max_connections = $sugarcrmstack_ng::params::mysql_server_config_max_connections,
+  $mysql_server_use_pxc = $sugarcrmstack_ng::params::mysql_server_use_pxc,
+  #
 ) inherits ::sugarcrmstack_ng::params {
 
   # validate parameters here
