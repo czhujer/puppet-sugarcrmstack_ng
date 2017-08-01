@@ -26,8 +26,15 @@ class sugarcrmstack_ng::mysql_server (
 
     if ($sugar_version == '7.5' or $sugar_version == '7.9'){
 
-      #class {'::sugarcrmstack::mysqlserver':
-      #}
+      class { 'sugarcrmstack::mysqlserver':
+        #mysql_server_enable => $mysql_server_enable,
+        mysql_server_service_manage         => $mysql_server_service_manage,
+        mysql_server_service_enabled        => $mysql_server_service_enabled,
+        mysql_server_service_restart        => $mysql_server_service_restart,
+        mysql_server_config_max_connections => $mysql_server_config_max_connections,
+        mysql_server_use_pxc                => $mysql_server_use_pxc,
+      }
+
     }
     else{
       fail("Class['sugarcrmstack_ng::mysql_server']: This class is compatible only with sugar_version 7.5 or 7.9 (not ${sugar_version})")
