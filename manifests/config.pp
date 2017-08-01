@@ -32,7 +32,6 @@ class sugarcrmstack_ng::config {
         section => 'mysql57-community',
         setting => 'enabled',
         value   => '0',
-        require => Package['mysql-repo'],
       }
 
       ini_setting { 'mysql 5.6 repo disable':
@@ -41,7 +40,6 @@ class sugarcrmstack_ng::config {
         section => 'mysql56-community',
         setting => 'enabled',
         value   => '0',
-        require => Package['mysql-repo'],
       }
     }
     elsif ($::operatingsystemmajrelease in ['7'] and $::sugarcrmstack_ng::mysql_server_use_pxc == false and $::sugarcrmstack_ng::sugar_version == '7.5' ) {
@@ -51,7 +49,6 @@ class sugarcrmstack_ng::config {
         section => 'mysql57-community',
         setting => 'enabled',
         value   => '0',
-        require => Package['mysql-repo'],
       }
 
       ini_setting { 'mysql 5.6 repo enable':
@@ -60,7 +57,6 @@ class sugarcrmstack_ng::config {
         section => 'mysql56-community',
         setting => 'enabled',
         value   => '1',
-        require => Package['mysql-repo'],
       }
     }
     elsif ($::operatingsystemmajrelease in ['7'] and $::sugarcrmstack_ng::mysql_server_use_pxc == false and $::sugarcrmstack_ng::sugar_version == '7.9' ) {
@@ -70,7 +66,6 @@ class sugarcrmstack_ng::config {
         section => 'mysql57-community',
         setting => 'enabled',
         value   => '1',
-        require => Package['mysql-repo'],
       }
 
       ini_setting { 'mysql 5.6 repo enable':
@@ -79,7 +74,6 @@ class sugarcrmstack_ng::config {
         section => 'mysql56-community',
         setting => 'enabled',
         value   => '0',
-        require => Package['mysql-repo'],
       }
     }
   }
