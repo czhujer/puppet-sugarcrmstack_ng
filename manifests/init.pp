@@ -14,6 +14,7 @@ class sugarcrmstack_ng (
   $manage_utils_packages = $::sugarcrmstack_ng::params::manage_utils_packages,
   $utils_packages = $::sugarcrmstack_ng::params::utils_packages,
   $apache_php_enable = $::sugarcrmstack_ng::params::apache_php_enable,
+  $mysql_server_enable = $::sugarcrmstack_ng::params::mysql_server_enable,
   $sugar_version = $::sugarcrmstack_ng::params::sugar_version,
   #
   $apache_php_php_pkg_version = $sugarcrmstack_ng::params::apache_php_php_pkg_version,
