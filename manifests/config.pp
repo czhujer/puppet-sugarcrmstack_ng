@@ -29,7 +29,7 @@ class sugarcrmstack_ng::config {
       ini_setting { 'mysql 5.7 repo enable':
         ensure  => present,
         path    => '/etc/yum.repos.d/mysql-community.repo',
-        section => 'mysql57-community',
+        section => 'mysql57-community-dmr',
         setting => 'enabled',
         value   => '0',
       }
@@ -46,7 +46,7 @@ class sugarcrmstack_ng::config {
       ini_setting { 'mysql 5.7 repo enable':
         ensure  => present,
         path    => '/etc/yum.repos.d/mysql-community.repo',
-        section => 'mysql57-community',
+        section => 'mysql57-community-dmr',
         setting => 'enabled',
         value   => '0',
       }
@@ -63,7 +63,7 @@ class sugarcrmstack_ng::config {
       ini_setting { 'mysql 5.7 repo enable':
         ensure  => present,
         path    => '/etc/yum.repos.d/mysql-community.repo',
-        section => 'mysql57-community',
+        section => 'mysql57-community-dmr',
         setting => 'enabled',
         value   => '1',
       }
