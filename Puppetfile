@@ -62,7 +62,7 @@ mod 'elasticsearch',
 
 mod 'mysql',
   :git => 'https://github.com/puppetlabs/puppetlabs-mysql',
-  :tag => '3.8.0'
+  :tag => '3.11.0'
 
 mod 'xtrabackup',
   :git => 'https://github.com/abstractitptyltd/puppet-xtrabackup',
