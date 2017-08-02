@@ -22,7 +22,7 @@ class sugarcrmstack_ng::mysql_server (
   #
 ) inherits sugarcrmstack_ng::params {
 
-  if ($apache_php_enable){
+  if ($mysql_server_enable){
 
     if ($::sugarcrmstack_ng::mysql_server_use_pxc == true and $sugar_version == '7.9' and $::operatingsystemmajrelease in ['7'] ){
       package {'Percona-XtraDB-Cluster-shared-compat-57':
