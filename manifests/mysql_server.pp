@@ -24,6 +24,13 @@ class sugarcrmstack_ng::mysql_server (
 
   if ($apache_php_enable){
 
+    if ($::sugarcrmstack_ng::mysql_server_use_pxc == true and $sugar_version == '7.9' $::operatingsystemmajrelease in ['7'] ){
+      package {'Percona-XtraDB-Cluster-shared-compat-57':
+        ensure => 'installed',
+        before => Class['sugarcrmstack::mysqlserver'],
+      }
+    }
+
     if ($sugar_version == '7.5' or $sugar_version == '7.9'){
 
       class { 'sugarcrmstack::mysqlserver':
