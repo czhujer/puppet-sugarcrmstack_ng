@@ -76,16 +76,28 @@ class sugarcrmstack_ng::install {
   # uninstall old mysql/percona packages
   if ($::sugarcrmstack_ng::mysql_server_enable){
 
-    if ($::operatingsystemmajrelease in ['7'] and $::sugarcrmstack_ng::mysql_server_use_pxc == true) {
+    if ($::operatingsystemmajrelease in ['7'] and $::sugarcrmstack_ng::mysql_server_use_pxc == true and $::sugarcrmstack_ng::sugar_version == '7.5') {
       $mysql_server_packages_old = ["mariadb", "mariadb-server", "mariadb-libs",
                                     "mysql-community-server", "mysql-community-client",
                                     "mysql-community-common", "mysql-community-libs",
+                                    "Percona-XtraDB-Cluster-shared-compat-57", "Percona-XtraDB-Cluster-client-57",
+                                    "Percona-XtraDB-Cluster-shared-57",
+                                   ]
+    }
+    elsif ($::operatingsystemmajrelease in ['7'] and $::sugarcrmstack_ng::mysql_server_use_pxc == true and $::sugarcrmstack_ng::sugar_version == '7.9') {
+      $mysql_server_packages_old = ["mariadb", "mariadb-server", "mariadb-libs",
+                                    "mysql-community-server", "mysql-community-client",
+                                    "mysql-community-common", "mysql-community-libs",
+                                    "Percona-XtraDB-Cluster-shared-compat-56", "Percona-XtraDB-Cluster-client-56",
+                                    "Percona-XtraDB-Cluster-shared-56",
                                    ]
     }
     elsif ($::operatingsystemmajrelease in ['7'] and $::sugarcrmstack_ng::mysql_server_use_pxc == false) {
       $mysql_server_packages_old = ["mariadb", "mariadb-server", "mariadb-libs",
-                                    "Percona-XtraDB-Cluster-shared-56", "Percona-XtraDB-Cluster-client-56",
-                                    "Percona-XtraDB-Cluster-shared-57", "Percona-XtraDB-Cluster-client-57",
+                                    "Percona-XtraDB-Cluster-shared-compat-56", "Percona-XtraDB-Cluster-client-56",
+                                    "Percona-XtraDB-Cluster-shared-56",
+                                    "Percona-XtraDB-Cluster-shared-compat-57", "Percona-XtraDB-Cluster-client-57",
+                                    "Percona-XtraDB-Cluster-shared-57",
                                    ]
     }
     elsif ($::operatingsystemmajrelease in ['6'] and $::sugarcrmstack_ng::mysql_server_use_pxc == true and $::sugarcrmstack_ng::sugar_version == '7.5'){
