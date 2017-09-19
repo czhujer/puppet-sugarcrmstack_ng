@@ -174,7 +174,7 @@ mod 'maestrodev-wget', '1.7.3'
 
 mod 'arioch-redis', '3.1.0'
 
-mod 'camptocamp-systemd'
+mod 'camptocamp-systemd',
 
 mod 'sugarcrmstack_ng',
   :git => 'https://github.com/SugarFactory/puppet-sugarcrmstack_ng',
