@@ -174,12 +174,12 @@ mod 'maestrodev-wget', '1.7.3'
 
 mod 'arioch-redis', '3.1.0'
 
-mod 'camptocamp-systemd',
+mod 'camptocamp-systemd', '1.0.0'
 
 mod 'sugarcrmstack_ng',
   :git => 'https://github.com/SugarFactory/puppet-sugarcrmstack_ng',
   :tag => 'v0.2'
 
-mod 'herculesteam-augeasproviders_core',
+mod 'herculesteam-augeasproviders_core', '2.1.3'
 
-mod 'herculesteam-augeasproviders_sysctl',
+mod 'herculesteam-augeasproviders_sysctl', '2.2.0'
