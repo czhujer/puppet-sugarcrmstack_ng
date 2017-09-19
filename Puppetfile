@@ -193,3 +193,5 @@ mod 'puppetlabs-pe_gem', '0.2.0'
 mod 'puppetlabs-ruby', '0.6.0'
 
 mod 'puppet-selinux', '1.3.0'
+
+mod 'puppetlabs-transition', '0.1.1'
