@@ -16,7 +16,7 @@ mod 'java',
 
 mod 'stdlib',
   :git => 'https://github.com/puppetlabs/puppetlabs-stdlib',
-  :tag => '4.12.0'
+  :tag => '4.20.0'
 
 mod 'jenkins',
 #  :git => 'https://github.com/jenkinsci/puppet-jenkins',
@@ -58,7 +58,7 @@ mod 'vcsrepo',
 
 mod 'elasticsearch',
   :git => 'https://github.com/elastic/puppet-elasticsearch',
-  :tag => '0.13.2'
+  :tag => '0.16.2'
 
 mod 'mysql',
   :git => 'https://github.com/puppetlabs/puppetlabs-mysql',
@@ -106,7 +106,7 @@ mod 'glusterfs',
 
 mod 'yum',
   :git => 'https://github.com/voxpupuli/puppet-yum',
-  :tag => 'v0.9.14'
+  :tag => 'v2.0.1'
 
 mod 'composer',
   :git => 'https://github.com/tPl0ch/puppet-composer',
@@ -130,7 +130,7 @@ mod 'nodejs',
 
 mod 'zabbixagent',
   :git => 'https://github.com/H-Software/puppet-zabbixagent',
-  :branch => 'master'
+  :tag => 'v2.15.1'
 
 mod 'sugarcrmstack',
 #  :git => 'git@github.com:SugarFactory/puppet-sugarcrm-stack.git'
@@ -172,7 +172,9 @@ mod 'cron',
 
 mod 'maestrodev-wget', '1.7.3'
 
-mod 'arioch-redis', '1.2.4'
+mod 'arioch-redis', '3.1.0'
+
+mod 'camptocamp-systemd'
 
 mod 'sugarcrmstack_ng',
   :git => 'https://github.com/SugarFactory/puppet-sugarcrmstack_ng',
