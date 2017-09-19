@@ -156,7 +156,7 @@ mod 'git',
 
 mod 'apache',
   :git => 'https://github.com/puppetlabs/puppetlabs-apache.git',
-  :tag => '1.11.0'
+  :tag => '1.11.1'
 
 mod 'php',
   :git => 'https://github.com/thias/puppet-php.git',
