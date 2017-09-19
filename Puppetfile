@@ -148,7 +148,7 @@ mod 'datacat',
 
 mod 'concat',
   :git => 'https://github.com/puppetlabs/puppetlabs-concat',
-  :tag => '1.2.5'
+  :tag => '4.0.1'
 
 mod 'git',
   :git => 'https://github.com/puppetlabs/puppetlabs-git',
@@ -185,3 +185,11 @@ mod 'herculesteam-augeasproviders_core', '2.1.3'
 mod 'herculesteam-augeasproviders_sysctl', '2.2.0'
 
 mod 'puppet-zabbix', '5.0.0'
+
+mod 'puppetlabs-postgresql', '4.8.0'
+
+mod 'puppetlabs-pe_gem', '0.2.0'
+
+mod 'puppetlabs-ruby', '0.6.0'
+
+mod 'puppet-selinux', '1.3.0'
