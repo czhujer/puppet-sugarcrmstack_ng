@@ -3,9 +3,10 @@ source ENV['GEM_SOURCE'] || "https://rubygems.org"
 group :test do
   gem "rake", '<= 11.0' if RUBY_VERSION < '1.9.3' || '< 12.0'
   gem "puppet", ENV['PUPPET_GEM_VERSION'] || '~> 4.10.8'
-  gem "rspec", '< 3.2.0'
+  gem "rspec", '<= 3.7.0'
   gem "rspec-puppet"
   gem "puppetlabs_spec_helper"
+  gem "rspec-puppet-augeas"
   gem "metadata-json-lint"
   gem "rspec-puppet-facts"
   gem 'rubocop', '0.46.0'
