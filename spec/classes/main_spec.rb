@@ -7,7 +7,9 @@ describe 'sugarcrmstack_ng' do
         let(:facts) do
           facts
         end
-        let(:pre_condition) { '::composer' }
+
+        #fixes for composer
+        let(:facts) { facts.merge( { 'composer_home' => '~', 'execs' => {} } ) }
 
         context "sugarcrmstack_ng class without any parameters" do
           it { is_expected.to compile.with_all_deps }

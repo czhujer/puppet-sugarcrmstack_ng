@@ -7,6 +7,7 @@ group :test do
   gem "rspec-puppet"
   gem "puppetlabs_spec_helper"
   gem "rspec-puppet-augeas"
+  gem "ruby-augeas"
   gem "metadata-json-lint"
   gem "rspec-puppet-facts"
   gem 'rubocop', '0.46.0'
