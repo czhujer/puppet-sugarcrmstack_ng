@@ -20,11 +20,11 @@ class sugarcrmstack_ng::params {
                 'traceroute', 'vim-enhanced', 'net-tools',
                 'numad', 'yum-cron', 'apachetop', 'nano']
 
-        $apache_php_apache_default_mods = [ 'actions', 'authn_core', 'cache', 'ext_filter', 'mime', 'mime_magic', 'rewrite', 'speling', 'suexec',
+        $apache_php_apache_default_mods = [ 'actions', 'authn_core', 'cache', 'ext_filter', 'mime', 'mime_magic', 'rewrite', 'speling',
                                       'version', 'vhost_alias', 'auth_digest', 'authn_anon', 'authn_dbm', 'authz_dbm', 'authz_owner',
                                       'expires', 'include', 'logio', 'substitute', 'usertrack', 'alias',
                                       'authn_file', 'autoindex', 'dav', 'dav_fs', 'dir', 'negotiation', 'setenvif', 'auth_basic',
-                                      'authz_user', 'authz_groupfile', 'env', ]
+                                      'authz_user', 'authz_groupfile', 'env', 'suexec']
 
       }
       else{
@@ -36,11 +36,11 @@ class sugarcrmstack_ng::params {
                 'traceroute', 'vim-enhanced', 'hal', 'cpuspeed',
                 'numad', 'yum-cron', 'apachetop', 'nano']
 
-        $apache_php_apache_default_mods = [ 'actions', 'authn_core', 'cache', 'ext_filter', 'mime', 'mime_magic', 'rewrite', 'speling', 'suexec',
+        $apache_php_apache_default_mods = [ 'actions', 'authn_core', 'cache', 'ext_filter', 'mime', 'mime_magic', 'rewrite', 'speling',
                                       'version', 'vhost_alias', 'auth_digest', 'authn_anon', 'authn_dbm', 'authz_dbm', 'authz_owner',
                                       'expires', 'include', 'logio', 'substitute', 'usertrack', 'authn_alias', 'authn_default', 'alias',
                                       'authn_file', 'autoindex', 'dav', 'dav_fs', 'dir', 'negotiation', 'setenvif', 'auth_basic',
-                                      'authz_user', 'authz_groupfile', 'env', 'authz_default',]
+                                      'authz_user', 'authz_groupfile', 'env', 'authz_default', 'suexec']
 
       }
     }
