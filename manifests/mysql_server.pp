@@ -11,24 +11,34 @@
 #   e.g. "Specify one or more upstream ntp servers as an array."
 #
 class sugarcrmstack_ng::mysql_server (
-  $mysql_server_enable = $::sugarcrmstack_ng::mysql_server_enable,
-  $sugar_version = $::sugarcrmstack_ng::sugar_version,
+  $mysql_server_enable = $sugarcrmstack_ng::mysql_server_enable,
+  $sugar_version = $sugarcrmstack_ng::sugar_version,
   #
-  $mysql_server_service_manage = $::sugarcrmstack_ng::mysql_server_service_manage,
-  $mysql_server_service_enabled = $::sugarcrmstack_ng::mysql_server_service_enabled,
-  $mysql_server_service_restart = $::sugarcrmstack_ng::mysql_server_service_restart,
-  $mysql_server_config_max_connections = $::sugarcrmstack_ng::mysql_server_config_max_connections,
-  $mysql_server_use_pxc = $::sugarcrmstack_ng::mysql_server_use_pxc,
+  $mysql_server_service_manage = $sugarcrmstack_ng::mysql_server_service_manage,
+  $mysql_server_service_enabled = $sugarcrmstack_ng::mysql_server_service_enabled,
+  $mysql_server_service_restart = $sugarcrmstack_ng::mysql_server_service_restart,
+  $mysql_server_config_max_connections = $sugarcrmstack_ng::mysql_server_config_max_connections,
+  $mysql_server_use_pxc = $sugarcrmstack_ng::mysql_server_use_pxc,
   #
-) inherits sugarcrmstack_ng::params {
+) {
 
   if ($mysql_server_enable){
 
-    if ($::sugarcrmstack_ng::mysql_server_use_pxc == true and $sugar_version == '7.9' and $::operatingsystemmajrelease in ['7'] ){
+    if ($mysql_server_use_pxc == true and $sugar_version == '7.9' and $::operatingsystemmajrelease in ['7'] ){
       package {'Percona-XtraDB-Cluster-shared-compat-57':
         ensure => 'installed',
         before => Class['sugarcrmstack::mysqlserver'],
       }
+    }
+
+    if ($mysql_server_use_pxc == true and $sugar_version == '7.5' and $::operatingsystemmajrelease in ['7'] ){
+      #fix hang on systemctl restart mysql
+      if ! defined (File['/etc/my.cnf']){
+        file { '/etc/my.cnf':
+          ensure  => 'absent',
+        }
+      }
+      #probably we need absent /etc/percona-xtradb-cluster.conf.d/wsrep.cnf too
     }
 
     if ($::operatingsystemmajrelease in ['7'] ){

@@ -11,8 +11,8 @@
 #   e.g. "Specify one or more upstream ntp servers as an array."
 #
 class sugarcrmstack_ng::apache_php (
-  $apache_php_enable = $::sugarcrmstack_ng::apache_php_enable,
-  $sugar_version = $::sugarcrmstack_ng::sugar_version,
+  $apache_php_enable = $sugarcrmstack_ng::apache_php_enable,
+  $sugar_version = $sugarcrmstack_ng::sugar_version,
   #
   $apache_php_php_pkg_version = $sugarcrmstack_ng::apache_php_php_pkg_version,
   $apache_php_php_pkg_build = $sugarcrmstack_ng::apache_php_php_pkg_build,
