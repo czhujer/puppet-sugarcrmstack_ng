@@ -41,7 +41,7 @@ class sugarcrmstack_ng (
   $mysql_server_config_max_connections = $sugarcrmstack_ng::params::mysql_server_config_max_connections,
   $mysql_server_use_pxc = $sugarcrmstack_ng::params::mysql_server_use_pxc,
   #
-) inherits ::sugarcrmstack_ng::params {
+) inherits sugarcrmstack_ng::params {
 
   # validate parameters here
 
