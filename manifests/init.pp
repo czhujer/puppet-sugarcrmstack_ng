@@ -43,10 +43,21 @@ class sugarcrmstack_ng (
   #
 ) inherits sugarcrmstack_ng::params {
 
-  # validate parameters
-  validate_bool($cli)
+  # validate general parameters
+  validate_bool($manage_utils_packages)
+  validate_array($utils_packages)
 
-  validate_bool($cli)
+  validate_bool($apache_php_enable)
+  validate_bool($mysql_server_enable)
+
+  validate_string($sugar_version)
+
+  # validate apache_php parameters
+  # T.B.D.
+
+  # validate mysql_server parameters
+  validate_integer($mysql_server_config_max_connections)
+  validate_bool($mysql_server_use_pxc)
 
   # run
   if ($apache_php_enable and $mysql_server_enable){
