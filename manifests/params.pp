@@ -69,6 +69,6 @@ class sugarcrmstack_ng::params {
   $mysql_server_service_manage = true
   $mysql_server_service_enabled = true
   $mysql_server_service_restart = true
-  $mysql_server_config_max_connections = "1024"
+  $mysql_server_config_max_connections = '1024'
   $mysql_server_use_pxc = false
 }

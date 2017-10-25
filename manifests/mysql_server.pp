@@ -44,19 +44,19 @@ class sugarcrmstack_ng::mysql_server (
     if ($::operatingsystemmajrelease in ['7'] ){
 
       # log folder2
-      file { "mysql-server log folder2":
-        ensure  => directory,
-        path    => "/var/log/mariadb",
-        owner   => 'mysql',
-        group   => 'mysql',
-        mode    => '0755',
+      file { 'mysql-server log folder2':
+        ensure => directory,
+        path   => '/var/log/mariadb',
+        owner  => 'mysql',
+        group  => 'mysql',
+        mode   => '0755',
         before => Class['sugarcrmstack::mysqlserver'],
       }
 
       # slow query log2
-      file { "mysql-server slow query log2":
+      file { 'mysql-server slow query log2':
         ensure  => present,
-        path    => "/var/log/mariadb/mysql-slow.log",
+        path    => '/var/log/mariadb/mysql-slow.log',
         owner   => 'mysql',
         group   => 'mysql',
         mode    => '0644',
@@ -67,7 +67,7 @@ class sugarcrmstack_ng::mysql_server (
 
     if ($sugar_version == '7.5' or $sugar_version == '7.9'){
 
-      class { 'sugarcrmstack::mysqlserver':
+      class { '::sugarcrmstack::mysqlserver':
         #mysql_server_enable => $mysql_server_enable,
         mysql_server_service_manage         => $mysql_server_service_manage,
         mysql_server_service_enabled        => $mysql_server_service_enabled,
