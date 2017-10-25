@@ -84,7 +84,7 @@ class sugarcrmstack_ng::install {
                                     'mysql-community-common', 'mysql-community-libs',
                                     'Percona-XtraDB-Cluster-shared-compat-57', 'Percona-XtraDB-Cluster-client-57',
                                     'Percona-XtraDB-Cluster-shared-57',
-                                   ]
+      ]
     }
     elsif ($::operatingsystemmajrelease in ['7'] and
            $::sugarcrmstack_ng::mysql_server_use_pxc == true and
@@ -94,7 +94,7 @@ class sugarcrmstack_ng::install {
                                     'mysql-community-common', 'mysql-community-libs',
                                     'Percona-XtraDB-Cluster-shared-compat-56', 'Percona-XtraDB-Cluster-client-56',
                                     'Percona-XtraDB-Cluster-shared-56', 'Percona-XtraDB-Cluster-galera-3',
-                                   ]
+      ]
     }
     elsif ($::operatingsystemmajrelease in ['7'] and
            $::sugarcrmstack_ng::mysql_server_use_pxc == false) {
@@ -103,7 +103,7 @@ class sugarcrmstack_ng::install {
                                     'Percona-XtraDB-Cluster-shared-56', 'Percona-XtraDB-Cluster-galera-3',
                                     'Percona-XtraDB-Cluster-shared-compat-57', 'Percona-XtraDB-Cluster-client-57',
                                     'Percona-XtraDB-Cluster-shared-57',
-                                   ]
+      ]
     }
     elsif ($::operatingsystemmajrelease in ['6'] and
            $::sugarcrmstack_ng::mysql_server_use_pxc == true and
