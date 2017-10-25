@@ -1,5 +1,6 @@
 require 'puppetlabs_spec_helper/module_spec_helper'
 require 'rspec-puppet-facts'
+#require 'rspec-puppet-augeas'
 
 include RspecPuppetFacts
 
@@ -20,4 +21,5 @@ end
 
 RSpec.configure do |c|
   c.hiera_config = File.expand_path(File.join(__FILE__, '../fixtures/hiera.yaml'))
+#  c.augeas_fixtures = File.join(File.dirname(File.expand_path(__FILE__)), 'fixtures', 'augeas')
 end

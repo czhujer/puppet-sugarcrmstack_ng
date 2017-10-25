@@ -22,4 +22,43 @@ class sugarcrmstack_ng::config {
     }
   }
 
+  #enable/disable mysql repos
+  if ($::sugarcrmstack_ng::mysql_server_enable){
+
+    if ($::operatingsystemmajrelease in ['7'] and  $::sugarcrmstack_ng::sugar_version == '7.5' ) {
+      ini_setting { 'mysql 5.7 repo disable':
+        ensure  => present,
+        path    => '/etc/yum.repos.d/mysql-community.repo',
+        section => 'mysql57-community-dmr',
+        setting => 'enabled',
+        value   => '0',
+      }
+
+      ini_setting { 'mysql 5.6 repo enable':
+        ensure  => present,
+        path    => '/etc/yum.repos.d/mysql-community.repo',
+        section => 'mysql56-community',
+        setting => 'enabled',
+        value   => '1',
+      }
+    }
+    elsif ($::operatingsystemmajrelease in ['7'] and $::sugarcrmstack_ng::sugar_version == '7.9' ) {
+      ini_setting { 'mysql 5.7 repo enable':
+        ensure  => present,
+        path    => '/etc/yum.repos.d/mysql-community.repo',
+        section => 'mysql57-community-dmr',
+        setting => 'enabled',
+        value   => '1',
+      }
+
+      ini_setting { 'mysql 5.6 repo disable':
+        ensure  => present,
+        path    => '/etc/yum.repos.d/mysql-community.repo',
+        section => 'mysql56-community',
+        setting => 'enabled',
+        value   => '0',
+      }
+    }
+  }
+
 }
