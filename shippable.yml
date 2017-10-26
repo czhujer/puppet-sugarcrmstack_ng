@@ -35,6 +35,8 @@ build:
     - mkdir -p /root/src/github.com/SugarFactory/puppet-sugarcrmstack_ng/spec/fixtures/modules/sugarcrmstack/manifests && wget 'https://raw.githubusercontent.com/SugarFactory/puppet-sugarcrmstack/master/include/service-apache-php-ng.pp?token=ABi-rxKioDqqSW5yhj2ecKPkJXNenOTWks5Z-xxMwA%3D%3D' -O /root/src/github.com/SugarFactory/puppet-sugarcrmstack_ng/spec/fixtures/modules/sugarcrmstack/manifests/apachephpng.pp
     - rm -f /usr/bin/lsb_release
     - source /etc/profile.d/rvm.sh; bundle exec rake test
+    #fix paths for puppet 4
+    - rm -rf /etc/puppetlabs/code/modules; mkdir -p /etc/puppetlabs/code; ln -s /etc/puppet/modules/ /etc/puppetlabs/code/modules
     - source /etc/profile.d/rvm.sh; bundle exec r10k puppetfile check -v
     - source /etc/profile.d/rvm.sh; r10k puppetfile install -v
     - rm -rf /etc/puppet/modules/sugarcrmstack_ng
