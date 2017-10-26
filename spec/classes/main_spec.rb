@@ -16,38 +16,102 @@ describe 'sugarcrmstack_ng' do
 
           it { is_expected.to contain_class('sugarcrmstack_ng') }
           it { is_expected.to contain_class('sugarcrmstack_ng::params') }
-          it { is_expected.to contain_class('sugarcrmstack_ng::install').that_comes_before('sugarcrmstack_ng::config') }
+          it { is_expected.to contain_class('sugarcrmstack_ng::install') }
+#          it { is_expected.to contain_class('sugarcrmstack_ng::install').that_comes_before('sugarcrmstack_ng::config') }
           it { is_expected.to contain_class('sugarcrmstack_ng::config') }
-          it { is_expected.to contain_class('sugarcrmstack_ng::service').that_subscribes_to('sugarcrmstack_ng::config') }
+          it { is_expected.to contain_class('sugarcrmstack_ng::service') }
+#          it { is_expected.to contain_class('sugarcrmstack_ng::service').that_subscribes_to('sugarcrmstack_ng::config') }
 
-          #it { is_expected.to contain_service('sugarcrmstack_ng') }
-#          it { is_expected.to contain_package('apachetop').with_ensure('installed') }
-#          it { is_expected.to contain_package('bind-utils').with_ensure('installed') }
-#          it { is_expected.to contain_package('cpuspeed').with_ensure('installed') }
-#          it { is_expected.to contain_package('hal').with_ensure('installed') }
-#          it { is_expected.to contain_package('htop').with_ensure('installed') }
-#          it { is_expected.to contain_package('iftop').with_ensure('installed') }
-#          it { is_expected.to contain_package('iotop').with_ensure('installed') }
-#          it { is_expected.to contain_package('iptraf').with_ensure('installed') }
-#          it { is_expected.to contain_package('irqbalance').with_ensure('installed') }
-#          it { is_expected.to contain_package('links').with_ensure('installed') }
-#          it { is_expected.to contain_package('lsof').with_ensure('installed') }
-#          it { is_expected.to contain_package('lsscsi').with_ensure('installed') }
-#          it { is_expected.to contain_package('lynx').with_ensure('installed') }
-#          it { is_expected.to contain_package('nano').with_ensure('installed') }
-#          it { is_expected.to contain_package('numad').with_ensure('installed') }
-#          it { is_expected.to contain_package('policycoreutils-python').with_ensure('installed') }
-#          it { is_expected.to contain_package('sysstat').with_ensure('installed') }
-#          it { is_expected.to contain_package('telnet').with_ensure('installed') }
-#          it { is_expected.to contain_package('traceroute').with_ensure('installed') }
-#          it { is_expected.to contain_package('unzip').with_ensure('installed') }
-#          it { is_expected.to contain_package('vim-enhanced').with_ensure('installed') }
-#          it { is_expected.to contain_package('vim-minimal').with_ensure('installed') }
-#          it { is_expected.to contain_package('wget').with_ensure('installed') }
-#          it { is_expected.to contain_package('yum-cron').with_ensure('installed') }
-#          it { is_expected.to contain_package('yum-utils').with_ensure('installed') }
-#          it { is_expected.to contain_package('zip').with_ensure('installed') }
+          it { is_expected.to contain_class('sugarcrmstack_ng::apache_php') }
+
+          it { should_not contain_class('sugarcrmstack_ng::mysql_server') }
+
+          # generic part
+          ['apachetop', 'bind-utils', 'htop', 'iftop',
+           'iotop', 'iptraf', 'irqbalance', 'links', 'lsof', 'lsscsi', 'lynx',
+           'nano', 'numad', 'policycoreutils-python', 'sysstat', 'telnet', 'traceroute',
+           'unzip', 'vim-enhanced', 'vim-minimal', 'wget', 'yum-cron', 'yum-utils', 'zip',
+           ].each do |x| it {
+             is_expected.to contain_package(x)
+               .with(ensure: "installed")
+             }
+          end
+
+          # only CentOS 6 packages
+          case facts[:osfamily]
+          when 'RedHat'
+            case facts[:operatingsystemmajrelease]
+              when '6'
+                it { should contain_package("hal").with(ensure: "installed") }
+                it { should contain_package("cpuspeed").with(ensure: "installed") }
+              else
+                it { should_not contain_package("hal").with(ensure: "installed") }
+                it { should_not contain_package("cpuspeed").with(ensure: "installed") }
+              end
+          end
+
+          # apache+php part
+          it { is_expected.to contain_class("apache::params") }
+          it { is_expected.to contain_package("httpd").with(
+              'notify' => 'Class[Apache::Service]',
+              'ensure' => "installed"
+            )
+          }
+
+          # NOT EXISTS mysql_server part
+
         end
+
+        context "sugarcrmstack_ng class without apache_php" do
+          # switch param
+          let(:params) { {'apache_php_enable' => false} }
+
+          # check compile
+          it { is_expected.to compile.with_all_deps }
+
+          it { is_expected.to contain_class('sugarcrmstack_ng') }
+          it { is_expected.to contain_class('sugarcrmstack_ng::params') }
+          it { is_expected.to contain_class('sugarcrmstack_ng::install') }
+#          it { is_expected.to contain_class('sugarcrmstack_ng::install').that_comes_before('sugarcrmstack_ng::config') }
+          it { is_expected.to contain_class('sugarcrmstack_ng::config') }
+          it { is_expected.to contain_class('sugarcrmstack_ng::service') }
+#          it { is_expected.to contain_class('sugarcrmstack_ng::service').that_subscribes_to('sugarcrmstack_ng::config') }
+
+          it { should_not contain_class('sugarcrmstack_ng::apache_php') }
+          it { should_not contain_class('sugarcrmstack_ng::mysql_server') }
+
+          # generic part
+          ['apachetop', 'bind-utils', 'htop', 'iftop',
+           'iotop', 'iptraf', 'irqbalance', 'links', 'lsof', 'lsscsi', 'lynx',
+           'nano', 'numad', 'policycoreutils-python', 'sysstat', 'telnet', 'traceroute',
+           'unzip', 'vim-enhanced', 'vim-minimal', 'wget', 'yum-cron', 'yum-utils', 'zip',
+           ].each do |x| it {
+             is_expected.to contain_package(x)
+               .with(ensure: "installed")
+             }
+          end
+
+          # only CentOS 6 packages
+          case facts[:osfamily]
+          when 'RedHat'
+            case facts[:operatingsystemmajrelease]
+              when '6'
+                it { should contain_package("hal").with(ensure: "installed") }
+                it { should contain_package("cpuspeed").with(ensure: "installed") }
+              else
+                it { should_not contain_package("hal").with(ensure: "installed") }
+                it { should_not contain_package("cpuspeed").with(ensure: "installed") }
+              end
+          end
+
+          # NOT EXISTS apache+php part
+          it { should_not contain_class("apache::params") }
+          it { should_not contain_package("httpd") }
+
+          # NOT EXISTS mysql_server part
+
+        end
+
       end
     end
   end
