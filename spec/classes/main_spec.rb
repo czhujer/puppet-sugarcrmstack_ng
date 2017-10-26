@@ -33,7 +33,7 @@ describe 'sugarcrmstack_ng' do
            'unzip', 'vim-enhanced', 'vim-minimal', 'wget', 'yum-cron', 'yum-utils', 'zip',
            ].each do |x| it {
              is_expected.to contain_package(x)
-               .with(ensure: 'installed')
+               .with(ensure: "installed")
              }
           end
 
@@ -42,11 +42,11 @@ describe 'sugarcrmstack_ng' do
           when 'RedHat'
             case facts[:operatingsystemmajrelease]
               when '6'
-                it { should contain_package("hal").with(ensure: 'installed') }
-                it { should contain_package("cpuspeed").with(ensure: 'installed') }
+                it { should contain_package("hal").with(ensure: "installed") }
+                it { should contain_package("cpuspeed").with(ensure: "installed") }
               else
-                it { should_not contain_package("hal").with(ensure: 'installed') }
-                it { should_not contain_package("cpuspeed").with(ensure: 'installed') }
+                it { should_not contain_package("hal").with(ensure: "installed") }
+                it { should_not contain_package("cpuspeed").with(ensure: "installed") }
               end
           end
 
@@ -54,7 +54,7 @@ describe 'sugarcrmstack_ng' do
           it { is_expected.to contain_class("apache::params") }
           it { is_expected.to contain_package("httpd").with(
               'notify' => 'Class[Apache::Service]',
-              'ensure' => 'installed'
+              'ensure' => "installed"
             )
           }
 
@@ -87,7 +87,7 @@ describe 'sugarcrmstack_ng' do
            'unzip', 'vim-enhanced', 'vim-minimal', 'wget', 'yum-cron', 'yum-utils', 'zip',
            ].each do |x| it {
              is_expected.to contain_package(x)
-               .with(ensure: 'installed')
+               .with(ensure: "installed")
              }
           end
 
@@ -96,11 +96,11 @@ describe 'sugarcrmstack_ng' do
           when 'RedHat'
             case facts[:operatingsystemmajrelease]
               when '6'
-                it { should contain_package("hal").with(ensure: 'installed') }
-                it { should contain_package("cpuspeed").with(ensure: 'installed') }
+                it { should contain_package("hal").with(ensure: "installed") }
+                it { should contain_package("cpuspeed").with(ensure: "installed") }
               else
-                it { should_not contain_package("hal").with(ensure: 'installed') }
-                it { should_not contain_package("cpuspeed").with(ensure: 'installed') }
+                it { should_not contain_package("hal").with(ensure: "installed") }
+                it { should_not contain_package("cpuspeed").with(ensure: "installed") }
               end
           end
 
