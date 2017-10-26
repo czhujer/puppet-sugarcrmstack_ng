@@ -2,7 +2,9 @@ fixtures:
   repositories:
     stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
     inifile: "https://github.com/puppetlabs/puppetlabs-inifile"
-    apache: "https://github.com/puppetlabs/puppetlabs-apache"
+    apache:
+      repo: "https://github.com/puppetlabs/puppetlabs-apache"
+      ref: "1.11.1"
     concat: "https://github.com/puppetlabs/puppetlabs-concat"
     php:    "https://github.com/thias/puppet-php"
     vcsrepo: "https://github.com/puppetlabs/puppetlabs-vcsrepo"
