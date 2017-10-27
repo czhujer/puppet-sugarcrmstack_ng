@@ -45,12 +45,13 @@ class sugarcrmstack_ng::mysql_server (
 
       # log folder2
       file { 'mysql-server log folder2':
-        ensure => directory,
-        path   => '/var/log/mariadb',
-        owner  => 'mysql',
-        group  => 'mysql',
-        mode   => '0755',
-        before => Class['sugarcrmstack::mysqlserver'],
+        ensure  => directory,
+        path    => '/var/log/mariadb',
+        owner   => 'mysql',
+        group   => 'mysql',
+        mode    => '0755',
+        before  => Class['sugarcrmstack::mysqlserver'],
+        require => Package['mysql-server'],
       }
 
       # slow query log2
