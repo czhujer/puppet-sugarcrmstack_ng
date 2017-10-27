@@ -64,7 +64,7 @@ describe 'sugarcrmstack_ng' do
           it { is_expected.to contain_class('mysql::server::root_password') }
           it { is_expected.to contain_class('mysql::server::providers') }
 
-          is_expected.to contain_package('mysql-server').with(ensure: :present)
+          it { is_expected.to contain_package('mysql-server').with(ensure: :present) }
 
           it { is_expected.to contain_service('mysqld') }
 
