@@ -11,7 +11,11 @@ describe 'sugarcrmstack_ng' do
         #fixes for composer
         let(:facts) { facts.merge( { 'composer_home' => '~', 'execs' => {} } ) }
 
-        context "sugarcrmstack_ng class without any parameters" do
+        context "sugarcrmstack_ng class with mysql_server_enable" do
+          # switch param
+          let(:params) { {'mysql_server_enable' => true} }
+
+          # check compile
           it { is_expected.to compile.with_all_deps }
 
           it { is_expected.to contain_class('sugarcrmstack_ng') }
@@ -22,9 +26,8 @@ describe 'sugarcrmstack_ng' do
           it { is_expected.to contain_class('sugarcrmstack_ng::service') }
 #          it { is_expected.to contain_class('sugarcrmstack_ng::service').that_subscribes_to('sugarcrmstack_ng::config') }
 
-          it { is_expected.to contain_class('sugarcrmstack_ng::apache_php') }
-
-          it { should_not contain_class('sugarcrmstack_ng::mysql_server') }
+          it { should contain_class('sugarcrmstack_ng::apache_php') }
+          it { should contain_class('sugarcrmstack_ng::mysql_server') }
 
           # generic part
           ['apachetop', 'bind-utils', 'htop', 'iftop',
@@ -51,29 +54,26 @@ describe 'sugarcrmstack_ng' do
           end
 
           # apache+php part
-          it { is_expected.to contain_class("apache::params") }
-          it { is_expected.to contain_package("httpd").with(
-              'notify' => 'Class[Apache::Service]',
-              'ensure' => "installed"
-            )
-          }
+          it { should contain_class("apache::params") }
+          it { should contain_package("httpd") }
 
-          # NOT EXISTS mysql_server part
-          it { should_not contain_class('mysql::server::install') }
-          it { should_not contain_class('mysql::server::config') }
-          it { should_not contain_class('mysql::server::service') }
-          it { should_not contain_class('mysql::server::root_password') }
-          it { should_not contain_class('mysql::server::providers') }
+          # mysql_server part
+          it { is_expected.to contain_class('mysql::server::install') }
+          it { is_expected.to contain_class('mysql::server::config') }
+          it { is_expected.to contain_class('mysql::server::service') }
+          it { is_expected.to contain_class('mysql::server::root_password') }
+          it { is_expected.to contain_class('mysql::server::providers') }
 
-          it { should_not contain_package('mysql-server').with(ensure: :present) }
+          it { is_expected.to contain_package('mysql-server').with(ensure: :present) }
 
-          it { should_not contain_service('mysqld') }
+          it { is_expected.to contain_service('mysqld') }
 
         end
 
-        context "sugarcrmstack_ng class without apache_php" do
+        context "sugarcrmstack_ng class with mysql_server_enable and _use_pxc => true" do
           # switch param
-          let(:params) { {'apache_php_enable' => false} }
+          let(:params) { {'mysql_server_enable' => true,
+                          'mysql_server_use_pxc' => true} }
 
           # check compile
           it { is_expected.to compile.with_all_deps }
@@ -86,8 +86,8 @@ describe 'sugarcrmstack_ng' do
           it { is_expected.to contain_class('sugarcrmstack_ng::service') }
 #          it { is_expected.to contain_class('sugarcrmstack_ng::service').that_subscribes_to('sugarcrmstack_ng::config') }
 
-          it { should_not contain_class('sugarcrmstack_ng::apache_php') }
-          it { should_not contain_class('sugarcrmstack_ng::mysql_server') }
+          it { should contain_class('sugarcrmstack_ng::apache_php') }
+          it { should contain_class('sugarcrmstack_ng::mysql_server') }
 
           # generic part
           ['apachetop', 'bind-utils', 'htop', 'iftop',
@@ -113,20 +113,20 @@ describe 'sugarcrmstack_ng' do
               end
           end
 
-          # NOT EXISTS apache+php part
-          it { should_not contain_class("apache::params") }
-          it { should_not contain_package("httpd") }
+          # apache+php part
+          it { should contain_class("apache::params") }
+          it { should contain_package("httpd") }
 
-          # NOT EXISTS mysql_server part
-          it { should_not contain_class('mysql::server::install') }
-          it { should_not contain_class('mysql::server::config') }
-          it { should_not contain_class('mysql::server::service') }
-          it { should_not contain_class('mysql::server::root_password') }
-          it { should_not contain_class('mysql::server::providers') }
+          # mysql_server part
+          it { is_expected.to contain_class('mysql::server::install') }
+          it { is_expected.to contain_class('mysql::server::config') }
+          it { is_expected.to contain_class('mysql::server::service') }
+          it { is_expected.to contain_class('mysql::server::root_password') }
+          it { is_expected.to contain_class('mysql::server::providers') }
 
-          it { should_not contain_package('mysql-server').with(ensure: :present) }
+          it { is_expected.to contain_package('mysql-server').with(ensure: :present) }
 
-          it { should_not contain_service('mysqld') }
+          it { is_expected.to contain_service('mysqld') }
 
         end
 
