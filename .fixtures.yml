@@ -1,12 +1,20 @@
 fixtures:
   repositories:
-    stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
-    inifile: "https://github.com/puppetlabs/puppetlabs-inifile"
+    stdlib:
+      repo: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
+      ref: "4.20.0"
+    inifile:
+      repo: "https://github.com/puppetlabs/puppetlabs-inifile"
+      ref: "1.5.0"
     apache:
       repo: "https://github.com/puppetlabs/puppetlabs-apache"
       ref: "1.11.1"
-    concat: "https://github.com/puppetlabs/puppetlabs-concat"
-    php:    "https://github.com/thias/puppet-php"
+    concat:
+      repo: "https://github.com/puppetlabs/puppetlabs-concat"
+      ref: "4.0.1"
+    php:
+      repo: "https://github.com/thias/puppet-php"
+      ref: "1.2.0"
     vcsrepo: "https://github.com/puppetlabs/puppetlabs-vcsrepo"
     composer: "https://github.com/tPl0ch/puppet-composer"
     git:    "https://github.com/puppetlabs/puppetlabs-git"
