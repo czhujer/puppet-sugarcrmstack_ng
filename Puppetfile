@@ -130,7 +130,7 @@ mod 'nodejs',
 
 mod 'zabbixagent',
   :git => 'https://github.com/H-Software/puppet-zabbixagent',
-  :tag => 'v3.0.0'
+  :tag => 'v3.1.0'
 
 mod 'sugarcrmstack',
 #  :git => 'git@github.com:SugarFactory/puppet-sugarcrm-stack.git'
