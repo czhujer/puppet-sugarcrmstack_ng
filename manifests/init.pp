@@ -42,6 +42,14 @@ class sugarcrmstack_ng (
   $mysql_server_config_max_connections = $sugarcrmstack_ng::params::mysql_server_config_max_connections,
   $mysql_server_use_pxc = $sugarcrmstack_ng::params::mysql_server_use_pxc,
   #
+  $elasticsearch_server_elasticsearch_disable_config = $sugarcrmstack_ng::params::elasticsearch_server_elasticsearch_disable_config,
+  $elasticsearch_server_elasticsearch_java_install = $sugarcrmstack_ng::params::elasticsearch_server_elasticsearch_java_install,
+  $elasticsearch_server_elasticsearch_repo_version = $sugarcrmstack_ng::params::elasticsearch_server_elasticsearch_repo_version,
+  $elasticsearch_server_elasticsearch_version = $sugarcrmstack_ng::params::elasticsearch_server_elasticsearch_version,
+  $elasticsearch_server_elasticsearch_package_pin = $sugarcrmstack_ng::params::elasticsearch_server_elasticsearch_package_pin,
+  $elasticsearch_server_elasticsearch_instance_init_defaults = $sugarcrmstack_ng::params::elasticsearch_server_elasticsearch_instance_init_defaults,
+  $elasticsearch_server_elasticsearch_status = $sugarcrmstack_ng::params::elasticsearch_server_elasticsearch_status,
+  #
 ) inherits sugarcrmstack_ng::params {
 
   # validate general parameters
@@ -85,6 +93,16 @@ class sugarcrmstack_ng (
   #$mysql_server_service_restart
   validate_integer($mysql_server_config_max_connections)
   validate_bool($mysql_server_use_pxc)
+
+  # validate elasticsearch_server parameters
+
+  #$elasticsearch_server_elasticsearch_disable_config
+  #$elasticsearch_server_elasticsearch_java_install
+  #$elasticsearch_server_elasticsearch_repo_version
+  #$elasticsearch_server_elasticsearch_version
+  #$elasticsearch_server_elasticsearch_package_pin
+  #$elasticsearch_server_elasticsearch_instance_init_defaults
+  #$elasticsearch_server_elasticsearch_status
 
   # run
   if ($apache_php_enable and $mysql_server_enable and $elasticsearch_server_enable){

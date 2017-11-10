@@ -72,4 +72,20 @@ class sugarcrmstack_ng::params {
   $mysql_server_service_restart = true
   $mysql_server_config_max_connections = '1024'
   $mysql_server_use_pxc = false
+  #
+  $elasticsearch_server_elasticsearch_disable_config = "0"
+  $elasticsearch_server_elasticsearch_java_install = true
+  $elasticsearch_server_elasticsearch_package_pin = true
+  $elasticsearch_server_elasticsearch_instance_init_defaults = {}
+  $elasticsearch_server_elasticsearch_status = "enabled"
+
+  if ($sugarcrmstack_ng::sugar_version == '7.5'){
+    $elasticsearch_server_elasticsearch_repo_version = "1.3"
+    $elasticsearch_server_elasticsearch_version = "1.3.1-1"
+  }
+  elsif($sugarcrmstack_ng::sugar_version == '7.9'){
+    $elasticsearch_server_elasticsearch_repo_version = "1.7"
+    $elasticsearch_server_elasticsearch_version = "1.7.5-1"
+  }
+
 }
