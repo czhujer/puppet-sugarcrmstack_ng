@@ -14,13 +14,13 @@ class sugarcrmstack_ng::elasticsearch_server (
   $elasticsearch_server_enable = $sugarcrmstack_ng::elasticsearch_server_enable,
   $sugar_version = $sugarcrmstack_ng::sugar_version,
   #
-  $elasticsearch_server_elasticsearch_disable_config = $sugarcrmstack_ng::elasticsearch_server_elasticsearch_disable_config,
-  $elasticsearch_server_elasticsearch_java_install = $sugarcrmstack_ng::elasticsearch_server_elasticsearch_java_install,
-  $elasticsearch_server_elasticsearch_repo_version = $sugarcrmstack_ng::elasticsearch_server_elasticsearch_repo_version,
-  $elasticsearch_server_elasticsearch_version = $sugarcrmstack_ng::elasticsearch_server_elasticsearch_version,
-  $elasticsearch_server_elasticsearch_package_pin = $sugarcrmstack_ng::elasticsearch_server_elasticsearch_package_pin,
-  $elasticsearch_server_elasticsearch_instance_init_defaults = $sugarcrmstack_ng::elasticsearch_server_elasticsearch_instance_init_defaults,
-  $elasticsearch_server_elasticsearch_status = $sugarcrmstack_ng::elasticsearch_server_elasticsearch_status,
+  $elasticsearch_server_es_disable_config = $sugarcrmstack_ng::elasticsearch_server_es_disable_config,
+  $elasticsearch_server_es_java_install = $sugarcrmstack_ng::elasticsearch_server_es_java_install,
+  $elasticsearch_server_es_repo_version = $sugarcrmstack_ng::elasticsearch_server_es_repo_version,
+  $elasticsearch_server_es_version = $sugarcrmstack_ng::elasticsearch_server_es_version,
+  $elasticsearch_server_es_package_pin = $sugarcrmstack_ng::elasticsearch_server_es_package_pin,
+  $elasticsearch_server_es_instance_init_defaults = $sugarcrmstack_ng::elasticsearch_server_es_instance_init_defaults,
+  $elasticsearch_server_es_status = $sugarcrmstack_ng::elasticsearch_server_es_status,
 ) {
 
   if ($elasticsearch_server_enable){
@@ -32,13 +32,13 @@ class sugarcrmstack_ng::elasticsearch_server (
         #
         sugar_version_ng                     => $sugar_version,
         #
-        elasticsearch_disable_config         => $elasticsearch_server_elasticsearch_disable_config,
-        elasticsearch_java_install           => $elasticsearch_server_elasticsearch_java_install,
-        elasticsearch_repo_version           => $elasticsearch_server_elasticsearch_repo_version,
-        elasticsearch_version                => $elasticsearch_server_elasticsearch_version,
-        elasticsearch_package_pin            => $elasticsearch_server_elasticsearch_package_pin,
-        elasticsearch_instance_init_defaults => $elasticsearch_server_elasticsearch_instance_init_defaults,
-        elasticsearch_status                 => $elasticsearch_server_elasticsearch_status,
+        elasticsearch_disable_config         => $elasticsearch_server_es_disable_config,
+        elasticsearch_java_install           => $elasticsearch_server_es_java_install,
+        elasticsearch_repo_version           => $elasticsearch_server_es_repo_version,
+        elasticsearch_version                => $elasticsearch_server_es_version,
+        elasticsearch_package_pin            => $elasticsearch_server_es_package_pin,
+        elasticsearch_instance_init_defaults => $elasticsearch_server_es_instance_init_defaults,
+        elasticsearch_status                 => $elasticsearch_server_es_status,
       }
 
     }

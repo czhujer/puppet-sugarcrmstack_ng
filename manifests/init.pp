@@ -42,13 +42,13 @@ class sugarcrmstack_ng (
   $mysql_server_config_max_connections = $sugarcrmstack_ng::params::mysql_server_config_max_connections,
   $mysql_server_use_pxc = $sugarcrmstack_ng::params::mysql_server_use_pxc,
   #
-  $elasticsearch_server_elasticsearch_disable_config = $sugarcrmstack_ng::params::elasticsearch_server_elasticsearch_disable_config,
-  $elasticsearch_server_elasticsearch_java_install = $sugarcrmstack_ng::params::elasticsearch_server_elasticsearch_java_install,
-  $elasticsearch_server_elasticsearch_repo_version = $sugarcrmstack_ng::params::elasticsearch_server_elasticsearch_repo_version,
-  $elasticsearch_server_elasticsearch_version = $sugarcrmstack_ng::params::elasticsearch_server_elasticsearch_version,
-  $elasticsearch_server_elasticsearch_package_pin = $sugarcrmstack_ng::params::elasticsearch_server_elasticsearch_package_pin,
-  $elasticsearch_server_elasticsearch_instance_init_defaults = $sugarcrmstack_ng::params::elasticsearch_server_elasticsearch_instance_init_defaults,
-  $elasticsearch_server_elasticsearch_status = $sugarcrmstack_ng::params::elasticsearch_server_elasticsearch_status,
+  $elasticsearch_server_es_disable_config = $sugarcrmstack_ng::params::elasticsearch_server_es_disable_config,
+  $elasticsearch_server_es_java_install = $sugarcrmstack_ng::params::elasticsearch_server_es_java_install,
+  $elasticsearch_server_es_repo_version = $sugarcrmstack_ng::params::elasticsearch_server_es_repo_version,
+  $elasticsearch_server_es_version = $sugarcrmstack_ng::params::elasticsearch_server_es_version,
+  $elasticsearch_server_es_package_pin = $sugarcrmstack_ng::params::elasticsearch_server_es_package_pin,
+  $elasticsearch_server_es_instance_init_defaults = $sugarcrmstack_ng::params::elasticsearch_server_es_instance_init_defaults,
+  $elasticsearch_server_es_status = $sugarcrmstack_ng::params::elasticsearch_server_es_status,
   #
 ) inherits sugarcrmstack_ng::params {
 
@@ -96,13 +96,13 @@ class sugarcrmstack_ng (
 
   # validate elasticsearch_server parameters
 
-  #$elasticsearch_server_elasticsearch_disable_config
-  validate_bool($elasticsearch_server_elasticsearch_java_install)
-  #$elasticsearch_server_elasticsearch_repo_version
-  #$elasticsearch_server_elasticsearch_version
-  validate_bool($elasticsearch_server_elasticsearch_package_pin)
-  #$elasticsearch_server_elasticsearch_instance_init_defaults
-  #$elasticsearch_server_elasticsearch_status
+  #$elasticsearch_server_es_disable_config
+  validate_bool($elasticsearch_server_es_java_install)
+  #$elasticsearch_server_es_repo_version
+  #$elasticsearch_server_es_version
+  validate_bool($elasticsearch_server_es_package_pin)
+  #$elasticsearch_server_es_instance_init_defaults
+  #$elasticsearch_server_es_status
 
   # run
   if ($apache_php_enable and $mysql_server_enable and $elasticsearch_server_enable){
