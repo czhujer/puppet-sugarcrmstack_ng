@@ -27,7 +27,7 @@ class sugarcrmstack_ng::elasticsearch_server (
 
     if ($sugar_version == '7.5' or $sugar_version == '7.9'){
 
-      class { 'sugarcrmstack::elasticsearchserver':
+      class { '::sugarcrmstack::elasticsearchserver':
         elasticsearch_server_enable          => $elasticsearch_server_enable,
         #
         sugar_version_ng                     => $sugar_version,
@@ -43,7 +43,7 @@ class sugarcrmstack_ng::elasticsearch_server (
 
     }
     else{
-      fail("Class['sugarcrmstack_ng::elasticsearch_server']: This class is compatible only with sugar_version 7.5 or 7.9 (not ${sugar_version})")
+      fail("Class['sugarcrmstack_ng::elasticsearch_server']: This class is not compatible with this sugar_version (${sugar_version})")
     }
   }
 }
