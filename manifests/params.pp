@@ -6,6 +6,7 @@
 class sugarcrmstack_ng::params {
   $apache_php_enable = true
   $mysql_server_enable = false
+  $elasticsearch_server_enable = false
   $sugar_version     = '7.9'
   case $::osfamily {
     'RedHat', 'Amazon': {

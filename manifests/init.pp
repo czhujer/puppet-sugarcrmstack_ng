@@ -15,6 +15,7 @@ class sugarcrmstack_ng (
   $utils_packages = $sugarcrmstack_ng::params::utils_packages,
   $apache_php_enable = $sugarcrmstack_ng::params::apache_php_enable,
   $mysql_server_enable = $sugarcrmstack_ng::params::mysql_server_enable,
+  $elasticsearch_server_enable = $sugarcrmstack_ng::params::elasticsearch_server_enable,
   $sugar_version = $sugarcrmstack_ng::params::sugar_version,
   #
   $apache_php_php_pkg_version = $sugarcrmstack_ng::params::apache_php_php_pkg_version,
@@ -49,6 +50,7 @@ class sugarcrmstack_ng (
 
   validate_bool($apache_php_enable)
   validate_bool($mysql_server_enable)
+  validate_bool($elasticsearch_server_enable)
 
   validate_string($sugar_version)
 
@@ -85,7 +87,32 @@ class sugarcrmstack_ng (
   validate_bool($mysql_server_use_pxc)
 
   # run
-  if ($apache_php_enable and $mysql_server_enable){
+  if ($apache_php_enable and $mysql_server_enable and $elasticsearch_server_enable){
+    class { '::sugarcrmstack_ng::install': }
+    -> class { '::sugarcrmstack_ng::config': }
+    -> class { '::sugarcrmstack_ng::apache_php': }
+    -> class { '::sugarcrmstack_ng::mysql_server': }
+    -> class { '::sugarcrmstack_ng::elasticsearch_server': }
+    ~> class { '::sugarcrmstack_ng::service': }
+    -> Class['::sugarcrmstack_ng']
+  }
+  elsif ($apache_php_enable and $elasticsearch_server_enable){
+    class { '::sugarcrmstack_ng::install': }
+    -> class { '::sugarcrmstack_ng::config': }
+    -> class { '::sugarcrmstack_ng::apache_php': }
+    -> class { '::sugarcrmstack_ng::elasticsearch_server': }
+    ~> class { '::sugarcrmstack_ng::service': }
+    -> Class['::sugarcrmstack_ng']
+  }
+  elsif ($mysql_server_enable and $elasticsearch_server_enable){
+    class { '::sugarcrmstack_ng::install': }
+    -> class { '::sugarcrmstack_ng::config': }
+    -> class { '::sugarcrmstack_ng::mysql_server': }
+    -> class { '::sugarcrmstack_ng::elasticsearch_server': }
+    ~> class { '::sugarcrmstack_ng::service': }
+    -> Class['::sugarcrmstack_ng']
+  }
+  elsif ($apache_php_enable and $mysql_server_enable){
     class { '::sugarcrmstack_ng::install': }
     -> class { '::sugarcrmstack_ng::config': }
     -> class { '::sugarcrmstack_ng::apache_php': }
