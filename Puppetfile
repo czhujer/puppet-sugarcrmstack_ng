@@ -12,11 +12,11 @@ mod 'apt',
 
 mod 'java',
   :git => 'https://github.com/puppetlabs/puppetlabs-java',
-  :tag => '2.1.0'
+  :tag => '2.1.1'
 
 mod 'stdlib',
   :git => 'https://github.com/puppetlabs/puppetlabs-stdlib',
-  :tag => '4.20.0'
+  :tag => '4.21.0'
 
 mod 'jenkins',
 #  :git => 'https://github.com/jenkinsci/puppet-jenkins',
@@ -55,10 +55,6 @@ mod 'firewall',
 mod 'vcsrepo',
   :git => 'https://github.com/puppetlabs/puppetlabs-vcsrepo',
   :tag => '1.3.2'
-
-mod 'elasticsearch',
-  :git => 'https://github.com/elastic/puppet-elasticsearch',
-  :tag => '0.16.2'
 
 mod 'mysql',
   :git => 'https://github.com/puppetlabs/puppetlabs-mysql',
@@ -178,13 +174,13 @@ mod 'camptocamp-systemd', '1.0.0'
 
 mod 'sugarcrmstack_ng',
   :git => 'https://github.com/SugarFactory/puppet-sugarcrmstack_ng',
-  :tag => 'v0.2'
+  :tag => 'v0.3'
 
 mod 'herculesteam-augeasproviders_core', '2.1.3'
 
 mod 'herculesteam-augeasproviders_sysctl', '2.2.0'
 
-mod 'puppet-zabbix', '5.0.0'
+mod 'puppet-zabbix', '5.0.1'
 
 mod 'puppetlabs-postgresql', '4.8.0'
 
@@ -195,3 +191,5 @@ mod 'puppetlabs-ruby', '0.6.0'
 mod 'puppet-selinux', '1.3.0'
 
 mod 'puppetlabs-transition', '0.1.1'
+
+mod 'elastic-elasticsearch', '5.4.3'
