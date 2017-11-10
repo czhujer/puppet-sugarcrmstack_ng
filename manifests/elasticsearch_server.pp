@@ -52,7 +52,7 @@ class sugarcrmstack_ng::elasticsearch_server (
         datadir      => '/var/lib/elasticsearch/data',
       }
 
-      unless($elasticsearch_disable_config){
+      unless($elasticsearch_server_es_disable_config){
         ::elasticsearch::instance { 'elasticsearch':
           config        => $elasticsearch_server_es_instance_config,
           init_defaults => $elasticsearch_server_es_instance_init_defaults,
