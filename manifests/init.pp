@@ -97,10 +97,10 @@ class sugarcrmstack_ng (
   # validate elasticsearch_server parameters
 
   #$elasticsearch_server_elasticsearch_disable_config
-  #$elasticsearch_server_elasticsearch_java_install
+  validate_bool($elasticsearch_server_elasticsearch_java_install)
   #$elasticsearch_server_elasticsearch_repo_version
   #$elasticsearch_server_elasticsearch_version
-  #$elasticsearch_server_elasticsearch_package_pin
+  validate_bool($elasticsearch_server_elasticsearch_package_pin)
   #$elasticsearch_server_elasticsearch_instance_init_defaults
   #$elasticsearch_server_elasticsearch_status
 
