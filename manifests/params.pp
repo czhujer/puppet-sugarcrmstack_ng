@@ -73,12 +73,17 @@ class sugarcrmstack_ng::params {
   $mysql_server_config_max_connections = '1024'
   $mysql_server_use_pxc = false
   #
-  $elasticsearch_server_es_disable_config = '0'
+  $elasticsearch_server_es_disable_config = false
   $elasticsearch_server_es_java_install = true
   $elasticsearch_server_es_repo_version = '1.7'
   $elasticsearch_server_es_version = '1.7.5-1'
   $elasticsearch_server_es_package_pin = true
   $elasticsearch_server_es_instance_init_defaults = {}
   $elasticsearch_server_es_status = 'enabled'
+  $elasticsearch_server_es_instance_config = {
+                                             'network.host' => '127.0.0.1',
+                                             'http.port' => 9200,
+                                             'index.number_of_replicas' => '0',
+  }
 
 }

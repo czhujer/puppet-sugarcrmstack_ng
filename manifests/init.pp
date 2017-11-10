@@ -49,6 +49,7 @@ class sugarcrmstack_ng (
   $elasticsearch_server_es_package_pin = $sugarcrmstack_ng::params::elasticsearch_server_es_package_pin,
   $elasticsearch_server_es_instance_init_defaults = $sugarcrmstack_ng::params::elasticsearch_server_es_instance_init_defaults,
   $elasticsearch_server_es_status = $sugarcrmstack_ng::params::elasticsearch_server_es_status,
+  $elasticsearch_server_es_instance_config = $sugarcrmstack_ng::params::elasticsearch_server_es_instance_config,
   #
 ) inherits sugarcrmstack_ng::params {
 
@@ -96,13 +97,14 @@ class sugarcrmstack_ng (
 
   # validate elasticsearch_server parameters
 
-  #$elasticsearch_server_es_disable_config
+  validate_bool($elasticsearch_server_es_disable_config)
   validate_bool($elasticsearch_server_es_java_install)
   #$elasticsearch_server_es_repo_version
   #$elasticsearch_server_es_version
   validate_bool($elasticsearch_server_es_package_pin)
-  #$elasticsearch_server_es_instance_init_defaults
+  validate_hash($elasticsearch_server_es_instance_init_defaults)
   #$elasticsearch_server_es_status
+  validate_hash(elasticsearch_server_es_instance_config)
 
   # run
   if ($apache_php_enable and $mysql_server_enable and $elasticsearch_server_enable){
