@@ -12,7 +12,7 @@ mod 'apt',
 
 mod 'java',
   :git => 'https://github.com/puppetlabs/puppetlabs-java',
-  :tag => '1.6.0'
+  :tag => '2.1.0'
 
 mod 'stdlib',
   :git => 'https://github.com/puppetlabs/puppetlabs-stdlib',
@@ -26,11 +26,11 @@ mod 'jenkins',
 
 mod 'archive',
   :git => 'https://github.com/voxpupuli/puppet-archive',
-  :tag => 'v1.1.2'
+  :tag => 'v2.1.0'
 
 mod 'zypprepo',
   :git => 'https://github.com/voxpupuli/puppet-zypprepo',
-  :tag => 'v2.0.0'
+  :tag => 'v2.2.0'
 
 mod 'staging',
   :git => 'https://github.com/voxpupuli/puppet-staging',
@@ -94,7 +94,7 @@ mod 'xinetd',
 
 mod 'openvpn',
   :git => 'https://github.com/luxflux/puppet-openvpn',
-  :tag => '3.0.0'
+  :tag => '4.0.1'
 
 mod 'galera',
   :git => 'https://github.com/czhujer/puppet-galera.git',
@@ -168,7 +168,7 @@ mod 'nginx',
 
 mod 'cron',
   :git => 'https://github.com/torrancew/puppet-cron',
-  :tag => 'v0.1.0'
+  :tag => 'v0.2.0'
 
 mod 'maestrodev-wget', '1.7.3'
 
