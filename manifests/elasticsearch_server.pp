@@ -30,6 +30,8 @@ class sugarcrmstack_ng::elasticsearch_server (
       class { 'sugarcrmstack::elasticsearchserver':
         elasticsearch_server_enable          => $elasticsearch_server_enable,
         #
+        sugar_version                        => $sugar_version,
+        #
         elasticsearch_disable_config         => $elasticsearch_server_elasticsearch_disable_config,
         elasticsearch_java_install           => $elasticsearch_server_elasticsearch_java_install,
         elasticsearch_repo_version           => $elasticsearch_server_elasticsearch_repo_version,
