@@ -42,18 +42,18 @@ class sugarcrmstack_ng::elasticsearch_server (
 #        elasticsearch_status                 => $elasticsearch_server_es_status,
 #      }
 
-      class { 'elasticsearch':
+      class { '::elasticsearch':
         version      => $elasticsearch_server_es_version,
         java_install => $elasticsearch_server_es_java_install,
         package_pin  => $elasticsearch_server_es_package_pin,
         manage_repo  => true,
         repo_version => $elasticsearch_server_es_repo_version,
         status       => $elasticsearch_server_es_status,
-        datadir      => "/var/lib/elasticsearch/data",
+        datadir      => '/var/lib/elasticsearch/data',
       }
 
       unless($elasticsearch_disable_config){
-        elasticsearch::instance { 'elasticsearch':
+        ::elasticsearch::instance { 'elasticsearch':
           config        => $elasticsearch_server_es_instance_config,
           init_defaults => $elasticsearch_server_es_instance_init_defaults,
         }

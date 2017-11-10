@@ -104,7 +104,7 @@ class sugarcrmstack_ng (
   validate_bool($elasticsearch_server_es_package_pin)
   validate_hash($elasticsearch_server_es_instance_init_defaults)
   #$elasticsearch_server_es_status
-  validate_hash(elasticsearch_server_es_instance_config)
+  validate_hash($elasticsearch_server_es_instance_config)
 
   # run
   if ($apache_php_enable and $mysql_server_enable and $elasticsearch_server_enable){
