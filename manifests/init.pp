@@ -73,8 +73,8 @@ class sugarcrmstack_ng (
   #$apache_php_php_session_save_handler
   #$apache_php_php_session_save_path
   validate_bool($apache_php_apache_manage_user)
-  #$apache_php_manage_phpmyadmin_config
-  #$apache_php_manage_phpmyadmin_files
+  validate_bool($apache_php_manage_phpmyadmin_config)
+  validate_bool($apache_php_manage_phpmyadmin_files)
 
   # validate mysql_server parameters
 
