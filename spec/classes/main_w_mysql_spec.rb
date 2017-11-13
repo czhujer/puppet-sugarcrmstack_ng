@@ -8,8 +8,8 @@ describe 'sugarcrmstack_ng' do
           facts
         end
 
-        #fixes for composer
-        let(:facts) { facts.merge( { 'composer_home' => '~', 'execs' => {} } ) }
+        #fixes for composer and mysql (root_home)
+        let(:facts) { facts.merge( { 'composer_home' => '~', 'execs' => {}, 'root_home' => '~' } ) }
 
         context "sugarcrmstack_ng class with mysql_server_enable" do
           # switch param
