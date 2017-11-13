@@ -81,9 +81,9 @@ class sugarcrmstack_ng::mysql_server (
         mysql_override_options              => {},
         mysql_users_custom                  => {},
         mysql_grants_custom                 => {},
-        mysql_sugarcrm_pass_hash            => "x",
-        mysql_automysqlbackup_pass_hash     => "s",
-        mysql_root_password                 => "x",
+        mysql_sugarcrm_pass_hash            => '',
+        mysql_automysqlbackup_pass_hash     => '',
+        mysql_root_password                 => '',
       }
 
     }
