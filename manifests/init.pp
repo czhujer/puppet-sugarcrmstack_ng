@@ -43,6 +43,12 @@ class sugarcrmstack_ng (
   $mysql_server_use_pxc = $sugarcrmstack_ng::params::mysql_server_use_pxc,
   #
   $galeracluster_galeracluster_enable = $sugarcrmstack_ng::params::galeracluster_galeracluster_enable,
+  $mysql_server_mysql_override_options = $sugarcrmstack_ng::params::mysql_server_mysql_override_options,
+  $mysql_server_mysql_users_custom = $sugarcrmstack_ng::params::mysql_server_mysql_users_custom,
+  $mysql_server_mysql_grants_custom = $sugarcrmstack_ng::params::mysql_server_mysql_grants_custom,
+  $mysql_server_mysql_sugarcrm_pass_hash = $sugarcrmstack_ng::params::mysql_server_mysql_sugarcrm_pass_hash,
+  $mysql_server_mysql_automysqlbackup_pass_hash = $sugarcrmstack_ng::params::mysql_server_mysql_automysqlbackup_pass_hash,
+  $mysql_server_mysql_root_password = $sugarcrmstack_ng::params::mysql_server_mysql_root_password,
   #
   $elasticsearch_server_es_disable_config = $sugarcrmstack_ng::params::elasticsearch_server_es_disable_config,
   $elasticsearch_server_es_java_install = $sugarcrmstack_ng::params::elasticsearch_server_es_java_install,
@@ -98,6 +104,12 @@ class sugarcrmstack_ng (
   validate_bool($mysql_server_use_pxc)
 
   #$galeracluster_galeracluster_enable
+  validate_hash($mysql_server_mysql_override_options)
+  validate_hash($mysql_server_mysql_users_custom)
+  validate_hash($mysql_server_mysql_grants_custom)
+  #$mysql_server_mysql_sugarcrm_pass_hash
+  #$mysql_server_mysql_automysqlbackup_pass_hash
+  #$mysql_server_mysql_root_password
 
   # validate elasticsearch_server parameters
 

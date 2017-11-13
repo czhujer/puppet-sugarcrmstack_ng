@@ -74,6 +74,12 @@ class sugarcrmstack_ng::params {
   $mysql_server_use_pxc = false
   #
   $galeracluster_galeracluster_enable = '0'
+  $mysql_server_mysql_override_options = {}
+  $mysql_server_mysql_users_custom = {}
+  $mysql_server_mysql_grants_custom = {}
+  $mysql_server_mysql_sugarcrm_pass_hash = '*BD4FB69062149C65C7EE797605C881F8777AB144'
+  $mysql_server_mysql_automysqlbackup_pass_hash = '*1CB694F2DF9A301025FD3594B5461AA2EDD24AC3'
+  $mysql_server_mysql_root_password = ''
   #
   $elasticsearch_server_es_disable_config = false
   $elasticsearch_server_es_java_install = true
