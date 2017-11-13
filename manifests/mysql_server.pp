@@ -75,6 +75,15 @@ class sugarcrmstack_ng::mysql_server (
         mysql_server_service_restart        => $mysql_server_service_restart,
         mysql_server_config_max_connections => $mysql_server_config_max_connections,
         mysql_server_use_pxc                => $mysql_server_use_pxc,
+        #
+        sugar_version                       => $sugar_version,
+        galeracluster_galeracluster_enable  => '',
+        mysql_override_options              => {},
+        mysql_users_custom                  => {},
+        mysql_grants_custom                 => {},
+        mysql_sugarcrm_pass_hash            => "x",
+        mysql_automysqlbackup_pass_hash     => "s",
+        mysql_root_password                 => "x",
       }
 
     }
