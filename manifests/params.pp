@@ -73,6 +73,8 @@ class sugarcrmstack_ng::params {
   $mysql_server_config_max_connections = '1024'
   $mysql_server_use_pxc = false
   #
+  $galeracluster_galeracluster_enable = '0'
+  #
   $elasticsearch_server_es_disable_config = false
   $elasticsearch_server_es_java_install = true
   $elasticsearch_server_es_repo_version = '1.7'

@@ -42,6 +42,8 @@ class sugarcrmstack_ng (
   $mysql_server_config_max_connections = $sugarcrmstack_ng::params::mysql_server_config_max_connections,
   $mysql_server_use_pxc = $sugarcrmstack_ng::params::mysql_server_use_pxc,
   #
+  $galeracluster_galeracluster_enable = $sugarcrmstack_ng::params::galeracluster_galeracluster_enable,
+  #
   $elasticsearch_server_es_disable_config = $sugarcrmstack_ng::params::elasticsearch_server_es_disable_config,
   $elasticsearch_server_es_java_install = $sugarcrmstack_ng::params::elasticsearch_server_es_java_install,
   $elasticsearch_server_es_repo_version = $sugarcrmstack_ng::params::elasticsearch_server_es_repo_version,
@@ -94,6 +96,8 @@ class sugarcrmstack_ng (
   #$mysql_server_service_restart
   validate_integer($mysql_server_config_max_connections)
   validate_bool($mysql_server_use_pxc)
+
+  #$galeracluster_galeracluster_enable
 
   # validate elasticsearch_server parameters
 

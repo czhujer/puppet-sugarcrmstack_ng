@@ -20,6 +20,7 @@ class sugarcrmstack_ng::mysql_server (
   $mysql_server_config_max_connections = $sugarcrmstack_ng::mysql_server_config_max_connections,
   $mysql_server_use_pxc = $sugarcrmstack_ng::mysql_server_use_pxc,
   #
+  $galeracluster_galeracluster_enable = $sugarcrmstack_ng::galeracluster_galeracluster_enable,
 ) {
 
   if ($mysql_server_enable){
@@ -77,7 +78,7 @@ class sugarcrmstack_ng::mysql_server (
         mysql_server_use_pxc                => $mysql_server_use_pxc,
         #
         sugar_version                       => $sugar_version,
-        galeracluster_galeracluster_enable  => '',
+        galeracluster_galeracluster_enable  => $galeracluster_galeracluster_enable,
         mysql_override_options              => {},
         mysql_users_custom                  => {},
         mysql_grants_custom                 => {},
