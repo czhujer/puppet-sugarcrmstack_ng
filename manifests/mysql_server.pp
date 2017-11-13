@@ -20,6 +20,13 @@ class sugarcrmstack_ng::mysql_server (
   $mysql_server_config_max_connections = $sugarcrmstack_ng::mysql_server_config_max_connections,
   $mysql_server_use_pxc = $sugarcrmstack_ng::mysql_server_use_pxc,
   #
+  $galeracluster_galeracluster_enable = $sugarcrmstack_ng::galeracluster_galeracluster_enable,
+  $mysql_server_mysql_override_options = $sugarcrmstack_ng::mysql_server_mysql_override_options,
+  $mysql_server_mysql_users_custom = $sugarcrmstack_ng::mysql_server_mysql_users_custom,
+  $mysql_server_mysql_grants_custom = $sugarcrmstack_ng::mysql_server_mysql_grants_custom,
+  $mysql_server_mysql_sugarcrm_pass_hash = $sugarcrmstack_ng::mysql_server_mysql_sugarcrm_pass_hash,
+  $mysql_server_mysql_automysqlbackup_pass_hash = $sugarcrmstack_ng::mysql_server_mysql_automysqlbackup_pass_hash,
+  $mysql_server_mysql_root_password = $sugarcrmstack_ng::mysql_server_mysql_root_password,
 ) {
 
   if ($mysql_server_enable){
@@ -75,6 +82,15 @@ class sugarcrmstack_ng::mysql_server (
         mysql_server_service_restart        => $mysql_server_service_restart,
         mysql_server_config_max_connections => $mysql_server_config_max_connections,
         mysql_server_use_pxc                => $mysql_server_use_pxc,
+        #
+        sugar_version                       => $sugar_version,
+        galeracluster_galeracluster_enable  => $galeracluster_galeracluster_enable,
+        mysql_override_options              => $mysql_server_mysql_override_options,
+        mysql_users_custom                  => $mysql_server_mysql_users_custom,
+        mysql_grants_custom                 => $mysql_server_mysql_grants_custom,
+        mysql_sugarcrm_pass_hash            => $mysql_server_mysql_sugarcrm_pass_hash,
+        mysql_automysqlbackup_pass_hash     => $mysql_server_mysql_automysqlbackup_pass_hash,
+        mysql_root_password                 => $mysql_server_mysql_root_password,
       }
 
     }

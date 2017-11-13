@@ -18,5 +18,8 @@ fixtures:
     vcsrepo: "https://github.com/puppetlabs/puppetlabs-vcsrepo"
     composer: "https://github.com/tPl0ch/puppet-composer"
     git:    "https://github.com/puppetlabs/puppetlabs-git"
+    mysql:
+      repo: "https://github.com/puppetlabs/puppetlabs-mysql"
+      ref: "3.11.0"
   symlinks:
     sugarcrmstack_ng: "#{source_dir}"
