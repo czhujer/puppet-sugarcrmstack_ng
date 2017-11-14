@@ -9,7 +9,7 @@ describe 'sugarcrmstack_ng' do
         end
 
         #fixes for composer and mysql (root_home)
-        let(:facts) { facts.merge( { 'composer_home' => '~', 'execs' => {}, 'root_home' => '~' } ) }
+        let(:facts) { facts.merge( { 'composer_home' => '~', 'execs' => {}, 'root_home' => '/root' } ) }
 
         context "sugarcrmstack_ng class without any parameters" do
           it { is_expected.to compile.with_all_deps }
@@ -65,7 +65,7 @@ describe 'sugarcrmstack_ng' do
           it { should_not contain_class('mysql::server::root_password') }
           it { should_not contain_class('mysql::server::providers') }
 
-          it { should_not contain_package('mysql-server').with(ensure: :present) }
+          it { should_not contain_package('mysql-server').with(ensure: "installed") }
 
           it { should_not contain_service('mysqld') }
 
@@ -124,7 +124,7 @@ describe 'sugarcrmstack_ng' do
           it { should_not contain_class('mysql::server::root_password') }
           it { should_not contain_class('mysql::server::providers') }
 
-          it { should_not contain_package('mysql-server').with(ensure: :present) }
+          it { should_not contain_package('mysql-server').with(ensure: "installed") }
 
           it { should_not contain_service('mysqld') }
 

@@ -51,7 +51,11 @@ build:
     - mkdir -p /etc/puppet/modules/sugarcrmstack/manifests && wget 'https://raw.githubusercontent.com/SugarFactory/puppet-sugarcrmstack/master/include/service-apache-php-ng.pp?token=ABi-r7PMlzQrml7g1sA_ELj9xC7JawUnks5aDzQ1wA%3D%3D' -O /etc/puppet/modules/sugarcrmstack/manifests/apachephpng.pp
     - mkdir -p /etc/puppet/modules/sugarcrmstack/manifests && wget 'https://raw.githubusercontent.com/SugarFactory/puppet-sugarcrmstack/master/include/service-mysqlserver.pp?token=ABi-r43a52jyR4XW6iPYI9c_uDKfnSToks5aDzo8wA%3D%3D' -O /etc/puppet/modules/sugarcrmstack/manifests/mysqlserver.pp
     - mkdir -p /etc/puppet/modules/sugarcrmstack/templates && wget 'https://raw.githubusercontent.com/SugarFactory/puppet-sugarcrmstack/master/templates/logrotate.conf.mysql-slow.erb?token=ABi-rzgaPKKupM08TOfjlbTUHkcQdmFaks5aE0swwA%3D%3D' -O /etc/puppet/modules/sugarcrmstack/templates/logrotate.conf.mysql-slow.erb
+    #fix wrong metadata in cron module
+    - rm /etc/puppet/modules/cron/metadata.json
+    #print module set
     - source /etc/profile.d/rvm.sh; puppet module list
+    #run acceptance tests
     - source /etc/profile.d/rvm.sh; puppet apply tests/init.pp --test --noop
   post_ci:
     - ls -lh shippable/testresults
