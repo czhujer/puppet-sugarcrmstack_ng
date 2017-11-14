@@ -9,7 +9,7 @@ describe 'sugarcrmstack_ng' do
         end
 
         #fixes for composer and mysql (root_home)
-        let(:facts) { facts.merge( { 'composer_home' => '~', 'execs' => {}, 'root_home' => '~' } ) }
+        let(:facts) { facts.merge( { 'composer_home' => '~', 'execs' => {}, 'root_home' => '/root' } ) }
 
         context "sugarcrmstack_ng class without any parameters" do
           it { is_expected.to compile.with_all_deps }
