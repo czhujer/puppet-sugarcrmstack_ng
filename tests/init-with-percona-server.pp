@@ -11,7 +11,7 @@
 #
 #include ::sugarcrmstack_ng
 
-  class {'sugarcrmstack_ng':
+  class {'::sugarcrmstack_ng':
     apache_php_enable    => true,
     mysql_server_enable  => true,
     mysql_server_use_pxc => true,
