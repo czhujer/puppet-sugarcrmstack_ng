@@ -65,7 +65,7 @@ describe 'sugarcrmstack_ng' do
           it { should_not contain_class('mysql::server::root_password') }
           it { should_not contain_class('mysql::server::providers') }
 
-          it { should_not contain_package('mysql-server').with(ensure: :present) }
+          it { should_not contain_package('mysql-server').with(ensure: "installed") }
 
           it { should_not contain_service('mysqld') }
 
@@ -124,7 +124,7 @@ describe 'sugarcrmstack_ng' do
           it { should_not contain_class('mysql::server::root_password') }
           it { should_not contain_class('mysql::server::providers') }
 
-          it { should_not contain_package('mysql-server').with(ensure: :present) }
+          it { should_not contain_package('mysql-server').with(ensure: "installed") }
 
           it { should_not contain_service('mysqld') }
 
