@@ -55,6 +55,10 @@ class sugarcrmstack_ng::apache_php (
         php_session_save_path    => $apache_php_php_session_save_path,
         #
         apache_manage_user       => $apache_php_apache_manage_user,
+        #
+        manage_phpmyadmin_config => $apache_php_manage_phpmyadmin_config,
+        manage_phpmyadmin_files  => $apache_php_manage_phpmyadmin_files,
+
       }
     }
     else{

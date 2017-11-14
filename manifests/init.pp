@@ -15,6 +15,7 @@ class sugarcrmstack_ng (
   $utils_packages = $sugarcrmstack_ng::params::utils_packages,
   $apache_php_enable = $sugarcrmstack_ng::params::apache_php_enable,
   $mysql_server_enable = $sugarcrmstack_ng::params::mysql_server_enable,
+  $elasticsearch_server_enable = $sugarcrmstack_ng::params::elasticsearch_server_enable,
   $sugar_version = $sugarcrmstack_ng::params::sugar_version,
   #
   $apache_php_php_pkg_version = $sugarcrmstack_ng::params::apache_php_php_pkg_version,
@@ -41,6 +42,23 @@ class sugarcrmstack_ng (
   $mysql_server_config_max_connections = $sugarcrmstack_ng::params::mysql_server_config_max_connections,
   $mysql_server_use_pxc = $sugarcrmstack_ng::params::mysql_server_use_pxc,
   #
+  $galeracluster_galeracluster_enable = $sugarcrmstack_ng::params::galeracluster_galeracluster_enable,
+  $mysql_server_mysql_override_options = $sugarcrmstack_ng::params::mysql_server_mysql_override_options,
+  $mysql_server_mysql_users_custom = $sugarcrmstack_ng::params::mysql_server_mysql_users_custom,
+  $mysql_server_mysql_grants_custom = $sugarcrmstack_ng::params::mysql_server_mysql_grants_custom,
+  $mysql_server_mysql_sugarcrm_pass_hash = $sugarcrmstack_ng::params::mysql_server_mysql_sugarcrm_pass_hash,
+  $mysql_server_mysql_automysqlbackup_pass_hash = $sugarcrmstack_ng::params::mysql_server_mysql_automysqlbackup_pass_hash,
+  $mysql_server_mysql_root_password = $sugarcrmstack_ng::params::mysql_server_mysql_root_password,
+  #
+  $elasticsearch_server_es_disable_config = $sugarcrmstack_ng::params::elasticsearch_server_es_disable_config,
+  $elasticsearch_server_es_java_install = $sugarcrmstack_ng::params::elasticsearch_server_es_java_install,
+  $elasticsearch_server_es_repo_version = $sugarcrmstack_ng::params::elasticsearch_server_es_repo_version,
+  $elasticsearch_server_es_version = $sugarcrmstack_ng::params::elasticsearch_server_es_version,
+  $elasticsearch_server_es_package_pin = $sugarcrmstack_ng::params::elasticsearch_server_es_package_pin,
+  $elasticsearch_server_es_instance_init_defaults = $sugarcrmstack_ng::params::elasticsearch_server_es_instance_init_defaults,
+  $elasticsearch_server_es_status = $sugarcrmstack_ng::params::elasticsearch_server_es_status,
+  $elasticsearch_server_es_instance_config = $sugarcrmstack_ng::params::elasticsearch_server_es_instance_config,
+  #
 ) inherits sugarcrmstack_ng::params {
 
   # validate general parameters
@@ -49,6 +67,7 @@ class sugarcrmstack_ng (
 
   validate_bool($apache_php_enable)
   validate_bool($mysql_server_enable)
+  validate_bool($elasticsearch_server_enable)
 
   validate_string($sugar_version)
 
@@ -73,8 +92,8 @@ class sugarcrmstack_ng (
   #$apache_php_php_session_save_handler
   #$apache_php_php_session_save_path
   validate_bool($apache_php_apache_manage_user)
-  #$apache_php_manage_phpmyadmin_config
-  #$apache_php_manage_phpmyadmin_files
+  validate_bool($apache_php_manage_phpmyadmin_config)
+  validate_bool($apache_php_manage_phpmyadmin_files)
 
   # validate mysql_server parameters
 
@@ -84,8 +103,52 @@ class sugarcrmstack_ng (
   validate_integer($mysql_server_config_max_connections)
   validate_bool($mysql_server_use_pxc)
 
+  #$galeracluster_galeracluster_enable
+  validate_hash($mysql_server_mysql_override_options)
+  validate_hash($mysql_server_mysql_users_custom)
+  validate_hash($mysql_server_mysql_grants_custom)
+  #$mysql_server_mysql_sugarcrm_pass_hash
+  #$mysql_server_mysql_automysqlbackup_pass_hash
+  #$mysql_server_mysql_root_password
+
+  # validate elasticsearch_server parameters
+
+  validate_bool($elasticsearch_server_es_disable_config)
+  validate_bool($elasticsearch_server_es_java_install)
+  #$elasticsearch_server_es_repo_version
+  #$elasticsearch_server_es_version
+  validate_bool($elasticsearch_server_es_package_pin)
+  validate_hash($elasticsearch_server_es_instance_init_defaults)
+  #$elasticsearch_server_es_status
+  validate_hash($elasticsearch_server_es_instance_config)
+
   # run
-  if ($apache_php_enable and $mysql_server_enable){
+  if ($apache_php_enable and $mysql_server_enable and $elasticsearch_server_enable){
+    class { '::sugarcrmstack_ng::install': }
+    -> class { '::sugarcrmstack_ng::config': }
+    -> class { '::sugarcrmstack_ng::apache_php': }
+    -> class { '::sugarcrmstack_ng::mysql_server': }
+    -> class { '::sugarcrmstack_ng::elasticsearch_server': }
+    ~> class { '::sugarcrmstack_ng::service': }
+    -> Class['::sugarcrmstack_ng']
+  }
+  elsif ($apache_php_enable and $elasticsearch_server_enable){
+    class { '::sugarcrmstack_ng::install': }
+    -> class { '::sugarcrmstack_ng::config': }
+    -> class { '::sugarcrmstack_ng::apache_php': }
+    -> class { '::sugarcrmstack_ng::elasticsearch_server': }
+    ~> class { '::sugarcrmstack_ng::service': }
+    -> Class['::sugarcrmstack_ng']
+  }
+  elsif ($mysql_server_enable and $elasticsearch_server_enable){
+    class { '::sugarcrmstack_ng::install': }
+    -> class { '::sugarcrmstack_ng::config': }
+    -> class { '::sugarcrmstack_ng::mysql_server': }
+    -> class { '::sugarcrmstack_ng::elasticsearch_server': }
+    ~> class { '::sugarcrmstack_ng::service': }
+    -> Class['::sugarcrmstack_ng']
+  }
+  elsif ($apache_php_enable and $mysql_server_enable){
     class { '::sugarcrmstack_ng::install': }
     -> class { '::sugarcrmstack_ng::config': }
     -> class { '::sugarcrmstack_ng::apache_php': }

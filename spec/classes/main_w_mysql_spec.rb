@@ -8,8 +8,8 @@ describe 'sugarcrmstack_ng' do
           facts
         end
 
-        #fixes for composer
-        let(:facts) { facts.merge( { 'composer_home' => '~', 'execs' => {} } ) }
+        #fixes for composer and mysql (root_home)
+        let(:facts) { facts.merge( { 'composer_home' => '~', 'execs' => {}, 'root_home' => '/root' } ) }
 
         context "sugarcrmstack_ng class with mysql_server_enable" do
           # switch param
@@ -64,7 +64,7 @@ describe 'sugarcrmstack_ng' do
           it { is_expected.to contain_class('mysql::server::root_password') }
           it { is_expected.to contain_class('mysql::server::providers') }
 
-          it { is_expected.to contain_package('mysql-server').with(ensure: :present) }
+          it { is_expected.to contain_package('mysql-server').with(ensure: "installed") }
 
           it { is_expected.to contain_service('mysqld') }
 
@@ -124,7 +124,7 @@ describe 'sugarcrmstack_ng' do
           it { is_expected.to contain_class('mysql::server::root_password') }
           it { is_expected.to contain_class('mysql::server::providers') }
 
-          it { is_expected.to contain_package('mysql-server').with(ensure: :present) }
+          it { is_expected.to contain_package('mysql-server').with(ensure: "installed") }
 
           it { is_expected.to contain_service('mysqld') }
 

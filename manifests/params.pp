@@ -6,6 +6,7 @@
 class sugarcrmstack_ng::params {
   $apache_php_enable = true
   $mysql_server_enable = false
+  $elasticsearch_server_enable = false
   $sugar_version     = '7.9'
   case $::osfamily {
     'RedHat', 'Amazon': {
@@ -71,4 +72,26 @@ class sugarcrmstack_ng::params {
   $mysql_server_service_restart = true
   $mysql_server_config_max_connections = '1024'
   $mysql_server_use_pxc = false
+  #
+  $galeracluster_galeracluster_enable = '0'
+  $mysql_server_mysql_override_options = {}
+  $mysql_server_mysql_users_custom = {}
+  $mysql_server_mysql_grants_custom = {}
+  $mysql_server_mysql_sugarcrm_pass_hash = '*BD4FB69062149C65C7EE797605C881F8777AB144'
+  $mysql_server_mysql_automysqlbackup_pass_hash = '*1CB694F2DF9A301025FD3594B5461AA2EDD24AC3'
+  $mysql_server_mysql_root_password = ''
+  #
+  $elasticsearch_server_es_disable_config = false
+  $elasticsearch_server_es_java_install = true
+  $elasticsearch_server_es_repo_version = '1.7'
+  $elasticsearch_server_es_version = '1.7.5-1'
+  $elasticsearch_server_es_package_pin = true
+  $elasticsearch_server_es_instance_init_defaults = {}
+  $elasticsearch_server_es_status = 'enabled'
+  $elasticsearch_server_es_instance_config = {
+    'network.host' => '127.0.0.1',
+    'http.port' => 9200,
+    'index.number_of_replicas' => '0',
+  }
+
 }

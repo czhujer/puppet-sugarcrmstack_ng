@@ -12,11 +12,11 @@ mod 'apt',
 
 mod 'java',
   :git => 'https://github.com/puppetlabs/puppetlabs-java',
-  :tag => '1.6.0'
+  :tag => '2.1.1'
 
 mod 'stdlib',
   :git => 'https://github.com/puppetlabs/puppetlabs-stdlib',
-  :tag => '4.20.0'
+  :tag => '4.21.0'
 
 mod 'jenkins',
 #  :git => 'https://github.com/jenkinsci/puppet-jenkins',
@@ -26,11 +26,11 @@ mod 'jenkins',
 
 mod 'archive',
   :git => 'https://github.com/voxpupuli/puppet-archive',
-  :tag => 'v1.1.2'
+  :tag => 'v2.1.0'
 
 mod 'zypprepo',
   :git => 'https://github.com/voxpupuli/puppet-zypprepo',
-  :tag => 'v2.0.0'
+  :tag => 'v2.2.0'
 
 mod 'staging',
   :git => 'https://github.com/voxpupuli/puppet-staging',
@@ -55,10 +55,6 @@ mod 'firewall',
 mod 'vcsrepo',
   :git => 'https://github.com/puppetlabs/puppetlabs-vcsrepo',
   :tag => '1.3.2'
-
-mod 'elasticsearch',
-  :git => 'https://github.com/elastic/puppet-elasticsearch',
-  :tag => '0.16.2'
 
 mod 'mysql',
   :git => 'https://github.com/puppetlabs/puppetlabs-mysql',
@@ -94,7 +90,7 @@ mod 'xinetd',
 
 mod 'openvpn',
   :git => 'https://github.com/luxflux/puppet-openvpn',
-  :tag => '3.0.0'
+  :tag => '4.0.1'
 
 mod 'galera',
   :git => 'https://github.com/czhujer/puppet-galera.git',
@@ -130,7 +126,7 @@ mod 'nodejs',
 
 mod 'zabbixagent',
   :git => 'https://github.com/H-Software/puppet-zabbixagent',
-  :tag => 'v2.15.1'
+  :tag => 'v3.1.0'
 
 mod 'sugarcrmstack',
 #  :git => 'git@github.com:SugarFactory/puppet-sugarcrm-stack.git'
@@ -168,7 +164,7 @@ mod 'nginx',
 
 mod 'cron',
   :git => 'https://github.com/torrancew/puppet-cron',
-  :tag => 'v0.1.0'
+  :tag => 'v0.2.0'
 
 mod 'maestrodev-wget', '1.7.3'
 
@@ -178,13 +174,13 @@ mod 'camptocamp-systemd', '1.0.0'
 
 mod 'sugarcrmstack_ng',
   :git => 'https://github.com/SugarFactory/puppet-sugarcrmstack_ng',
-  :tag => 'v0.2'
+  :tag => 'v0.3'
 
 mod 'herculesteam-augeasproviders_core', '2.1.3'
 
 mod 'herculesteam-augeasproviders_sysctl', '2.2.0'
 
-mod 'puppet-zabbix', '5.0.0'
+mod 'puppet-zabbix', '5.0.1'
 
 mod 'puppetlabs-postgresql', '4.8.0'
 
@@ -195,3 +191,5 @@ mod 'puppetlabs-ruby', '0.6.0'
 mod 'puppet-selinux', '1.3.0'
 
 mod 'puppetlabs-transition', '0.1.1'
+
+mod 'elastic-elasticsearch', '5.4.3'
