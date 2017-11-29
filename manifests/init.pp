@@ -36,6 +36,11 @@ class sugarcrmstack_ng (
   $apache_php_manage_phpmyadmin_config = $sugarcrmstack_ng::params::apache_php_manage_phpmyadmin_config,
   $apache_php_manage_phpmyadmin_files = $sugarcrmstack_ng::params::apache_php_manage_phpmyadmin_files,
   #
+  #$apache_php_apache_serveradmin =
+  #$apache_php_apache_mpm =
+  #$apache_php_apache_timeout =
+  #$apache_php_apache_keepalive =
+  #
   $mysql_server_service_manage = $sugarcrmstack_ng::params::mysql_server_service_manage,
   $mysql_server_service_enabled = $sugarcrmstack_ng::params::mysql_server_service_enabled,
   $mysql_server_service_restart = $sugarcrmstack_ng::params::mysql_server_service_restart,
