@@ -1,6 +1,6 @@
 {
   "name": "czhujer-sugarcrmstack_ng",
-  "version": "0.3.0",
+  "version": "0.4.1",
   "author": "czhujer",
   "summary": "puppet module for sugarcmstack for SugarCRM",
   "license": "Apache-2.0",
@@ -18,7 +18,7 @@
     },
     {
       "name": "puppetlabs-apache",
-      "version_requirement": ">1.0.0 <2.0.0"
+      "version_requirement": ">1.0.0 <3.0.0"
     },
     {
       "name": "puppetlabs-concat",
