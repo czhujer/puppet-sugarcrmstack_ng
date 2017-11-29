@@ -7,6 +7,7 @@ class sugarcrmstack_ng::params {
   $apache_php_enable = true
   $mysql_server_enable = false
   $elasticsearch_server_enable = false
+  $cron_enable = false,
   $sugar_version     = '7.9'
   case $::osfamily {
     'RedHat', 'Amazon': {
@@ -93,5 +94,7 @@ class sugarcrmstack_ng::params {
     'http.port' => 9200,
     'index.number_of_replicas' => '0',
   }
-
+  $cron_handle_package = true
+  $cron_handle_sugarcrm_file = true
+  $cron_purge_users_crontabs = true
 }
