@@ -17,6 +17,9 @@ class sugarcrmstack_ng::cron (
   $cron_handle_package = $sugarcrmstack_ng::cron_handle_package,
   $cron_handle_sugarcrm_file = $sugarcrmstack_ng::cron_handle_sugarcrm_file,
   $cron_purge_users_crontabs = $sugarcrmstack_ng::cron_purge_users_crontabs,
+  #
+  $cron_service_enable = $sugarcrmstack_ng::cron_service_enable,
+  $cron_service_ensure = $sugarcrmstack_ng::cron_service_ensure,
 ) {
 
   if ($cron_enable){
@@ -36,8 +39,8 @@ class sugarcrmstack_ng::cron (
       }
 
       service {'cron':
-        enable  => $enable,
-        ensure  => $ensure,
+        enable  => $cron_service_enable,
+        ensure  => $cron_service_ensure,
         name    => $service_name,
         require => Package['cron'],
       }

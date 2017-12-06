@@ -71,6 +71,9 @@ class sugarcrmstack_ng (
   $cron_handle_sugarcrm_file = $sugarcrmstack_ng::params::cron_handle_sugarcrm_file,
   $cron_purge_users_crontabs = $sugarcrmstack_ng::params::cron_purge_users_crontabs,
   #
+  $cron_service_enable = $sugarcrmstack_ng::params::cron_service_enable,
+  $cron_service_ensure = $sugarcrmstack_ng::params::cron_service_ensure,
+  #
 ) inherits sugarcrmstack_ng::params {
 
   # validate general parameters
@@ -138,6 +141,9 @@ class sugarcrmstack_ng (
   validate_bool($cron_handle_package)
   validate_bool($cron_handle_sugarcrm_file)
   validate_bool($cron_purge_users_crontabs)
+
+  validate_bool($cron_service_enable)
+  validate_bool($cron_service_ensure)
 
   # run
   if ($apache_php_enable and $mysql_server_enable and $elasticsearch_server_enable and $cron_enable){

@@ -97,4 +97,6 @@ class sugarcrmstack_ng::params {
   $cron_handle_package = true
   $cron_handle_sugarcrm_file = true
   $cron_purge_users_crontabs = true
+  $cron_service_enable = true
+  $cron_service_ensure = true
 }
