@@ -44,17 +44,10 @@ class sugarcrmstack_ng::cron (
         require => Package['cron'],
       }
 
-      $cron_content = '#* * * * * apache cd /var/www/html/sugarcrm; php -f cron.php > /dev/null 2>&1
-'
-      $cron_content_final = "${cron_content}#*    *    *    *    *  apache   echo `date` >> /var/www/html/sugarcrm/sugar-cron.log 2>&1; cd /var/www/html/sugarcrm; php -f cron.php >> /var/www/html/sugarcrm/sugar-cron.log 2>&1
-"
-      $cron_content_final2 = '*    *    *    *    *  apache   hash=$(openssl rand -base64 6 2>/dev/null); file="/var/www/html/sugarcrm/sugar-cron.log"; echo "`date` STARTED $hash" >> $file 2>&1; cd /var/www/html/sugarcrm; timeout 600 php -f cron.php >> $file 2>&1; echo "`date` STOPPED $hash" >> $file 2>&1;
-'
-
       if ($cron_handle_sugarcrm_file){
         file {'sugar cron file':
           name    => '/etc/cron.d/sugarcrm',
-          content => "${cron_content_final} ${cron_content_final2}",
+          content => template('sugarcrmstack_ng/cron.sugarcrm.erb'),
           require => Package['cron'],
           notify  => Service['cron'],
         }
