@@ -20,6 +20,10 @@ RSpec.configure do |c|
       on host, puppet('module', 'install', 'puppetlabs-inifile'), { :acceptable_exit_codes => [0,1] }
       on host, puppet('module', 'install', 'puppetlabs-apache'), { :acceptable_exit_codes => [0,1] }
       on host, puppet('module', 'install', 'puppetlabs-concat'), { :acceptable_exit_codes => [0,1] }
+      on host, puppet('module', 'install', 'elastic-elasticsearch'), { :acceptable_exit_codes => [0,1] }
+      on host, puppet('module', 'install', 'puppetlabs-java'), { :acceptable_exit_codes => [0,1] }
+      on host, puppet('module', 'install', 'voxpupuli-puppet-yum'), { :acceptable_exit_codes => [0,1] }
+      on host, puppet('module', 'install', 'richardc/datacat'), { :acceptable_exit_codes => [0,1] }
     end
   end
 end

@@ -201,3 +201,5 @@ mod 'puppetlabs-transition', '0.1.1'
 mod 'puppetlabs-translate', '1.1.0'
 
 mod 'elastic-elasticsearch', '5.4.3'
+
+mod 'richardc/datacat', '0.6.2'
