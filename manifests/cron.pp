@@ -39,8 +39,8 @@ class sugarcrmstack_ng::cron (
       }
 
       service {'cron':
-        enable  => $cron_service_enable,
         ensure  => $cron_service_ensure,
+        enable  => $cron_service_enable,
         name    => $service_name,
         require => Package['cron'],
       }
