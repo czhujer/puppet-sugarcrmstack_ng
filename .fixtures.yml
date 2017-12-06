@@ -21,5 +21,9 @@ fixtures:
     mysql:
       repo: "https://github.com/puppetlabs/puppetlabs-mysql"
       ref: "5.1.0"
+  forge_modules:
+    elasticsearch:
+      repo: elastic/elasticsearch
+      ref: 5.4.3
   symlinks:
     sugarcrmstack_ng: "#{source_dir}"
