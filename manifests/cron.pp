@@ -61,9 +61,9 @@ class sugarcrmstack_ng::cron (
       }
       else{
         file {'sugar cron file':
-          name => "/etc/cron.d/sugarcrm",
-          ensure => "absent",
-          require => Package["cron"],
+          ensure  => absent,
+          name    => '/etc/cron.d/sugarcrm',
+          require => Package['cron'],
           notify  => Service['cron'],
         }
       }
