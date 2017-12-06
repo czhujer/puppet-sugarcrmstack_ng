@@ -13,9 +13,12 @@
 class sugarcrmstack_ng (
   $manage_utils_packages = $sugarcrmstack_ng::params::manage_utils_packages,
   $utils_packages = $sugarcrmstack_ng::params::utils_packages,
+  #
   $apache_php_enable = $sugarcrmstack_ng::params::apache_php_enable,
   $mysql_server_enable = $sugarcrmstack_ng::params::mysql_server_enable,
   $elasticsearch_server_enable = $sugarcrmstack_ng::params::elasticsearch_server_enable,
+  $cron_enable = $sugarcrmstack_ng::params::cron_enable,
+  #
   $sugar_version = $sugarcrmstack_ng::params::sugar_version,
   #
   $apache_php_php_pkg_version = $sugarcrmstack_ng::params::apache_php_php_pkg_version,
@@ -35,6 +38,11 @@ class sugarcrmstack_ng (
   $apache_php_apache_manage_user = $sugarcrmstack_ng::params::apache_php_apache_manage_user,
   $apache_php_manage_phpmyadmin_config = $sugarcrmstack_ng::params::apache_php_manage_phpmyadmin_config,
   $apache_php_manage_phpmyadmin_files = $sugarcrmstack_ng::params::apache_php_manage_phpmyadmin_files,
+  #
+  #$apache_php_apache_serveradmin =
+  #$apache_php_apache_mpm =
+  #$apache_php_apache_timeout =
+  #$apache_php_apache_keepalive =
   #
   $mysql_server_service_manage = $sugarcrmstack_ng::params::mysql_server_service_manage,
   $mysql_server_service_enabled = $sugarcrmstack_ng::params::mysql_server_service_enabled,
@@ -59,6 +67,13 @@ class sugarcrmstack_ng (
   $elasticsearch_server_es_status = $sugarcrmstack_ng::params::elasticsearch_server_es_status,
   $elasticsearch_server_es_instance_config = $sugarcrmstack_ng::params::elasticsearch_server_es_instance_config,
   #
+  $cron_handle_package = $sugarcrmstack_ng::params::cron_handle_package,
+  $cron_handle_sugarcrm_file = $sugarcrmstack_ng::params::cron_handle_sugarcrm_file,
+  $cron_purge_users_crontabs = $sugarcrmstack_ng::params::cron_purge_users_crontabs,
+  #
+  $cron_service_enable = $sugarcrmstack_ng::params::cron_service_enable,
+  $cron_service_ensure = $sugarcrmstack_ng::params::cron_service_ensure,
+  #
 ) inherits sugarcrmstack_ng::params {
 
   # validate general parameters
@@ -68,6 +83,7 @@ class sugarcrmstack_ng (
   validate_bool($apache_php_enable)
   validate_bool($mysql_server_enable)
   validate_bool($elasticsearch_server_enable)
+  validate_bool($cron_enable)
 
   validate_string($sugar_version)
 
@@ -122,13 +138,39 @@ class sugarcrmstack_ng (
   #$elasticsearch_server_es_status
   validate_hash($elasticsearch_server_es_instance_config)
 
+  validate_bool($cron_handle_package)
+  validate_bool($cron_handle_sugarcrm_file)
+  validate_bool($cron_purge_users_crontabs)
+
+  validate_bool($cron_service_enable)
+  validate_bool($cron_service_ensure)
+
   # run
-  if ($apache_php_enable and $mysql_server_enable and $elasticsearch_server_enable){
+  if ($apache_php_enable and $mysql_server_enable and $elasticsearch_server_enable and $cron_enable){
     class { '::sugarcrmstack_ng::install': }
     -> class { '::sugarcrmstack_ng::config': }
     -> class { '::sugarcrmstack_ng::apache_php': }
     -> class { '::sugarcrmstack_ng::mysql_server': }
     -> class { '::sugarcrmstack_ng::elasticsearch_server': }
+    -> class { '::sugarcrmstack_ng::cron': }
+    ~> class { '::sugarcrmstack_ng::service': }
+    -> Class['::sugarcrmstack_ng']
+  }
+  elsif ($apache_php_enable and $mysql_server_enable and $elasticsearch_server_enable){
+    class { '::sugarcrmstack_ng::install': }
+    -> class { '::sugarcrmstack_ng::config': }
+    -> class { '::sugarcrmstack_ng::apache_php': }
+    -> class { '::sugarcrmstack_ng::mysql_server': }
+    -> class { '::sugarcrmstack_ng::elasticsearch_server': }
+    ~> class { '::sugarcrmstack_ng::service': }
+    -> Class['::sugarcrmstack_ng']
+  }
+  elsif ($apache_php_enable and $elasticsearch_server_enable and $cron_enable){
+    class { '::sugarcrmstack_ng::install': }
+    -> class { '::sugarcrmstack_ng::config': }
+    -> class { '::sugarcrmstack_ng::apache_php': }
+    -> class { '::sugarcrmstack_ng::elasticsearch_server': }
+    -> class { '::sugarcrmstack_ng::cron': }
     ~> class { '::sugarcrmstack_ng::service': }
     -> Class['::sugarcrmstack_ng']
   }
@@ -140,11 +182,29 @@ class sugarcrmstack_ng (
     ~> class { '::sugarcrmstack_ng::service': }
     -> Class['::sugarcrmstack_ng']
   }
+  elsif ($mysql_server_enable and $elasticsearch_server_enable and $cron_enable){
+    class { '::sugarcrmstack_ng::install': }
+    -> class { '::sugarcrmstack_ng::config': }
+    -> class { '::sugarcrmstack_ng::mysql_server': }
+    -> class { '::sugarcrmstack_ng::elasticsearch_server': }
+    -> class { '::sugarcrmstack_ng::cron': }
+    ~> class { '::sugarcrmstack_ng::service': }
+    -> Class['::sugarcrmstack_ng']
+  }
   elsif ($mysql_server_enable and $elasticsearch_server_enable){
     class { '::sugarcrmstack_ng::install': }
     -> class { '::sugarcrmstack_ng::config': }
     -> class { '::sugarcrmstack_ng::mysql_server': }
     -> class { '::sugarcrmstack_ng::elasticsearch_server': }
+    ~> class { '::sugarcrmstack_ng::service': }
+    -> Class['::sugarcrmstack_ng']
+  }
+  elsif ($apache_php_enable and $mysql_server_enable and $cron_enable){
+    class { '::sugarcrmstack_ng::install': }
+    -> class { '::sugarcrmstack_ng::config': }
+    -> class { '::sugarcrmstack_ng::apache_php': }
+    -> class { '::sugarcrmstack_ng::mysql_server': }
+    -> class { '::sugarcrmstack_ng::cron': }
     ~> class { '::sugarcrmstack_ng::service': }
     -> Class['::sugarcrmstack_ng']
   }
@@ -156,10 +216,25 @@ class sugarcrmstack_ng (
     ~> class { '::sugarcrmstack_ng::service': }
     -> Class['::sugarcrmstack_ng']
   }
+  elsif ($apache_php_enable and $cron_enable){
+    class { '::sugarcrmstack_ng::install': }
+    -> class { '::sugarcrmstack_ng::config': }
+    -> class { '::sugarcrmstack_ng::apache_php': }
+    -> class { '::sugarcrmstack_ng::cron': }
+    ~> class { '::sugarcrmstack_ng::service': }
+    -> Class['::sugarcrmstack_ng']
+  }
   elsif ($apache_php_enable){
     class { '::sugarcrmstack_ng::install': }
     -> class { '::sugarcrmstack_ng::config': }
     -> class { '::sugarcrmstack_ng::apache_php': }
+    ~> class { '::sugarcrmstack_ng::service': }
+    -> Class['::sugarcrmstack_ng']
+  }
+  elsif ($cron_enable){
+    class { '::sugarcrmstack_ng::install': }
+    -> class { '::sugarcrmstack_ng::config': }
+    -> class { '::sugarcrmstack_ng::cron': }
     ~> class { '::sugarcrmstack_ng::service': }
     -> Class['::sugarcrmstack_ng']
   }
