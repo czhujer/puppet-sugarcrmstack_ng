@@ -19,7 +19,7 @@ class sugarcrmstack_ng::cron (
   $cron_purge_users_crontabs = $sugarcrmstack_ng::cron_purge_users_crontabs,
 ) {
 
-  if ($cron_server_enable){
+  if ($cron_enable){
 
     if ($sugar_version == '7.5' or $sugar_version == '7.9'){
 
