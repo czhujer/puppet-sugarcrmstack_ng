@@ -138,10 +138,6 @@ mod 'gpg_key',
 #  :branch => 'master'
   :tag => '0.0.4'
 
-mod 'datacat',
-  :git => 'https://github.com/richardc/puppet-datacat',
-  :tag => '0.6.2'
-
 #mod 'concat',
 #  :git => 'https://github.com/puppetlabs/puppetlabs-concat',
 #  :tag => '4.0.1'
