@@ -31,5 +31,8 @@ fixtures:
     elasticsearch:
       repo: elastic/elasticsearch
       ref: 5.4.3
+    datacat:
+      repo: richardc/datacat
+      ref: 0.6.2
   symlinks:
     sugarcrmstack_ng: "#{source_dir}"
