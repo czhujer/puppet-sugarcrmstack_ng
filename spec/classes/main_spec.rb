@@ -152,6 +152,21 @@ describe 'sugarcrmstack_ng' do
 
           it { should_not contain_service('mysqld') }
 
+          # NOT EXISTS elasticsearch_server part
+          it { should_not contain_class('java') }
+          it { should_not contain_class('elasticsearch::config') }
+          it { should_not contain_class('elasticsearch::repo') }
+          it { should_not contain_class('elasticsearch') }
+          it { should_not contain_class('elasticsearch::package') }
+          it { should_not contain_class('elasticsearch::config').that_requires('Class[elasticsearch::package]') }
+
+          # Base directories
+          it { should_not contain_file('/etc/elasticsearch') }
+          it { should_not contain_file('/usr/share/elasticsearch') }
+
+          # Base package
+          it { should_not contain_package('elasticsearch') }
+
         end
 
       end
