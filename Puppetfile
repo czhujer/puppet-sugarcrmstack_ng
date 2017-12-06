@@ -22,7 +22,8 @@ mod 'jenkins',
 #  :git => 'https://github.com/jenkinsci/puppet-jenkins',
 #  :tag => 'v1.7.0'
   :git => 'https://github.com/SugarFactory/puppet-jenkins',
-  :branch => 'master'
+#  :branch => 'master'
+   :tag => 'v1.7.2'
 
 mod 'archive',
   :git => 'https://github.com/voxpupuli/puppet-archive',
@@ -58,7 +59,7 @@ mod 'vcsrepo',
 
 mod 'mysql',
   :git => 'https://github.com/puppetlabs/puppetlabs-mysql',
-  :tag => '3.11.0'
+  :tag => '5.1.0'
 
 mod 'xtrabackup',
   :git => 'https://github.com/abstractitptyltd/puppet-xtrabackup',
@@ -126,7 +127,7 @@ mod 'nodejs',
 
 mod 'zabbixagent',
   :git => 'https://github.com/H-Software/puppet-zabbixagent',
-  :tag => 'v3.1.0'
+  :tag => 'v3.4.0'
 
 mod 'sugarcrmstack',
 #  :git => 'git@github.com:SugarFactory/puppet-sugarcrm-stack.git'
@@ -134,17 +135,18 @@ mod 'sugarcrmstack',
 
 mod 'gpg_key',
   :git => 'https://github.com/treydock/puppet-gpg_key',
-  :branch => 'master'
-#  ,
-#  :tag => '0.0.3'
+#  :branch => 'master'
+  :tag => '0.0.4'
 
 mod 'datacat',
   :git => 'https://github.com/richardc/puppet-datacat',
   :tag => '0.6.2'
 
-mod 'concat',
-  :git => 'https://github.com/puppetlabs/puppetlabs-concat',
-  :tag => '4.0.1'
+#mod 'concat',
+#  :git => 'https://github.com/puppetlabs/puppetlabs-concat',
+#  :tag => '4.0.1'
+
+mod 'puppetlabs-concat', '4.1.1'
 
 mod 'git',
   :git => 'https://github.com/puppetlabs/puppetlabs-git',
@@ -152,44 +154,52 @@ mod 'git',
 
 mod 'apache',
   :git => 'https://github.com/puppetlabs/puppetlabs-apache.git',
-  :tag => '1.11.1'
+  :tag => '2.3.0'
 
 mod 'php',
   :git => 'https://github.com/thias/puppet-php.git',
-  :tag => '1.2.0'
+  :tag => '1.2.1'
 
-mod 'nginx',
-  :git => 'https://github.com/jfryman/puppet-nginx',
-  :tag => 'v0.3.0'
+#mod 'nginx',
+#  :git => 'https://github.com/jfryman/puppet-nginx',
+#  :tag => 'v0.3.0'
 
-mod 'cron',
-  :git => 'https://github.com/torrancew/puppet-cron',
-  :tag => 'v0.2.0'
+mod 'puppet-nginx', '0.9.0'
+
+#mod 'cron',
+#  :git => 'https://github.com/torrancew/puppet-cron',
+#  :tag => 'v0.2.0'
+
+mod 'torrancew-cron', '0.2.1'
 
 mod 'maestrodev-wget', '1.7.3'
 
 mod 'arioch-redis', '3.1.0'
 
-mod 'camptocamp-systemd', '1.0.0'
+mod 'camptocamp-systemd', '1.1.1'
 
 mod 'sugarcrmstack_ng',
   :git => 'https://github.com/SugarFactory/puppet-sugarcrmstack_ng',
-  :tag => 'v0.3'
+  :tag => 'v0.4'
 
 mod 'herculesteam-augeasproviders_core', '2.1.3'
 
 mod 'herculesteam-augeasproviders_sysctl', '2.2.0'
 
-mod 'puppet-zabbix', '5.0.1'
+mod 'puppet-zabbix', '6.0.0'
 
-mod 'puppetlabs-postgresql', '4.8.0'
+mod 'puppetlabs-postgresql', '5.2.1'
 
 mod 'puppetlabs-pe_gem', '0.2.0'
 
 mod 'puppetlabs-ruby', '0.6.0'
 
-mod 'puppet-selinux', '1.3.0'
+mod 'puppet-selinux', '1.4.0'
 
 mod 'puppetlabs-transition', '0.1.1'
 
+mod 'puppetlabs-translate', '1.1.0'
+
 mod 'elastic-elasticsearch', '5.4.3'
+
+mod 'richardc/datacat', '0.6.2'
