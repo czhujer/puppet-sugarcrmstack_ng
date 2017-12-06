@@ -22,8 +22,8 @@ fixtures:
       repo: "https://github.com/puppetlabs/puppetlabs-mysql"
       ref: "5.1.0"
     java:
-      :repo "https://github.com/puppetlabs/puppetlabs-java"
-      :ref "2.1.1"
+      repo: "https://github.com/puppetlabs/puppetlabs-java"
+      ref: "2.1.1"
   forge_modules:
     elasticsearch:
       repo: elastic/elasticsearch
