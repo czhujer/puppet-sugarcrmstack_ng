@@ -23,10 +23,8 @@ class sugarcrmstack_ng::cron (
 
     if ($sugar_version == '7.5' or $sugar_version == '7.9'){
 
-      case $operatingsystem {
-        ubuntu: {$package_name = 'cron' $service_name = 'cron'}
-        gentoo: {$package_name = 'vixie-cron' $service_name = 'vixie-cron' $hasstatus = 'false' $status = 'pgrep cron'}
-        redhat, scientific, centos: {$package_name = 'crontabs' $service_name = 'crond'}
+      case $::operatingsystem {
+        'redhat', 'scientific', 'centos': {$package_name = 'crontabs' $service_name = 'crond'}
         default: {fail('Unable to find appropriate cron package for this OS.')}
       }
 
