@@ -9,7 +9,16 @@ describe 'sugarcrmstack_ng' do
         end
 
         #fixes for composer and mysql (root_home)
-        let(:facts) { facts.merge( { 'composer_home' => '~', 'execs' => {}, 'root_home' => '/root' } ) }
+        case facts[:osfamily]
+        when 'RedHat'
+          case facts[:operatingsystemmajrelease]
+            when '6'
+              #:concat_basedir            => '/dne',
+              let(:facts) { facts.merge( { 'composer_home' => '~', 'execs' => {}, 'root_home' => '/root' } ) }
+            else
+              let(:facts) { facts.merge( { 'composer_home' => '~', 'execs' => {}, 'root_home' => '/root' } ) }
+            end
+        end
 
         context "sugarcrmstack_ng class without any parameters" do
           it { is_expected.to compile.with_all_deps }
@@ -68,6 +77,13 @@ describe 'sugarcrmstack_ng' do
           it { should_not contain_package('mysql-server').with(ensure: "installed") }
 
           it { should_not contain_service('mysqld') }
+
+          # NOT EXISTS elasticsearch_server part
+#          it { should_not contain_class('java') }
+#          it { should_not contain_class('elasticsearch::config') }
+#          it { should_not contain_class('elasticsearch::repo') }
+
+#          it { should_not contain_package('elasticsearch') }
 
         end
 
