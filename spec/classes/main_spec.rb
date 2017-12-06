@@ -13,8 +13,11 @@ describe 'sugarcrmstack_ng' do
         when 'RedHat'
           case facts[:operatingsystemmajrelease]
             when '6'
-              #:concat_basedir            => '/dne',
-              let(:facts) { facts.merge( { 'composer_home' => '~', 'execs' => {}, 'root_home' => '/root' } ) }
+              let(:facts) { facts.merge( { 'composer_home' => '~',
+                                           'execs' => {},
+                                           'root_home' => '/root',
+                                           'concat_basedir' => '/root'
+                                          } ) }
             else
               let(:facts) { facts.merge( { 'composer_home' => '~', 'execs' => {}, 'root_home' => '/root' } ) }
             end
