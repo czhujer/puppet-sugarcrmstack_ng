@@ -8,18 +8,18 @@ fixtures:
       ref: "1.5.0"
     apache:
       repo: "https://github.com/puppetlabs/puppetlabs-apache"
-      ref: "1.11.1"
+      ref: "2.3.0"
     concat:
       repo: "https://github.com/puppetlabs/puppetlabs-concat"
-      ref: "4.0.1"
+      ref: "4.1.1"
     php:
       repo: "https://github.com/thias/puppet-php"
-      ref: "1.2.0"
+      ref: "1.2.1"
     vcsrepo: "https://github.com/puppetlabs/puppetlabs-vcsrepo"
     composer: "https://github.com/tPl0ch/puppet-composer"
     git:    "https://github.com/puppetlabs/puppetlabs-git"
     mysql:
       repo: "https://github.com/puppetlabs/puppetlabs-mysql"
-      ref: "3.11.0"
+      ref: "5.1.0"
   symlinks:
     sugarcrmstack_ng: "#{source_dir}"
