@@ -9,19 +9,16 @@ describe 'sugarcrmstack_ng' do
         end
 
         #fixes for composer and mysql (root_home)
-        case facts[:osfamily]
-        when 'RedHat'
-          case facts[:operatingsystemmajrelease]
-            when '6'
-              let(:facts) { facts.merge( { 'composer_home' => '~',
-                                           'execs' => {},
-                                           'root_home' => '/root',
-                                           'concat_basedir' => '/root'
-                                          } ) }
-            else
+        case facts[:puppetversion]
+          when '3.8.7'
+            let(:facts) { facts.merge( { 'composer_home' => '~',
+                                       'execs' => {},
+                                       'root_home' => '/root',
+                                       'concat_basedir' => '/root'
+                                      } ) }
+          else
               let(:facts) { facts.merge( { 'composer_home' => '~', 'execs' => {}, 'root_home' => '/root' } ) }
-            end
-        end
+          end
 
         context "sugarcrmstack_ng class without any parameters" do
           it { is_expected.to compile.with_all_deps }
