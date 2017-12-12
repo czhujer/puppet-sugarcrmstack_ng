@@ -20,6 +20,21 @@ class sugarcrmstack_ng::config {
       }
 
     }
+    elsif ($::operatingsystemmajrelease in ['6']){
+
+      if ( defined(Yumrepo['ius-archive']) ){
+        warning('Possible override of value "enable" in repo ius-archive')
+      }
+
+      ini_setting { 'ius-archive enable':
+        ensure  => present,
+        path    => '/etc/yum.repos.d/ius-archive.repo',
+        section => 'ius-archive',
+        setting => 'enabled',
+        value   => '1',
+      }
+
+    }
   }
 
   #enable/disable mysql repos
