@@ -27,10 +27,10 @@ class sugarcrmstack_ng::install {
       }
     }
     elsif ($::operatingsystemmajrelease in ['6']){
-      if ( !defined(Yumrepo['remi-php56']) and !defined(Package['remi-release'])){
-        package { 'remi-release':
+      if ( !defined(Yumrepo['ius']) and !defined(Yumrepo['ius-archive']) and !defined(Package['ius-release']) ){
+        package { 'ius-release':
           ensure   => 'installed',
-          source   => 'http://rpms.famillecollet.com/enterprise/remi-release-6.rpm',
+          source   => 'http://dl.iuscommunity.org/pub/ius/archive/CentOS/6/x86_64/ius-release-1.0-11.ius.centos6.noarch.rpm',
           provider => 'rpm',
         }
       }

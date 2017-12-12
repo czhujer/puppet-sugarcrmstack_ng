@@ -6,7 +6,7 @@ class sugarcrmstack_ng::config {
 
   #enable remi-php56 repo
   if ($::sugarcrmstack_ng::apache_php_enable){
-    if ($::operatingsystemmajrelease in ['7'] or $::operatingsystemmajrelease in ['6']){
+    if ($::operatingsystemmajrelease in ['7']){
       if ( defined(Yumrepo['remi-php56']) ){
         warning('Possible override of value "enable" in repo remi-php56')
       }
@@ -15,6 +15,21 @@ class sugarcrmstack_ng::config {
         ensure  => present,
         path    => '/etc/yum.repos.d/remi.repo',
         section => 'remi-php56',
+        setting => 'enabled',
+        value   => '1',
+      }
+
+    }
+    elsif ($::operatingsystemmajrelease in ['6']){
+
+      if ( defined(Yumrepo['ius-archive']) ){
+        warning('Possible override of value "enable" in repo ius-archive')
+      }
+
+      ini_setting { 'ius-archive enable':
+        ensure  => present,
+        path    => '/etc/yum.repos.d/ius-archive.repo',
+        section => 'ius-archive',
         setting => 'enabled',
         value   => '1',
       }
