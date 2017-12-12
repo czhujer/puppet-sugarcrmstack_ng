@@ -152,42 +152,42 @@ class sugarcrmstack_ng (
   #validate_string($redis_server_ensure)
 
   # run
-  contain sugarcrmstack_ng::install
-  contain sugarcrmstack_ng::config
+  contain ::sugarcrmstack_ng::install
+  contain ::sugarcrmstack_ng::config
 
   Class['sugarcrmstack_ng::install']
   -> Class['sugarcrmstack_ng::config']
 
   if ($apache_php_enable) {
-    contain sugarcrmstack_ng::apache_php
+    contain ::sugarcrmstack_ng::apache_php
 
     Class['sugarcrmstack_ng::config']
     -> Class['sugarcrmstack_ng::apache_php']
   }
 
   if ($mysql_server_enable) {
-    contain sugarcrmstack_ng::mysql_server
+    contain ::sugarcrmstack_ng::mysql_server
 
     Class['sugarcrmstack_ng::config']
     -> Class['sugarcrmstack_ng::mysql_server']
   }
 
   if ($elasticsearch_server_enable) {
-    contain sugarcrmstack_ng::elasticsearch_server
+    contain ::sugarcrmstack_ng::elasticsearch_server
 
     Class['sugarcrmstack_ng::config']
     -> Class['sugarcrmstack_ng::elasticsearch_server']
   }
 
   if ($cron_enable){
-    contain sugarcrmstack_ng::cron
+    contain ::sugarcrmstack_ng::cron
 
     Class['sugarcrmstack_ng::config']
     -> Class['sugarcrmstack_ng::cron']
   }
 
   if ($redis_server_enable){
-    contain sugarcrmstack_ng::redis_server
+    contain ::sugarcrmstack_ng::redis_server
 
     Class['sugarcrmstack_ng::config']
     -> Class['sugarcrmstack_ng::redis_server']
