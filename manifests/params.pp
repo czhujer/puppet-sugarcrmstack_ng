@@ -28,6 +28,9 @@ class sugarcrmstack_ng::params {
                                       'authn_file', 'autoindex', 'dav', 'dav_fs', 'dir', 'negotiation', 'setenvif', 'auth_basic',
                                       'authz_user', 'authz_groupfile', 'env', 'suexec']
 
+        $apache_php_php_pkg_version = '5.6.32'
+        $apache_php_php_pkg_build = '1'
+
       }
       else{
         $utils_packages = ['iotop', 'iftop', 'iptraf', 'sysstat',
@@ -44,6 +47,9 @@ class sugarcrmstack_ng::params {
                                       'authn_file', 'autoindex', 'dav', 'dav_fs', 'dir', 'negotiation', 'setenvif', 'auth_basic',
                                       'authz_user', 'authz_groupfile', 'env', 'authz_default', 'suexec']
 
+        $apache_php_php_pkg_version = '5.6.32'
+        $apache_php_php_pkg_build = '2'
+
       }
     }
     default: {
@@ -51,8 +57,6 @@ class sugarcrmstack_ng::params {
     }
   }
   #
-  $apache_php_php_pkg_version = '5.6.32'
-  $apache_php_php_pkg_build = '1'
   $apache_php_php_error_reporting = 'E_ALL & ~E_DEPRECATED & ~E_STRICT & ~E_NOTICE & ~E_WARNING'
   $apache_php_apache_https_port = '443'
   $apache_php_apache_http_port = '80'
