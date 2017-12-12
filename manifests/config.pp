@@ -6,7 +6,7 @@ class sugarcrmstack_ng::config {
 
   #enable remi-php56 repo
   if ($::sugarcrmstack_ng::apache_php_enable){
-    if ($::operatingsystemmajrelease in ['7']){
+    if ($::operatingsystemmajrelease in ['7'] or $::operatingsystemmajrelease in ['6']){
       if ( defined(Yumrepo['remi-php56']) ){
         warning('Possible override of value "enable" in repo remi-php56')
       }
