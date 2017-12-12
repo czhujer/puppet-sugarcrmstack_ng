@@ -34,5 +34,8 @@ fixtures:
     datacat:
       repo: richardc/datacat
       ref: 0.6.2
+    redis:
+      repo: arioch/redis
+      ref: 3.1.0
   symlinks:
     sugarcrmstack_ng: "#{source_dir}"

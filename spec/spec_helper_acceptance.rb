@@ -24,6 +24,7 @@ RSpec.configure do |c|
       on host, puppet('module', 'install', 'puppetlabs-java'), { :acceptable_exit_codes => [0,1] }
       on host, puppet('module', 'install', 'voxpupuli-puppet-yum'), { :acceptable_exit_codes => [0,1] }
       on host, puppet('module', 'install', 'richardc/datacat'), { :acceptable_exit_codes => [0,1] }
+      on host, puppet('module', 'install', 'arioch/redis'), { :acceptable_exit_codes => [0,1] }
     end
   end
 end
