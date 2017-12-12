@@ -8,6 +8,7 @@ class sugarcrmstack_ng::params {
   $mysql_server_enable = false
   $elasticsearch_server_enable = false
   $cron_enable       = false
+  $redis_server_enable = false
   $sugar_version     = '7.9'
   case $::osfamily {
     'RedHat', 'Amazon': {
@@ -103,4 +104,6 @@ class sugarcrmstack_ng::params {
   $cron_purge_users_crontabs = true
   $cron_service_enable = true
   $cron_service_ensure = true
+  #
+  $redis_server_ensure = 'installed'
 }
