@@ -26,6 +26,15 @@ class sugarcrmstack_ng::install {
         }
       }
     }
+    elsif ($::operatingsystemmajrelease in ['6']){
+      if ( !defined(Yumrepo['remi-php56']) and !defined(Package['remi-release'])){
+        package { 'remi-release':
+          ensure   => 'installed',
+          source   => 'http://rpms.famillecollet.com/enterprise/remi-release-6.rpm',
+          provider => 'rpm',
+        }
+      }
+    }
   }
 
   # install mysql/percona repo
