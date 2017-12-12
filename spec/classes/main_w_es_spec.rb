@@ -23,7 +23,7 @@ describe 'sugarcrmstack_ng' do
           it { is_expected.to contain_class('sugarcrmstack_ng::install') }
 #          it { is_expected.to contain_class('sugarcrmstack_ng::install').that_comes_before('sugarcrmstack_ng::config') }
           it { is_expected.to contain_class('sugarcrmstack_ng::config') }
-          it { is_expected.to contain_class('sugarcrmstack_ng::service') }
+#          it { is_expected.to contain_class('sugarcrmstack_ng::service') }
 #          it { is_expected.to contain_class('sugarcrmstack_ng::service').that_subscribes_to('sugarcrmstack_ng::config') }
 
           it { should contain_class('sugarcrmstack_ng::apache_php') }
