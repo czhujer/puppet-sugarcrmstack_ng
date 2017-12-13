@@ -18,6 +18,10 @@ class sugarcrmstack_ng::memcached_server (
   $memcached_server_max_memory = $sugarcrmstack_ng::memcached_server_max_memory,
   $memcached_service_manage = $sugarcrmstack_ng::memcached_service_manage,
   $memcached_server_pkg_ensure = $sugarcrmstack_ng::memcached_server_pkg_ensure,
+  #
+  $memcached_php_module_handle = $sugarcrmstack_ng::memcached_php_module_handle,
+  $memcached_php_module_name   = $sugarcrmstack_ng::memcached_php_module_name,
+  $memcached_php_module_ensure = $sugarcrmstack_ng::memcached_php_module_ensure,
 ) {
 
   if ($memcached_server_enable){
@@ -57,11 +61,12 @@ class sugarcrmstack_ng::memcached_server (
 #                notify   => Service["httpd"],
 #        }
 
-#        package { $memcache_module_name2:
-#                ensure   => "absent",
-#                require  => $pkg_require,
-#                notify   => Service["httpd"],
-#        }
+        if (memcached_php_module_handle) {
+          package { $memcache_module_name:
+            ensure => $memcache_module_ensure,
+            notify => Service['httpd'],
+          }
+        }
 
     }
     else{

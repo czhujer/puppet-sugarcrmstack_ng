@@ -33,6 +33,8 @@ class sugarcrmstack_ng::params {
         $apache_php_php_pkg_version = '5.6.32'
         $apache_php_php_pkg_build = '1'
 
+        $memcached_php_module_name = 'php-pecl-memcache'
+
       }
       else{
         $utils_packages = ['iotop', 'iftop', 'iptraf', 'sysstat',
@@ -52,6 +54,7 @@ class sugarcrmstack_ng::params {
         $apache_php_php_pkg_version = '5.6.32'
         $apache_php_php_pkg_build = '2'
 
+        $memcached_php_module_name = 'php56u-pecl-memcache'
       }
     }
     default: {
@@ -112,4 +115,7 @@ class sugarcrmstack_ng::params {
   $memcached_server_max_memory = 32
   $memcached_service_manage = true
   $memcached_server_pkg_ensure = 'present'
+  #
+  $memcached_php_module_handle = true
+  $memcached_php_module_ensure = 'installed'
 }

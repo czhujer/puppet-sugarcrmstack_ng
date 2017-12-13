@@ -78,6 +78,15 @@ class sugarcrmstack_ng (
   #
   $redis_server_ensure = $sugarcrmstack_ng::params::redis_server_ensure,
   #
+  $memcached_install_top_cli   = $sugarcrmstack_ng::params::memcached_install_top_cli,
+  $memcached_server_max_memory = $sugarcrmstack_ng::params::memcached_server_max_memory,
+  $memcached_service_manage    = $sugarcrmstack_ng::params::memcached_service_manage,
+  $memcached_server_pkg_ensure = $sugarcrmstack_ng::params::memcached_server_pkg_ensure,
+  #
+  $memcached_php_module_handle = $sugarcrmstack_ng::params::memcached_php_module_handle,
+  $memcached_php_module_name   = $sugarcrmstack_ng::params::memcached_php_module_name,
+  $memcached_php_module_ensure = $sugarcrmstack_ng::params::memcached_php_module_ensure,
+  #
 ) inherits sugarcrmstack_ng::params {
 
   # validate general parameters
@@ -157,6 +166,10 @@ class sugarcrmstack_ng (
   validate_integer($memcached_server_max_memory)
   validate_bool($memcached_service_manage)
   #$memcached_server_pkg_ensure
+
+  #$memcached_php_module_handle
+  #$memcached_php_module_name
+  #$memcached_php_module_ensure
 
   # run
   contain ::sugarcrmstack_ng::install
