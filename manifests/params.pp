@@ -8,6 +8,8 @@ class sugarcrmstack_ng::params {
   $mysql_server_enable = false
   $elasticsearch_server_enable = false
   $cron_enable       = false
+  $redis_server_enable = false
+  $memcached_server_enable = false
   $sugar_version     = '7.9'
   case $::osfamily {
     'RedHat', 'Amazon': {
@@ -28,6 +30,11 @@ class sugarcrmstack_ng::params {
                                       'authn_file', 'autoindex', 'dav', 'dav_fs', 'dir', 'negotiation', 'setenvif', 'auth_basic',
                                       'authz_user', 'authz_groupfile', 'env', 'suexec']
 
+        $apache_php_php_pkg_version = '5.6.32'
+        $apache_php_php_pkg_build = '1'
+
+        $memcached_php_module_name = 'php-pecl-memcache'
+
       }
       else{
         $utils_packages = ['iotop', 'iftop', 'iptraf', 'sysstat',
@@ -44,6 +51,10 @@ class sugarcrmstack_ng::params {
                                       'authn_file', 'autoindex', 'dav', 'dav_fs', 'dir', 'negotiation', 'setenvif', 'auth_basic',
                                       'authz_user', 'authz_groupfile', 'env', 'authz_default', 'suexec']
 
+        $apache_php_php_pkg_version = '5.6.32'
+        $apache_php_php_pkg_build = '2'
+
+        $memcached_php_module_name = 'php56u-pecl-memcache'
       }
     }
     default: {
@@ -51,8 +62,6 @@ class sugarcrmstack_ng::params {
     }
   }
   #
-  $apache_php_php_pkg_version = '5.6.32'
-  $apache_php_php_pkg_build = '1'
   $apache_php_php_error_reporting = 'E_ALL & ~E_DEPRECATED & ~E_STRICT & ~E_NOTICE & ~E_WARNING'
   $apache_php_apache_https_port = '443'
   $apache_php_apache_http_port = '80'
@@ -99,4 +108,14 @@ class sugarcrmstack_ng::params {
   $cron_purge_users_crontabs = true
   $cron_service_enable = true
   $cron_service_ensure = true
+  #
+  $redis_server_ensure = 'installed'
+  #
+  $memcached_install_top_cli = false
+  $memcached_server_max_memory = 32
+  $memcached_service_manage = true
+  $memcached_server_pkg_ensure = 'present'
+  #
+  $memcached_php_module_handle = false
+  $memcached_php_module_ensure = 'installed'
 }
