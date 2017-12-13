@@ -9,6 +9,7 @@ class sugarcrmstack_ng::params {
   $elasticsearch_server_enable = false
   $cron_enable       = false
   $redis_server_enable = false
+  $memcached_server_enable = false
   $sugar_version     = '7.9'
   case $::osfamily {
     'RedHat', 'Amazon': {
@@ -106,4 +107,9 @@ class sugarcrmstack_ng::params {
   $cron_service_ensure = true
   #
   $redis_server_ensure = 'installed'
+  #
+  $memcached_install_top_cli = true
+  $memcached_server_max_memory = 32
+  $memcached_service_manage = true
+  $memcached_server_pkg_ensure = 'present'
 }
