@@ -27,6 +27,9 @@ fixtures:
     yum:
       repo: "https://github.com/voxpupuli/puppet-yum"
       ref: "v2.0.1"
+    memcached:
+      repo: "https://github.com/saz/puppet-memcached"
+      ref: "v2.8.1"
   forge_modules:
     elasticsearch:
       repo: elastic/elasticsearch

@@ -19,6 +19,7 @@ class sugarcrmstack_ng (
   $elasticsearch_server_enable = $sugarcrmstack_ng::params::elasticsearch_server_enable,
   $cron_enable = $sugarcrmstack_ng::params::cron_enable,
   $redis_server_enable = $sugarcrmstack_ng::params::redis_server_enable,
+  $memcached_server_enable = $sugarcrmstack_ng::params::memcached_server_enable,
   #
   $sugar_version = $sugarcrmstack_ng::params::sugar_version,
   #
@@ -77,6 +78,15 @@ class sugarcrmstack_ng (
   #
   $redis_server_ensure = $sugarcrmstack_ng::params::redis_server_ensure,
   #
+  $memcached_install_top_cli   = $sugarcrmstack_ng::params::memcached_install_top_cli,
+  $memcached_server_max_memory = $sugarcrmstack_ng::params::memcached_server_max_memory,
+  $memcached_service_manage    = $sugarcrmstack_ng::params::memcached_service_manage,
+  $memcached_server_pkg_ensure = $sugarcrmstack_ng::params::memcached_server_pkg_ensure,
+  #
+  $memcached_php_module_handle = $sugarcrmstack_ng::params::memcached_php_module_handle,
+  $memcached_php_module_name   = $sugarcrmstack_ng::params::memcached_php_module_name,
+  $memcached_php_module_ensure = $sugarcrmstack_ng::params::memcached_php_module_ensure,
+  #
 ) inherits sugarcrmstack_ng::params {
 
   # validate general parameters
@@ -88,6 +98,7 @@ class sugarcrmstack_ng (
   validate_bool($elasticsearch_server_enable)
   validate_bool($cron_enable)
   validate_bool($redis_server_enable)
+  validate_bool($memcached_server_enable)
 
   validate_string($sugar_version)
 
@@ -151,6 +162,15 @@ class sugarcrmstack_ng (
 
   #validate_string($redis_server_ensure)
 
+  validate_bool($memcached_install_top_cli)
+  validate_integer($memcached_server_max_memory)
+  validate_bool($memcached_service_manage)
+  #$memcached_server_pkg_ensure
+
+  #$memcached_php_module_handle
+  #$memcached_php_module_name
+  #$memcached_php_module_ensure
+
   # run
   contain ::sugarcrmstack_ng::install
   contain ::sugarcrmstack_ng::config
@@ -191,6 +211,13 @@ class sugarcrmstack_ng (
 
     Class['sugarcrmstack_ng::config']
     -> Class['sugarcrmstack_ng::redis_server']
+  }
+
+  if ($memcached_server_enable){
+    contain ::sugarcrmstack_ng::memcached_server
+
+    Class['sugarcrmstack_ng::config']
+    -> Class['sugarcrmstack_ng::memcached_server']
   }
 
 }
