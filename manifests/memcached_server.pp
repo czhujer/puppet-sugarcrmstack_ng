@@ -50,10 +50,10 @@ class sugarcrmstack_ng::memcached_server (
 
       if !defined(File['/root/scripts']) {
         file { '/root/scripts':
-          ensure  => directory,
-          mode    => '0755',
-          group   => 'root',
-          owner   => 'root',
+          ensure => directory,
+          mode   => '0755',
+          group  => 'root',
+          owner  => 'root',
         }
       }
 
