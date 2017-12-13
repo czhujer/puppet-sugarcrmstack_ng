@@ -27,12 +27,12 @@ class sugarcrmstack_ng::memcached_server (
   if ($sugar_version == '7.5' or $sugar_version == '7.9'){
 
     if ($memcached_server_enable){
-        class { '::memcached':
-          max_memory     => $memcached_server_max_memory,
-          listen_ip      => '127.0.0.1',
-          package_ensure => $memcached_server_pkg_ensure,
-          service_manage => $memcached_service_manage,
-        }
+      class { '::memcached':
+        max_memory     => $memcached_server_max_memory,
+        listen_ip      => '127.0.0.1',
+        package_ensure => $memcached_server_pkg_ensure,
+        service_manage => $memcached_service_manage,
+      }
     }
 
     if (memcached_php_module_handle) {
