@@ -36,8 +36,8 @@ class sugarcrmstack_ng::memcached_server (
     }
 
     if (memcached_php_module_handle) {
-      package { $memcache_php_module_name:
-        ensure => $memcache_php_module_ensure,
+      package { $memcached_php_module_name:
+        ensure => $memcached_php_module_ensure,
         notify => Service['httpd'],
       }
     }
