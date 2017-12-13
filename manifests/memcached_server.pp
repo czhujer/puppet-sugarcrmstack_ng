@@ -24,80 +24,53 @@ class sugarcrmstack_ng::memcached_server (
   $memcached_php_module_ensure = $sugarcrmstack_ng::memcached_php_module_ensure,
 ) {
 
-  if ($memcached_server_enable){
+  if ($sugar_version == '7.5' or $sugar_version == '7.9'){
 
-    if ($sugar_version == '7.5' or $sugar_version == '7.9'){
-
+    if ($memcached_server_enable){
         class { '::memcached':
             max_memory     => $memcached_server_max_memory,
             listen_ip      => '127.0.0.1',
             package_ensure => $memcached_server_pkg_ensure,
             service_manage => $memcached_service_manage,
         }
-
-#        if($memcached_module_suffix == "memcache"){
-#            $memcache_module_name = "${memcache_module_prefix}-pecl-memcache"
-#            $memcache_module_name2 = "${memcache_module_prefix}-pecl-memcached"
-#        }
-#        elsif($memcached_module_suffix == "memcached"){
-#            $memcache_module_name = "${memcache_module_prefix}-pecl-memcached"
-#            $memcache_module_name2 = "${memcache_module_prefix}-pecl-memcache"
-#
-#            package { "libmemcached-last":
-#                ensure   => "installed",
-#                require  => $pkg_require,
-#                before   => Package[$memcache_module_name],
-#            }
-#
-#        }
-#        else{
-#            warning "Unsupported suffix for memcached library support"
-#            warning "Please install php module manualy"
-#        }
-
-#        package { $memcache_module_name:
-#                ensure   => "installed",
-#                require  => $pkg_require,
-#                notify   => Service["httpd"],
-#        }
-
-        if (memcached_php_module_handle) {
-          package { $memcache_module_name:
-            ensure => $memcache_module_ensure,
-            notify => Service['httpd'],
-          }
-        }
-
-    }
-    else{
-      fail("Class['sugarcrmstack_ng::memcached_server']: This class is not compatible with this sugar_version (${sugar_version})")
-    }
-  }
-
-  if ($memcached_install_top_cli){
-
-    package { 'perl-Time-HiRes':
-      ensure => installed,
     }
 
-    if !defined(File['/root/scripts']) {
-      file { '/root/scripts':
-        ensure  => directory,
-        mode    => '0755',
-        group   => 'root',
-        owner   => 'root',
+    if (memcached_php_module_handle) {
+      package { $memcache_module_name:
+        ensure => $memcache_module_ensure,
+        notify => Service['httpd'],
       }
     }
 
-    file { 'memcache-top':
-      ensure  => present,
-      path    => '/root/scripts/memcache-top-v0.6',
-      content => template('sugarcrmstack_ng/memcache-top-v0.6.erb'),
-      recurse => true,
-      owner   => 'root',
-      group   => 'root',
-      mode    => '0755',
-      require => File['/root/scripts'],
+    if ($memcached_install_top_cli){
+
+      package { 'perl-Time-HiRes':
+        ensure => installed,
+      }
+
+      if !defined(File['/root/scripts']) {
+        file { '/root/scripts':
+          ensure  => directory,
+          mode    => '0755',
+          group   => 'root',
+          owner   => 'root',
+        }
+      }
+
+      file { 'memcache-top':
+        ensure  => present,
+        path    => '/root/scripts/memcache-top-v0.6',
+        content => template('sugarcrmstack_ng/memcache-top-v0.6.erb'),
+        recurse => true,
+        owner   => 'root',
+        group   => 'root',
+        mode    => '0755',
+        require => File['/root/scripts'],
+      }
     }
+
+  }
+  else{
+      fail("Class['sugarcrmstack_ng::memcached_server']: This class is not compatible with this sugar_version (${sugar_version})")
   }
 }

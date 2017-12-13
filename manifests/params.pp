@@ -111,11 +111,11 @@ class sugarcrmstack_ng::params {
   #
   $redis_server_ensure = 'installed'
   #
-  $memcached_install_top_cli = true
+  $memcached_install_top_cli = false
   $memcached_server_max_memory = 32
   $memcached_service_manage = true
   $memcached_server_pkg_ensure = 'present'
   #
-  $memcached_php_module_handle = true
+  $memcached_php_module_handle = false
   $memcached_php_module_ensure = 'installed'
 }
