@@ -93,6 +93,14 @@ describe 'sugarcrmstack_ng' do
           # Base package
           it { should_not contain_package('elasticsearch') }
 
+          # NOT EXISTS memcached_server part
+          it { is_expected.not_to contain_class('memcached') }
+          it { is_expected.not_to contain_class('memcached::params') }
+          it { is_expected.not_to contain_package('memcached').with_ensure('present') }
+
+          it { is_expected.not_to contain_firewall('100_tcp_11211_for_memcached') }
+          it { is_expected.not_to contain_firewall('100_udp_11211_for_memcached') }
+
         end
 
         context "sugarcrmstack_ng class without apache_php" do
@@ -166,6 +174,14 @@ describe 'sugarcrmstack_ng' do
 
           # Base package
           it { should_not contain_package('elasticsearch') }
+
+          # NOT EXISTS memcached_server part
+          it { is_expected.not_to contain_class('memcached') }
+          it { is_expected.not_to contain_class('memcached::params') }
+          it { is_expected.not_to contain_package('memcached').with_ensure('present') }
+
+          it { is_expected.not_to contain_firewall('100_tcp_11211_for_memcached') }
+          it { is_expected.not_to contain_firewall('100_udp_11211_for_memcached') }
 
         end
 

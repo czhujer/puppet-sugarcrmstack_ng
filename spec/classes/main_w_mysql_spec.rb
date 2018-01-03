@@ -27,7 +27,6 @@ describe 'sugarcrmstack_ng' do
 #          it { is_expected.to contain_class('sugarcrmstack_ng::service').that_subscribes_to('sugarcrmstack_ng::config') }
 
           it { should contain_class('sugarcrmstack_ng::apache_php') }
-          it { should contain_class('sugarcrmstack_ng::mysql_server') }
 
           # generic part
           ['apachetop', 'bind-utils', 'htop', 'iftop',
@@ -67,6 +66,29 @@ describe 'sugarcrmstack_ng' do
           it { is_expected.to contain_package('mysql-server').with(ensure: "installed") }
 
           it { is_expected.to contain_service('mysqld') }
+
+          # NOT EXISTS elasticsearch_server part
+          it { should_not contain_class('java') }
+          it { should_not contain_class('elasticsearch::config') }
+          it { should_not contain_class('elasticsearch::repo') }
+          it { should_not contain_class('elasticsearch') }
+          it { should_not contain_class('elasticsearch::package') }
+          it { should_not contain_class('elasticsearch::config').that_requires('Class[elasticsearch::package]') }
+
+          # Base directories
+          it { should_not contain_file('/etc/elasticsearch') }
+          it { should_not contain_file('/usr/share/elasticsearch') }
+
+          # Base package
+          it { should_not contain_package('elasticsearch') }
+
+          # NOT EXISTS memcached_server part
+          it { is_expected.not_to contain_class('memcached') }
+          it { is_expected.not_to contain_class('memcached::params') }
+          it { is_expected.not_to contain_package('memcached').with_ensure('present') }
+
+          it { is_expected.not_to contain_firewall('100_tcp_11211_for_memcached') }
+          it { is_expected.not_to contain_firewall('100_udp_11211_for_memcached') }
 
         end
 
@@ -127,6 +149,29 @@ describe 'sugarcrmstack_ng' do
           it { is_expected.to contain_package('mysql-server').with(ensure: "installed") }
 
           it { is_expected.to contain_service('mysqld') }
+
+          # NOT EXISTS elasticsearch_server part
+          it { should_not contain_class('java') }
+          it { should_not contain_class('elasticsearch::config') }
+          it { should_not contain_class('elasticsearch::repo') }
+          it { should_not contain_class('elasticsearch') }
+          it { should_not contain_class('elasticsearch::package') }
+          it { should_not contain_class('elasticsearch::config').that_requires('Class[elasticsearch::package]') }
+
+          # Base directories
+          it { should_not contain_file('/etc/elasticsearch') }
+          it { should_not contain_file('/usr/share/elasticsearch') }
+
+          # Base package
+          it { should_not contain_package('elasticsearch') }
+
+          # NOT EXISTS memcached_server part
+          it { is_expected.not_to contain_class('memcached') }
+          it { is_expected.not_to contain_class('memcached::params') }
+          it { is_expected.not_to contain_package('memcached').with_ensure('present') }
+
+          it { is_expected.not_to contain_firewall('100_tcp_11211_for_memcached') }
+          it { is_expected.not_to contain_firewall('100_udp_11211_for_memcached') }
 
         end
 

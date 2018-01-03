@@ -11,9 +11,9 @@ describe 'sugarcrmstack_ng' do
         #fixes for composer and mysql (root_home)
         let(:facts) { facts.merge( { 'composer_home' => '~', 'execs' => {}, 'root_home' => '/root' } ) }
 
-        context "sugarcrmstack_ng class with elasticsearch_server_enable" do
+        context "sugarcrmstack_ng class with memcached_server_enable" do
           # switch param
-          let(:params) { {'elasticsearch_server_enable' => true} }
+          let(:params) { {'memcached_server_enable' => true} }
 
           # check compile
           it { is_expected.to compile.with_all_deps }
@@ -27,8 +27,8 @@ describe 'sugarcrmstack_ng' do
 #          it { is_expected.to contain_class('sugarcrmstack_ng::service').that_subscribes_to('sugarcrmstack_ng::config') }
 
           it { should contain_class('sugarcrmstack_ng::apache_php') }
-          it { should contain_class('sugarcrmstack_ng::elasticsearch_server') }
 
+          it { should_not contain_class('sugarcrmstack_ng::elasticsearch_server') }
           it { should_not contain_class('sugarcrmstack_ng::mysql_server') }
 
           # generic part
@@ -55,35 +55,52 @@ describe 'sugarcrmstack_ng' do
               end
           end
 
-          # apache+php part
-          it { should contain_class("apache::params") }
-          it { should contain_package("httpd") }
+          # NOT EXISTS apache+php part
+          it { should_not contain_class("apache::params") }
+          it { should_not contain_package("httpd") }
 
-          # elasticsearch_server part
-          it { should contain_class('java') }
-          it { should contain_class('elasticsearch::config').that_requires('Class[java]') }
-          it { should contain_class('elasticsearch::repo') }
-          it { should contain_class('elasticsearch') }
-          it { should contain_class('elasticsearch::package') }
-          it { should contain_class('elasticsearch::config').that_requires('Class[elasticsearch::package]') }
+          # NOT EXISTS mysql_server part
+          it { should_not contain_class('mysql::server::install') }
+          it { should_not contain_class('mysql::server::config') }
+          it { should_not contain_class('mysql::server::service') }
+          it { should_not contain_class('mysql::server::root_password') }
+          it { should_not contain_class('mysql::server::providers') }
+
+          it { should_not contain_package('mysql-server').with(ensure: "installed") }
+
+          it { should_not contain_service('mysqld') }
+
+          # NOT EXISTS elasticsearch_server part
+          it { should_not contain_class('java') }
+          it { should_not contain_class('elasticsearch::config') }
+          it { should_not contain_class('elasticsearch::repo') }
+          it { should_not contain_class('elasticsearch') }
+          it { should_not contain_class('elasticsearch::package') }
+          it { should_not contain_class('elasticsearch::config').that_requires('Class[elasticsearch::package]') }
 
           # Base directories
-          it { should contain_file('/etc/elasticsearch') }
-          it { should contain_file('/usr/share/elasticsearch') }
+          it { should_not contain_file('/etc/elasticsearch') }
+          it { should_not contain_file('/usr/share/elasticsearch') }
 
           # Base package
-          it { should contain_package('elasticsearch') }
+          it { should_not contain_package('elasticsearch') }
 
-          # Repo
-          it { should contain_yumrepo('elasticsearch') }
+          # memcached_server part
+          it { is_expected.to contain_class('memcached') }
+          it { is_expected.to contain_class('memcached::params') }
+          it { is_expected.to contain_package('memcached').with_ensure('present') }
 
-          # NOT EXISTS memcached_server part
-          it { is_expected.not_to contain_class('memcached') }
-          it { is_expected.not_to contain_class('memcached::params') }
-          it { is_expected.not_to contain_package('memcached').with_ensure('present') }
+          it { is_expected.to contain_firewall('100_tcp_11211_for_memcached') }
+          it { is_expected.to contain_firewall('100_udp_11211_for_memcached') }
 
-          it { is_expected.not_to contain_firewall('100_tcp_11211_for_memcached') }
-          it { is_expected.not_to contain_firewall('100_udp_11211_for_memcached') }
+          it {
+               is_expected.to contain_service('memcached').with(
+                'ensure'     => 'running',
+                'enable'     => true,
+                'hasrestart' => true,
+                'hasstatus'  => false
+               )
+             }
 
         end
 
