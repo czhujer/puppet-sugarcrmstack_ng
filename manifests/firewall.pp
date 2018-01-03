@@ -57,11 +57,11 @@ class sugarcrmstack_ng::firewall::pre {
     iniface => 'lo',
     action  => 'accept',
   }
-  firewall { '003 accept new tcp to dport 22 / SSH':
+  firewall { "003 accept new tcp to dport ${sugarcrmstack_ng::firewall_ssh_port} / SSH":
     chain   => 'INPUT',
     state   => 'NEW',
     proto   => 'tcp',
-    dport   => ['22'],
+    dport   => "${sugarcrmstack_ng::firewall_ssh_port}",
     action  => 'accept',
   }
   firewall { '222 reject all forward':
