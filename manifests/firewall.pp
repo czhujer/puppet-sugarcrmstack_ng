@@ -17,49 +17,6 @@ class sugarcrmstack_ng::firewall (
   $firewall_ssh_port = $sugarcrmstack_ng::firewall_ssh_port,
 ) {
 
-  class my_fw::pre {
-    Firewall {
-      require => undef,
-    }
-    # Default firewall rules
-    firewall { '000 accept related established rules':
-      proto  => 'all',
-      state  => ['RELATED', 'ESTABLISHED'],
-      action => 'accept',
-    }
-    firewall { '001 accept all icmp':
-      proto  => 'icmp',
-      action => 'accept',
-    }->
-    firewall { '002 accept all to lo interface':
-      proto   => 'all',
-      iniface => 'lo',
-      action  => 'accept',
-    }
-    firewall { "003 accept new tcp to dport ${firewall_ssh_port} / SSH":
-      chain   => 'INPUT',
-      state   => 'NEW',
-      proto   => 'tcp',
-      dport   => "${firewall_ssh_port}",
-      action  => 'accept',
-    }
-    firewall { '222 reject all forward':
-      chain   => 'FORWARD',
-      proto   => 'all',
-      action  => 'reject',
-      reject => 'icmp-host-prohibited',
-    }
-  }
-
-  class my_fw::post {
-    firewall { '999 reject all':
-      proto  => 'all',
-      action  => 'reject',
-      reject => 'icmp-host-prohibited',
-      before => undef,
-    }
-  }
-
   if ($sugar_version == '7.5' or $sugar_version == '7.9'){
 
     if ($firewall_manage) {
@@ -67,11 +24,11 @@ class sugarcrmstack_ng::firewall (
         purge => true,
       }
 
-      class { ['my_fw::pre', 'my_fw::post']: }
+      class { ['::sugarcrmstack_ng::firewall::pre', '::sugarcrmstack_ng::firewall::post']: }
 
       Firewall {
-        before  => Class['my_fw::post'],
-        require => Class['my_fw::pre'],
+        before  => Class['::sugarcrmstack_ng::firewall::post'],
+        require => Class['::sugarcrmstack_ng::firewall::pre'],
       }
     }
   }
@@ -79,4 +36,47 @@ class sugarcrmstack_ng::firewall (
       fail("Class['sugarcrmstack_ng::firewall']: This class is not compatible with this sugar_version (${sugar_version})")
   }
 
+}
+
+class sugarcrmstack_ng::firewall::pre {
+  Firewall {
+    require => undef,
+  }
+  # Default firewall rules
+  firewall { '000 accept related established rules':
+    proto  => 'all',
+    state  => ['RELATED', 'ESTABLISHED'],
+    action => 'accept',
+  }
+  firewall { '001 accept all icmp':
+    proto  => 'icmp',
+    action => 'accept',
+  }->
+  firewall { '002 accept all to lo interface':
+    proto   => 'all',
+    iniface => 'lo',
+    action  => 'accept',
+  }
+  firewall { '003 accept new tcp to dport 22 / SSH':
+    chain   => 'INPUT',
+    state   => 'NEW',
+    proto   => 'tcp',
+    dport   => ['22'],
+    action  => 'accept',
+  }
+  firewall { '222 reject all forward':
+    chain   => 'FORWARD',
+    proto   => 'all',
+    action  => 'reject',
+    reject => 'icmp-host-prohibited',
+  }
+}
+
+class sugarcrmstack_ng::firewall::post {
+  firewall { '999 reject all':
+    proto  => 'all',
+    action  => 'reject',
+    reject => 'icmp-host-prohibited',
+    before => undef,
+  }
 }
