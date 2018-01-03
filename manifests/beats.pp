@@ -80,7 +80,7 @@ class sugarcrmstack_ng::beats (
                                   "pattern" => "[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2} [[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2},[[:digit:]]{3}",
                                   "negate" => "true",
                                   "match"  => "after",
-                                 },
+                  },
               },
               'mysqld'  => {
                   'document_type' => "mysqld",
@@ -96,7 +96,7 @@ class sugarcrmstack_ng::beats (
                                   "pattern" => "^(# (Time: [[:digit:]]{6}[[:blank:]]{1,2}[[:digit:]]{1,2}:[[:digit:]]{2}:[[:digit:]]{2})|(User@Host: sugarcrm))",
                                   "negate" => "true",
                                   "match"  => "after",
-                                 },
+                  },
               },
               'mysql_slow_log2' => {
                   'document_type' => "mysql_slow_log2",
@@ -107,29 +107,29 @@ class sugarcrmstack_ng::beats (
               'nginx-access'  => {
                   'document_type' => "nginx-access",
                   'paths'  => [
-                                 "/var/log/nginx/*.access.log",
-                                 "/var/log/nginx/access.log",
+                                   "/var/log/nginx/*.access.log",
+                                   "/var/log/nginx/access.log",
                               ],
               },
               'nginx-error'  => {
                   'document_type' => "nginx-error",
                   'paths'  => [
                                   "/var/log/nginx/*.error.log",
-                                 "/var/log/nginx/error.log",
+                                  "/var/log/nginx/error.log",
                               ],
               },
               'apache' => {
                   'document_type' => "apache",
                   'paths'  => [
-                                 "/var/log/httpd/*access.log",
-                                 "/var/log/httpd/*access_log",
+                                  "/var/log/httpd/*access.log",
+                                  "/var/log/httpd/*access_log",
                               ],
               },
               'apache-error' => {
                   'document_type' => "apache-error",
                   'paths'  => [
-                                 "/var/log/httpd/*error.log",
-                                 "/var/log/httpd/*error_log",
+                                  "/var/log/httpd/*error.log",
+                                  "/var/log/httpd/*error_log",
                               ],
               },
               'sugar_cron_log'   => {
@@ -139,7 +139,7 @@ class sugarcrmstack_ng::beats (
                                   "pattern" => "^[a-zA-Z]{3}[[:blank:]][a-zA-Z]{3}[[:blank:]]{1,3}[[:digit:]]{1,2}[[:blank:]][[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2}",
                                   "negate" => "true",
                                   "match"  => "after",
-                                 },
+                  },
               },
               'sugar_log'   => {
                   'document_type' => "sugar-log",
@@ -153,7 +153,7 @@ class sugarcrmstack_ng::beats (
                                   "pattern" => "^[a-zA-Z]{3}[[:blank:]][a-zA-Z]{3}[[:blank:]]{1,3}[[:digit:]]{1,2}[[:blank:]][[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2}[[:blank:]][[:digit:]]{4}",
                                   "negate" => "true",
                                   "match"  => "after",
-                                 },
+                  },
               },
               'sugar_pmse_log'   => {
                   'document_type' => "sugar-pmse-log",
@@ -164,7 +164,7 @@ class sugarcrmstack_ng::beats (
                                   "pattern" => "^[a-zA-Z]{3}[[:blank:]][a-zA-Z]{3}[[:blank:]]{1,3}[[:digit:]]{1,2}[[:blank:]][[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2}[[:blank:]][[:digit:]]{4}",
                                   "negate" => "true",
                                   "match"  => "after",
-                                 },
+                  },
               },
               'redis' => {
                   'document_type' => "redis",
