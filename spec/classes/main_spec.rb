@@ -35,6 +35,9 @@ describe 'sugarcrmstack_ng' do
 
           it { should_not contain_class('sugarcrmstack_ng::mysql_server') }
 
+          it { should_not contain_class('sugarcrmstack_ng::memcached_server') }
+          it { should_not contain_class('sugarcrmstack_ng::redis_server') }
+
           # generic part
           ['apachetop', 'bind-utils', 'htop', 'iftop',
            'iotop', 'iptraf', 'irqbalance', 'links', 'lsof', 'lsscsi', 'lynx',
@@ -93,6 +96,36 @@ describe 'sugarcrmstack_ng' do
           # Base package
           it { should_not contain_package('elasticsearch') }
 
+          # NOT EXISTS memcached_server part
+          it { is_expected.not_to contain_class('memcached') }
+          it { is_expected.not_to contain_class('memcached::params') }
+          it { is_expected.not_to contain_package('memcached').with_ensure('present') }
+
+          it { is_expected.not_to contain_firewall('100_tcp_11211_for_memcached') }
+          it { is_expected.not_to contain_firewall('100_udp_11211_for_memcached') }
+
+          # NOT EXISTS redis_server part
+          it { is_expected.not_to create_class('redis') }
+          it { is_expected.not_to contain_class('redis::preinstall') }
+          it { is_expected.not_to contain_class('redis::install') }
+          it { is_expected.not_to contain_class('redis::config') }
+          it { is_expected.not_to contain_class('redis::service') }
+
+          it { is_expected.not_to contain_package('redis-server') }
+
+          it { is_expected.not_to contain_file('/etc/redis/redis.conf').with_ensure('file') }
+
+          it { is_expected.not_to contain_file('/etc/redis/redis.conf').without_content(/undef/) }
+
+          it do
+            is_expected.to contain_service('redis-server').with(
+              'ensure'     => 'running',
+              'enable'     => 'true',
+              'hasrestart' => 'true',
+              'hasstatus'  => 'true'
+            )
+          end
+
         end
 
         context "sugarcrmstack_ng class without apache_php" do
@@ -112,6 +145,9 @@ describe 'sugarcrmstack_ng' do
 
           it { should_not contain_class('sugarcrmstack_ng::apache_php') }
           it { should_not contain_class('sugarcrmstack_ng::mysql_server') }
+
+          it { should_not contain_class('sugarcrmstack_ng::memcached_server') }
+          it { should_not contain_class('sugarcrmstack_ng::redis_server') }
 
           # generic part
           ['apachetop', 'bind-utils', 'htop', 'iftop',
@@ -166,6 +202,36 @@ describe 'sugarcrmstack_ng' do
 
           # Base package
           it { should_not contain_package('elasticsearch') }
+
+          # NOT EXISTS memcached_server part
+          it { is_expected.not_to contain_class('memcached') }
+          it { is_expected.not_to contain_class('memcached::params') }
+          it { is_expected.not_to contain_package('memcached').with_ensure('present') }
+
+          it { is_expected.not_to contain_firewall('100_tcp_11211_for_memcached') }
+          it { is_expected.not_to contain_firewall('100_udp_11211_for_memcached') }
+
+          # NOT EXISTS redis_server part
+          it { is_expected.not_to create_class('redis') }
+          it { is_expected.not_to contain_class('redis::preinstall') }
+          it { is_expected.not_to contain_class('redis::install') }
+          it { is_expected.not_to contain_class('redis::config') }
+          it { is_expected.not_to contain_class('redis::service') }
+
+          it { is_expected.not_to contain_package('redis-server') }
+
+          it { is_expected.not_to contain_file('/etc/redis/redis.conf').with_ensure('file') }
+
+          it { is_expected.not_to contain_file('/etc/redis/redis.conf').without_content(/undef/) }
+
+          it do
+            is_expected.to contain_service('redis-server').with(
+              'ensure'     => 'running',
+              'enable'     => 'true',
+              'hasrestart' => 'true',
+              'hasstatus'  => 'true'
+            )
+          end
 
         end
 
