@@ -85,6 +85,28 @@ describe 'sugarcrmstack_ng' do
           it { is_expected.not_to contain_firewall('100_tcp_11211_for_memcached') }
           it { is_expected.not_to contain_firewall('100_udp_11211_for_memcached') }
 
+          # NOT EXISTS redis_server part
+          it { is_expected.not_to create_class('redis') }
+          it { is_expected.not_to contain_class('redis::preinstall') }
+          it { is_expected.not_to contain_class('redis::install') }
+          it { is_expected.not_to contain_class('redis::config') }
+          it { is_expected.not_to contain_class('redis::service') }
+
+          it { is_expected.not_to contain_package('redis-server') }
+
+          it { is_expected.not_to contain_file('/etc/redis/redis.conf').with_ensure('file') }
+
+          it { is_expected.not_to contain_file('/etc/redis/redis.conf').without_content(/undef/) }
+
+          it do
+            is_expected.to contain_service('redis-server').with(
+              'ensure'     => 'running',
+              'enable'     => 'true',
+              'hasrestart' => 'true',
+              'hasstatus'  => 'true'
+            )
+          end
+
         end
 
       end
