@@ -120,5 +120,5 @@ class sugarcrmstack_ng::params {
   $memcached_php_module_handle = false
   $memcached_php_module_ensure = 'installed'
   #
-  firewall_ssh_port = '22'
+  $firewall_ssh_port = '22'
 }
