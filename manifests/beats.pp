@@ -185,26 +185,6 @@ class sugarcrmstack_ng::beats (
           version_v5  => $beats_version_v5,
         }
 
-#        file {'cert-logstash-forwarder key':
-#      path    => '/etc/pki/tls/private/logstash-forwarder.key',
-#      ensure  => present,
-#      source  => 'puppet:///modules/sugarcrmstack/pki/cert-logstash-forwarder.key',
-#      owner   => 'root',
-#      group   => 'root',
-#      mode    => '0644',
-#      notify  => Service["filebeat"],
-#    }
-
-#    file {'cert-logstash-forwarder crt':
-#      path    => '/etc/pki/tls/certs/logstash-forwarder.crt',
-#      ensure  => present,
-#      source  => 'puppet:///modules/sugarcrmstack/pki/cert-logstash-forwarder.crt',
-#      owner   => 'root',
-#      group   => 'root',
-#      mode    => '0644',
-#      notify  => Service["filebeat"],
-#    }
-
       }
       else{
         class { '::beats::filebeat':
