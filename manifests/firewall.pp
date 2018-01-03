@@ -72,7 +72,7 @@ class sugarcrmstack_ng::firewall::pre {
     chain   => 'INPUT',
     state   => 'NEW',
     proto   => 'tcp',
-    dport   => ${sugarcrmstack_ng::firewall_ssh_port},
+    dport   => $sugarcrmstack_ng::firewall_ssh_port,
     action  => 'accept',
   }
   -> firewall { '222 reject all forward':
