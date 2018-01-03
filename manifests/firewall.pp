@@ -17,6 +17,9 @@ class sugarcrmstack_ng::firewall (
   $firewall_ssh_port = $sugarcrmstack_ng::firewall_ssh_port,
 ) {
 
+  include ::sugarcrmstack_ng::firewall::pre
+  include ::sugarcrmstack_ng::firewall::post
+
   if ($sugar_version == '7.5' or $sugar_version == '7.9'){
 
     if ($firewall_manage) {
@@ -48,23 +51,23 @@ class sugarcrmstack_ng::firewall::pre {
     state  => ['RELATED', 'ESTABLISHED'],
     action => 'accept',
   }
-  firewall { '001 accept all icmp':
+  -> firewall { '001 accept all icmp':
     proto  => 'icmp',
     action => 'accept',
-  }->
-  firewall { '002 accept all to lo interface':
+  }
+  -> firewall { '002 accept all to lo interface':
     proto   => 'all',
     iniface => 'lo',
     action  => 'accept',
   }
-  firewall { "003 accept new tcp to dport ${sugarcrmstack_ng::firewall_ssh_port} / SSH":
+  -> firewall { "003 accept new tcp to dport ${sugarcrmstack_ng::firewall_ssh_port} / SSH":
     chain   => 'INPUT',
     state   => 'NEW',
     proto   => 'tcp',
     dport   => "${sugarcrmstack_ng::firewall_ssh_port}",
     action  => 'accept',
   }
-  firewall { '222 reject all forward':
+  -> firewall { '222 reject all forward':
     chain   => 'FORWARD',
     proto   => 'all',
     action  => 'reject',
