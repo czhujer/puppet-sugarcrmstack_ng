@@ -11,6 +11,7 @@ class sugarcrmstack_ng::params {
   $redis_server_enable = false
   $memcached_server_enable = false
   $firewall_manage = false
+  $beats_manage = false
   $sugar_version     = '7.9'
   case $::osfamily {
     'RedHat', 'Amazon': {
@@ -121,4 +122,12 @@ class sugarcrmstack_ng::params {
   $memcached_php_module_ensure = 'installed'
   #
   $firewall_ssh_port = '22'
+  #
+  $beats_agentname   = $::fqdn
+  $beats_version_v5  = true
+  $beats_filebeats_enable   = true
+  $beats_metricbeats_enable = false
+  #
+  $beats_filebeats_prospectors_config = {}
+  $beats_hosts = ['logstash.sugarfactory.cz:5044']
 }
