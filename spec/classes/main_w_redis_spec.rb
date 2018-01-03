@@ -11,9 +11,9 @@ describe 'sugarcrmstack_ng' do
         #fixes for composer and mysql (root_home)
         let(:facts) { facts.merge( { 'composer_home' => '~', 'execs' => {}, 'root_home' => '/root' } ) }
 
-        context "sugarcrmstack_ng class with memcached_server_enable" do
+        context "sugarcrmstack_ng class with redis_server_enable" do
           # switch param
-          let(:params) { {'memcached_server_enable' => true} }
+          let(:params) { {'redis_server_enable' => true} }
 
           # check compile
           it { is_expected.to compile.with_all_deps }
