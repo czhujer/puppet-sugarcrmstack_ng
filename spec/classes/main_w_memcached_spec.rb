@@ -31,6 +31,9 @@ describe 'sugarcrmstack_ng' do
           it { should_not contain_class('sugarcrmstack_ng::elasticsearch_server') }
           it { should_not contain_class('sugarcrmstack_ng::mysql_server') }
 
+          it { should contain_class('sugarcrmstack_ng::memcached_server') }
+          it { should_not contain_class('sugarcrmstack_ng::redis_server') }
+
           # generic part
           ['apachetop', 'bind-utils', 'htop', 'iftop',
            'iotop', 'iptraf', 'irqbalance', 'links', 'lsof', 'lsscsi', 'lynx',
