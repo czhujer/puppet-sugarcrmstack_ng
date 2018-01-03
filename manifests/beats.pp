@@ -77,7 +77,7 @@ class sugarcrmstack_ng::beats (
                               ],
                   'multiline' => {
 #                                  "pattern" => "^[[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
-                                  'pattern' => '[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2} [[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2},[[:digit:]]{3}',
+                                  'pattern' => '[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2} [[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2},[[:digit:]]{3}', # lint:ignore:140chars
                                   'negate' => true,
                                   'match'  => 'after',
                   },
@@ -93,7 +93,7 @@ class sugarcrmstack_ng::beats (
                               ],
                   'multiline' => {
 #                                  "pattern" => "^# Time: [[:digit:]]{6}[[:blank:]]{1,2}[[:digit:]]{1,2}:[[:digit:]]{2}:[[:digit:]]{2}",
-                                  'pattern' => '^(# (Time: [[:digit:]]{6}[[:blank:]]{1,2}[[:digit:]]{1,2}:[[:digit:]]{2}:[[:digit:]]{2})|(User@Host: sugarcrm))',
+                                  'pattern' => '^(# (Time: [[:digit:]]{6}[[:blank:]]{1,2}[[:digit:]]{1,2}:[[:digit:]]{2}:[[:digit:]]{2})|(User@Host: sugarcrm))', # lint:ignore:140chars
                                   'negate' => true,
                                   'match'  => 'after',
                   },
@@ -136,7 +136,7 @@ class sugarcrmstack_ng::beats (
                   'document_type' => 'sugar-cron-log',
                   'paths'  => [ '/var/www/html/sugarcrm/sugar-cron.log' ],
                   'multiline' => {
-                                  'pattern' => '^[a-zA-Z]{3}[[:blank:]][a-zA-Z]{3}[[:blank:]]{1,3}[[:digit:]]{1,2}[[:blank:]][[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2}',
+                                  'pattern' => '^[a-zA-Z]{3}[[:blank:]][a-zA-Z]{3}[[:blank:]]{1,3}[[:digit:]]{1,2}[[:blank:]][[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2}', # lint:ignore:140chars
                                   'negate' => true,
                                   'match'  => 'after',
                   },
@@ -150,7 +150,7 @@ class sugarcrmstack_ng::beats (
                                   '/var/www/sugarcrm.log',
                               ],
                   'multiline' => {
-                                  'pattern' => '^[a-zA-Z]{3}[[:blank:]][a-zA-Z]{3}[[:blank:]]{1,3}[[:digit:]]{1,2}[[:blank:]][[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2}[[:blank:]][[:digit:]]{4}',
+                                  'pattern' => '^[a-zA-Z]{3}[[:blank:]][a-zA-Z]{3}[[:blank:]]{1,3}[[:digit:]]{1,2}[[:blank:]][[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2}[[:blank:]][[:digit:]]{4}', # lint:ignore:140chars
                                   'negate' => true,
                                   'match'  => 'after',
                   },
@@ -161,7 +161,7 @@ class sugarcrmstack_ng::beats (
                                   '/var/www/html/sugarcrm/PMSE.log',
                               ],
                   'multiline' => {
-                                  'pattern' => '^[a-zA-Z]{3}[[:blank:]][a-zA-Z]{3}[[:blank:]]{1,3}[[:digit:]]{1,2}[[:blank:]][[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2}[[:blank:]][[:digit:]]{4}',
+                                  'pattern' => '^[a-zA-Z]{3}[[:blank:]][a-zA-Z]{3}[[:blank:]]{1,3}[[:digit:]]{1,2}[[:blank:]][[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2}[[:blank:]][[:digit:]]{4}', # lint:ignore:140chars
                                   'negate' => true,
                                   'match'  => 'after',
                   },
