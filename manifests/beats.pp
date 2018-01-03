@@ -77,9 +77,9 @@ class sugarcrmstack_ng::beats (
                               ],
                   'multiline' => {
 #                                  "pattern" => "^[[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
-                                  "pattern" => "[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2} [[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2},[[:digit:]]{3}",
-                                  "negate" => true,
-                                  "match"  => "after",
+                                  'pattern' => '[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2} [[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2},[[:digit:]]{3}',
+                                  'negate' => true,
+                                  'match'  => 'after',
                   },
               },
               'mysqld'  => {
@@ -93,9 +93,9 @@ class sugarcrmstack_ng::beats (
                               ],
                   'multiline' => {
 #                                  "pattern" => "^# Time: [[:digit:]]{6}[[:blank:]]{1,2}[[:digit:]]{1,2}:[[:digit:]]{2}:[[:digit:]]{2}",
-                                  "pattern" => "^(# (Time: [[:digit:]]{6}[[:blank:]]{1,2}[[:digit:]]{1,2}:[[:digit:]]{2}:[[:digit:]]{2})|(User@Host: sugarcrm))",
-                                  "negate" => true,
-                                  "match"  => "after",
+                                  'pattern' => '^(# (Time: [[:digit:]]{6}[[:blank:]]{1,2}[[:digit:]]{1,2}:[[:digit:]]{2}:[[:digit:]]{2})|(User@Host: sugarcrm))',
+                                  'negate' => true,
+                                  'match'  => 'after',
                   },
               },
               'mysql_slow_log2' => {
@@ -107,8 +107,8 @@ class sugarcrmstack_ng::beats (
               'nginx-access'  => {
                   'document_type' => 'nginx-access',
                   'paths'  => [
-                                   '/var/log/nginx/*.access.log',
-                                   '/var/log/nginx/access.log',
+                                  '/var/log/nginx/*.access.log',
+                                  '/var/log/nginx/access.log',
                               ],
               },
               'nginx-error'  => {
@@ -136,40 +136,40 @@ class sugarcrmstack_ng::beats (
                   'document_type' => 'sugar-cron-log',
                   'paths'  => [ '/var/www/html/sugarcrm/sugar-cron.log' ],
                   'multiline' => {
-                                  "pattern" => "^[a-zA-Z]{3}[[:blank:]][a-zA-Z]{3}[[:blank:]]{1,3}[[:digit:]]{1,2}[[:blank:]][[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2}",
-                                  "negate" => true,
-                                  "match"  => "after",
+                                  'pattern' => '^[a-zA-Z]{3}[[:blank:]][a-zA-Z]{3}[[:blank:]]{1,3}[[:digit:]]{1,2}[[:blank:]][[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2}',
+                                  'negate' => true,
+                                  'match'  => 'after',
                   },
               },
               'sugar_log'   => {
                   'document_type' => 'sugar-log',
                   'paths'  => [
-                                '/var/www/html/sugarcrm/sugarcrm.log',
-                                '/var/www/html/sugarcrm/sugarcrm*2016*.log',
-                                '/var/www/html/sugarcrm/suitecrm.log',
-                                '/var/www/sugarcrm.log',
-                               ],
+                                  '/var/www/html/sugarcrm/sugarcrm.log',
+                                  '/var/www/html/sugarcrm/sugarcrm*2016*.log',
+                                  '/var/www/html/sugarcrm/suitecrm.log',
+                                  '/var/www/sugarcrm.log',
+                              ],
                   'multiline' => {
-                                  "pattern" => "^[a-zA-Z]{3}[[:blank:]][a-zA-Z]{3}[[:blank:]]{1,3}[[:digit:]]{1,2}[[:blank:]][[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2}[[:blank:]][[:digit:]]{4}",
-                                  "negate" => true,
-                                  "match"  => "after",
+                                  'pattern' => '^[a-zA-Z]{3}[[:blank:]][a-zA-Z]{3}[[:blank:]]{1,3}[[:digit:]]{1,2}[[:blank:]][[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2}[[:blank:]][[:digit:]]{4}',
+                                  'negate' => true,
+                                  'match'  => 'after',
                   },
               },
               'sugar_pmse_log'   => {
                   'document_type' => 'sugar-pmse-log',
                   'paths'  => [
-                                '/var/www/html/sugarcrm/PMSE.log',
-                               ],
+                                  '/var/www/html/sugarcrm/PMSE.log',
+                              ],
                   'multiline' => {
-                                  "pattern" => "^[a-zA-Z]{3}[[:blank:]][a-zA-Z]{3}[[:blank:]]{1,3}[[:digit:]]{1,2}[[:blank:]][[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2}[[:blank:]][[:digit:]]{4}",
-                                  "negate" => true,
-                                  "match"  => "after",
+                                  'pattern' => '^[a-zA-Z]{3}[[:blank:]][a-zA-Z]{3}[[:blank:]]{1,3}[[:digit:]]{1,2}[[:blank:]][[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2}[[:blank:]][[:digit:]]{4}',
+                                  'negate' => true,
+                                  'match'  => 'after',
                   },
               },
               'redis' => {
                   'document_type' => 'redis',
                   'paths'  => [
-                                 '/var/log/redis/redis.log',
+                                  '/var/log/redis/redis.log',
                               ],
               },
               'back2own_duplicity'  => {
