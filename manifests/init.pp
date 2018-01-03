@@ -93,8 +93,8 @@ class sugarcrmstack_ng (
   $beats_manage      = $sugarcrmstack_ng::params::beats_manage,
   $beats_agentname   = $sugarcrmstack_ng::params::beats_agentname,
   $beats_version_v5  = $sugarcrmstack_ng::params::beats_version_v5,
-  $beats_filebeats_enable   = $sugarcrmstack_ng::params::filebeats_enable,
-  $beats_metricbeats_enable = $sugarcrmstack_ng::params::metricbeats_enable,
+  $beats_filebeats_enable   = $sugarcrmstack_ng::params::beats_filebeats_enable,
+  $beats_metricbeats_enable = $sugarcrmstack_ng::params::beats_metricbeats_enable,
   #
   $beats_filebeats_prospectors_config = $sugarcrmstack_ng::params::beats_filebeats_prospectors_config,
   $beats_hosts = $sugarcrmstack_ng::params::beats_hosts,
