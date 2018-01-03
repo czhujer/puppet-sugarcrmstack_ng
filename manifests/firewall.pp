@@ -41,6 +41,14 @@ class sugarcrmstack_ng::firewall (
 
 }
 
+# Class: firewall::pre
+# ===========================
+#
+# Full description of class firewall::pre here.
+#
+# Parameters
+# ----------
+#
 class sugarcrmstack_ng::firewall::pre {
   Firewall {
     require => undef,
@@ -64,7 +72,7 @@ class sugarcrmstack_ng::firewall::pre {
     chain   => 'INPUT',
     state   => 'NEW',
     proto   => 'tcp',
-    dport   => "${sugarcrmstack_ng::firewall_ssh_port}",
+    dport   => ${sugarcrmstack_ng::firewall_ssh_port},
     action  => 'accept',
   }
   -> firewall { '222 reject all forward':
@@ -75,6 +83,14 @@ class sugarcrmstack_ng::firewall::pre {
   }
 }
 
+# Class: firewall::post
+# ===========================
+#
+# Full description of class firewall:post here.
+#
+# Parameters
+# ----------
+#
 class sugarcrmstack_ng::firewall::post {
   firewall { '999 reject all':
     proto  => 'all',
