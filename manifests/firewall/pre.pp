@@ -26,16 +26,16 @@ class sugarcrmstack_ng::firewall::pre {
     action  => 'accept',
   }
   -> firewall { "003 accept new tcp to dport ${sugarcrmstack_ng::firewall_ssh_port} / SSH":
-    chain   => 'INPUT',
-    state   => 'NEW',
-    proto   => 'tcp',
-    dport   => $sugarcrmstack_ng::firewall_ssh_port,
-    action  => 'accept',
+    chain  => 'INPUT',
+    state  => 'NEW',
+    proto  => 'tcp',
+    dport  => $sugarcrmstack_ng::firewall_ssh_port,
+    action => 'accept',
   }
   -> firewall { '222 reject all forward':
-    chain   => 'FORWARD',
-    proto   => 'all',
-    action  => 'reject',
+    chain  => 'FORWARD',
+    proto  => 'all',
+    action => 'reject',
     reject => 'icmp-host-prohibited',
   }
 }

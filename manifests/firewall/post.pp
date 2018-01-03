@@ -9,7 +9,7 @@
 class sugarcrmstack_ng::firewall::post {
   firewall { '999 reject all':
     proto  => 'all',
-    action  => 'reject',
+    action => 'reject',
     reject => 'icmp-host-prohibited',
     before => undef,
   }
