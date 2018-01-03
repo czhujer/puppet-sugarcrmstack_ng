@@ -10,6 +10,7 @@ class sugarcrmstack_ng::params {
   $cron_enable       = false
   $redis_server_enable = false
   $memcached_server_enable = false
+  $firewall_manage = false
   $sugar_version     = '7.9'
   case $::osfamily {
     'RedHat', 'Amazon': {
@@ -118,4 +119,6 @@ class sugarcrmstack_ng::params {
   #
   $memcached_php_module_handle = false
   $memcached_php_module_ensure = 'installed'
+  #
+  $firewall_ssh_port = '22'
 }

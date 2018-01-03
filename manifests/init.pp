@@ -87,6 +87,9 @@ class sugarcrmstack_ng (
   $memcached_php_module_name   = $sugarcrmstack_ng::params::memcached_php_module_name,
   $memcached_php_module_ensure = $sugarcrmstack_ng::params::memcached_php_module_ensure,
   #
+  $firewall_manage   = $sugarcrmstack_ng::params::firewall_manage,
+  $firewall_ssh_port = $sugarcrmstack_ng::params::firewall_ssh_port,
+  #
 ) inherits sugarcrmstack_ng::params {
 
   # validate general parameters
@@ -99,6 +102,8 @@ class sugarcrmstack_ng (
   validate_bool($cron_enable)
   validate_bool($redis_server_enable)
   validate_bool($memcached_server_enable)
+
+  validate_bool($firewall_manage)
 
   validate_string($sugar_version)
 
@@ -171,6 +176,8 @@ class sugarcrmstack_ng (
   #$memcached_php_module_name
   #$memcached_php_module_ensure
 
+  validate_string($firewall_ssh_port)
+
   # run
   contain ::sugarcrmstack_ng::install
   contain ::sugarcrmstack_ng::config
@@ -218,6 +225,13 @@ class sugarcrmstack_ng (
 
     Class['sugarcrmstack_ng::config']
     -> Class['sugarcrmstack_ng::memcached_server']
+  }
+
+  if ($firewall_manage){
+    contain ::sugarcrmstack_ng::firewall
+
+    Class['sugarcrmstack_ng::config']
+    -> Class['sugarcrmstack_ng::firewall']
   }
 
 }
