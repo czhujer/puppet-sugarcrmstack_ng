@@ -30,6 +30,9 @@ fixtures:
     memcached:
       repo: "https://github.com/saz/puppet-memcached"
       ref: "v2.8.1"
+    firewall:
+      repo: "https://github.com/puppetlabs/puppetlabs-firewall"
+      ref: "1.8.1"
   forge_modules:
     elasticsearch:
       repo: elastic/elasticsearch
