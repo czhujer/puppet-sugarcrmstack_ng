@@ -55,9 +55,9 @@ describe 'sugarcrmstack_ng' do
               end
           end
 
-          # NOT EXISTS apache+php part
-          it { should_not contain_class("apache::params") }
-          it { should_not contain_package("httpd") }
+          # apache+php part
+          it { should contain_class("apache::params") }
+          it { should contain_package("httpd") }
 
           # NOT EXISTS mysql_server part
           it { should_not contain_class('mysql::server::install') }
@@ -97,8 +97,6 @@ describe 'sugarcrmstack_ng' do
                is_expected.to contain_service('memcached').with(
                 'ensure'     => 'running',
                 'enable'     => true,
-                'hasrestart' => true,
-                'hasstatus'  => false
                )
              }
 
