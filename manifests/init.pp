@@ -252,4 +252,11 @@ class sugarcrmstack_ng (
     -> Class['sugarcrmstack_ng::firewall']
   }
 
+  if ($beats_manage){
+    contain ::sugarcrmstack_ng::beats
+
+    Class['sugarcrmstack_ng::config']
+    -> Class['sugarcrmstack_ng::beats']
+  }
+
 }
