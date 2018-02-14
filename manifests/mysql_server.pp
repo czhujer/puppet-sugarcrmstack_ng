@@ -33,8 +33,11 @@ class sugarcrmstack_ng::mysql_server (
 
     #we need delete /etc/percona-xtradb-cluster.conf.d config files
     if ! defined (File['/etc/percona-xtradb-cluster.conf.d']){
-      recurse => true,
-      purge   => true,
+      file {'/etc/percona-xtradb-cluster.conf.d':
+        ensure  => directory,
+        recurse => true,
+        purge   => true,
+      }
     }
 
     if ($mysql_server_use_pxc == true and $sugar_version == '7.9' and $::operatingsystemmajrelease in ['7'] ){
