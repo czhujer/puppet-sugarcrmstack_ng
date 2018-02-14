@@ -1,4 +1,4 @@
-require 'spec_helper'
+/etc/redis.confrequire 'spec_helper'
 
 describe 'sugarcrmstack_ng' do
   context 'supported operating systems' do
@@ -97,9 +97,9 @@ describe 'sugarcrmstack_ng' do
 
           it { is_expected.not_to contain_package('redis') }
 
-          it { is_expected.not_to contain_file('/etc/redis/redis.conf').with_ensure('file') }
+          it { is_expected.not_to contain_file('/etc/redis.conf').with_ensure('file') }
 
-          it { is_expected.not_to contain_file('/etc/redis/redis.conf').without_content(/undef/) }
+          it { is_expected.not_to contain_file('/etc/redis.conf').without_content(/undef/) }
 
           it do
             is_expected.not_to contain_service('redis').with(
