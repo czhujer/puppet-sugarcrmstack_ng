@@ -110,7 +110,7 @@ describe 'sugarcrmstack_ng' do
           it { is_expected.to contain_file('/etc/redis/redis.conf').without_content(/undef/) }
 
           it do
-            is_expected.to contain_service('redis-server').with(
+            is_expected.to contain_service('redis').with(
               'ensure'     => 'running',
               'enable'     => 'true',
               'hasrestart' => 'true',
