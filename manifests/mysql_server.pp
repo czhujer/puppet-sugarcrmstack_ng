@@ -29,6 +29,13 @@ class sugarcrmstack_ng::mysql_server (
   $mysql_server_mysql_root_password = $sugarcrmstack_ng::mysql_server_mysql_root_password,
 ) {
 
+  if($mysql_server_service_manage){
+    $require_service_mysqld = Service['mysqld']
+  }
+  else{
+    $require_service_mysqld = []
+  }
+
   if ($mysql_server_enable){
 
     #we need delete /etc/percona-xtradb-cluster.conf.d config files
@@ -37,6 +44,8 @@ class sugarcrmstack_ng::mysql_server (
         ensure  => directory,
         recurse => true,
         purge   => true,
+        after   => Class['sugarcrmstack::mysqlserver'],
+        notify  => $require_service_mysqld,
       }
     }
 
@@ -52,6 +61,8 @@ class sugarcrmstack_ng::mysql_server (
       if ! defined (File['/etc/my.cnf']){
         file { '/etc/my.cnf':
           ensure  => 'absent',
+          after   => Class['sugarcrmstack::mysqlserver'],
+          notify  => $require_service_mysqld,
         }
       }
     }
@@ -65,6 +76,8 @@ class sugarcrmstack_ng::mysql_server (
           owner   => 'root',
           group   => 'root',
           mode    => '0644',
+          after   => Class['sugarcrmstack::mysqlserver'],
+          notify  => $require_service_mysqld,
         }
       }
     }
