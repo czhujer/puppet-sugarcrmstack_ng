@@ -1,4 +1,4 @@
-/etc/redis.confrequire 'spec_helper'
+require 'spec_helper'
 
 describe 'sugarcrmstack_ng' do
   context 'supported operating systems' do
