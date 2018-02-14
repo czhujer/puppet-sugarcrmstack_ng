@@ -29,7 +29,25 @@ class sugarcrmstack_ng::mysql_server (
   $mysql_server_mysql_root_password = $sugarcrmstack_ng::mysql_server_mysql_root_password,
 ) {
 
+  if($mysql_server_service_manage){
+    $require_service_mysqld = Service['mysqld']
+  }
+  else{
+    $require_service_mysqld = []
+  }
+
   if ($mysql_server_enable){
+
+    #we need delete /etc/percona-xtradb-cluster.conf.d config files
+    if ! defined (File['/etc/percona-xtradb-cluster.conf.d']){
+      file {'/etc/percona-xtradb-cluster.conf.d':
+        ensure  => directory,
+        recurse => true,
+        purge   => true,
+        require => Class['sugarcrmstack::mysqlserver'],
+        notify  => $require_service_mysqld,
+      }
+    }
 
     if ($mysql_server_use_pxc == true and $sugar_version == '7.9' and $::operatingsystemmajrelease in ['7'] ){
       package {'Percona-XtraDB-Cluster-shared-compat-57':
@@ -43,9 +61,25 @@ class sugarcrmstack_ng::mysql_server (
       if ! defined (File['/etc/my.cnf']){
         file { '/etc/my.cnf':
           ensure  => 'absent',
+          require => Class['sugarcrmstack::mysqlserver'],
+          notify  => $require_service_mysqld,
         }
       }
-      #probably we need absent /etc/percona-xtradb-cluster.conf.d/wsrep.cnf too
+    }
+
+    if ($mysql_server_use_pxc == true and $sugar_version == '7.9' and $::operatingsystemmajrelease in ['7'] ){
+      #fix hang on systemctl restart mysql
+      if ! defined (File['/etc/my.cnf']){
+        file { '/etc/my.cnf':
+          ensure  => file,
+          content => template('sugarcrmstack_ng/percona-5.7-my.cnf.erb'),
+          owner   => 'root',
+          group   => 'root',
+          mode    => '0644',
+          require => Class['sugarcrmstack::mysqlserver'],
+          notify  => $require_service_mysqld,
+        }
+      }
     }
 
     if ($::operatingsystemmajrelease in ['7'] ){
