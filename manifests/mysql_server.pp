@@ -44,7 +44,7 @@ class sugarcrmstack_ng::mysql_server (
         ensure  => directory,
         recurse => true,
         purge   => true,
-        after   => Class['sugarcrmstack::mysqlserver'],
+        require => Class['sugarcrmstack::mysqlserver'],
         notify  => $require_service_mysqld,
       }
     }
@@ -61,7 +61,7 @@ class sugarcrmstack_ng::mysql_server (
       if ! defined (File['/etc/my.cnf']){
         file { '/etc/my.cnf':
           ensure  => 'absent',
-          after   => Class['sugarcrmstack::mysqlserver'],
+          require => Class['sugarcrmstack::mysqlserver'],
           notify  => $require_service_mysqld,
         }
       }
@@ -76,7 +76,7 @@ class sugarcrmstack_ng::mysql_server (
           owner   => 'root',
           group   => 'root',
           mode    => '0644',
-          after   => Class['sugarcrmstack::mysqlserver'],
+          require => Class['sugarcrmstack::mysqlserver'],
           notify  => $require_service_mysqld,
         }
       }
