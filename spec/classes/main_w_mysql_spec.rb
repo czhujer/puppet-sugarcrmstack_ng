@@ -99,9 +99,9 @@ describe 'sugarcrmstack_ng' do
 
           it { is_expected.not_to contain_package('redis') }
 
-          it { is_expected.not_to contain_file('/etc/redis.conf').with_ensure('file') }
+          it { is_expected.not_to contain_file('/etc/redis.conf.puppet').with_ensure('file') }
 
-          it { is_expected.not_to contain_file('/etc/redis.conf').without_content(/undef/) }
+          it { is_expected.not_to contain_file('/etc/redis.conf.puppet').without_content(/undef/) }
 
           it do
             is_expected.not_to contain_service('redis').with(
@@ -207,9 +207,9 @@ describe 'sugarcrmstack_ng' do
 
           it { is_expected.not_to contain_package('redis') }
 
-          it { is_expected.not_to contain_file('/etc/redis.conf').with_ensure('file') }
+          it { is_expected.not_to contain_file('/etc/redis.conf.puppet').with_ensure('file') }
 
-          it { is_expected.not_to contain_file('/etc/redis.conf').without_content(/undef/) }
+          it { is_expected.not_to contain_file('/etc/redis.conf.puppet').without_content(/undef/) }
 
           it do
             is_expected.not_to contain_service('redis').with(
