@@ -10,6 +10,7 @@ require 'simplecov-cobertura'
 
 SimpleCov.start do
   #add_filter '/spec'
+  add_filter '/spec/fixtures'
   add_filter '/vendor'
   coverage_dir 'shippable/codecoverage'
   formatter SimpleCov::Formatter::MultiFormatter.new([
