@@ -260,7 +260,7 @@ class sugarcrmstack_ng (
   }
 
   if ($users_env_manage){
-    contain ::sugarcrmstack_ng::users_env_manage
+    contain ::sugarcrmstack_ng::users_env
 
     Class['sugarcrmstack_ng::config']
     -> Class['sugarcrmstack_ng::users_env']
