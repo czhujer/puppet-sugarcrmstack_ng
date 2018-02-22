@@ -263,6 +263,6 @@ class sugarcrmstack_ng (
     contain ::sugarcrmstack_ng::users_env_manage
 
     Class['sugarcrmstack_ng::config']
-    -> Class['sugarcrmstack_ng::users_env_manage']
+    -> Class['sugarcrmstack_ng::users_env']
   }
 }
