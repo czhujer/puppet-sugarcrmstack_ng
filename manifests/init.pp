@@ -259,4 +259,10 @@ class sugarcrmstack_ng (
     -> Class['sugarcrmstack_ng::beats']
   }
 
+  if ($users_env_manage){
+    contain ::sugarcrmstack_ng::users_env_manage
+
+    Class['sugarcrmstack_ng::config']
+    -> Class['sugarcrmstack_ng::users_env_manage']
+  }
 }
