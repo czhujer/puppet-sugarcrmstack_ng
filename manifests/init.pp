@@ -20,6 +20,8 @@ class sugarcrmstack_ng (
   $cron_enable = $sugarcrmstack_ng::params::cron_enable,
   $redis_server_enable = $sugarcrmstack_ng::params::redis_server_enable,
   $memcached_server_enable = $sugarcrmstack_ng::params::memcached_server_enable,
+  $users_env_manage = $sugarcrmstack_ng::params::users_env_manage,
+  $apache_mysql_config_manage = $sugarcrmstack_ng::params::apache_mysql_config_manage,
   #
   $sugar_version = $sugarcrmstack_ng::params::sugar_version,
   #
