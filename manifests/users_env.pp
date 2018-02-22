@@ -22,44 +22,12 @@ class sugarcrmstack_ng::users_env (
 
     if ($sugar_version == '7.5' or $sugar_version == '7.9'){
 
-      $git_config = '[color]
-         ui = auto
-      [alias]
-        co = checkout
-        ci = commit
-        st = status
-        br = branch
-        hist = log --pretty=format:\'%h %ad | %s%d [%an]\' --graph --date=short
-        type = cat-file -t
-        dump = cat-file -p
-      '
-      $bash_config = '# User specific aliases and functions
-
-        alias rm=\'rm -i\'
-        alias cp=\'cp -i\'
-        alias mv=\'mv -i\'
-
-        # Source global definitions
-        if [ -f /etc/bashrc ]; then
-              . /etc/bashrc
-        fi
-
-        PS1=\'\[\e[1;32m\]\u@\h \W\$\[\e[0m\] \'
-
-        alias sugarlog=\'tail -f -n 50 /var/www/html/sugarcrm/sugarcrm.log /var/log/httpd/ssl_error_log\'
-        alias sugartest=\'cd /var/www/html/sugarcrm/tests/unit-php; php ../../vendor/bin/phpunit --testsuite SugarFactory\'
-        alias cdsugar=\'cd /var/www/html/sugarcrm/\'
-        alias rebuild-all=\'/var/www/html/Deployer/do rebuild-all\'
-        alias rebuild-cache=\'/var/www/html/Deployer/do rebuild-cache\'
-        alias xdebugKey=\'f(){ export XDEBUG_CONFIG=ïdekey=$1";  unset -f f; }; f\'
-      '
-
       file { '/root/.gitconfig':
         ensure  => file,
         owner   => 'root',
         group   => 'root',
         mode    => '0644',
-        content => $git_config,
+        content => template('sugarcrmstack_ng/user_git_config.erb'),
       }
 
       file { '/root/.bashrc':
@@ -67,7 +35,7 @@ class sugarcrmstack_ng::users_env (
         owner   => 'root',
         group   => 'root',
         mode    => '0644',
-        content => $bash_config,
+        content => template('sugarcrmstack_ng/user_bash_config.erb'),
       }
 
 
@@ -78,7 +46,7 @@ class sugarcrmstack_ng::users_env (
           owner   => 'apache',
           group   => 'apache',
           mode    => '0644',
-          content => $git_config,
+          content => template('sugarcrmstack_ng/user_git_config.erb'),
         }
 
         file { '/var/www/.bash_profile':
@@ -86,7 +54,7 @@ class sugarcrmstack_ng::users_env (
           owner   => 'apache',
           group   => 'apache',
           mode    => '0644',
-          content => $bash_config,
+          content => template('sugarcrmstack_ng/user_bash_config.erb'),
         }
       }
 
