@@ -91,7 +91,7 @@ class sugarcrmstack_ng::users_env (
       }
 
       if($apache_mysql_config_manage){
-        file { "/var/www/.my.cnf":
+        file { '/var/www/.my.cnf':
           content => template('sugarcrmstack_ng/my.cnf.pass.erb'),
           owner   => 'apache',
           group   => 'apache',
