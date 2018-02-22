@@ -14,7 +14,8 @@ class sugarcrmstack_ng::users_env (
   $users_env_manage = $sugarcrmstack_ng::users_env_manage,
   $sugar_version = $sugarcrmstack_ng::sugar_version,
   #
-  $apache_php_apache_manage_user = $sugarcrmstack_ng::$apache_php_apache_manage_user,
+  $apache_php_apache_manage_user = $sugarcrmstack_ng::apache_php_apache_manage_user,
+  $apache_mysql_config_manage    = $sugarcrmstack_ng::apache_mysql_config_manage,
 ) {
 
   if ($users_env_manage){
@@ -87,8 +88,17 @@ class sugarcrmstack_ng::users_env (
           mode    => '0644',
           content => $bash_config,
         }
-
       }
+
+      if($apache_mysql_config_manage){
+        file { "/var/www/.my.cnf":
+          content => template('sugarcrmstack_ng/my.cnf.pass.erb'),
+          owner   => 'apache',
+          group   => 'apache',
+          mode    => '0600',
+        }
+      }
+
     }
     else{
       fail("Class['sugarcrmstack_ng::users_env']: This class is not compatible with this sugar_version (${sugar_version})")
