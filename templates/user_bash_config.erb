@@ -1,0 +1,21 @@
+### MANAGED BY PUPPET ###
+
+# User specific aliases and functions
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+  . /etc/bashrc
+fi
+
+PS1='\[\e[1;32m\]\u@\h \W\$\[\e[0m\] '
+
+alias sugarlog='tail -f -n 50 /var/www/html/sugarcrm/sugarcrm.log /var/log/httpd/ssl_error_log'
+alias sugartest='cd /var/www/html/sugarcrm/tests/unit-php; php ../../vendor/bin/phpunit --testsuite SugarFactory'
+alias cdsugar='cd /var/www/html/sugarcrm/'
+alias rebuild-all='/var/www/html/Deployer/do rebuild-all'
+alias rebuild-cache='/var/www/html/Deployer/do rebuild-cache'
+alias xdebugKey='f(){ export XDEBUG_CONFIG=ïdekey=$1";  unset -f f; }; f'

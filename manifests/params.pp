@@ -12,6 +12,8 @@ class sugarcrmstack_ng::params {
   $memcached_server_enable = false
   $firewall_manage = false
   $beats_manage = false
+  $users_env_manage = false
+  $apache_mysql_config_manage = false
   $sugar_version     = '7.9'
   case $::osfamily {
     'RedHat', 'Amazon': {
