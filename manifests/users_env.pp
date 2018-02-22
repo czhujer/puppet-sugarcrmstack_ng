@@ -61,13 +61,14 @@ class sugarcrmstack_ng::users_env (
         content => $git_config,
       }
 
-      file { '/var/www/.bash_profile':
+      file { '/root/.bashrc':
         ensure  => file,
-        owner   => 'apache',
-        group   => 'apache',
+        owner   => 'root',
+        group   => 'root',
         mode    => '0644',
         content => $bash_config,
       }
+
 
       if($apache_php_apache_manage_user){
 
@@ -79,10 +80,10 @@ class sugarcrmstack_ng::users_env (
           content => $git_config,
         }
 
-        file { '/root/.bashrc':
+        file { '/var/www/.bash_profile':
           ensure  => file,
-          owner   => 'root',
-          group   => 'root',
+          owner   => 'apache',
+          group   => 'apache',
           mode    => '0644',
           content => $bash_config,
         }
