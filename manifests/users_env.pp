@@ -71,7 +71,7 @@ class sugarcrmstack_ng::users_env (
       }
 
 
-      if($apache_php_apache_manage_user){
+      unless($apache_php_apache_manage_user){
 
         file { '/var/www/.gitconfig':
           ensure  => file,
