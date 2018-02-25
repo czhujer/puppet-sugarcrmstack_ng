@@ -93,8 +93,8 @@ describe 'sugarcrmstack_ng' do
           it { is_expected.to contain_class('memcached::params') }
           it { is_expected.to contain_package('memcached').with_ensure('present') }
 
-          it { is_expected.to contain_firewall('100_tcp_11211_for_memcached') }
-          it { is_expected.to contain_firewall('100_udp_11211_for_memcached') }
+          it { is_expected.not_to contain_firewall('100_tcp_11211_for_memcached') }
+          it { is_expected.not_to contain_firewall('100_udp_11211_for_memcached') }
 
           it {
                is_expected.to contain_service('memcached').with(
