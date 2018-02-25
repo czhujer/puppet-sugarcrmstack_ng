@@ -3,7 +3,7 @@ language: ruby
 bundler_args: --without development system_tests
 
 rvm:
- - 2.3.5
+# - 2.3.5
  - 2.4.2
 
 env:
