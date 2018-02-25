@@ -127,7 +127,7 @@ mod 'nodejs',
 
 mod 'zabbixagent',
   :git => 'https://github.com/H-Software/puppet-zabbixagent',
-  :tag => 'v3.4.0'
+  :tag => 'v3.5.0'
 
 mod 'sugarcrmstack',
 #  :git => 'git@github.com:SugarFactory/puppet-sugarcrm-stack.git'
@@ -150,7 +150,7 @@ mod 'git',
 
 mod 'apache',
   :git => 'https://github.com/puppetlabs/puppetlabs-apache.git',
-  :tag => '2.3.0'
+  :tag => '2.3.1'
 
 mod 'php',
   :git => 'https://github.com/thias/puppet-php.git',
@@ -170,19 +170,19 @@ mod 'torrancew-cron', '0.2.1'
 
 mod 'maestrodev-wget', '1.7.3'
 
-mod 'arioch-redis', '3.1.0'
+mod 'arioch-redis', '3.2.0'
 
 mod 'camptocamp-systemd', '1.1.1'
 
 mod 'sugarcrmstack_ng',
   :git => 'https://github.com/SugarFactory/puppet-sugarcrmstack_ng',
-  :tag => 'v0.4'
+  :tag => 'v0.7'
 
 mod 'herculesteam-augeasproviders_core', '2.1.3'
 
 mod 'herculesteam-augeasproviders_sysctl', '2.2.0'
 
-mod 'puppet-zabbix', '6.0.0'
+mod 'puppet-zabbix', '6.2.0'
 
 mod 'puppetlabs-postgresql', '5.2.1'
 
@@ -190,7 +190,7 @@ mod 'puppetlabs-pe_gem', '0.2.0'
 
 mod 'puppetlabs-ruby', '0.6.0'
 
-mod 'puppet-selinux', '1.4.0'
+mod 'puppet-selinux', '1.5.2'
 
 mod 'puppetlabs-transition', '0.1.1'
 
