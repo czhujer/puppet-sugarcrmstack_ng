@@ -115,7 +115,7 @@ class sugarcrmstack_ng::params {
                               ],
               },
               'apache-error-c7' => {
-                  'document_type' => 'apache-error',
+                  'document_type' => 'apache-error-c7',
                   'paths'  => [
                                   '/var/log/httpd/*error.log',
                                   '/var/log/httpd/*error_log',
