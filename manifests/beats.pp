@@ -134,7 +134,9 @@ class sugarcrmstack_ng::beats (
               },
               'sugar_cron_log'   => {
                   'document_type' => 'sugar-cron-log',
-                  'paths'  => [ '/var/www/html/sugarcrm/sugar-cron.log' ],
+                  'paths'  => [ '/var/www/html/sugarcrm/sugar-cron.log',
+                                '/var/log/sugarcrm/sugar-cron.log',
+                              ],
                   'multiline' => {
                                   'pattern' => '^[a-zA-Z]{3}[[:blank:]][a-zA-Z]{3}[[:blank:]]{1,3}[[:digit:]]{1,2}[[:blank:]][[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2}', # lint:ignore:140chars
                                   'negate' => true,
@@ -145,9 +147,9 @@ class sugarcrmstack_ng::beats (
                   'document_type' => 'sugar-log',
                   'paths'  => [
                                   '/var/www/html/sugarcrm/sugarcrm.log',
-                                  '/var/www/html/sugarcrm/sugarcrm*2016*.log',
                                   '/var/www/html/sugarcrm/suitecrm.log',
                                   '/var/www/sugarcrm.log',
+                                  '/var/log/sugarcrm/sugarcrm.log',
                               ],
                   'multiline' => {
                                   'pattern' => '^[a-zA-Z]{3}[[:blank:]][a-zA-Z]{3}[[:blank:]]{1,3}[[:digit:]]{1,2}[[:blank:]][[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2}[[:blank:]][[:digit:]]{4}', # lint:ignore:140chars
