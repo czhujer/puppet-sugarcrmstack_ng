@@ -20,6 +20,7 @@ class sugarcrmstack_ng::beats (
   $beats_metricbeats_enable = $sugarcrmstack_ng::beats_metricbeats_enable,
   #
   $beats_filebeats_prospectors_config = $sugarcrmstack_ng::beats_filebeats_prospectors_config,
+  $beats_filebeats_prospectors_config_extra = $sugarcrmstack_ng::beats_filebeats_prospectors_config_extra,
   $beats_hosts = $sugarcrmstack_ng::beats_hosts,
 ) {
 
@@ -50,137 +51,7 @@ class sugarcrmstack_ng::beats (
 
       if ($beats_filebeats_enable){
 
-        $filebeats_prospectors_config_default = {
-              'syslog' => {
-                  'document_type' => 'syslog',
-                  'paths'  => [ '/var/log/messages',
-                                '/var/log/secure',
-                                '/var/log/yum.log',
-                                '/var/log/cron',
-                                '/var/log/maillog',
-                                '/var/log/ntp',
-                                '/var/log/zabbix/zabbix_agentd2.log',
-                              ],
-              },
-              'log'   => {
-                  'fields' => { 'document_type' => 'log' },
-                  'paths'  => [
-                                  '/var/log/jenkins-slave/jenkins-slave.log',
-                                  '/var/log/memcached.log',
-                                  '/var/log/zabbix/zabbix_agentd.log',
-                              ],
-              },
-              'es_log' => {
-                  'document_type' => 'es_log',
-                  'paths'  => [
-                                  '/var/log/elasticsearch/elasticsearch/*.log',
-                              ],
-                  'multiline' => {
-#                                  "pattern" => "^[[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}",
-                                  'pattern' => '[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2} [[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2},[[:digit:]]{3}', # lint:ignore:140chars
-                                  'negate' => true,
-                                  'match'  => 'after',
-                  },
-              },
-              'mysqld'  => {
-                  'document_type' => 'mysqld',
-                  'paths'  => [ '/var/log/mysqld.log', ],
-              },
-              'mysql_slow_log' => {
-                  'document_type' => 'mysql_slow_log',
-                  'paths'  => [
-                                  '/var/log/mysql-slow.log',
-                              ],
-                  'multiline' => {
-#                                  "pattern" => "^# Time: [[:digit:]]{6}[[:blank:]]{1,2}[[:digit:]]{1,2}:[[:digit:]]{2}:[[:digit:]]{2}",
-                                  'pattern' => '^(# (Time: [[:digit:]]{6}[[:blank:]]{1,2}[[:digit:]]{1,2}:[[:digit:]]{2}:[[:digit:]]{2})|(User@Host: sugarcrm))', # lint:ignore:140chars
-                                  'negate' => true,
-                                  'match'  => 'after',
-                  },
-              },
-              'mysql_slow_log2' => {
-                  'document_type' => 'mysql_slow_log2',
-                  'paths'  => [
-                                  '/var/lib/mysql/mysql/slow_log.CSV',
-                              ],
-              },
-              'nginx-access'  => {
-                  'document_type' => 'nginx-access',
-                  'paths'  => [
-                                  '/var/log/nginx/*.access.log',
-                                  '/var/log/nginx/access.log',
-                              ],
-              },
-              'nginx-error'  => {
-                  'document_type' => 'nginx-error',
-                  'paths'  => [
-                                  '/var/log/nginx/*.error.log',
-                                  '/var/log/nginx/error.log',
-                              ],
-              },
-              'apache' => {
-                  'document_type' => 'apache',
-                  'paths'  => [
-                                  '/var/log/httpd/*access.log',
-                                  '/var/log/httpd/*access_log',
-                              ],
-              },
-              'apache-error' => {
-                  'document_type' => 'apache-error',
-                  'paths'  => [
-                                  '/var/log/httpd/*error.log',
-                                  '/var/log/httpd/*error_log',
-                              ],
-              },
-              'sugar_cron_log'   => {
-                  'document_type' => 'sugar-cron-log',
-                  'paths'  => [ '/var/www/html/sugarcrm/sugar-cron.log',
-                                '/var/log/sugarcrm/sugar-cron.log',
-                              ],
-                  'multiline' => {
-                                  'pattern' => '^[a-zA-Z]{3}[[:blank:]][a-zA-Z]{3}[[:blank:]]{1,3}[[:digit:]]{1,2}[[:blank:]][[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2}', # lint:ignore:140chars
-                                  'negate' => true,
-                                  'match'  => 'after',
-                  },
-              },
-              'sugar_log'   => {
-                  'document_type' => 'sugar-log',
-                  'paths'  => [
-                                  '/var/www/html/sugarcrm/sugarcrm.log',
-                                  '/var/www/html/sugarcrm/suitecrm.log',
-                                  '/var/www/sugarcrm.log',
-                                  '/var/log/sugarcrm/sugarcrm.log',
-                              ],
-                  'multiline' => {
-                                  'pattern' => '^[a-zA-Z]{3}[[:blank:]][a-zA-Z]{3}[[:blank:]]{1,3}[[:digit:]]{1,2}[[:blank:]][[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2}[[:blank:]][[:digit:]]{4}', # lint:ignore:140chars
-                                  'negate' => true,
-                                  'match'  => 'after',
-                  },
-              },
-              'sugar_pmse_log'   => {
-                  'document_type' => 'sugar-pmse-log',
-                  'paths'  => [
-                                  '/var/www/html/sugarcrm/PMSE.log',
-                              ],
-                  'multiline' => {
-                                  'pattern' => '^[a-zA-Z]{3}[[:blank:]][a-zA-Z]{3}[[:blank:]]{1,3}[[:digit:]]{1,2}[[:blank:]][[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2}[[:blank:]][[:digit:]]{4}', # lint:ignore:140chars
-                                  'negate' => true,
-                                  'match'  => 'after',
-                  },
-              },
-              'redis' => {
-                  'document_type' => 'redis',
-                  'paths'  => [
-                                  '/var/log/redis/redis.log',
-                              ],
-              },
-              'back2own_duplicity'  => {
-                  'document_type' => 'back2own_duplicity',
-                  'paths'  => [ '/var/log/back2own-duplicity.log', ],
-              },
-        }
-
-        $filebeats_prospectors_config_final = deep_merge($beats_filebeats_prospectors_config, $filebeats_prospectors_config_default)
+        $filebeats_prospectors_config_final = deep_merge($beats_filebeats_prospectors_config_extra, $filebeats_prospectors_config)
 
         class { '::beats::filebeat':
           prospectors => $filebeats_prospectors_config_final,

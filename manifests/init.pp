@@ -99,6 +99,7 @@ class sugarcrmstack_ng (
   $beats_metricbeats_enable = $sugarcrmstack_ng::params::beats_metricbeats_enable,
   #
   $beats_filebeats_prospectors_config = $sugarcrmstack_ng::params::beats_filebeats_prospectors_config,
+  $beats_filebeats_prospectors_config_extra = $sugarcrmstack_ng::params::beats_filebeats_prospectors_config_extra,
   $beats_hosts = $sugarcrmstack_ng::params::beats_hosts,
   #
 ) inherits sugarcrmstack_ng::params {
