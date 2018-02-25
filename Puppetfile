@@ -178,7 +178,7 @@ mod 'camptocamp-systemd', '1.1.1'
 
 mod 'sugarcrmstack_ng',
   :git => 'https://github.com/SugarFactory/puppet-sugarcrmstack_ng',
-  :tag => 'v0.7'
+  :tag => 'v0.9'
 
 mod 'herculesteam-augeasproviders_core', '2.1.3'
 
