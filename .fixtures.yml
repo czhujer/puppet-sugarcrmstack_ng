@@ -17,7 +17,9 @@ fixtures:
       ref: "1.2.1"
     vcsrepo: "https://github.com/puppetlabs/puppetlabs-vcsrepo"
     composer: "https://github.com/tPl0ch/puppet-composer"
-    git:    "https://github.com/puppetlabs/puppetlabs-git"
+    git:
+      repo: "https://github.com/puppetlabs/puppetlabs-git"
+      ref: "2.3.1"
     mysql:
       repo: "https://github.com/puppetlabs/puppetlabs-mysql"
       ref: "5.1.0"
@@ -33,6 +35,9 @@ fixtures:
     firewall:
       repo: "https://github.com/puppetlabs/puppetlabs-firewall"
       ref: "1.8.1"
+    redis:
+      repo: "https://github.com/arioch/puppet-redis"
+      ref: "3.2.0"
   forge_modules:
     elasticsearch:
       repo: elastic/elasticsearch
@@ -40,8 +45,5 @@ fixtures:
     datacat:
       repo: richardc/datacat
       ref: 0.6.2
-    redis:
-      repo: arioch/redis
-      ref: 3.1.0
   symlinks:
     sugarcrmstack_ng: "#{source_dir}"
