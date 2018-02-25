@@ -51,7 +51,7 @@ class sugarcrmstack_ng::beats (
 
       if ($beats_filebeats_enable){
 
-        $filebeats_prospectors_config_final = deep_merge($beats_filebeats_prospectors_config_extra, $filebeats_prospectors_config)
+        $filebeats_prospectors_config_final = deep_merge($beats_filebeats_prospectors_config_extra, $beats_filebeats_prospectors_config)
 
         class { '::beats::filebeat':
           prospectors => $filebeats_prospectors_config_final,

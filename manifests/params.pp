@@ -39,7 +39,7 @@ class sugarcrmstack_ng::params {
 
         $memcached_php_module_name = 'php-pecl-memcache'
 
-        $filebeats_prospectors_config = {
+        $beats_filebeats_prospectors_config = {
               'syslog' => {
                   'document_type' => 'syslog',
                   'paths'  => [ '/var/log/messages',
@@ -189,7 +189,7 @@ class sugarcrmstack_ng::params {
 
         $memcached_php_module_name = 'php56u-pecl-memcache'
 
-        $filebeats_prospectors_config = {
+        $beats_filebeats_prospectors_config = {
               'syslog' => {
                   'document_type' => 'syslog',
                   'paths'  => [ '/var/log/messages',

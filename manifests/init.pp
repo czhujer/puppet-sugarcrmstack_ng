@@ -197,6 +197,7 @@ class sugarcrmstack_ng (
   validate_bool($beats_metricbeats_enable)
 
   validate_hash($beats_filebeats_prospectors_config)
+  validate_hash($beats_filebeats_prospectors_config_extra)
   validate_array($beats_hosts)
 
   # run
