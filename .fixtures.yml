@@ -37,7 +37,7 @@ fixtures:
       ref: "1.8.1"
     redis:
       repo: "https://github.com/arioch/puppet-redis"
-      ref: "3.2.0"
+      ref: "v3.2.0"
   forge_modules:
     elasticsearch:
       repo: elastic/elasticsearch

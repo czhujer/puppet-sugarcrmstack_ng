@@ -171,8 +171,8 @@ mod 'torrancew-cron', '0.2.1'
 mod 'maestrodev-wget', '1.7.3'
 
 mod 'arioch-redis',
-  :git => 'https://github.com/arioch/puppet-redis'
-  :tag => '3.2.0'
+  :git => 'https://github.com/arioch/puppet-redis',
+  :tag => 'v3.2.0'
 
 mod 'camptocamp-systemd', '1.1.1'
 
