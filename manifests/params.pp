@@ -26,7 +26,7 @@ class sugarcrmstack_ng::params {
                 'htop', 'bind-utils', 'wget', 'telnet', 'lsof',
                 'irqbalance', 'vim-minimal', 'yum-utils',
                 'traceroute', 'vim-enhanced', 'net-tools',
-                'numad', 'yum-cron', 'apachetop', 'nano', 'nc']
+                'numad', 'yum-cron', 'apachetop', 'nano', 'nc', 'lftp']
 
         $apache_php_apache_default_mods = [ 'actions', 'authn_core', 'cache', 'ext_filter', 'mime', 'mime_magic', 'rewrite', 'speling',
                                       'version', 'vhost_alias', 'auth_digest', 'authn_anon', 'authn_dbm', 'authz_dbm', 'authz_owner',
