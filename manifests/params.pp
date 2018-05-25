@@ -34,8 +34,14 @@ class sugarcrmstack_ng::params {
                                       'authn_file', 'autoindex', 'dav', 'dav_fs', 'dir', 'negotiation', 'setenvif', 'auth_basic',
                                       'authz_user', 'authz_groupfile', 'env', 'suexec']
 
-        $apache_php_php_pkg_version = '5.6.36'
-        $apache_php_php_pkg_build = '1'
+        if ($sugar_version == '8.0'){
+          $apache_php_php_pkg_version = '7.1.17'
+          $apache_php_php_pkg_build = '1'
+        }
+        else{
+          $apache_php_php_pkg_version = '5.6.36'
+          $apache_php_php_pkg_build = '1'
+        }
 
         $memcached_php_module_name = 'php-pecl-memcache'
 
