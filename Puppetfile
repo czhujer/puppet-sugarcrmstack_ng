@@ -8,15 +8,15 @@ moduledir '/etc/puppet/modules'
 
 mod 'apt',
   :git => 'https://github.com/puppetlabs/puppetlabs-apt',
-  :tag => '2.4.0'
+  :tag => '4.5.1'
 
 mod 'java',
   :git => 'https://github.com/puppetlabs/puppetlabs-java',
-  :tag => '2.1.1'
+  :tag => '2.4.0'
 
 mod 'stdlib',
   :git => 'https://github.com/puppetlabs/puppetlabs-stdlib',
-  :tag => '4.21.0'
+  :tag => '4.25.0'
 
 mod 'jenkins',
 #  :git => 'https://github.com/jenkinsci/puppet-jenkins',
@@ -27,7 +27,7 @@ mod 'jenkins',
 
 mod 'archive',
   :git => 'https://github.com/voxpupuli/puppet-archive',
-  :tag => 'v2.1.0'
+  :tag => 'v2.3.0'
 
 mod 'zypprepo',
   :git => 'https://github.com/voxpupuli/puppet-zypprepo',
@@ -85,21 +85,23 @@ mod 'memcached',
   :git => 'https://github.com/saz/puppet-memcached',
   :tag => 'v2.8.1'
 
-mod 'xinetd',
-  :git => 'https://github.com/puppetlabs/puppetlabs-xinetd',
-  :tag => '2.0.0'
+#mod 'xinetd',
+#  :git => 'https://github.com/puppetlabs/puppetlabs-xinetd',
+#  :tag => '2.0.0'
 
-mod 'openvpn',
-  :git => 'https://github.com/luxflux/puppet-openvpn',
-  :tag => '4.0.1'
+#mod 'openvpn',
+#  :git => 'https://github.com/luxflux/puppet-openvpn',
+#  :tag => '4.0.1'
 
-mod 'galera',
-  :git => 'https://github.com/czhujer/puppet-galera.git',
-  :tag => 'v0.2.3'
+mod 'puppet-openvpn', '7.2.0'
 
-mod 'glusterfs',
-  :git => 'https://github.com/czhujer/puppet-glusterfs',
-  :tag => 'v0.2.0'
+#mod 'galera',
+#  :git => 'https://github.com/czhujer/puppet-galera.git',
+#  :tag => 'v0.2.3'
+
+#mod 'glusterfs',
+#  :git => 'https://github.com/czhujer/puppet-glusterfs',
+#  :tag => 'v0.2.0'
 
 mod 'yum',
   :git => 'https://github.com/voxpupuli/puppet-yum',
@@ -113,21 +115,21 @@ mod 'ntp',
   :git => 'https://github.com/puppetlabs/puppetlabs-ntp',
   :tag => '4.2.0'
 
-mod 'logstash_reporter',
-  :git => 'https://github.com/elastic/puppet-logstash-reporter',
-  :tag => '0.1.0'
+#mod 'logstash_reporter',
+#  :git => 'https://github.com/elastic/puppet-logstash-reporter',
+#  :tag => '0.1.0'
 
 mod 'beats',
   :git => 'https://github.com/SugarFactory/puppet-beats',
   :branch => 'master'
 
-mod 'nodejs',
-  :git => 'https://github.com/voxpupuli/puppet-nodejs',
-  :tag => 'v1.3.0'
+#mod 'nodejs',
+#  :git => 'https://github.com/voxpupuli/puppet-nodejs',
+#  :tag => 'v1.3.0'
 
 mod 'zabbixagent',
   :git => 'https://github.com/H-Software/puppet-zabbixagent',
-  :tag => 'v3.5.0'
+  :tag => 'v3.5.1'
 
 mod 'sugarcrmstack',
 #  :git => 'git@github.com:SugarFactory/puppet-sugarcrm-stack.git'
@@ -178,7 +180,7 @@ mod 'camptocamp-systemd', '1.1.1'
 
 mod 'sugarcrmstack_ng',
   :git => 'https://github.com/SugarFactory/puppet-sugarcrmstack_ng',
-  :tag => 'v0.9'
+  :tag => 'v0.10'
 
 mod 'herculesteam-augeasproviders_core', '2.1.3'
 

@@ -31,6 +31,9 @@ class sugarcrmstack_ng::apache_php (
   $apache_php_apache_manage_user = $sugarcrmstack_ng::apache_php_apache_manage_user,
   $apache_php_manage_phpmyadmin_config = $sugarcrmstack_ng::apache_php_manage_phpmyadmin_config,
   $apache_php_manage_phpmyadmin_files = $sugarcrmstack_ng::apache_php_manage_phpmyadmin_files,
+  $apache_php_xdebug_module_manage   = $sugarcrmstack_ng::apache_php_xdebug_module_manage,
+  $apache_php_xdebug_module_ensure   = $sugarcrmstack_ng::apache_php_xdebug_module_ensure,
+  $apache_php_xdebug_module_settings = $sugarcrmstack_ng::apache_php_xdebug_module_settings,
 ) {
 
   if ($apache_php_enable){
@@ -58,6 +61,10 @@ class sugarcrmstack_ng::apache_php (
         #
         manage_phpmyadmin_config => $apache_php_manage_phpmyadmin_config,
         manage_phpmyadmin_files  => $apache_php_manage_phpmyadmin_files,
+        #
+        xdebug_module_manage     => $apache_php_xdebug_module_manage,
+        xdebug_module_ensure     => $apache_php_xdebug_module_ensure,
+        xdebug_module_settings   => $apache_php_xdebug_module_settings,
 
       }
     }
