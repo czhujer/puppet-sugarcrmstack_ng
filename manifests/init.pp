@@ -137,7 +137,7 @@ class sugarcrmstack_ng (
 
   # validate apache_php parameters
 
-  validate_re($apache_php_php_pkg_version, ['^5\.[4-6]\.[0-9]{1,2}/$','^7\.1\.[0-9][0-9]/$'])
+  validate_re($apache_php_php_pkg_version, ['^5\.[4-6]\.[0-9]{1,2}$','^7\.1\.[0-9][0-9]$'])
   validate_integer($apache_php_php_pkg_build)
   #$apache_php_php_error_reporting
   #$apache_php_apache_https_port
