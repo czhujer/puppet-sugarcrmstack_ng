@@ -131,10 +131,14 @@ class sugarcrmstack_ng (
     fail("Class['sugarcrmstack_ng']: Unsupported configuration. With Sugar 8.0 you have to use OS release 7.x..")
   }
 
+  if($sugar_version == '8.0' and $apache_php_php_pkg_version =~ /^7\.1\.[0-9][0-9]/){
+    fail("Class['sugarcrmstack_ng']: Unsupported configuration. With Sugar 8.0 you have to use PHP 7.1")
+  }
+
   # validate apache_php parameters
 
-  #$apache_php_php_pkg_version
-  #$apache_php_php_pkg_build
+  validate_re($apache_php_php_pkg_version, ['^5\.[4-6]\.[0-9]{1,2}/$','^7\.1\.[0-9][0-9]/$'])
+  validate_integer($apache_php_php_pkg_build)
   #$apache_php_php_error_reporting
   #$apache_php_apache_https_port
   #$apache_php_apache_http_port
