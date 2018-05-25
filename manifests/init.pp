@@ -123,8 +123,12 @@ class sugarcrmstack_ng (
 
   validate_string($sugar_version)
 
-  if ($sugar_version != '7.5' and $sugar_version != '7.9'){
-    fail("Class['sugarcrmstack_ng']: This class is compatible only with sugar_version 7.5 or 7.9 (not ${sugar_version})")
+  if ($sugar_version != '7.5' and $sugar_version != '7.9' and $sugar_version != '8.0'){
+    fail("Class['sugarcrmstack_ng']: This class is compatible only with sugar_version 7.5,7.9 or 8.0 (not ${sugar_version})")
+  }
+
+  if ($::operatingsystemmajrelease in ['6'] and $sugar_version == '8.0'){
+    fail("Class['sugarcrmstack_ng']: Unsupported configuration. With Sugar 8.0 you have to use OS release 7.x..")
   }
 
   # validate apache_php parameters

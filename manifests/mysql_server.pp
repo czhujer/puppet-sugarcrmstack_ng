@@ -49,7 +49,7 @@ class sugarcrmstack_ng::mysql_server (
       }
     }
 
-    if ($mysql_server_use_pxc == true and $sugar_version == '7.9' and $::operatingsystemmajrelease in ['7'] ){
+    if ($mysql_server_use_pxc == true and ($sugar_version == '7.9' or  $sugar_version == '8.0') and $::operatingsystemmajrelease in ['7'] ){
       package {'Percona-XtraDB-Cluster-shared-compat-57':
         ensure => 'installed',
         before => Class['sugarcrmstack::mysqlserver'],
@@ -67,7 +67,7 @@ class sugarcrmstack_ng::mysql_server (
       }
     }
 
-    if ($mysql_server_use_pxc == true and $sugar_version == '7.9' and $::operatingsystemmajrelease in ['7'] ){
+    if ($mysql_server_use_pxc == true and ($sugar_version == '7.9' or  $sugar_version == '8.0') and $::operatingsystemmajrelease in ['7'] ){
       #fix hang on systemctl restart mysql
       if ! defined (File['/etc/my.cnf']){
         file { '/etc/my.cnf':
@@ -107,7 +107,7 @@ class sugarcrmstack_ng::mysql_server (
       }
     }
 
-    if ($sugar_version == '7.5' or $sugar_version == '7.9'){
+    if ($sugar_version == '7.5' or $sugar_version == '7.9' or $sugar_version == '8.0'){
 
       class { '::sugarcrmstack::mysqlserver':
         mysql_server_enable                 => $mysql_server_enable,
@@ -129,7 +129,7 @@ class sugarcrmstack_ng::mysql_server (
 
     }
     else{
-      fail("Class['sugarcrmstack_ng::mysql_server']: This class is compatible only with sugar_version 7.5 or 7.9 (not ${sugar_version})")
+      fail("Class['sugarcrmstack_ng::mysql_server']: This class is compatible only with sugar_version 7.5,7.9 or 8.0 (not ${sugar_version})")
     }
   }
 }

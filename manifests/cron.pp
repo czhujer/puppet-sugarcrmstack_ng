@@ -24,7 +24,7 @@ class sugarcrmstack_ng::cron (
 
   if ($cron_enable){
 
-    if ($sugar_version == '7.5' or $sugar_version == '7.9'){
+    if ($sugar_version == '7.5' or $sugar_version == '7.9' or $sugar_version == '8.0'){
 
       case $::operatingsystem {
         'redhat', 'scientific', 'centos': {$package_name = 'crontabs' $service_name = 'crond'}

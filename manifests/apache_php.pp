@@ -38,7 +38,7 @@ class sugarcrmstack_ng::apache_php (
 
   if ($apache_php_enable){
 
-    if ($sugar_version == '7.5' or $sugar_version == '7.9'){
+    if ($sugar_version == '7.5' or $sugar_version == '7.9' or $sugar_version == '8.0'){
 
       class {'::sugarcrmstack::apachephpng':
         php_pkg_version          => $apache_php_php_pkg_version,
@@ -69,7 +69,7 @@ class sugarcrmstack_ng::apache_php (
       }
     }
     else{
-      fail("Class['sugarcrmstack_ng::apache_php']: This class is compatible only with sugar_version 7.5 or 7.9 (not ${sugar_version})")
+      fail("Class['sugarcrmstack_ng::apache_php']: This class is compatible only with sugar_version 7.5,7.9 or 8.0 (not ${sugar_version})")
     }
   }
 
