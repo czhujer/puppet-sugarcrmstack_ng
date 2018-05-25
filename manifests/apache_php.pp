@@ -34,11 +34,22 @@ class sugarcrmstack_ng::apache_php (
   $apache_php_xdebug_module_manage   = $sugarcrmstack_ng::apache_php_xdebug_module_manage,
   $apache_php_xdebug_module_ensure   = $sugarcrmstack_ng::apache_php_xdebug_module_ensure,
   $apache_php_xdebug_module_settings = $sugarcrmstack_ng::apache_php_xdebug_module_settings,
+  $apache_php_proxy_pass_match        = $sugarcrmstack_ng::apache_php_proxy_pass_match,
+  $apache_php_proxy_pass_match_default = $sugarcrmstack_ng::apache_php_proxy_pass_match_default,
 ) {
 
   if ($apache_php_enable){
 
     if ($sugar_version == '7.5' or $sugar_version == '7.9' or $sugar_version == '8.0'){
+
+      if($sugar_version == '8.0'){
+        if empty($apache_php_proxy_pass_match){
+          $apache_php_proxy_pass_match_final = $apache_php_proxy_pass_match_default
+        }
+        else {
+          $apache_php_proxy_pass_match_final = $apache_php_proxy_pass_match
+        }
+      }
 
       class {'::sugarcrmstack::apachephpng':
         php_pkg_version          => $apache_php_php_pkg_version,
@@ -65,6 +76,8 @@ class sugarcrmstack_ng::apache_php (
         xdebug_module_manage     => $apache_php_xdebug_module_manage,
         xdebug_module_ensure     => $apache_php_xdebug_module_ensure,
         xdebug_module_settings   => $apache_php_xdebug_module_settings,
+        #
+        proxy_pass_match         => $apache_php_proxy_pass_match_final,
 
       }
     }

@@ -48,6 +48,9 @@ class sugarcrmstack_ng (
   #$apache_php_apache_timeout =
   #$apache_php_apache_keepalive =
   #
+  $apache_php_proxy_pass_match         = $sugarcrmstack_ng::params::apache_php_proxy_pass_match,
+  $apache_php_proxy_pass_match_default = $sugarcrmstack_ng::params::apache_php_proxy_pass_match_default,
+  #
   $apache_php_xdebug_module_manage   = $sugarcrmstack_ng::params::apache_php_xdebug_module_manage,
   $apache_php_xdebug_module_ensure   = $sugarcrmstack_ng::params::apache_php_xdebug_module_ensure,
   $apache_php_xdebug_module_settings = $sugarcrmstack_ng::params::apache_php_xdebug_module_settings,
@@ -154,6 +157,9 @@ class sugarcrmstack_ng (
   validate_bool($apache_php_apache_manage_user)
   validate_bool($apache_php_manage_phpmyadmin_config)
   validate_bool($apache_php_manage_phpmyadmin_files)
+
+  #$apache_php_proxy_pass_match
+  #$apache_php_proxy_pass_match_default
 
   validate_bool($apache_php_xdebug_module_manage)
   validate_string($apache_php_xdebug_module_ensure)
