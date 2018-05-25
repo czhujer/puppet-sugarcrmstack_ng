@@ -37,7 +37,7 @@ class sugarcrmstack_ng::params {
         $apache_php_php_pkg_version = '5.6.36'
         $apache_php_php_pkg_build = '1'
 
-        $apache_php_proxy_pass_match => []
+        $apache_php_proxy_pass_match = []
         $apache_php_proxy_pass_match_default = [
            { 'path' => '^/(.*\.php(/.*)?)$', 'url'  => 'fcgi://127.0.0.1:9001/var/www/html/sugarcrm/$1' },
         ]
@@ -192,11 +192,9 @@ class sugarcrmstack_ng::params {
         $apache_php_php_pkg_version = '5.6.36'
         $apache_php_php_pkg_build = '1'
 
-        $apache_php_proxy_pass_match => []
-        $apache_php_proxy_pass_match_default = [
-           { 'path' => '^/(.*\.php(/.*)?)$', 'url'  => 'fcgi://127.0.0.1:9001/var/www/html/sugarcrm/$1' },
-        ]
-        
+        #$apache_php_proxy_pass_match = []
+        #$apache_php_proxy_pass_match_default = []
+
         $memcached_php_module_name = 'php56u-pecl-memcache'
 
         $beats_filebeats_prospectors_config = {
