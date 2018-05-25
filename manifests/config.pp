@@ -25,7 +25,7 @@ class sugarcrmstack_ng::config {
           warning('Possible override of value "enable" in repo remi-php56')
         }
 
-        ini_setting { 'enable remi-php56 repo':
+        ini_setting { 'disable remi-php56 repo':
           ensure  => present,
           path    => '/etc/yum.repos.d/remi.repo',
           section => 'remi-php56',
