@@ -7,18 +7,45 @@ class sugarcrmstack_ng::config {
   #enable remi-php56 repo
   if ($::sugarcrmstack_ng::apache_php_enable){
     if ($::operatingsystemmajrelease in ['7']){
-      if ( defined(Yumrepo['remi-php56']) ){
-        warning('Possible override of value "enable" in repo remi-php56')
-      }
 
-      ini_setting { 'enable remi-php56 repo':
-        ensure  => present,
-        path    => '/etc/yum.repos.d/remi.repo',
-        section => 'remi-php56',
-        setting => 'enabled',
-        value   => '1',
-      }
+      if ($sugar_version == '8.0'){
+        if ( defined(Yumrepo['remi-php71']) ){
+          warning('Possible override of value "enable" in repo remi-php71')
+        }
 
+        ini_setting { 'enable remi-php71 repo':
+          ensure  => present,
+          path    => '/etc/yum.repos.d/remi71.repo',
+          section => 'remi-php71',
+          setting => 'enabled',
+          value   => '1',
+        }
+
+        if ( defined(Yumrepo['remi-php56']) ){
+          warning('Possible override of value "enable" in repo remi-php56')
+        }
+
+        ini_setting { 'enable remi-php56 repo':
+          ensure  => present,
+          path    => '/etc/yum.repos.d/remi.repo',
+          section => 'remi-php56',
+          setting => 'enabled',
+          value   => '0',
+        }
+      }
+      else{
+        if ( defined(Yumrepo['remi-php56']) ){
+          warning('Possible override of value "enable" in repo remi-php56')
+        }
+
+        ini_setting { 'enable remi-php56 repo':
+          ensure  => present,
+          path    => '/etc/yum.repos.d/remi.repo',
+          section => 'remi-php56',
+          setting => 'enabled',
+          value   => '1',
+        }
+      }
     }
     elsif ($::operatingsystemmajrelease in ['6']){
 
