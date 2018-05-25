@@ -34,7 +34,7 @@ class sugarcrmstack_ng::params {
                                       'authn_file', 'autoindex', 'dav', 'dav_fs', 'dir', 'negotiation', 'setenvif', 'auth_basic',
                                       'authz_user', 'authz_groupfile', 'env', 'suexec']
 
-        if ($sugar_version == '8.0'){
+        if ($::sugarcrmstack_ng::sugar_version == '8.0'){
           $apache_php_php_pkg_version = '7.1.17'
           $apache_php_php_pkg_build = '1'
         }
