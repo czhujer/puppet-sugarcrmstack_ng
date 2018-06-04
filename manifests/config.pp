@@ -13,13 +13,13 @@ class sugarcrmstack_ng::config {
           warning('Possible override of value "enable" in repo remi-php71')
         }
 
-        ini_setting { 'enable remi-php71 repo':
-          ensure  => present,
-          path    => '/etc/yum.repos.d/remi71.repo',
-          section => 'remi-php71',
-          setting => 'enabled',
-          value   => '1',
-        }
+        #ini_setting { 'enable remi-php71 repo':
+        #  ensure  => present,
+        #  path    => '/etc/yum.repos.d/remi71.repo',
+        #  section => 'remi-php71',
+        #  setting => 'enabled',
+        #  value   => '1',
+        #}
 
         if ( defined(Yumrepo['remi-php56']) ){
           warning('Possible override of value "enable" in repo remi-php56')
