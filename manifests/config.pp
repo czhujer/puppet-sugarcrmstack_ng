@@ -89,7 +89,8 @@ class sugarcrmstack_ng::config {
         }
       }
     }
-    elsif ($::operatingsystemmajrelease in ['7'] and ($::sugarcrmstack_ng::sugar_version == '7.9' or $::sugarcrmstack_ng::sugar_version == '8.0')) {
+    elsif ($::operatingsystemmajrelease in ['7'] and
+      ($::sugarcrmstack_ng::sugar_version == '7.9' or $::sugarcrmstack_ng::sugar_version == '8.0')) {
 
       if (defined_with_params(Package['mysql-repo'], {'ensure' => 'el6-7' }) or
         defined_with_params(Package['mysql-repo'], {'ensure' => 'el7-5' }) ) {
