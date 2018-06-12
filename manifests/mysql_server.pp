@@ -130,7 +130,7 @@ class sugarcrmstack_ng::mysql_server (
     }
     else{
       $class_name="Class['sugarcrmstack_ng::mysql_server']"
-      fail("{$class_name}: This class is compatible only with sugar_version 7.5,7.9 or 8.0 (not ${sugar_version})")
+      fail("${class_name}: This class is compatible only with sugar_version 7.5,7.9 or 8.0 (not ${sugar_version})")
     }
   }
 }
