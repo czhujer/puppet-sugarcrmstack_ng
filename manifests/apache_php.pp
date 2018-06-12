@@ -50,6 +50,9 @@ class sugarcrmstack_ng::apache_php (
           $apache_php_proxy_pass_match_final = $apache_php_proxy_pass_match
         }
       }
+      else{
+        $apache_php_proxy_pass_match_final = $apache_php_proxy_pass_match       
+      }
 
       class {'::sugarcrmstack::apachephpng':
         php_pkg_version          => $apache_php_php_pkg_version,
