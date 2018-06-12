@@ -51,7 +51,7 @@ class sugarcrmstack_ng::apache_php (
         }
       }
       else{
-        $apache_php_proxy_pass_match_final = $apache_php_proxy_pass_match       
+        $apache_php_proxy_pass_match_final = []
       }
 
       class {'::sugarcrmstack::apachephpng':
