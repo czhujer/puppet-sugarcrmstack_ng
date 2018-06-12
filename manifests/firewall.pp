@@ -20,7 +20,7 @@ class sugarcrmstack_ng::firewall (
   #include ::sugarcrmstack_ng::firewall::pre
   #include ::sugarcrmstack_ng::firewall::post
 
-  if ($sugar_version == '7.5' or $sugar_version == '7.9'){
+  if ($sugar_version == '7.5' or $sugar_version == '7.9' or $sugar_version == '8.0'){
 
     if ($firewall_manage) {
       resources { 'firewall':

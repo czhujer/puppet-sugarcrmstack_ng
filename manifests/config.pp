@@ -4,21 +4,48 @@
 #
 class sugarcrmstack_ng::config {
 
-  #enable remi-php56 repo
+  #enable/disable remi-php repo(s)
   if ($::sugarcrmstack_ng::apache_php_enable){
     if ($::operatingsystemmajrelease in ['7']){
-      if ( defined(Yumrepo['remi-php56']) ){
-        warning('Possible override of value "enable" in repo remi-php56')
-      }
 
-      ini_setting { 'enable remi-php56 repo':
-        ensure  => present,
-        path    => '/etc/yum.repos.d/remi.repo',
-        section => 'remi-php56',
-        setting => 'enabled',
-        value   => '1',
-      }
+      if ($::sugarcrmstack_ng::sugar_version == '8.0'){
+        if ( defined(Yumrepo['remi-php71']) ){
+          warning('Possible override of value "enable" in repo remi-php71')
+        }
 
+        ini_setting { 'enable remi-php71 repo':
+          ensure  => present,
+          path    => '/etc/yum.repos.d/remi-php71.repo',
+          section => 'remi-php71',
+          setting => 'enabled',
+          value   => '1',
+        }
+
+        if ( defined(Yumrepo['remi-php56']) ){
+          warning('Possible override of value "enable" in repo remi-php56')
+        }
+
+        ini_setting { 'disable remi-php56 repo':
+          ensure  => present,
+          path    => '/etc/yum.repos.d/remi.repo',
+          section => 'remi-php56',
+          setting => 'enabled',
+          value   => '0',
+        }
+      }
+      else{
+        if ( defined(Yumrepo['remi-php56']) ){
+          warning('Possible override of value "enable" in repo remi-php56')
+        }
+
+        ini_setting { 'enable remi-php56 repo':
+          ensure  => present,
+          path    => '/etc/yum.repos.d/remi.repo',
+          section => 'remi-php56',
+          setting => 'enabled',
+          value   => '1',
+        }
+      }
     }
     elsif ($::operatingsystemmajrelease in ['6']){
 
@@ -62,7 +89,8 @@ class sugarcrmstack_ng::config {
         }
       }
     }
-    elsif ($::operatingsystemmajrelease in ['7'] and $::sugarcrmstack_ng::sugar_version == '7.9' ) {
+    elsif ($::operatingsystemmajrelease in ['7'] and
+      ($::sugarcrmstack_ng::sugar_version == '7.9' or $::sugarcrmstack_ng::sugar_version == '8.0')) {
 
       if (defined_with_params(Package['mysql-repo'], {'ensure' => 'el6-7' }) or
         defined_with_params(Package['mysql-repo'], {'ensure' => 'el7-5' }) ) {

@@ -34,8 +34,27 @@ class sugarcrmstack_ng::params {
                                       'authn_file', 'autoindex', 'dav', 'dav_fs', 'dir', 'negotiation', 'setenvif', 'auth_basic',
                                       'authz_user', 'authz_groupfile', 'env', 'suexec']
 
-        $apache_php_php_pkg_version = '5.6.35'
+        $apache_php_php_pkg_version = '5.6.36'
         $apache_php_php_pkg_build = '1'
+
+        $apache_php_proxy_pass_match = []
+        $apache_php_proxy_pass_match_default = [ {
+          'path' => '^/phpmyadmin/(.*\.php)$',
+          'url'  => 'fcgi://127.0.0.1:9002/usr/share/phpMyAdmin/$1',
+          },{
+          'path' => '/phpmyadmin(.*/)$',
+          'url'  => 'fcgi://127.0.0.1:9002/usr/share/phpMyAdmin$1index.php'
+          },{
+          'path' => '^/phpMyAdmin/(.*\.php)$',
+          'url'  => 'fcgi://127.0.0.1:9002/usr/share/phpmyadmin/$1'
+          },{
+          'path' => '^/phpMyAdmin(.*/)$',
+          'url'  => 'fcgi://127.0.0.1:9002/usr/share/phpMyAdmin$1index.php'
+          },{
+          'path' => '^/(.*\.php(/.*)?)$',
+          'url'  => 'fcgi://127.0.0.1:9001/var/www/html/sugarcrm/$1'
+          },
+        ]
 
         $memcached_php_module_name = 'php-pecl-memcache'
 
@@ -184,8 +203,11 @@ class sugarcrmstack_ng::params {
                                       'authn_file', 'autoindex', 'dav', 'dav_fs', 'dir', 'negotiation', 'setenvif', 'auth_basic',
                                       'authz_user', 'authz_groupfile', 'env', 'authz_default', 'suexec']
 
-        $apache_php_php_pkg_version = '5.6.35'
+        $apache_php_php_pkg_version = '5.6.36'
         $apache_php_php_pkg_build = '1'
+
+        #$apache_php_proxy_pass_match = []
+        #$apache_php_proxy_pass_match_default = []
 
         $memcached_php_module_name = 'php56u-pecl-memcache'
 

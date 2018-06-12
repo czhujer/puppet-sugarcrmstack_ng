@@ -26,7 +26,7 @@ class sugarcrmstack_ng::elasticsearch_server (
 
   if ($elasticsearch_server_enable){
 
-    if ($sugar_version == '7.5' or $sugar_version == '7.9'){
+    if ($sugar_version == '7.5' or $sugar_version == '7.9' or $sugar_version == '8.0'){
 
 #      class { '::sugarcrmstack::elasticsearchserver':
 #        elasticsearch_server_enable          => $elasticsearch_server_enable,
