@@ -13,8 +13,9 @@ fi
 
 PS1='\[\e[1;32m\]\u@\h \W\$\[\e[0m\] '
 
-alias sugarlog='tail -f -n 50 /var/www/html/sugarcrm/sugarcrm.log /var/log/httpd/ssl_error_log'
-alias sugartest='cd /var/www/html/sugarcrm/tests/unit-php; php ../../vendor/bin/phpunit --testsuite SugarFactory'
+alias sugarlog='tail -f -n 50 /var/www/html/sugarcrm/sugarcrm.log /var/log/httpd/ssl_error_log /var/log/php-fpm/www-error.log'
+alias sugartestunit='cd /var/www/html/sugarcrm/tests/unit-php; php ../../vendor/bin/phpunit --testsuite SugarFactoryUnit'
+alias sugartestfunc='cd /var/www/html/sugarcrm/tests/{old}; php ../../vendor/bin/phpunit --testsuite SugarFactoryFunctional'
 alias cdsugar='cd /var/www/html/sugarcrm/'
 alias rebuild-all='/var/www/html/Deployer/do rebuild-all'
 alias rebuild-cache='/var/www/html/Deployer/do rebuild-cache'
