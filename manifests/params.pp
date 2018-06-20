@@ -94,6 +94,23 @@ class sugarcrmstack_ng::params {
                   'document_type' => 'mysqld',
                   'paths'  => [ '/var/log/mysqld.log', ],
               },
+              #ADDED HERE
+              'mysql-error-c7'  => {
+                'document_type' => 'mysql-error-c7',
+                'paths'  => [
+                  '/var/log/mariadb/mariadb.log',
+                ],
+              },
+
+              'php-fpm-error-c7' => {
+                'document_type' => 'php-fpm-error-c7',
+                'paths'  => [
+                  '/var/log/php-fpm/error.log',
+                  '/var/log/php-fpm/phpmyadmin-error.log',
+                  '/var/log/mariadb/www-error.log',
+                ],
+              },
+              #END HERE
               'mysql_slow_log' => {
                   'document_type' => 'mysql_slow_log',
                   'paths'  => [
