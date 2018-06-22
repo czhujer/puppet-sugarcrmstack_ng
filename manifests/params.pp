@@ -111,18 +111,17 @@ class sugarcrmstack_ng::params {
                                   '/var/log/mysql-slow.log',
                               ],
                   'multiline' => {
-#                                  "pattern" => "^# Time: [[:digit:]]{6}[[:blank:]]{1,2}[[:digit:]]{1,2}:[[:digit:]]{2}:[[:digit:]]{2}",
-                                  'pattern' => '^(# (Time: [[:digit:]]{6}[[:blank:]]{1,2}[[:digit:]]{1,2}:[[:digit:]]{2}:[[:digit:]]{2})|(User@Host: sugarcrm))', # lint:ignore:140chars
+                                  'pattern' => '^# User@Host: ',
                                   'negate' => true,
                                   'match'  => 'after',
                   },
               },
-              'mysql_slow_log2' => {
-                  'document_type' => 'mysql_slow_log2',
-                  'paths'  => [
-                                  '/var/lib/mysql/mysql/slow_log.CSV',
-                              ],
-              },
+              #'mysql_slow_log2' => {
+              #    'document_type' => 'mysql_slow_log2',
+              #    'paths'  => [
+              #                    '/var/lib/mysql/mysql/slow_log.CSV',
+              #                ],
+              #},
               'nginx-access'  => {
                   'document_type' => 'nginx-access',
                   'paths'  => [
@@ -264,18 +263,17 @@ class sugarcrmstack_ng::params {
                                   '/var/log/mysql-slow.log',
                               ],
                   'multiline' => {
-#                                  "pattern" => "^# Time: [[:digit:]]{6}[[:blank:]]{1,2}[[:digit:]]{1,2}:[[:digit:]]{2}:[[:digit:]]{2}",
-                                  'pattern' => '^(# (Time: [[:digit:]]{6}[[:blank:]]{1,2}[[:digit:]]{1,2}:[[:digit:]]{2}:[[:digit:]]{2})|(User@Host: sugarcrm))', # lint:ignore:140chars
+                                  'pattern' => '^# User@Host: ',
                                   'negate' => true,
                                   'match'  => 'after',
                   },
               },
-              'mysql_slow_log2' => {
-                  'document_type' => 'mysql_slow_log2',
-                  'paths'  => [
-                                  '/var/lib/mysql/mysql/slow_log.CSV',
-                              ],
-              },
+              #'mysql_slow_log2' => {
+              #    'document_type' => 'mysql_slow_log2',
+              #    'paths'  => [
+              #                    '/var/lib/mysql/mysql/slow_log.CSV',
+              #                ],
+              #},
               'nginx-access'  => {
                   'document_type' => 'nginx-access',
                   'paths'  => [
