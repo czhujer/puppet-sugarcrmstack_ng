@@ -105,7 +105,7 @@ class sugarcrmstack_ng::params {
                   '/var/log/php-fpm/www-error.log',
                 ],
                 'multiline' => {
-                                'pattern' => '^\\[\\d{2}-\\w{3}-\\d{4} \\d{2}:\\d{2}:\\d{2}',
+                                'pattern' => '^\\\[\\\d{2}-\\\w{3}-\\\d{4} \\\d{2}:\\\d{2}:\\\d{2}',
                                 'negate' => true,
                                 'match'  => 'after',
                 },
