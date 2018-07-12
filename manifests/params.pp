@@ -221,8 +221,8 @@ class sugarcrmstack_ng::params {
         $apache_php_php_pkg_version = '5.6.36'
         $apache_php_php_pkg_build = '1'
 
-        #$apache_php_proxy_pass_match = []
-        #$apache_php_proxy_pass_match_default = []
+        $apache_php_proxy_pass_match = []
+        $apache_php_proxy_pass_match_default = []
 
         $memcached_php_module_name = 'php56u-pecl-memcache'
 
