@@ -19,7 +19,7 @@ class sugarcrmstack_ng::redis_server (
 
   if ($redis_server_enable){
 
-    if ($sugar_version == '7.5' or $sugar_version == '7.9'){
+    if ($sugar_version == '7.5' or $sugar_version == '7.9' or $sugar_version == '8.0'){
 
       class { '::redis':
         bind           => '127.0.0.1',

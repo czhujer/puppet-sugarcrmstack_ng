@@ -20,7 +20,7 @@ class sugarcrmstack_ng::users_env (
 
   if ($users_env_manage){
 
-    if ($sugar_version == '7.5' or $sugar_version == '7.9'){
+    if ($sugar_version == '7.5' or $sugar_version == '7.9' or $sugar_version == '8.0'){
 
       file { '/root/.gitconfig':
         ensure  => file,

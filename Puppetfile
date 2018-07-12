@@ -203,3 +203,8 @@ mod 'puppetlabs-translate', '1.1.0'
 mod 'elastic-elasticsearch', '5.4.3'
 
 mod 'richardc/datacat', '0.6.2'
+
+#mod 'puppet-prometheus', '5.0.0'
+mod 'prometheus',
+  :git => 'https://github.com/SugarFactory/puppet-prometheus',
+  :tag => 'v5.1.1'

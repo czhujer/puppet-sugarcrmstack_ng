@@ -48,6 +48,9 @@ class sugarcrmstack_ng (
   #$apache_php_apache_timeout =
   #$apache_php_apache_keepalive =
   #
+  $apache_php_proxy_pass_match         = $sugarcrmstack_ng::params::apache_php_proxy_pass_match,
+  $apache_php_proxy_pass_match_default = $sugarcrmstack_ng::params::apache_php_proxy_pass_match_default,
+  #
   $apache_php_xdebug_module_manage   = $sugarcrmstack_ng::params::apache_php_xdebug_module_manage,
   $apache_php_xdebug_module_ensure   = $sugarcrmstack_ng::params::apache_php_xdebug_module_ensure,
   $apache_php_xdebug_module_settings = $sugarcrmstack_ng::params::apache_php_xdebug_module_settings,
@@ -123,14 +126,22 @@ class sugarcrmstack_ng (
 
   validate_string($sugar_version)
 
-  if ($sugar_version != '7.5' and $sugar_version != '7.9'){
-    fail("Class['sugarcrmstack_ng']: This class is compatible only with sugar_version 7.5 or 7.9 (not ${sugar_version})")
+  if ($sugar_version != '7.5' and $sugar_version != '7.9' and $sugar_version != '8.0'){
+    fail("Class['sugarcrmstack_ng']: This class is compatible only with sugar_version 7.5,7.9 or 8.0 (not ${sugar_version})")
+  }
+
+  if ($::operatingsystemmajrelease in ['6'] and $sugar_version == '8.0'){
+    fail("Class['sugarcrmstack_ng']: Unsupported configuration. With Sugar 8.0 you have to use OS release 7.x..")
+  }
+
+  if($sugar_version == '8.0' and $apache_php_php_pkg_version !~ /^7\.1\.[0-9][0-9]/){
+    fail("Class['sugarcrmstack_ng']: Unsupported configuration. With Sugar 8.0 you have to use PHP 7.1")
   }
 
   # validate apache_php parameters
 
-  #$apache_php_php_pkg_version
-  #$apache_php_php_pkg_build
+  validate_re($apache_php_php_pkg_version, ['^5\.[4-6]\.[0-9]{1,2}$','^7\.1\.[0-9][0-9]$'])
+  validate_integer($apache_php_php_pkg_build)
   #$apache_php_php_error_reporting
   #$apache_php_apache_https_port
   #$apache_php_apache_http_port
@@ -146,6 +157,9 @@ class sugarcrmstack_ng (
   validate_bool($apache_php_apache_manage_user)
   validate_bool($apache_php_manage_phpmyadmin_config)
   validate_bool($apache_php_manage_phpmyadmin_files)
+
+  #$apache_php_proxy_pass_match
+  #$apache_php_proxy_pass_match_default
 
   validate_bool($apache_php_xdebug_module_manage)
   validate_string($apache_php_xdebug_module_ensure)
