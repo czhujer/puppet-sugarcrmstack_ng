@@ -92,7 +92,23 @@ class sugarcrmstack_ng::params {
               },
               'mysqld'  => {
                   'document_type' => 'mysqld',
-                  'paths'  => [ '/var/log/mysqld.log', ],
+                  'paths'  => [
+                    '/var/log/mysqld.log',
+                    '/var/log/mariadb/mariadb.log',
+                ],
+              },
+              'php-fpm-error-c7' => {
+                'document_type' => 'php-fpm-error-c7',
+                'paths'  => [
+                  '/var/log/php-fpm/error.log',
+                  '/var/log/php-fpm/phpmyadmin-error.log',
+                  '/var/log/php-fpm/www-error.log',
+                ],
+                'multiline' => {
+                                'pattern' => '^\\\[\\\d{2}-\\\w{3}-\\\d{4} \\\d{2}:\\\d{2}:\\\d{2}',
+                                'negate' => true,
+                                'match'  => 'after',
+                },
               },
               'mysql_slow_log' => {
                   'document_type' => 'mysql_slow_log',
@@ -100,18 +116,17 @@ class sugarcrmstack_ng::params {
                                   '/var/log/mysql-slow.log',
                               ],
                   'multiline' => {
-#                                  "pattern" => "^# Time: [[:digit:]]{6}[[:blank:]]{1,2}[[:digit:]]{1,2}:[[:digit:]]{2}:[[:digit:]]{2}",
-                                  'pattern' => '^(# (Time: [[:digit:]]{6}[[:blank:]]{1,2}[[:digit:]]{1,2}:[[:digit:]]{2}:[[:digit:]]{2})|(User@Host: sugarcrm))', # lint:ignore:140chars
+                                  'pattern' => '^# User@Host: ',
                                   'negate' => true,
                                   'match'  => 'after',
                   },
               },
-              'mysql_slow_log2' => {
-                  'document_type' => 'mysql_slow_log2',
-                  'paths'  => [
-                                  '/var/lib/mysql/mysql/slow_log.CSV',
-                              ],
-              },
+              #'mysql_slow_log2' => {
+              #    'document_type' => 'mysql_slow_log2',
+              #    'paths'  => [
+              #                    '/var/lib/mysql/mysql/slow_log.CSV',
+              #                ],
+              #},
               'nginx-access'  => {
                   'document_type' => 'nginx-access',
                   'paths'  => [
@@ -206,8 +221,8 @@ class sugarcrmstack_ng::params {
         $apache_php_php_pkg_version = '5.6.36'
         $apache_php_php_pkg_build = '1'
 
-        #$apache_php_proxy_pass_match = []
-        #$apache_php_proxy_pass_match_default = []
+        $apache_php_proxy_pass_match = []
+        $apache_php_proxy_pass_match_default = []
 
         $memcached_php_module_name = 'php56u-pecl-memcache'
 
@@ -253,18 +268,17 @@ class sugarcrmstack_ng::params {
                                   '/var/log/mysql-slow.log',
                               ],
                   'multiline' => {
-#                                  "pattern" => "^# Time: [[:digit:]]{6}[[:blank:]]{1,2}[[:digit:]]{1,2}:[[:digit:]]{2}:[[:digit:]]{2}",
-                                  'pattern' => '^(# (Time: [[:digit:]]{6}[[:blank:]]{1,2}[[:digit:]]{1,2}:[[:digit:]]{2}:[[:digit:]]{2})|(User@Host: sugarcrm))', # lint:ignore:140chars
+                                  'pattern' => '^# User@Host: ',
                                   'negate' => true,
                                   'match'  => 'after',
                   },
               },
-              'mysql_slow_log2' => {
-                  'document_type' => 'mysql_slow_log2',
-                  'paths'  => [
-                                  '/var/lib/mysql/mysql/slow_log.CSV',
-                              ],
-              },
+              #'mysql_slow_log2' => {
+              #    'document_type' => 'mysql_slow_log2',
+              #    'paths'  => [
+              #                    '/var/lib/mysql/mysql/slow_log.CSV',
+              #                ],
+              #},
               'nginx-access'  => {
                   'document_type' => 'nginx-access',
                   'paths'  => [
