@@ -10,6 +10,8 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
   $manage_firewall                = true,
   $enable_redis_exporter          = false,
   $enable_redis_exporter_auto_add = true,
+  $enable_apache_exporter         = false,
+  $enable_apache_exporter_auto_add = true,
   $enable_phpfpm_exporter          = false,
   $enable_phpfpm_exporter_auto_add = true,
   ) {
@@ -18,6 +20,8 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
   validate_bool($manage_firewall)
   validate_bool($enable_redis_exporter)
   validate_bool($enable_redis_exporter_auto_add)
+  validate_bool($enable_apache_exporter)
+  validate_bool($enable_apache_exporter_auto_add)
   validate_bool($enable_phpfpm_exporter)
   validate_bool($enable_phpfpm_exporter_auto_add)
 
@@ -68,6 +72,27 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
   }
 
   # apache exporter
+
+  if($enable_apache_exporter){
+    class { 'prometheus::apache_exporter':
+      url => 'https://localhost/server-status?auto',
+      extra_options => '-insecure',
+    }
+
+    if($enable_apache_exporter_auto_add){
+      $apache_prefix="apache-"
+
+      exec { 'pmm apache exporter service':
+        command => "sudo pmm-admin add external:service --service-port=9117 ${apache_prefix}${::hostname}",
+        path    => '/usr/bin:/usr/sbin:/bin',
+        unless  => "pmm-admin list --json |jq '.[\"ExternalServices\"][] | select( .JobName | contains(\"${apache_prefix}${::hostname}\"))' -c  ${service_add_end_of_command}",
+        require => [
+          Class['prometheus::apache_exporter'],
+          Package['jq'],
+        ],
+      }
+    }
+  }
 
 
   # php-fpm exporter
