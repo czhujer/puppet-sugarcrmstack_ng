@@ -12,6 +12,8 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
   $enable_redis_exporter_auto_add = true,
   $enable_apache_exporter         = false,
   $enable_apache_exporter_auto_add = true,
+  $enable_elasticsearch_exporter   = false,
+  $enable_elasticsearch_exporter_auto_add = true,
   $enable_phpfpm_exporter          = false,
   $enable_phpfpm_exporter_auto_add = true,
   ) {
@@ -22,6 +24,8 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
   validate_bool($enable_redis_exporter_auto_add)
   validate_bool($enable_apache_exporter)
   validate_bool($enable_apache_exporter_auto_add)
+  validate_bool($enable_elasticsearch_exporter)
+  validate_bool($enable_elasticsearch_exporter_auto_add)
   validate_bool($enable_phpfpm_exporter)
   validate_bool($enable_phpfpm_exporter_auto_add)
 
@@ -94,9 +98,30 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
     }
   }
 
+  # elasticsearch exporters
+
+  if($enable_elasticsearch_exporter){
+    class { 'prometheus::elasticsearch_exporter':
+    }
+
+    $es_prefix="elasticsearch-"
+
+    if($enable_elasticsearch_exporter_auto_add){
+      exec { 'pmm elasticsearch exporter service':
+        command => "sudo pmm-admin add external:service --service-port=9108 ${es_prefix}${::hostname}",
+        path    => '/usr/bin:/usr/sbin:/bin',
+        unless  => "pmm-admin list --json |jq '.[\"ExternalServices\"][] | select( .JobName | contains(\"${es_prefix}${::hostname}\"))' -c ${service_add_end_of_command}",
+        require => [
+          Class['prometheus::elasticsearch_exporter'],
+          Package['jq'],
+        ],
+      }
+    }
+
+  }
 
   # php-fpm exporter
-  
+
   if($enable_phpfpm_exporter){
     class { 'prometheus::phpfpm_exporter':
       url => 'tcp://127.0.0.1:9001/fpm-status,tcp://127.0.0.1:9002/fpm-status',
