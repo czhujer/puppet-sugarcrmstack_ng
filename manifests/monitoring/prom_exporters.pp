@@ -10,12 +10,16 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
   $manage_firewall                = true,
   $enable_redis_exporter          = false,
   $enable_redis_exporter_auto_add = true,
+  $enable_phpfpm_exporter          = false,
+  $enable_phpfpm_exporter_auto_add = true,
   ) {
 
   # validate general parameters
   validate_bool($manage_firewall)
   validate_bool($enable_redis_exporter)
   validate_bool($enable_redis_exporter_auto_add)
+  validate_bool($enable_phpfpm_exporter)
+  validate_bool($enable_phpfpm_exporter_auto_add)
 
   if ($::operatingsystemmajrelease in ['6']){
     $service_add_end_of_command = '|grep JobName -c'
@@ -65,4 +69,26 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
 
   # apache exporter
 
+
+  # php-fpm exporter
+  
+  if($enable_phpfpm_exporter){
+    class { 'prometheus::phpfpm_exporter':
+      url => 'tcp://127.0.0.1:9001/fpm-status,tcp://127.0.0.1:9002/fpm-status',
+    }
+
+    if($enable_phpfpm_exporter_auto_add){
+      $phpfpm_prefix="php-fpm-"
+
+      exec { 'pmm phpfpm exporter service':
+        command => "sudo pmm-admin add external:service --service-port=9253 ${phpfpm_prefix}${::hostname}",
+        path    => '/usr/bin:/usr/sbin:/bin',
+        unless  => "pmm-admin list --json |jq '.[\"ExternalServices\"][] | select( .JobName | contains(\"${phpfpm_prefix}${::hostname}\"))' -c  ${service_add_end_of_command}",
+        require => [
+          Class['prometheus::redis_exporter'],
+          Package['jq'],
+        ],
+      }
+    }
+  }
 }
