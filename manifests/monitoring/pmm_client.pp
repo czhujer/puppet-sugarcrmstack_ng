@@ -19,8 +19,8 @@ class sugarcrmstack_ng::monitoring::pmm_client (
 
   if($manage_repo_package){
     package { 'percona-release':
-      name     => 'percona-release',
       ensure   => 'installed',
+      name     => 'percona-release',
       provider => 'rpm',
       source   => 'http://repo.percona.com/release/centos/latest/os/noarch/percona-release-0.1-6.noarch.rpm',
     }
@@ -33,15 +33,14 @@ class sugarcrmstack_ng::monitoring::pmm_client (
     }
   }
 
-
   if($manage_firewall){
     firewall { '112 accept tcp to dports 42000:42004 / sf-pmm-s2':
-      chain   => 'INPUT',
-      state   => 'NEW',
-      proto   => 'tcp',
-      dport   => ['42000','42001','42002','42003','42004'],
-      source  => '192.168.127.0/24',
-      action  => 'accept',
+      chain  => 'INPUT',
+      state  => 'NEW',
+      proto  => 'tcp',
+      dport  => ['42000','42001','42002','42003','42004'],
+      source => '192.168.127.0/24',
+      action => 'accept',
     }
   }
 }
