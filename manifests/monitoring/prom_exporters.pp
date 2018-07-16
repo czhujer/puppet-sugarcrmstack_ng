@@ -44,12 +44,12 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
 
   if($manage_firewall){
     firewall { '114 accept tcp to dports 9xxx / sf-pmm-s2 exporters':
-      chain   => 'INPUT',
-      state   => 'NEW',
-      proto   => 'tcp',
-      dport   => ['9117','9121','9108','9253'],
-      source  => '192.168.127.0/24',
-      action  => 'accept',
+      chain  => 'INPUT',
+      state  => 'NEW',
+      proto  => 'tcp',
+      dport  => ['9117','9121','9108','9253'],
+      source => '192.168.127.0/24',
+      action => 'accept',
     }
   }
 
