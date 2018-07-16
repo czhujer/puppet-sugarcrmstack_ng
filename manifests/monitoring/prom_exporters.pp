@@ -66,7 +66,7 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
       exec { 'pmm redis exporter service':
         command => "sudo pmm-admin add external:service --service-port=9121 ${redis_prefix}${::hostname}",
         path    => '/usr/bin:/usr/sbin:/bin',
-        unless  => "pmm-admin list --json |jq '.[\"ExternalServices\"][] | select( .JobName | contains(\"${redis_prefix}${::hostname}\"))' -c  ${service_add_end_of_command}",
+        unless  => "pmm-admin list --json |jq '.[\"ExternalServices\"][] | select( .JobName | contains(\"${redis_prefix}${::hostname}\"))' -c  ${service_add_end_of_command}", # lint:ignore:140chars
         require => [
           Class['prometheus::redis_exporter'],
           Package['jq'],
@@ -89,7 +89,7 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
       exec { 'pmm apache exporter service':
         command => "sudo pmm-admin add external:service --service-port=9117 ${apache_prefix}${::hostname}",
         path    => '/usr/bin:/usr/sbin:/bin',
-        unless  => "pmm-admin list --json |jq '.[\"ExternalServices\"][] | select( .JobName | contains(\"${apache_prefix}${::hostname}\"))' -c  ${service_add_end_of_command}",
+        unless  => "pmm-admin list --json |jq '.[\"ExternalServices\"][] | select( .JobName | contains(\"${apache_prefix}${::hostname}\"))' -c  ${service_add_end_of_command}", # lint:ignore:140chars
         require => [
           Class['prometheus::apache_exporter'],
           Package['jq'],
@@ -110,7 +110,7 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
       exec { 'pmm elasticsearch exporter service':
         command => "sudo pmm-admin add external:service --service-port=9108 ${es_prefix}${::hostname}",
         path    => '/usr/bin:/usr/sbin:/bin',
-        unless  => "pmm-admin list --json |jq '.[\"ExternalServices\"][] | select( .JobName | contains(\"${es_prefix}${::hostname}\"))' -c ${service_add_end_of_command}",
+        unless  => "pmm-admin list --json |jq '.[\"ExternalServices\"][] | select( .JobName | contains(\"${es_prefix}${::hostname}\"))' -c ${service_add_end_of_command}", # lint:ignore:140chars
         require => [
           Class['prometheus::elasticsearch_exporter'],
           Package['jq'],
@@ -133,7 +133,7 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
       exec { 'pmm phpfpm exporter service':
         command => "sudo pmm-admin add external:service --service-port=9253 ${phpfpm_prefix}${::hostname}",
         path    => '/usr/bin:/usr/sbin:/bin',
-        unless  => "pmm-admin list --json |jq '.[\"ExternalServices\"][] | select( .JobName | contains(\"${phpfpm_prefix}${::hostname}\"))' -c  ${service_add_end_of_command}",
+        unless  => "pmm-admin list --json |jq '.[\"ExternalServices\"][] | select( .JobName | contains(\"${phpfpm_prefix}${::hostname}\"))' -c  ${service_add_end_of_command}", # lint:ignore:140chars
         require => [
           Class['prometheus::redis_exporter'],
           Package['jq'],
