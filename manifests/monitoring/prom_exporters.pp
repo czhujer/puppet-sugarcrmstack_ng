@@ -57,11 +57,11 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
 
   if($enable_redis_exporter){
     class { 'prometheus::redis_exporter':
-      extra_options => "-redis.alias $::hostname",
+      extra_options => "-redis.alias ${::hostname}",
     }
 
     if($enable_redis_exporter_auto_add){
-      $redis_prefix="redis-"
+      $redis_prefix='redis-'
 
       exec { 'pmm redis exporter service':
         command => "sudo pmm-admin add external:service --service-port=9121 ${redis_prefix}${::hostname}",
@@ -84,7 +84,7 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
     }
 
     if($enable_apache_exporter_auto_add){
-      $apache_prefix="apache-"
+      $apache_prefix='apache-'
 
       exec { 'pmm apache exporter service':
         command => "sudo pmm-admin add external:service --service-port=9117 ${apache_prefix}${::hostname}",
@@ -104,7 +104,7 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
     class { 'prometheus::elasticsearch_exporter':
     }
 
-    $es_prefix="elasticsearch-"
+    $es_prefix='elasticsearch-'
 
     if($enable_elasticsearch_exporter_auto_add){
       exec { 'pmm elasticsearch exporter service':
@@ -128,7 +128,7 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
     }
 
     if($enable_phpfpm_exporter_auto_add){
-      $phpfpm_prefix="php-fpm-"
+      $phpfpm_prefix='php-fpm-'
 
       exec { 'pmm phpfpm exporter service':
         command => "sudo pmm-admin add external:service --service-port=9253 ${phpfpm_prefix}${::hostname}",
