@@ -79,7 +79,7 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
 
   if($enable_apache_exporter){
     class { '::prometheus::apache_exporter':
-      url => 'https://localhost/server-status?auto',
+      url           => 'https://localhost/server-status?auto',
       extra_options => '-insecure',
     }
 
