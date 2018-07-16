@@ -56,7 +56,7 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
   # redis exporter
 
   if($enable_redis_exporter){
-    class { 'prometheus::redis_exporter':
+    class { '::prometheus::redis_exporter':
       extra_options => "-redis.alias ${::hostname}",
     }
 
@@ -78,7 +78,7 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
   # apache exporter
 
   if($enable_apache_exporter){
-    class { 'prometheus::apache_exporter':
+    class { '::prometheus::apache_exporter':
       url => 'https://localhost/server-status?auto',
       extra_options => '-insecure',
     }
@@ -101,7 +101,7 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
   # elasticsearch exporters
 
   if($enable_elasticsearch_exporter){
-    class { 'prometheus::elasticsearch_exporter':
+    class { '::prometheus::elasticsearch_exporter':
     }
 
     $es_prefix='elasticsearch-'
@@ -123,7 +123,7 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
   # php-fpm exporter
 
   if($enable_phpfpm_exporter){
-    class { 'prometheus::phpfpm_exporter':
+    class { '::prometheus::phpfpm_exporter':
       url => 'tcp://127.0.0.1:9001/fpm-status,tcp://127.0.0.1:9002/fpm-status',
     }
 
