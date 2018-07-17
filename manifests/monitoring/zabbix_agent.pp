@@ -26,7 +26,7 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
 
   #code
   if($manage_agent_class){
-    class { 'zabbix::agent':
+    class { '::zabbix::agent':
       hostname       => $agent_hostname,
       zabbix_version => $agent_version,
       server         => $agent_server,
@@ -39,12 +39,12 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
 
   if($manage_firewall){
     firewall { '110 accept tcp to dport 10050 / ZABBIX-AGENT':
-      chain   => 'INPUT',
-      state   => 'NEW',
-      proto   => 'tcp',
-      dport   => ['10050'],
-      source  => $firewall_src,
-      action  => 'accept',
+      chain  => 'INPUT',
+      state  => 'NEW',
+      proto  => 'tcp',
+      dport  => ['10050'],
+      source => $firewall_src,
+      action => 'accept',
     }
   }
 
@@ -66,8 +66,6 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
         enable => true,
       }
     }
-
-    $zabbix_agent2_logrotate = ""
 
     file { 'zabbix-agent2 logrotate':
       ensure  => present,
@@ -108,21 +106,21 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
         use_puppetlabs_zabbix_class => true,
     }
 
-    class { 'zabbixagent::plugin2::redis_stats':
+    class { '::zabbixagent::plugin2::redis_stats':
       use_puppetlabs_zabbix_class => true,
     }
 
-    class { 'zabbixagent::plugin2::sugarcrm_stats':
+    class { '::zabbixagent::plugin2::sugarcrm_stats':
       use_puppetlabs_zabbix_class => true,
     }
 
     if ($::operatingsystemmajrelease in ['7']){
-      class { 'zabbixagent::plugin2::systemd_services':
+      class { '::zabbixagent::plugin2::systemd_services':
       }
     }
     else{
-      class { 'zabbixagent::plugin2::linux_services':
-       use_puppetlabs_zabbix_class => true,
+      class { '::zabbixagent::plugin2::linux_services':
+        use_puppetlabs_zabbix_class => true,
       }
     }
   }
