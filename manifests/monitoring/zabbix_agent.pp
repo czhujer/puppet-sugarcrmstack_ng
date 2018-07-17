@@ -60,9 +60,11 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
       notify  => Service["rsyslog"],
     }
 
-    service { 'rsyslog':
-        ensure  => running,
-        enable  => true,
+    if !defined(Service['rsyslog']){
+      service { 'rsyslog':
+        ensure => running,
+        enable => true,
+      }
     }
 
     $zabbix_agent2_logrotate = "/var/log/zabbix/zabbix_agentd2.log {
