@@ -71,7 +71,7 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
 
     file { 'zabbix-agent2 logrotate':
       ensure  => present,
-      path    => '/etc/logrotate.d/zabbix-agent',
+      path    => '/etc/logrotate.d/zabbix-agent2',
       content => template('sugarcrmstack_ng/zabbix_agent2_logrotate.erb'),
       owner   => 'root',
       group   => 'root',
