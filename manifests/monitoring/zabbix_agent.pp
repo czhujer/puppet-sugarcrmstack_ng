@@ -53,11 +53,11 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
     file { 'rsyslog zabbix-agent config':
       ensure  => present,
       path    => '/etc/rsyslog.d/zabbix-agent.conf',
-      content => "if \$programname == 'zabbix_agentd'                                       then -/var/log/zabbix/zabbix_agentd2.log\n& ~\n",
+      content => template('sugarcrmstack_ng/zabbix_agent_rsyslog_config.erb'),
       owner   => 'root',
       group   => 'root',
       mode    => '0644',
-      notify  => Service["rsyslog"],
+      notify  => Service['rsyslog'],
     }
 
     if !defined(Service['rsyslog']){
