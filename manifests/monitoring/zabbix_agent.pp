@@ -67,18 +67,12 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
       }
     }
 
-    $zabbix_agent2_logrotate = "/var/log/zabbix/zabbix_agentd2.log {
-    missingok
-    monthly
-    notifempty
-    compress
-    create 0664 zabbix zabbix
-  }"
+    $zabbix_agent2_logrotate = ""
 
-    file { "zabbix-agent2 logrotate":
+    file { 'zabbix-agent2 logrotate':
       ensure  => present,
-      path    => "/etc/logrotate.d/zabbix-agent2",
-      content  => $zabbix_agent2_logrotate,
+      path    => '/etc/logrotate.d/zabbix-agent',
+      content => template('sugarcrmstack_ng/zabbix_agent2_logrotate.erb'),
       owner   => 'root',
       group   => 'root',
       mode    => '0644',
