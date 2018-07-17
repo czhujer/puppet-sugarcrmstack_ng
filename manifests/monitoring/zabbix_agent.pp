@@ -50,14 +50,14 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
 
   if($manage_custom_logging){
 
-    file { "rsyslog zabbix-agent config":
-        ensure  => present,
-        path    => "/etc/rsyslog.d/zabbix-agent.conf",
-        content  => "if \$programname == 'zabbix_agentd'                                       then -/var/log/zabbix/zabbix_agentd2.log\n& ~\n",
-        owner   => 'root',
-        group   => 'root',
-        mode    => '0644',
-        notify  => Service["rsyslog"],
+    file { 'rsyslog zabbix-agent config':
+      ensure  => present,
+      path    => '/etc/rsyslog.d/zabbix-agent.conf',
+      content => "if \$programname == 'zabbix_agentd'                                       then -/var/log/zabbix/zabbix_agentd2.log\n& ~\n",
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0644',
+      notify  => Service["rsyslog"],
     }
 
     service { 'rsyslog':
