@@ -85,6 +85,8 @@ class sugarcrmstack_ng (
   $cron_service_enable = $sugarcrmstack_ng::params::cron_service_enable,
   $cron_service_ensure = $sugarcrmstack_ng::params::cron_service_ensure,
   #
+  $cron_sugarcrm_job_timeout = $sugarcrmstack_ng::params::cron_sugarcrm_job_timeout,
+  #
   $redis_server_ensure = $sugarcrmstack_ng::params::redis_server_ensure,
   #
   $memcached_install_top_cli   = $sugarcrmstack_ng::params::memcached_install_top_cli,
@@ -198,6 +200,8 @@ class sugarcrmstack_ng (
 
   validate_bool($cron_service_enable)
   validate_bool($cron_service_ensure)
+
+  validate_integer($cron_sugarcrm_job_timeout)
 
   #validate_string($redis_server_ensure)
 
