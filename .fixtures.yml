@@ -16,7 +16,9 @@ fixtures:
       repo: "https://github.com/thias/puppet-php"
       ref: "1.2.1"
     vcsrepo: "https://github.com/puppetlabs/puppetlabs-vcsrepo"
-    composer: "https://github.com/tPl0ch/puppet-composer"
+    composer:
+      repo: "https://github.com/SugarFactory/puppet-composer"
+      ref: "1.4.2"
     git:
       repo: "https://github.com/puppetlabs/puppetlabs-git"
       ref: "2.3.1"

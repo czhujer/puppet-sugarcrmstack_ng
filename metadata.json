@@ -33,8 +33,8 @@
       "version_requirement": ">=1.3.2 <2.0.0"
     },
     {
-      "name": "tPl0ch-composer",
-      "version_requirement": ">=1.3.7 <2.0.0"
+      "name": "SugarFactory-composer",
+      "version_requirement": ">=1.4.2 <2.0.0"
     },
     {
       "name": "puppetlabs-git",
