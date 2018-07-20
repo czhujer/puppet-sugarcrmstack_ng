@@ -55,6 +55,8 @@ build:
     - rm /etc/puppet/modules/cron/metadata.json
     #print module set
     - source /etc/profile.d/rvm.sh; puppet module list
+    #fix errors in puppet noop mode
+    - mkdir -p /etc/sysconfig/httpd
     #run acceptance tests
     - source /etc/profile.d/rvm.sh; puppet apply tests/init.pp --test --noop
   post_ci:
