@@ -414,6 +414,7 @@ class sugarcrmstack_ng::params {
   $cron_purge_users_crontabs = true
   $cron_service_enable = true
   $cron_service_ensure = true
+  $cron_sugarcrm_job_timeout = 600
   #
   $redis_server_ensure = 'installed'
   #
