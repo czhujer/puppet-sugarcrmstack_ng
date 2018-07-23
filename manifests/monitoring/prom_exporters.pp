@@ -47,7 +47,7 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
       chain  => 'INPUT',
       state  => 'NEW',
       proto  => 'tcp',
-      dport  => ['9117','9121','9108','9253'],
+      dport  => ['9117','9121','9108','9253', '9913'],
       source => '192.168.127.0/24',
       action => 'accept',
     }
