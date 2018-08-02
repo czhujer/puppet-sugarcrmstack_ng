@@ -22,6 +22,8 @@ class sugarcrmstack_ng::beats (
   $beats_filebeats_prospectors_config = $sugarcrmstack_ng::beats_filebeats_prospectors_config,
   $beats_filebeats_prospectors_config_extra = $sugarcrmstack_ng::beats_filebeats_prospectors_config_extra,
   $beats_hosts = $sugarcrmstack_ng::beats_hosts,
+  #
+  $beats_manage_geoip = $sugarcrmstack_ng::beats_manage_geoip,
 ) {
 
   if ($beats_manage){
@@ -47,6 +49,7 @@ class sugarcrmstack_ng::beats (
         outputs_logstash   => deep_merge($outputs_logstash_file, $outputs_logstash_top),
         agentname          => $beats_agentname,
         version_v5         => $beats_version_v5,
+        manage_geoip       => $beats_manage_geoip,
       }
 
       if ($beats_filebeats_enable){
