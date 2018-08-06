@@ -3,6 +3,6 @@
 <% %w(mysql client mysqldump mysqladmin mysqlcheck).each do |section| %>
 [<%= section -%>]
 user=root
-host=<%= @mysql_config_hostname %>
-password='<%= @mysql_root_password %>'
+host=localhost
+password='<%= scope.lookupvar('mysql::server::root_password') %>'
 <% end %>
