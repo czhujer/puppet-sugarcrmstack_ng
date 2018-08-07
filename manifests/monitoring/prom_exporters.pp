@@ -52,7 +52,7 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
       owner   => 'root',
       group   => 'root',
       mode    => '0644',
-      require => Class['nginx'],
+      require => Class['::nginx::package'],
       notify  => Service['nginx'],
     }
   }
