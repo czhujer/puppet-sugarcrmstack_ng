@@ -133,7 +133,7 @@ mod 'beats',
 
 mod 'zabbixagent',
   :git => 'https://github.com/H-Software/puppet-zabbixagent',
-  :tag => 'v3.5.1'
+  :tag => 'v3.5.3'
 
 mod 'sugarcrmstack',
 #  :git => 'git@github.com:SugarFactory/puppet-sugarcrm-stack.git'
