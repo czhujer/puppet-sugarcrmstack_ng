@@ -7,4 +7,4 @@
 
 #*    *    *    *    *  apache   echo `date` >> /var/www/html/sugarcrm/sugar-cron.log 2>&1; cd /var/www/html/sugarcrm; php -f cron.php >> /var/www/html/sugarcrm/sugar-cron.log 2>&1
 
-*    *    *    *    *  apache   hash=$(openssl rand -base64 6 2>/dev/null); file="/var/www/html/sugarcrm/sugar-cron.log"; echo "`date` STARTED $hash" >> $file 2>&1; cd /var/www/html/sugarcrm; timeout 600 php -f cron.php >> $file 2>&1; echo "`date` STOPPED $hash" >> $file 2>&1;
+*    *    *    *    *  apache   hash=$(openssl rand -base64 6 2>/dev/null); file="/var/www/html/sugarcrm/sugar-cron.log"; echo "`date` STARTED $hash" >> $file 2>&1; cd /var/www/html/sugarcrm; timeout <%= @cron_sugarcrm_job_timeout %> php -f cron.php >> $file 2>&1; echo "`date` STOPPED $hash" >> $file 2>&1;

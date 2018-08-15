@@ -107,9 +107,13 @@ mod 'yum',
   :git => 'https://github.com/voxpupuli/puppet-yum',
   :tag => 'v2.0.1'
 
+#mod 'composer',
+#  :git => 'https://github.com/tPl0ch/puppet-composer',
+#  :tag => '1.3.7'
+
 mod 'composer',
-  :git => 'https://github.com/tPl0ch/puppet-composer',
-  :tag => '1.3.7'
+  :git => 'https://github.com/SugarFactory/puppet-composer',
+  :tag => '1.4.2'
 
 mod 'ntp',
   :git => 'https://github.com/puppetlabs/puppetlabs-ntp',
@@ -129,7 +133,7 @@ mod 'beats',
 
 mod 'zabbixagent',
   :git => 'https://github.com/H-Software/puppet-zabbixagent',
-  :tag => 'v3.5.1'
+  :tag => 'v3.5.3'
 
 mod 'sugarcrmstack',
 #  :git => 'git@github.com:SugarFactory/puppet-sugarcrm-stack.git'

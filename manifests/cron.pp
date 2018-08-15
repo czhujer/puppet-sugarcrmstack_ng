@@ -20,7 +20,12 @@ class sugarcrmstack_ng::cron (
   #
   $cron_service_enable = $sugarcrmstack_ng::cron_service_enable,
   $cron_service_ensure = $sugarcrmstack_ng::cron_service_ensure,
+  #
+  $cron_sugarcrm_job_timeout = $sugarcrmstack_ng::cron_sugarcrm_job_timeout,
+  #
 ) {
+
+  validate_integer($cron_sugarcrm_job_timeout)
 
   if ($cron_enable){
 

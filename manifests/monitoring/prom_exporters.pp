@@ -8,6 +8,7 @@
 #
 class sugarcrmstack_ng::monitoring::prom_exporters (
   $manage_firewall                = true,
+  $manage_nginx_vts_module        = false,
   $enable_redis_exporter          = false,
   $enable_redis_exporter_auto_add = true,
   $enable_apache_exporter         = false,
@@ -20,6 +21,8 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
 
   # validate general parameters
   validate_bool($manage_firewall)
+  validate_bool($manage_nginx_vts_module)
+
   validate_bool($enable_redis_exporter)
   validate_bool($enable_redis_exporter_auto_add)
   validate_bool($enable_apache_exporter)
@@ -42,12 +45,24 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
     }
   }
 
+  if($manage_nginx_vts_module){
+    file { '/usr/lib64/nginx/modules/ngx_http_vhost_traffic_status_module.so':
+      ensure  => file,
+      content => file('sugarcrmstack_ng/nginx-modules/ngx_http_vhost_traffic_status_module.c7.nginx.1.14.0.so'),
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0644',
+      require => Class['::nginx::package'],
+      notify  => Service['nginx'],
+    }
+  }
+
   if($manage_firewall){
     firewall { '114 accept tcp to dports 9xxx / sf-pmm-s2 exporters':
       chain  => 'INPUT',
       state  => 'NEW',
       proto  => 'tcp',
-      dport  => ['9117','9121','9108','9253'],
+      dport  => ['9117','9121','9108','9253', '9913'],
       source => '192.168.127.0/24',
       action => 'accept',
     }

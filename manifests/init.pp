@@ -85,6 +85,8 @@ class sugarcrmstack_ng (
   $cron_service_enable = $sugarcrmstack_ng::params::cron_service_enable,
   $cron_service_ensure = $sugarcrmstack_ng::params::cron_service_ensure,
   #
+  $cron_sugarcrm_job_timeout = $sugarcrmstack_ng::params::cron_sugarcrm_job_timeout,
+  #
   $redis_server_ensure = $sugarcrmstack_ng::params::redis_server_ensure,
   #
   $memcached_install_top_cli   = $sugarcrmstack_ng::params::memcached_install_top_cli,
@@ -108,6 +110,7 @@ class sugarcrmstack_ng (
   $beats_filebeats_prospectors_config = $sugarcrmstack_ng::params::beats_filebeats_prospectors_config,
   $beats_filebeats_prospectors_config_extra = $sugarcrmstack_ng::params::beats_filebeats_prospectors_config_extra,
   $beats_hosts = $sugarcrmstack_ng::params::beats_hosts,
+  $beats_manage_geoip = $sugarcrmstack_ng::params::beats_manage_geoip,
   #
 ) inherits sugarcrmstack_ng::params {
 
@@ -199,6 +202,8 @@ class sugarcrmstack_ng (
   validate_bool($cron_service_enable)
   validate_bool($cron_service_ensure)
 
+  validate_integer($cron_sugarcrm_job_timeout)
+
   #validate_string($redis_server_ensure)
 
   validate_bool($memcached_install_top_cli)
@@ -221,6 +226,8 @@ class sugarcrmstack_ng (
   validate_hash($beats_filebeats_prospectors_config)
   validate_hash($beats_filebeats_prospectors_config_extra)
   validate_array($beats_hosts)
+
+  validate_bool($beats_manage_geoip)
 
   # run
   contain ::sugarcrmstack_ng::install
