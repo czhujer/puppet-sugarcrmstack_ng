@@ -17,6 +17,8 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
   $enable_elasticsearch_exporter_auto_add = true,
   $enable_phpfpm_exporter          = false,
   $enable_phpfpm_exporter_auto_add = true,
+  #
+  $manage_firewall_glusterfs_exporter = false,
   ) {
 
   # validate general parameters
@@ -31,6 +33,8 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
   validate_bool($enable_elasticsearch_exporter_auto_add)
   validate_bool($enable_phpfpm_exporter)
   validate_bool($enable_phpfpm_exporter_auto_add)
+
+  validate_bool($manage_firewall_glusterfs_exporter)
 
   if ($::operatingsystemmajrelease in ['6']){
     $service_add_end_of_command = '|grep JobName -c'
@@ -156,4 +160,18 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
       }
     }
   }
+
+  # glusterfs exporter
+  
+  if($manage_firewall_glusterfs_exporter){
+    firewall { '115 accept tcp to dports 9189 / glusterfs exporter':
+      chain  => 'INPUT',
+      state  => 'NEW',
+      proto  => 'tcp',
+      dport  => ['9189'],
+      source => '192.168.127.0/24',
+      action => 'accept',
+    }
+  }
+
 }
