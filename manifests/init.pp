@@ -161,8 +161,8 @@ class sugarcrmstack_ng (
   validate_bool($apache_php_manage_phpmyadmin_config)
   validate_bool($apache_php_manage_phpmyadmin_files)
 
-  validate_bool($apache_php_apache_timeout)
-  
+  validate_integer($apache_php_apache_timeout)
+
   #$apache_php_proxy_pass_match
   #$apache_php_proxy_pass_match_default
 
