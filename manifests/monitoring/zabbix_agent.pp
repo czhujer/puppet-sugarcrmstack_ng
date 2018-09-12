@@ -16,6 +16,8 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
   $agent_server  = '192.168.127.1',
   $agent_activeserver = '192.168.127.1',
   $firewall_src = '192.168.127.1',
+  $plugin_apache_stats_handle_httpd_config = false,
+  $plugin_apache_stats_use_script_wo_verify_certs = true,
   ){
 
   # validate general parameters
@@ -23,6 +25,8 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
   validate_bool($manage_agent_class)
   validate_bool($manage_custom_extensions)
   validate_bool($manage_custom_logging)
+  validate_bool($plugin_apache_stats_handle_httpd_config)
+  validate_bool($plugin_apache_stats_use_script_wo_verify_certs)
 
   #code
   if($manage_agent_class){
@@ -93,8 +97,8 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
 
     zabbixagent::plugin { 'apache-stats':
       apache_stats_script_params              => ' -r https -p 443',
-      apache_stats_handle_httpd_config        => false,
-      apache_stats_use_script_wo_verify_certs => true,
+      apache_stats_handle_httpd_config        => $plugin_apache_stats_handle_httpd_config,
+      apache_stats_use_script_wo_verify_certs => $plugin_apache_stats_use_script_wo_verify_certs,
       use_puppetlabs_zabbix_class             => true,
     }
 
