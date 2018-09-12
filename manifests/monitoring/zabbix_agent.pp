@@ -28,7 +28,7 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
   validate_bool($manage_custom_logging)
   validate_bool($plugin_apache_stats_handle_httpd_config)
   validate_bool($plugin_apache_stats_use_script_wo_verify_certs)
-  validate_bool($plugin_apache_stats_script_params)
+  validate_string($plugin_apache_stats_script_params)
   
   #code
   if($manage_agent_class){
