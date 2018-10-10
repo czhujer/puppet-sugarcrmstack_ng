@@ -11,11 +11,13 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
   $manage_firewall = true,
   $manage_custom_logging = true,
   $manage_custom_extensions = true,
+  $manage_extra_firewall_rules = false,
   $agent_hostname = $::fqdn,
   $agent_version = '3.0',
   $agent_server  = '192.168.127.1',
   $agent_activeserver = '192.168.127.1',
   $firewall_src = '192.168.127.1',
+  $extra_firewall_rule_src = '172.16.2.130',
   $plugin_apache_stats_handle_httpd_config = false,
   $plugin_apache_stats_use_script_wo_verify_certs = true,
   $plugin_apache_stats_script_params  = ' -r https -p 443',
@@ -29,7 +31,8 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
   validate_bool($plugin_apache_stats_handle_httpd_config)
   validate_bool($plugin_apache_stats_use_script_wo_verify_certs)
   validate_string($plugin_apache_stats_script_params)
-  
+  validate_bool($manage_extra_firewall_rules)
+
   #code
   if($manage_agent_class){
     class { '::zabbix::agent':
@@ -50,6 +53,17 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
       proto  => 'tcp',
       dport  => ['10050'],
       source => $firewall_src,
+      action => 'accept',
+    }
+  }
+
+  if($manage_extra_firewall_rules){
+    firewall { "111 accept tcp to dport 10050 from ${extra_firewall_rule_src} / ZABBIX-AGENT":
+      chain  => 'INPUT',
+      state  => 'NEW',
+      proto  => 'tcp',
+      dport  => ['10050'],
+      source => $extra_firewall_rule_src,
       action => 'accept',
     }
   }
