@@ -49,8 +49,8 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
       manage_selinux => false,
       tlspskidentity => $agent_tlspskidentity,
       tlspskfile     => $agent_tlspskfile,
-      tlsaccept      => agent_tlsaccept,
-      tlsconnect     => agent_tlsconnect,
+      tlsaccept      => $agent_tlsaccept,
+      tlsconnect     => $agent_tlsconnect,
     }
   }
 
