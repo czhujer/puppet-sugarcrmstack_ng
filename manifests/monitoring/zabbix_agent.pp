@@ -107,8 +107,10 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
 
   if($manage_custom_extensions){
 
-    zabbix::userparameters { 'vfs-dir-size':
-      source => 'puppet:///modules/zabbixagent/configs/userparameter_dir_size.conf',
+    if ($agent_version != '4.0'){
+      zabbix::userparameters { 'vfs-dir-size':
+        source => 'puppet:///modules/zabbixagent/configs/userparameter_dir_size.conf',
+      }
     }
 
     #class { 'zabbixagent::plugin2::linux_disk_io_stats':
@@ -144,7 +146,12 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
     }
 
     if ($::operatingsystemmajrelease in ['7']){
-      class { '::zabbixagent::plugin2::systemd_services':
+      if ($agent_version != '4.0'){
+        class { '::zabbixagent::plugin2::systemd_services':
+        }
+      }
+      else{
+        notify {"zabbixagent::plugin2::systemd_services is not compatible with puppet 4.0"}
       }
     }
     else{
