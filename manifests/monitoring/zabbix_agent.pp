@@ -38,15 +38,15 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
   #code
   if($manage_agent_class){
     class { '::zabbix::agent':
-      hostname             => $agent_hostname,
-      zabbix_version       => $agent_version,
-      server               => $agent_server,
-      serveractive         => $agent_activeserver,
-      listenip             => '0.0.0.0',
-      logtype              => 'system',
-      manage_selinux       => false,
-      agent_tlspskidentity => $agent_tlspskidentity,
-      agent_tlspskfile     => $agent_tlspskfile,
+      hostname       => $agent_hostname,
+      zabbix_version => $agent_version,
+      server         => $agent_server,
+      serveractive   => $agent_activeserver,
+      listenip       => '0.0.0.0',
+      logtype        => 'system',
+      manage_selinux => false,
+      tlspskidentity => $agent_tlspskidentity,
+      tlspskfile     => $agent_tlspskfile,
     }
   }
 
