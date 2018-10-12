@@ -18,6 +18,8 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
   $agent_activeserver = '192.168.127.1',
   $agent_tlspskidentity = undef,
   $agent_tlspskfile = undef,
+  $agent_tlsaccept = undef,
+  $agent_tlsconnect = undef,
   $firewall_src = '192.168.127.1',
   $extra_firewall_rule_src = '172.16.2.130',
   $plugin_apache_stats_handle_httpd_config = false,
@@ -47,6 +49,8 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
       manage_selinux => false,
       tlspskidentity => $agent_tlspskidentity,
       tlspskfile     => $agent_tlspskfile,
+      tlsaccept      => agent_tlsaccept,
+      tlsconnect     => agent_tlsconnect,
     }
   }
 
