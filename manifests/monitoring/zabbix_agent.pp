@@ -16,6 +16,8 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
   $agent_version = '3.0',
   $agent_server  = '192.168.127.1',
   $agent_activeserver = '192.168.127.1',
+  $agent_tlspskidentity = undef,
+  $agent_tlspskfile = undef,
   $firewall_src = '192.168.127.1',
   $extra_firewall_rule_src = '172.16.2.130',
   $plugin_apache_stats_handle_httpd_config = false,
@@ -36,13 +38,15 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
   #code
   if($manage_agent_class){
     class { '::zabbix::agent':
-      hostname       => $agent_hostname,
-      zabbix_version => $agent_version,
-      server         => $agent_server,
-      serveractive   => $agent_activeserver,
-      listenip       => '0.0.0.0',
-      logtype        => 'system',
-      manage_selinux => false,
+      hostname             => $agent_hostname,
+      zabbix_version       => $agent_version,
+      server               => $agent_server,
+      serveractive         => $agent_activeserver,
+      listenip             => '0.0.0.0',
+      logtype              => 'system',
+      manage_selinux       => false,
+      agent_tlspskidentity => $agent_tlspskidentity,
+      agent_tlspskfile     => $agent_tlspskfile,
     }
   }
 
