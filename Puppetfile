@@ -190,7 +190,7 @@ mod 'herculesteam-augeasproviders_core', '2.1.3'
 
 mod 'herculesteam-augeasproviders_sysctl', '2.2.0'
 
-mod 'puppet-zabbix', '6.2.0'
+mod 'puppet-zabbix', '6.4.2'
 
 mod 'puppetlabs-postgresql', '5.2.1'
 

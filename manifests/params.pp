@@ -376,6 +376,8 @@ class sugarcrmstack_ng::params {
   $apache_php_manage_phpmyadmin_config = true
   $apache_php_manage_phpmyadmin_files = true
   #
+  $apache_php_apache_timeout = 180
+  #
   $apache_php_xdebug_module_manage   = true
   $apache_php_xdebug_module_ensure   = 'absent'
   $apache_php_xdebug_module_settings = {
