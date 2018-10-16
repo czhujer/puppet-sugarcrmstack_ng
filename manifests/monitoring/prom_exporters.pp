@@ -162,7 +162,7 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
   }
 
   # glusterfs exporter
-  
+
   if($manage_firewall_glusterfs_exporter){
     firewall { '115 accept tcp to dports 9189 / glusterfs exporter':
       chain  => 'INPUT',

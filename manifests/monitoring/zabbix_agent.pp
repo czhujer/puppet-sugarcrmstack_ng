@@ -151,7 +151,7 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
         }
       }
       else{
-        notify {"zabbixagent::plugin2::systemd_services is not compatible with puppet 4.0": }
+        notify {'zabbixagent::plugin2::systemd_services is not compatible with puppet 4.0': }
       }
     }
     else{
