@@ -45,7 +45,7 @@ class sugarcrmstack_ng (
   #
   #$apache_php_apache_serveradmin =
   #$apache_php_apache_mpm =
-  #$apache_php_apache_timeout =
+  $apache_php_apache_timeout = $sugarcrmstack_ng::params::apache_php_apache_timeout,
   #$apache_php_apache_keepalive =
   #
   $apache_php_proxy_pass_match         = $sugarcrmstack_ng::params::apache_php_proxy_pass_match,
@@ -160,6 +160,8 @@ class sugarcrmstack_ng (
   validate_bool($apache_php_apache_manage_user)
   validate_bool($apache_php_manage_phpmyadmin_config)
   validate_bool($apache_php_manage_phpmyadmin_files)
+
+  validate_integer($apache_php_apache_timeout)
 
   #$apache_php_proxy_pass_match
   #$apache_php_proxy_pass_match_default
