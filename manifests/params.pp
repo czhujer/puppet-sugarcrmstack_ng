@@ -385,7 +385,7 @@ class sugarcrmstack_ng::params {
     'xdebug.default_enable' => '0',
   }
   #
-  apache_php_manage_sugarcrm_files_ownership = true,
+  apache_php_manage_sugarcrm_files_ownership = true
   #
   $mysql_server_service_manage = true
   $mysql_server_service_enabled = true
