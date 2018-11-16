@@ -37,6 +37,7 @@ class sugarcrmstack_ng::apache_php (
   $apache_php_xdebug_module_settings = $sugarcrmstack_ng::apache_php_xdebug_module_settings,
   $apache_php_proxy_pass_match        = $sugarcrmstack_ng::apache_php_proxy_pass_match,
   $apache_php_proxy_pass_match_default = $sugarcrmstack_ng::apache_php_proxy_pass_match_default,
+  $apache_php_manage_sugarcrm_files_ownership = $sugarcrmstack_ng::apache_php_manage_sugarcrm_files_ownership,
 ) {
 
   if ($apache_php_enable){
@@ -84,6 +85,8 @@ class sugarcrmstack_ng::apache_php (
         xdebug_module_settings   => $apache_php_xdebug_module_settings,
         #
         proxy_pass_match         => $apache_php_proxy_pass_match_final,
+        #
+        manage_sugarcrm_files_ownership => $apache_php_manage_sugarcrm_files_ownership,
 
       }
     }
