@@ -172,7 +172,7 @@ class sugarcrmstack_ng (
   validate_string($apache_php_xdebug_module_ensure)
   validate_hash($apache_php_xdebug_module_settings)
 
-  valdate_bool($apache_php_manage_sugarcrm_files_ownership)
+  validate_bool($apache_php_manage_sugarcrm_files_ownership)
 
   # validate mysql_server parameters
 
