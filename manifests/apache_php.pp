@@ -57,34 +57,34 @@ class sugarcrmstack_ng::apache_php (
       }
 
       class {'::sugarcrmstack::apachephpng':
-        php_pkg_version          => $apache_php_php_pkg_version,
-        php_pkg_build            => $apache_php_php_pkg_build,
-        php_error_reporting      => $apache_php_php_error_reporting,
-        apache_https_port        => $apache_php_apache_https_port,
-        apache_http_port         => $apache_php_apache_http_port,
-        php_memory_limit         => $apache_php_php_memory_limit,
-        php_max_execution_time   => $apache_php_php_max_execution_time,
-        php_upload_max_filesize  => $apache_php_php_upload_max_filesize,
-        apache_timeout           => $apache_php_apache_timeout,
+        php_pkg_version                 => $apache_php_php_pkg_version,
+        php_pkg_build                   => $apache_php_php_pkg_build,
+        php_error_reporting             => $apache_php_php_error_reporting,
+        apache_https_port               => $apache_php_apache_https_port,
+        apache_http_port                => $apache_php_apache_http_port,
+        php_memory_limit                => $apache_php_php_memory_limit,
+        php_max_execution_time          => $apache_php_php_max_execution_time,
+        php_upload_max_filesize         => $apache_php_php_upload_max_filesize,
+        apache_timeout                  => $apache_php_apache_timeout,
         #
-        manage_firewall          => $apache_php_manage_firewall,
+        manage_firewall                 => $apache_php_manage_firewall,
         #
-        apache_http_redirect     => $apache_php_apache_http_redirect,
-        apache_default_mods      => $apache_php_apache_default_mods,
-        php_cache_engine         => $apache_php_php_cache_engine,
-        php_session_save_handler => $apache_php_php_session_save_handler,
-        php_session_save_path    => $apache_php_php_session_save_path,
+        apache_http_redirect            => $apache_php_apache_http_redirect,
+        apache_default_mods             => $apache_php_apache_default_mods,
+        php_cache_engine                => $apache_php_php_cache_engine,
+        php_session_save_handler        => $apache_php_php_session_save_handler,
+        php_session_save_path           => $apache_php_php_session_save_path,
         #
-        apache_manage_user       => $apache_php_apache_manage_user,
+        apache_manage_user              => $apache_php_apache_manage_user,
         #
-        manage_phpmyadmin_config => $apache_php_manage_phpmyadmin_config,
-        manage_phpmyadmin_files  => $apache_php_manage_phpmyadmin_files,
+        manage_phpmyadmin_config        => $apache_php_manage_phpmyadmin_config,
+        manage_phpmyadmin_files         => $apache_php_manage_phpmyadmin_files,
         #
-        xdebug_module_manage     => $apache_php_xdebug_module_manage,
-        xdebug_module_ensure     => $apache_php_xdebug_module_ensure,
-        xdebug_module_settings   => $apache_php_xdebug_module_settings,
+        xdebug_module_manage            => $apache_php_xdebug_module_manage,
+        xdebug_module_ensure            => $apache_php_xdebug_module_ensure,
+        xdebug_module_settings          => $apache_php_xdebug_module_settings,
         #
-        proxy_pass_match         => $apache_php_proxy_pass_match_final,
+        proxy_pass_match                => $apache_php_proxy_pass_match_final,
         #
         manage_sugarcrm_files_ownership => $apache_php_manage_sugarcrm_files_ownership,
 
