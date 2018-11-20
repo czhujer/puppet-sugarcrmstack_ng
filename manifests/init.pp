@@ -55,6 +55,8 @@ class sugarcrmstack_ng (
   $apache_php_xdebug_module_ensure   = $sugarcrmstack_ng::params::apache_php_xdebug_module_ensure,
   $apache_php_xdebug_module_settings = $sugarcrmstack_ng::params::apache_php_xdebug_module_settings,
   #
+  $apache_php_manage_sugarcrm_files_ownership = $sugarcrmstack_ng::params::apache_php_manage_sugarcrm_files_ownership,
+  #
   $mysql_server_service_manage = $sugarcrmstack_ng::params::mysql_server_service_manage,
   $mysql_server_service_enabled = $sugarcrmstack_ng::params::mysql_server_service_enabled,
   $mysql_server_service_restart = $sugarcrmstack_ng::params::mysql_server_service_restart,
@@ -169,6 +171,8 @@ class sugarcrmstack_ng (
   validate_bool($apache_php_xdebug_module_manage)
   validate_string($apache_php_xdebug_module_ensure)
   validate_hash($apache_php_xdebug_module_settings)
+
+  validate_bool($apache_php_manage_sugarcrm_files_ownership)
 
   # validate mysql_server parameters
 

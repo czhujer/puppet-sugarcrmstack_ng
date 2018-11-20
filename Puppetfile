@@ -125,7 +125,8 @@ mod 'ntp',
 
 mod 'beats',
   :git => 'https://github.com/SugarFactory/puppet-beats',
-  :branch => 'master'
+  #branch => 'master'
+  :tag => '0.10.2'
 
 #mod 'nodejs',
 #  :git => 'https://github.com/voxpupuli/puppet-nodejs',
@@ -172,13 +173,15 @@ mod 'puppet-nginx', '0.9.0'
 #  :git => 'https://github.com/torrancew/puppet-cron',
 #  :tag => 'v0.2.0'
 
-mod 'torrancew-cron', '0.2.1'
+#mod 'torrancew-cron', '0.2.1'
+
+mod 'puppet-cron', '1.3.1'
 
 mod 'maestrodev-wget', '1.7.3'
 
 mod 'arioch-redis',
   :git => 'https://github.com/arioch/puppet-redis',
-  :tag => 'v3.2.0'
+  :tag => 'v3.3.1'
 
 mod 'camptocamp-systemd', '1.1.1'
 
@@ -188,21 +191,21 @@ mod 'sugarcrmstack_ng',
 
 mod 'herculesteam-augeasproviders_core', '2.1.3'
 
-mod 'herculesteam-augeasproviders_sysctl', '2.2.0'
+mod 'herculesteam-augeasproviders_sysctl', '2.2.1'
 
 mod 'puppet-zabbix', '6.4.2'
 
-mod 'puppetlabs-postgresql', '5.2.1'
+mod 'puppetlabs-postgresql', '5.9.0'
 
-mod 'puppetlabs-pe_gem', '0.2.0'
+#mod 'puppetlabs-pe_gem', '0.2.0'
 
-mod 'puppetlabs-ruby', '0.6.0'
+mod 'puppetlabs-ruby', '1.0.0'
 
-mod 'puppet-selinux', '1.5.2'
+mod 'puppet-selinux', '1.6.1'
 
 mod 'puppetlabs-transition', '0.1.1'
 
-mod 'puppetlabs-translate', '1.1.0'
+mod 'puppetlabs-translate', '1.2.0'
 
 mod 'elastic-elasticsearch', '5.4.3'
 
