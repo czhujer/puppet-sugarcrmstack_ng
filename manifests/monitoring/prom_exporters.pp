@@ -19,6 +19,8 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
   $enable_phpfpm_exporter_auto_add = true,
   #
   $manage_firewall_glusterfs_exporter = false,
+  #
+  $nginx_vts_module_version = '1.14.0',
   ) {
 
   # validate general parameters
@@ -36,6 +38,8 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
 
   validate_bool($manage_firewall_glusterfs_exporter)
 
+  validate_re($nginx_vts_module_version, '^1.14.[0-1]', 'Unsupported nginx vts module version')
+
   if ($::operatingsystemmajrelease in ['6']){
     $service_add_end_of_command = '|grep JobName -c'
   }
@@ -50,9 +54,12 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
   }
 
   if($manage_nginx_vts_module){
+
+    $nginx_vts_module_filename = "ngx_http_vhost_traffic_status_module.c7.nginx.${nginx_vts_module_version}.so"
+
     file { '/usr/lib64/nginx/modules/ngx_http_vhost_traffic_status_module.so':
       ensure  => file,
-      content => file('sugarcrmstack_ng/nginx-modules/ngx_http_vhost_traffic_status_module.c7.nginx.1.14.0.so'),
+      content => file("sugarcrmstack_ng/nginx-modules/${nginx_vts_module_filename}"),
       owner   => 'root',
       group   => 'root',
       mode    => '0644',
