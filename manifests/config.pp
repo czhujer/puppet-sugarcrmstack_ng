@@ -5,7 +5,7 @@
 class sugarcrmstack_ng::config {
 
   #enable/disable remi-php repo(s)
-  if ($::sugarcrmstack_ng::apache_php_enable){
+  if ($::sugarcrmstack_ng::apache_php_enable and $apache_php_manage_php_remi_repo){
     if ($::operatingsystemmajrelease in ['7']){
 
       if ($::sugarcrmstack_ng::sugar_version == '8.0'){

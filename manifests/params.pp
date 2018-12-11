@@ -387,6 +387,8 @@ class sugarcrmstack_ng::params {
   #
   $apache_php_manage_sugarcrm_files_ownership = true
   #
+  $apache_php_manage_php_remi_repo = true
+  #
   $mysql_server_service_manage = true
   $mysql_server_service_enabled = true
   $mysql_server_service_restart = true
