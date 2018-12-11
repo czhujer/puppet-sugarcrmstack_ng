@@ -79,6 +79,7 @@ class sugarcrmstack_ng (
   $elasticsearch_server_es_instance_init_defaults = $sugarcrmstack_ng::params::elasticsearch_server_es_instance_init_defaults,
   $elasticsearch_server_es_status = $sugarcrmstack_ng::params::elasticsearch_server_es_status,
   $elasticsearch_server_es_instance_config = $sugarcrmstack_ng::params::elasticsearch_server_es_instance_config,
+  $elasticsearch_server_es_instance_logging_yml_ensure = $sugarcrmstack_ng::params::elasticsearch_server_es_instance_logging_yml_ensure,
   #
   $cron_handle_package = $sugarcrmstack_ng::params::cron_handle_package,
   $cron_handle_sugarcrm_file = $sugarcrmstack_ng::params::cron_handle_sugarcrm_file,

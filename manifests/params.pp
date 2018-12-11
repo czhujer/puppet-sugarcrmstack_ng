@@ -413,6 +413,7 @@ class sugarcrmstack_ng::params {
     'http.port' => 9200,
     'index.number_of_replicas' => '0',
   }
+  $elasticsearch_server_es_instance_logging_yml_ensure = false
   $cron_handle_package = true
   $cron_handle_sugarcrm_file = true
   $cron_purge_users_crontabs = true
