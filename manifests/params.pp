@@ -408,6 +408,7 @@ class sugarcrmstack_ng::params {
   $elasticsearch_server_es_package_pin = true
   $elasticsearch_server_es_instance_init_defaults = {}
   $elasticsearch_server_es_status = 'enabled'
+  $elasticsearch_server_es_restart_on_change = true
   $elasticsearch_server_es_instance_config = {
     'network.host' => '127.0.0.1',
     'http.port' => 9200,
