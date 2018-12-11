@@ -141,7 +141,7 @@ mod 'gpg_key',
 #  :branch => 'master'
   :tag => '0.0.4'
 
-mod 'puppetlabs-concat', '4.2.1'
+mod 'puppetlabs-concat', '4.1.1'
 
 mod 'git',
   :git => 'https://github.com/puppetlabs/puppetlabs-git',
