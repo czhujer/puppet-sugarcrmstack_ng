@@ -413,7 +413,9 @@ class sugarcrmstack_ng::params {
   $elasticsearch_server_es_instance_config = {
     'network.host' => '127.0.0.1',
     'http.port' => 9200,
-    'index.number_of_replicas' => '0',
+    #'index.number_of_replicas' => '0',
+    #'index.analysis.analyzer.folding.tokenizer' => "standard",
+    #'index.analysis.analyzer.folding.filter' =>  [ "lowercase", "asciifolding" ],
   }
   $elasticsearch_server_es_instance_logging_yml_ensure = false
   $cron_handle_package = true
