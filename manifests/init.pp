@@ -117,6 +117,7 @@ class sugarcrmstack_ng (
   $beats_filebeats_prospectors_config_extra = $sugarcrmstack_ng::params::beats_filebeats_prospectors_config_extra,
   $beats_hosts = $sugarcrmstack_ng::params::beats_hosts,
   $beats_manage_geoip = $sugarcrmstack_ng::params::beats_manage_geoip,
+  $beats_manage_repo = $sugarcrmstack_ng::params::beats_manage_repo,
   #
 ) inherits sugarcrmstack_ng::params {
 
@@ -240,6 +241,7 @@ class sugarcrmstack_ng (
   validate_array($beats_hosts)
 
   validate_bool($beats_manage_geoip)
+  validate_bool($beats_manage_repo)
 
   # run
   contain ::sugarcrmstack_ng::install

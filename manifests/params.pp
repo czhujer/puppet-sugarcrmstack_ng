@@ -446,4 +446,5 @@ class sugarcrmstack_ng::params {
   $beats_filebeats_prospectors_config_extra = {}
   $beats_hosts = ['logstash.sugarfactory.cz:5044']
   $beats_manage_geoip = true
+  $beats_manage_repo = true
 }
