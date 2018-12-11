@@ -405,6 +405,7 @@ class sugarcrmstack_ng::params {
   $elasticsearch_server_es_java_install = true
   $elasticsearch_server_es_repo_version = '1.7'
   $elasticsearch_server_es_version = '1.7.5-1'
+  $elasticsearch_server_es_manage_repo = true
   $elasticsearch_server_es_package_pin = true
   $elasticsearch_server_es_instance_init_defaults = {}
   $elasticsearch_server_es_status = 'enabled'

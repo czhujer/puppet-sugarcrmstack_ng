@@ -75,6 +75,7 @@ class sugarcrmstack_ng (
   $elasticsearch_server_es_java_install = $sugarcrmstack_ng::params::elasticsearch_server_es_java_install,
   $elasticsearch_server_es_repo_version = $sugarcrmstack_ng::params::elasticsearch_server_es_repo_version,
   $elasticsearch_server_es_version = $sugarcrmstack_ng::params::elasticsearch_server_es_version,
+  $elasticsearch_server_es_manage_repo = $sugarcrmstack_ng::params::elasticsearch_server_es_manage_repo,
   $elasticsearch_server_es_package_pin = $sugarcrmstack_ng::params::elasticsearch_server_es_package_pin,
   $elasticsearch_server_es_instance_init_defaults = $sugarcrmstack_ng::params::elasticsearch_server_es_instance_init_defaults,
   $elasticsearch_server_es_status = $sugarcrmstack_ng::params::elasticsearch_server_es_status,
@@ -199,6 +200,7 @@ class sugarcrmstack_ng (
   validate_bool($elasticsearch_server_es_java_install)
   #$elasticsearch_server_es_repo_version
   #$elasticsearch_server_es_version
+  validate_bool($elasticsearch_server_es_manage_repo)
   validate_bool($elasticsearch_server_es_package_pin)
   validate_hash($elasticsearch_server_es_instance_init_defaults)
   #$elasticsearch_server_es_status
