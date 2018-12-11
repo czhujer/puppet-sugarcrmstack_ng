@@ -12,22 +12,22 @@ mod 'apt',
 
 mod 'java',
   :git => 'https://github.com/puppetlabs/puppetlabs-java',
-  :tag => '2.4.0'
+  :tag => '3.2.0'
 
 mod 'stdlib',
   :git => 'https://github.com/puppetlabs/puppetlabs-stdlib',
-  :tag => '4.25.0'
+  :tag => '4.25.1'
 
-mod 'jenkins',
-#  :git => 'https://github.com/jenkinsci/puppet-jenkins',
-#  :tag => 'v1.7.0'
-  :git => 'https://github.com/SugarFactory/puppet-jenkins',
-#  :branch => 'master'
-   :tag => 'v1.7.2'
+#mod 'jenkins',
+##  :git => 'https://github.com/jenkinsci/puppet-jenkins',
+##  :tag => 'v1.7.0'
+#  :git => 'https://github.com/SugarFactory/puppet-jenkins',
+##  :branch => 'master'
+#   :tag => 'v1.7.2'
 
 mod 'archive',
   :git => 'https://github.com/voxpupuli/puppet-archive',
-  :tag => 'v2.3.0'
+  :tag => 'v3.2.1'
 
 mod 'zypprepo',
   :git => 'https://github.com/voxpupuli/puppet-zypprepo',
@@ -35,15 +35,15 @@ mod 'zypprepo',
 
 mod 'staging',
   :git => 'https://github.com/voxpupuli/puppet-staging',
-  :tag => 'v1.0.7'
+  :tag => 'v3.2.0'
 
 mod 'inifile',
   :git => 'https://github.com/puppetlabs/puppetlabs-inifile',
-  :tag => '1.5.0'
+  :tag => '2.4.0'
 
 mod 'epel',
   :git => 'https://github.com/stahnma/puppet-module-epel',
-  :tag => '1.2.2'
+  :tag => '1.3.1'
 
 mod 'rpmkey',
   :git => 'https://github.com/stschulte/puppet-rpmkey',
@@ -51,7 +51,7 @@ mod 'rpmkey',
 
 mod 'firewall',
   :git => 'https://github.com/puppetlabs/puppetlabs-firewall',
-  :tag => '1.8.1'
+  :tag => '1.14.0'
 
 mod 'vcsrepo',
   :git => 'https://github.com/puppetlabs/puppetlabs-vcsrepo',
@@ -59,31 +59,31 @@ mod 'vcsrepo',
 
 mod 'mysql',
   :git => 'https://github.com/puppetlabs/puppetlabs-mysql',
-  :tag => '5.1.0'
+  :tag => '6.2.0'
 
-mod 'xtrabackup',
-  :git => 'https://github.com/abstractitptyltd/puppet-xtrabackup',
-  :tag => 'v0.1.3'
+#mod 'xtrabackup',
+#  :git => 'https://github.com/abstractitptyltd/puppet-xtrabackup',
+#  :tag => 'v0.1.3'
 
-mod 'ssh',
-  :git => 'https://github.com/saz/puppet-ssh',
-  :tag => 'v2.8.1'
+#mod 'ssh',
+#  :git => 'https://github.com/saz/puppet-ssh',
+#  :tag => 'v2.8.1'
 
 mod 'timezone',
   :git => 'https://github.com/saz/puppet-timezone',
-  :tag => 'v3.3.0'
+  :tag => 'v5.0.2'
 
-mod 'puppi',
-  :git => 'https://github.com/example42/puppi',
-  :tag => 'v2.1.13'
+#mod 'puppi',
+#  :git => 'https://github.com/example42/puppi',
+#  :tag => 'v2.1.13'
 
-mod 'perl',
-  :git => 'https://github.com/example42/puppet-perl',
-  :tag => 'v2.0.23'
+#mod 'perl',
+#  :git => 'https://github.com/example42/puppet-perl',
+#  :tag => 'v2.0.23'
 
 mod 'memcached',
   :git => 'https://github.com/saz/puppet-memcached',
-  :tag => 'v2.8.1'
+  :tag => 'v3.3.0'
 
 #mod 'xinetd',
 #  :git => 'https://github.com/puppetlabs/puppetlabs-xinetd',
@@ -93,7 +93,7 @@ mod 'memcached',
 #  :git => 'https://github.com/luxflux/puppet-openvpn',
 #  :tag => '4.0.1'
 
-mod 'puppet-openvpn', '7.2.0'
+#mod 'puppet-openvpn', '7.2.0'
 
 #mod 'galera',
 #  :git => 'https://github.com/czhujer/puppet-galera.git',
@@ -105,11 +105,7 @@ mod 'puppet-openvpn', '7.2.0'
 
 mod 'yum',
   :git => 'https://github.com/voxpupuli/puppet-yum',
-  :tag => 'v2.0.1'
-
-#mod 'composer',
-#  :git => 'https://github.com/tPl0ch/puppet-composer',
-#  :tag => '1.3.7'
+  :tag => 'v3.1.1'
 
 mod 'composer',
   :git => 'https://github.com/SugarFactory/puppet-composer',
@@ -145,11 +141,7 @@ mod 'gpg_key',
 #  :branch => 'master'
   :tag => '0.0.4'
 
-#mod 'concat',
-#  :git => 'https://github.com/puppetlabs/puppetlabs-concat',
-#  :tag => '4.0.1'
-
-mod 'puppetlabs-concat', '4.1.1'
+mod 'puppetlabs-concat', '4.2.1'
 
 mod 'git',
   :git => 'https://github.com/puppetlabs/puppetlabs-git',
@@ -157,23 +149,13 @@ mod 'git',
 
 mod 'apache',
   :git => 'https://github.com/puppetlabs/puppetlabs-apache.git',
-  :tag => '2.3.1'
+  :tag => '3.4.0'
 
 mod 'php',
   :git => 'https://github.com/thias/puppet-php.git',
-  :tag => '1.2.1'
-
-#mod 'nginx',
-#  :git => 'https://github.com/jfryman/puppet-nginx',
-#  :tag => 'v0.3.0'
+  :tag => '1.2.2'
 
 mod 'puppet-nginx', '0.9.0'
-
-#mod 'cron',
-#  :git => 'https://github.com/torrancew/puppet-cron',
-#  :tag => 'v0.2.0'
-
-#mod 'torrancew-cron', '0.2.1'
 
 mod 'puppet-cron', '1.3.1'
 
@@ -183,13 +165,13 @@ mod 'arioch-redis',
   :git => 'https://github.com/arioch/puppet-redis',
   :tag => 'v3.3.1'
 
-mod 'camptocamp-systemd', '1.1.1'
+mod 'camptocamp-systemd', '2.1.0'
 
 mod 'sugarcrmstack_ng',
   :git => 'https://github.com/SugarFactory/puppet-sugarcrmstack_ng',
-  :tag => 'v0.10'
+  :tag => 'v0.16'
 
-mod 'herculesteam-augeasproviders_core', '2.1.3'
+mod 'herculesteam-augeasproviders_core', '2.2.0'
 
 mod 'herculesteam-augeasproviders_sysctl', '2.2.1'
 
@@ -197,7 +179,7 @@ mod 'puppet-zabbix', '6.4.2'
 
 mod 'puppetlabs-postgresql', '5.9.0'
 
-#mod 'puppetlabs-pe_gem', '0.2.0'
+mod 'puppetlabs-pe_gem', '0.2.0'
 
 mod 'puppetlabs-ruby', '1.0.0'
 
@@ -207,11 +189,13 @@ mod 'puppetlabs-transition', '0.1.1'
 
 mod 'puppetlabs-translate', '1.2.0'
 
-mod 'elastic-elasticsearch', '5.4.3'
+mod 'elastic-elasticsearch', '5.5.0'
 
 mod 'richardc/datacat', '0.6.2'
+
+mod 'stm-debconf', '2.3.0'
 
 #mod 'puppet-prometheus', '5.0.0'
 mod 'prometheus',
   :git => 'https://github.com/SugarFactory/puppet-prometheus',
-  :tag => 'v5.1.1'
+  :tag => 'v5.2.0'
