@@ -21,7 +21,7 @@ fixtures:
       ref: "1.4.2"
     git:
       repo: "https://github.com/puppetlabs/puppetlabs-git"
-      ref: "2.3.1"
+      ref: "0.5.0"
     mysql:
       repo: "https://github.com/puppetlabs/puppetlabs-mysql"
       ref: "5.1.0"
@@ -40,6 +40,9 @@ fixtures:
     redis:
       repo: "https://github.com/arioch/puppet-redis"
       ref: "v3.2.0"
+    sugarcrmstack:
+      repo: "https://github.com/SugarFactory/puppet-sugarcrmstack-v3"
+      branch: "master"
   forge_modules:
     elasticsearch:
       repo: elastic/elasticsearch

@@ -24,6 +24,7 @@ class sugarcrmstack_ng::beats (
   $beats_hosts = $sugarcrmstack_ng::beats_hosts,
   #
   $beats_manage_geoip = $sugarcrmstack_ng::beats_manage_geoip,
+  $beats_manage_repo = $sugarcrmstack_ng::beats_manage_repo,
 ) {
 
   if ($beats_manage){
@@ -50,6 +51,7 @@ class sugarcrmstack_ng::beats (
         agentname          => $beats_agentname,
         version_v5         => $beats_version_v5,
         manage_geoip       => $beats_manage_geoip,
+        manage_repo        => $beats_manage_repo,
       }
 
       if ($beats_filebeats_enable){
