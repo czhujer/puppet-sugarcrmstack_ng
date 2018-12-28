@@ -134,7 +134,12 @@ mod 'zabbixagent',
 
 mod 'sugarcrmstack',
 #  :git => 'git@github.com:SugarFactory/puppet-sugarcrm-stack.git'
-  :local => true
+#  :local => true
+mod 'sugarcrmstack',
+#  :git => 'git@github.com:SugarFactory/puppet-sugarcrm-stack.git'
+#  :local => true
+  :git => 'https://github.com/SugarFactory/puppet-sugarcrmstack-v3.git',
+  :branch => 'master'
 
 mod 'gpg_key',
   :git => 'https://github.com/treydock/puppet-gpg_key',
