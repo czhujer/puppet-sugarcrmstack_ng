@@ -135,9 +135,6 @@ mod 'zabbixagent',
 mod 'sugarcrmstack',
 #  :git => 'git@github.com:SugarFactory/puppet-sugarcrm-stack.git'
 #  :local => true
-mod 'sugarcrmstack',
-#  :git => 'git@github.com:SugarFactory/puppet-sugarcrm-stack.git'
-#  :local => true
   :git => 'https://github.com/SugarFactory/puppet-sugarcrmstack-v3.git',
   :branch => 'master'
 
