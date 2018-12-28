@@ -57,6 +57,8 @@ class sugarcrmstack_ng (
   #
   $apache_php_manage_sugarcrm_files_ownership = $sugarcrmstack_ng::params::apache_php_manage_sugarcrm_files_ownership,
   #
+  $apache_php_manage_php_remi_repo = $sugarcrmstack_ng::params::apache_php_manage_php_remi_repo,
+  #
   $mysql_server_service_manage = $sugarcrmstack_ng::params::mysql_server_service_manage,
   $mysql_server_service_enabled = $sugarcrmstack_ng::params::mysql_server_service_enabled,
   $mysql_server_service_restart = $sugarcrmstack_ng::params::mysql_server_service_restart,
@@ -75,10 +77,14 @@ class sugarcrmstack_ng (
   $elasticsearch_server_es_java_install = $sugarcrmstack_ng::params::elasticsearch_server_es_java_install,
   $elasticsearch_server_es_repo_version = $sugarcrmstack_ng::params::elasticsearch_server_es_repo_version,
   $elasticsearch_server_es_version = $sugarcrmstack_ng::params::elasticsearch_server_es_version,
+  $elasticsearch_server_es_manage_repo = $sugarcrmstack_ng::params::elasticsearch_server_es_manage_repo,
   $elasticsearch_server_es_package_pin = $sugarcrmstack_ng::params::elasticsearch_server_es_package_pin,
   $elasticsearch_server_es_instance_init_defaults = $sugarcrmstack_ng::params::elasticsearch_server_es_instance_init_defaults,
   $elasticsearch_server_es_status = $sugarcrmstack_ng::params::elasticsearch_server_es_status,
+  $elasticsearch_server_es_restart_on_change = $sugarcrmstack_ng::params::elasticsearch_server_es_restart_on_change,
+  #
   $elasticsearch_server_es_instance_config = $sugarcrmstack_ng::params::elasticsearch_server_es_instance_config,
+  $elasticsearch_server_es_instance_logging_yml_ensure = $sugarcrmstack_ng::params::elasticsearch_server_es_instance_logging_yml_ensure,
   #
   $cron_handle_package = $sugarcrmstack_ng::params::cron_handle_package,
   $cron_handle_sugarcrm_file = $sugarcrmstack_ng::params::cron_handle_sugarcrm_file,
@@ -113,6 +119,7 @@ class sugarcrmstack_ng (
   $beats_filebeats_prospectors_config_extra = $sugarcrmstack_ng::params::beats_filebeats_prospectors_config_extra,
   $beats_hosts = $sugarcrmstack_ng::params::beats_hosts,
   $beats_manage_geoip = $sugarcrmstack_ng::params::beats_manage_geoip,
+  $beats_manage_repo = $sugarcrmstack_ng::params::beats_manage_repo,
   #
 ) inherits sugarcrmstack_ng::params {
 
@@ -174,6 +181,8 @@ class sugarcrmstack_ng (
 
   validate_bool($apache_php_manage_sugarcrm_files_ownership)
 
+  validate_bool($apache_php_manage_php_remi_repo)
+
   # validate mysql_server parameters
 
   #$mysql_server_service_manage
@@ -196,9 +205,11 @@ class sugarcrmstack_ng (
   validate_bool($elasticsearch_server_es_java_install)
   #$elasticsearch_server_es_repo_version
   #$elasticsearch_server_es_version
+  validate_bool($elasticsearch_server_es_manage_repo)
   validate_bool($elasticsearch_server_es_package_pin)
   validate_hash($elasticsearch_server_es_instance_init_defaults)
   #$elasticsearch_server_es_status
+  validate_bool($elasticsearch_server_es_restart_on_change)
   validate_hash($elasticsearch_server_es_instance_config)
 
   validate_bool($cron_handle_package)
@@ -234,6 +245,7 @@ class sugarcrmstack_ng (
   validate_array($beats_hosts)
 
   validate_bool($beats_manage_geoip)
+  validate_bool($beats_manage_repo)
 
   # run
   contain ::sugarcrmstack_ng::install

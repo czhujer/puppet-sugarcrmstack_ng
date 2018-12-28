@@ -387,6 +387,8 @@ class sugarcrmstack_ng::params {
   #
   $apache_php_manage_sugarcrm_files_ownership = true
   #
+  $apache_php_manage_php_remi_repo = true
+  #
   $mysql_server_service_manage = true
   $mysql_server_service_enabled = true
   $mysql_server_service_restart = true
@@ -405,14 +407,19 @@ class sugarcrmstack_ng::params {
   $elasticsearch_server_es_java_install = true
   $elasticsearch_server_es_repo_version = '1.7'
   $elasticsearch_server_es_version = '1.7.5-1'
+  $elasticsearch_server_es_manage_repo = true
   $elasticsearch_server_es_package_pin = true
   $elasticsearch_server_es_instance_init_defaults = {}
   $elasticsearch_server_es_status = 'enabled'
+  $elasticsearch_server_es_restart_on_change = true
   $elasticsearch_server_es_instance_config = {
     'network.host' => '127.0.0.1',
     'http.port' => 9200,
-    'index.number_of_replicas' => '0',
+    #'index.number_of_replicas' => '0',
+    #'index.analysis.analyzer.folding.tokenizer' => "standard",
+    #'index.analysis.analyzer.folding.filter' =>  [ "lowercase", "asciifolding" ],
   }
+  $elasticsearch_server_es_instance_logging_yml_ensure = false
   $cron_handle_package = true
   $cron_handle_sugarcrm_file = true
   $cron_purge_users_crontabs = true
@@ -441,4 +448,5 @@ class sugarcrmstack_ng::params {
   $beats_filebeats_prospectors_config_extra = {}
   $beats_hosts = ['logstash.sugarfactory.cz:5044']
   $beats_manage_geoip = true
+  $beats_manage_repo = true
 }

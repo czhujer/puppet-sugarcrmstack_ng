@@ -1,6 +1,6 @@
 {
   "name": "sugarfactory-sugarcrmstack_ng",
-  "version": "0.14.0",
+  "version": "0.16.0",
   "author": "czhujer",
   "summary": "puppet module for sugarcmstack for SugarCRM",
   "license": "Apache-2.0",
@@ -14,15 +14,15 @@
     },
     {
       "name": "puppetlabs-inifile",
-      "version_requirement": "1.5.0"
+      "version_requirement": ">=1.5.0 <3.0.0"
     },
     {
       "name": "puppetlabs-apache",
-      "version_requirement": ">1.0.0 <3.0.0"
+      "version_requirement": ">3.0.0 <4.0.0"
     },
     {
       "name": "puppetlabs-concat",
-      "version_requirement": ">=1.2.0 <=4.2.0"
+      "version_requirement": ">=4.1.0 <4.2.1"
     },
     {
       "name": "thias-php",
@@ -46,23 +46,23 @@
     },
     {
       "name": "arioch-redis",
-      "version_requirement": ">=3.1.0 <4.0.0"
+      "version_requirement": ">=3.3.0 <4.0.0"
     },
     {
       "name": "saz-memcached",
-      "version_requirement": ">=2.8.1 <3.0.0"
+      "version_requirement": ">=3.3.0 <4.0.0"
     },
     {
       "name": "puppetlabs-mysql",
-      "version_requirement": ">=3.11.0 <6.0.0"
+      "version_requirement": ">=5.0.0 <7.0.0"
     },
     {
       "name": "elastic-elasticsearch",
-      "version_requirement": ">=5.0.0 <6.0.0"
+      "version_requirement": ">=5.4.3 <6.0.0"
     },
     {
       "name": "puppet-yum",
-      "version_requirement": ">=0.9.14 <3.0.0"
+      "version_requirement": ">=2.0.0 <4.0.0"
     }
   ],
   "operatingsystem_support": [

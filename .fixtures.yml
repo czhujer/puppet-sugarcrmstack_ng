@@ -40,6 +40,9 @@ fixtures:
     redis:
       repo: "https://github.com/arioch/puppet-redis"
       ref: "v3.2.0"
+    sugarcrmstack:
+      repo: "https://github.com/SugarFactory/puppet-sugarcrmstack-v3"
+      branch: "master"
   forge_modules:
     elasticsearch:
       repo: elastic/elasticsearch
