@@ -33,6 +33,7 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
   validate_bool($manage_agent_class)
   validate_bool($manage_custom_extensions)
   validate_bool($manage_custom_logging)
+  validate_bool($manage_repo)
   validate_bool($plugin_apache_stats_handle_httpd_config)
   validate_bool($plugin_apache_stats_use_script_wo_verify_certs)
   validate_string($plugin_apache_stats_script_params)
