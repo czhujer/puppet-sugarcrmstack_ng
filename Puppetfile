@@ -161,7 +161,8 @@ mod 'puppet-nginx', '0.9.0'
 
 mod 'puppet-cron', '1.3.1'
 
-mod 'maestrodev-wget', '1.7.3'
+#mod 'maestrodev-wget', '1.7.3'
+mod 'puppet-wget', '2.0.1'
 
 mod 'arioch-redis',
   :git => 'https://github.com/arioch/puppet-redis',
