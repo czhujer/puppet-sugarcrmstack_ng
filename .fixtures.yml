@@ -42,7 +42,7 @@ fixtures:
       ref: "v3.2.0"
     sugarcrmstack:
       repo: "https://github.com/SugarFactory/puppet-sugarcrmstack-v3"
-      branch: "master"
+      branch: "devel"
   forge_modules:
     elasticsearch:
       repo: elastic/elasticsearch
