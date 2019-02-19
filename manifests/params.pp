@@ -377,6 +377,7 @@ class sugarcrmstack_ng::params {
   $apache_php_manage_phpmyadmin_files = true
   #
   $apache_php_apache_timeout = 180
+  $apache_php_proxy_timeout = 180
   #
   $apache_php_xdebug_module_manage   = true
   $apache_php_xdebug_module_ensure   = 'absent'
@@ -412,6 +413,7 @@ class sugarcrmstack_ng::params {
   $elasticsearch_server_es_instance_init_defaults = {}
   $elasticsearch_server_es_status = 'enabled'
   $elasticsearch_server_es_restart_on_change = true
+  $elasticsearch_server_es_jvm_options = [ '-Xms512m' , '-Xmx512m' ]
   $elasticsearch_server_es_instance_config = {
     'network.host' => '127.0.0.1',
     'http.port' => 9200,

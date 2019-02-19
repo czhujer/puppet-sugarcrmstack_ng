@@ -46,6 +46,7 @@ class sugarcrmstack_ng (
   #$apache_php_apache_serveradmin =
   #$apache_php_apache_mpm =
   $apache_php_apache_timeout = $sugarcrmstack_ng::params::apache_php_apache_timeout,
+  $apache_php_proxy_timeout = $sugarcrmstack_ng::params::apache_php_proxy_timeout,
   #$apache_php_apache_keepalive =
   #
   $apache_php_proxy_pass_match         = $sugarcrmstack_ng::params::apache_php_proxy_pass_match,
@@ -82,6 +83,7 @@ class sugarcrmstack_ng (
   $elasticsearch_server_es_instance_init_defaults = $sugarcrmstack_ng::params::elasticsearch_server_es_instance_init_defaults,
   $elasticsearch_server_es_status = $sugarcrmstack_ng::params::elasticsearch_server_es_status,
   $elasticsearch_server_es_restart_on_change = $sugarcrmstack_ng::params::elasticsearch_server_es_restart_on_change,
+  $elasticsearch_server_es_jvm_options = $sugarcrmstack_ng::params::elasticsearch_server_es_jvm_options,
   #
   $elasticsearch_server_es_instance_config = $sugarcrmstack_ng::params::elasticsearch_server_es_instance_config,
   $elasticsearch_server_es_instance_logging_yml_ensure = $sugarcrmstack_ng::params::elasticsearch_server_es_instance_logging_yml_ensure,
@@ -171,6 +173,7 @@ class sugarcrmstack_ng (
   validate_bool($apache_php_manage_phpmyadmin_files)
 
   validate_integer($apache_php_apache_timeout)
+  validate_integer($apache_php_proxy_timeout)
 
   #$apache_php_proxy_pass_match
   #$apache_php_proxy_pass_match_default
@@ -210,6 +213,7 @@ class sugarcrmstack_ng (
   validate_hash($elasticsearch_server_es_instance_init_defaults)
   #$elasticsearch_server_es_status
   validate_bool($elasticsearch_server_es_restart_on_change)
+  validate_array($elasticsearch_server_es_jvm_options)
   validate_hash($elasticsearch_server_es_instance_config)
 
   validate_bool($cron_handle_package)

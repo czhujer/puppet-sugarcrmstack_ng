@@ -23,6 +23,7 @@ class sugarcrmstack_ng::elasticsearch_server (
   $elasticsearch_server_es_instance_init_defaults = $sugarcrmstack_ng::elasticsearch_server_es_instance_init_defaults,
   $elasticsearch_server_es_status = $sugarcrmstack_ng::elasticsearch_server_es_status,
   $elasticsearch_server_es_restart_on_change = $sugarcrmstack_ng::elasticsearch_server_es_restart_on_change,
+  $elasticsearch_server_es_jvm_options = $sugarcrmstack_ng::elasticsearch_server_es_jvm_options,
   $elasticsearch_server_es_instance_config = $sugarcrmstack_ng::elasticsearch_server_es_instance_config,
   $elasticsearch_server_es_instance_logging_yml_ensure = $sugarcrmstack_ng::elasticsearch_server_es_instance_logging_yml_ensure,
 ) {
@@ -39,6 +40,7 @@ class sugarcrmstack_ng::elasticsearch_server (
         repo_version      => $elasticsearch_server_es_repo_version,
         status            => $elasticsearch_server_es_status,
         restart_on_change => $elasticsearch_server_es_restart_on_change,
+        jvm_options       => $elasticsearch_server_es_jvm_options,
         datadir           => '/var/lib/elasticsearch/data',
       }
 

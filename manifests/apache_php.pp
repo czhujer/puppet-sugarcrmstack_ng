@@ -23,6 +23,7 @@ class sugarcrmstack_ng::apache_php (
   $apache_php_php_max_execution_time = $sugarcrmstack_ng::apache_php_php_max_execution_time,
   $apache_php_php_upload_max_filesize = $sugarcrmstack_ng::apache_php_php_upload_max_filesize,
   $apache_php_apache_timeout = $sugarcrmstack_ng::apache_php_apache_timeout,
+  $apache_php_proxy_timeout = $sugarcrmstack_ng::apache_php_proxy_timeout,
   $apache_php_manage_firewall = $sugarcrmstack_ng::apache_php_manage_firewall,
   $apache_php_apache_http_redirect = $sugarcrmstack_ng::apache_php_apache_http_redirect,
   $apache_php_apache_default_mods =$sugarcrmstack_ng::apache_php_apache_default_mods,
@@ -66,6 +67,7 @@ class sugarcrmstack_ng::apache_php (
         php_max_execution_time          => $apache_php_php_max_execution_time,
         php_upload_max_filesize         => $apache_php_php_upload_max_filesize,
         apache_timeout                  => $apache_php_apache_timeout,
+        apache_php_proxy_timeout        => $apache_php_proxy_timeout,
         #
         manage_firewall                 => $apache_php_manage_firewall,
         #

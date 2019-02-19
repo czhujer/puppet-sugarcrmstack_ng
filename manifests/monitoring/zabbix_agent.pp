@@ -12,6 +12,7 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
   $manage_custom_logging = true,
   $manage_custom_extensions = true,
   $manage_extra_firewall_rules = false,
+  $manage_repo = true,
   $agent_hostname = $::fqdn,
   $agent_version = '3.0',
   $agent_server  = '192.168.127.1',
@@ -32,6 +33,7 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
   validate_bool($manage_agent_class)
   validate_bool($manage_custom_extensions)
   validate_bool($manage_custom_logging)
+  validate_bool($manage_repo)
   validate_bool($plugin_apache_stats_handle_httpd_config)
   validate_bool($plugin_apache_stats_use_script_wo_verify_certs)
   validate_string($plugin_apache_stats_script_params)
@@ -47,6 +49,7 @@ class sugarcrmstack_ng::monitoring::zabbix_agent (
       listenip       => '0.0.0.0',
       logtype        => 'system',
       manage_selinux => false,
+      manage_repo    => $manage_repo,
       tlspskidentity => $agent_tlspskidentity,
       tlspskfile     => $agent_tlspskfile,
       tlsaccept      => $agent_tlsaccept,
