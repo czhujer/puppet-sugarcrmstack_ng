@@ -38,7 +38,7 @@ class sugarcrmstack_ng::monitoring::prom_exporters (
 
   validate_bool($manage_firewall_glusterfs_exporter)
 
-  validate_re($nginx_vts_module_version, '^1.14.[0-2]', 'Unsupported nginx vts module version')
+  validate_re($nginx_vts_module_version, '^(1.14.[0-2])|(1.16.[0-1])$', 'Unsupported nginx vts module version')
 
   if ($::operatingsystemmajrelease in ['6']){
     $service_add_end_of_command = '|grep JobName -c'
