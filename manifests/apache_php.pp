@@ -67,7 +67,7 @@ class sugarcrmstack_ng::apache_php (
         php_memory_limit                => $apache_php_php_memory_limit,
         php_max_execution_time          => $apache_php_php_max_execution_time,
         php_upload_max_filesize         => $apache_php_php_upload_max_filesize,
-        php_post_max_size		            => $apache_php_php_post_max_size,
+        php_post_max_size               => $apache_php_php_post_max_size,
         apache_timeout                  => $apache_php_apache_timeout,
         apache_php_proxy_timeout        => $apache_php_proxy_timeout,
         #
