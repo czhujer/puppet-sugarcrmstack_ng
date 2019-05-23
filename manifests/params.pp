@@ -366,7 +366,8 @@ class sugarcrmstack_ng::params {
   $apache_php_apache_http_port = '80'
   $apache_php_php_memory_limit = '1024M'
   $apache_php_php_max_execution_time = '300'
-  $apache_php_php_upload_max_filesize = '100M'
+  $apache_php_php_upload_max_filesize = '50M'
+  $apache_php_php_post_max_size = '50M'
   $apache_php_manage_firewall = false
   $apache_php_apache_http_redirect = true
   $apache_php_php_cache_engine = 'opcache+apcu'

@@ -33,6 +33,7 @@ class sugarcrmstack_ng (
   $apache_php_php_memory_limit = $sugarcrmstack_ng::params::apache_php_php_memory_limit,
   $apache_php_php_max_execution_time = $sugarcrmstack_ng::params::apache_php_php_max_execution_time,
   $apache_php_php_upload_max_filesize = $sugarcrmstack_ng::params::apache_php_php_upload_max_filesize,
+  $apache_php_php_post_max_size = $sugarcrmstack_ng::params::apache_php_php_post_max_size,
   $apache_php_manage_firewall = $sugarcrmstack_ng::params::apache_php_manage_firewall,
   $apache_php_apache_http_redirect = $sugarcrmstack_ng::params::apache_php_apache_http_redirect,
   $apache_php_apache_default_mods = $sugarcrmstack_ng::params::apache_php_apache_default_mods,
@@ -162,6 +163,7 @@ class sugarcrmstack_ng (
   #$apache_php_php_memory_limit
   #$apache_php_php_max_execution_time
   #$apache_php_php_upload_max_filesize
+  #$apache_php_php_post_max_size
   validate_bool($apache_php_manage_firewall)
   validate_bool($apache_php_apache_http_redirect)
   validate_array($apache_php_apache_default_mods)
