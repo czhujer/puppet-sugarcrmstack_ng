@@ -29,7 +29,7 @@ class sugarcrmstack_ng::beats (
 
   if ($beats_manage){
 
-    if ($sugar_version == '7.5' or $sugar_version == '7.9' or $sugar_version == '8.0'){
+    if ($sugar_version == '7.5' or $sugar_version == '7.9' or $sugar_version == '8.0' or $sugar_version == '9.0'){
 
       if ($beats_filebeats_enable){
         $outputs_logstash_file = { 'filebeat' => { 'hosts' => $beats_hosts, 'use_tls' => true, } }
@@ -82,7 +82,7 @@ class sugarcrmstack_ng::beats (
 
     }
     else{
-      fail("Class['sugarcrmstack_ng::beats']: This class is compatible only with sugar_version 7.5,7.9 or 8.0 (not ${sugar_version})")
+      fail("Class['sugarcrmstack_ng::beats']: This class is compatible only with sugar_version 7.5,7.9,8.0 or 9.0 (not ${sugar_version})")
     }
   }
 }

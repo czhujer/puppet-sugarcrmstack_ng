@@ -44,9 +44,9 @@ class sugarcrmstack_ng::apache_php (
 
   if ($apache_php_enable){
 
-    if ($sugar_version == '7.5' or $sugar_version == '7.9' or $sugar_version == '8.0'){
+    if ($sugar_version == '7.5' or $sugar_version == '7.9' or $sugar_version == '8.0' or $sugar_version == '9.0'){
 
-      if($sugar_version == '8.0'){
+      if($sugar_version == '8.0' or $sugar_version == '9.0'){
         if empty($apache_php_proxy_pass_match){
           $apache_php_proxy_pass_match_final = $apache_php_proxy_pass_match_default
         }
@@ -95,7 +95,7 @@ class sugarcrmstack_ng::apache_php (
       }
     }
     else{
-      fail("Class['sugarcrmstack_ng::apache_php']: This class is compatible only with sugar_version 7.5,7.9 or 8.0 (not ${sugar_version})")
+      fail("Class['sugarcrmstack_ng::apache_php']: This class is compatible only with sugar_version 7.5,7.9,8.0 or 9.0 (not ${sugar_version})")
     }
   }
 
