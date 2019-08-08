@@ -20,4 +20,6 @@ alias cdsugar='cd /var/www/html/sugarcrm/'
 alias rebuild-all='/var/www/html/Deployer/do rebuild-all'
 alias rebuild-cache='/var/www/html/Deployer/do rebuild-cache'
 alias xdebugKey='f(){ export XDEBUG_CONFIG="idekey=$1";  unset -f f; }; f'
+alias papply='puppet apply /etc/puppet/manifests/'
+alias cdpm='cd /etc/puppet/manifests/'
 trap - INT
