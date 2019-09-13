@@ -97,7 +97,7 @@ class sugarcrmstack_ng::install {
     }
     elsif ($::operatingsystemmajrelease in ['7'] and
         $::sugarcrmstack_ng::mysql_server_use_pxc == true and
-        ($::sugarcrmstack_ng::sugar_version == '7.9' or $::sugarcrmstack_ng::sugar_version == '8.0')) {
+        ($::sugarcrmstack_ng::sugar_version == '7.9' or $::sugarcrmstack_ng::sugar_version == '8.0' or $::sugarcrmstack_ng::sugar_version == '9.0')) {
       $mysql_server_packages_old = ['mariadb', 'mariadb-server', 'mariadb-libs',
                                     'mysql-community-server', 'mysql-community-client',
                                     'mysql-community-common', 'mysql-community-libs',
@@ -126,14 +126,14 @@ class sugarcrmstack_ng::install {
     }
     elsif ($::operatingsystemmajrelease in ['6'] and
         $::sugarcrmstack_ng::mysql_server_use_pxc == true and
-        ($::sugarcrmstack_ng::sugar_version == '7.9' or $::sugarcrmstack_ng::sugar_version == '8.0')){
+        ($::sugarcrmstack_ng::sugar_version == '7.9' or $::sugarcrmstack_ng::sugar_version == '8.0' or $::sugarcrmstack_ng::sugar_version == '9.0')){
       $mysql_server_packages_old = ['mysql55', 'mysql55-libs', 'mysql55-server', 'mysql-community-server', 'mysql-community-client' ]
       #add Percona-XtraDB-Cluster-client-56, Percona-XtraDB-Cluster-server-56, Percona-XtraDB-Cluster-shared-56,
       #Percona-XtraDB-Cluster-galera-3
     }
     elsif ($::operatingsystemmajrelease in ['6'] and
         $::sugarcrmstack_ng::mysql_server_use_pxc == false and
-        ($::sugarcrmstack_ng::sugar_version == '7.9' or $::sugarcrmstack_ng::sugar_version == '8.0')){
+        ($::sugarcrmstack_ng::sugar_version == '7.9' or $::sugarcrmstack_ng::sugar_version == '8.0' or $::sugarcrmstack_ng::sugar_version == '9.0')){
       $mysql_server_packages_old = ['mysql55', 'mysql55-libs', 'mysql55-server']
     }
     else{

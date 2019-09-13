@@ -33,6 +33,7 @@ class sugarcrmstack_ng (
   $apache_php_php_memory_limit = $sugarcrmstack_ng::params::apache_php_php_memory_limit,
   $apache_php_php_max_execution_time = $sugarcrmstack_ng::params::apache_php_php_max_execution_time,
   $apache_php_php_upload_max_filesize = $sugarcrmstack_ng::params::apache_php_php_upload_max_filesize,
+  $apache_php_php_post_max_size = $sugarcrmstack_ng::params::apache_php_php_post_max_size,
   $apache_php_manage_firewall = $sugarcrmstack_ng::params::apache_php_manage_firewall,
   $apache_php_apache_http_redirect = $sugarcrmstack_ng::params::apache_php_apache_http_redirect,
   $apache_php_apache_default_mods = $sugarcrmstack_ng::params::apache_php_apache_default_mods,
@@ -140,12 +141,16 @@ class sugarcrmstack_ng (
 
   validate_string($sugar_version)
 
-  if ($sugar_version != '7.5' and $sugar_version != '7.9' and $sugar_version != '8.0'){
-    fail("Class['sugarcrmstack_ng']: This class is compatible only with sugar_version 7.5,7.9 or 8.0 (not ${sugar_version})")
+  if ($sugar_version != '7.5' and $sugar_version != '7.9' and $sugar_version != '8.0' and $sugar_version != '9.0'){
+    fail("Class['sugarcrmstack_ng']: This class is compatible only with sugar_version 7.5,7.9,8.0 or 9.0 (not ${sugar_version})")
   }
 
   if ($::operatingsystemmajrelease in ['6'] and $sugar_version == '8.0'){
     fail("Class['sugarcrmstack_ng']: Unsupported configuration. With Sugar 8.0 you have to use OS release 7.x..")
+  }
+
+  if ($::operatingsystemmajrelease in ['6'] and $sugar_version == '9.0'){
+    fail("Class['sugarcrmstack_ng']: Unsupported configuration. With Sugar 9.0 you have to use OS release 7.x..")
   }
 
   if($sugar_version == '8.0' and $apache_php_php_pkg_version !~ /^7\.1\.[0-9][0-9]/){
@@ -154,7 +159,7 @@ class sugarcrmstack_ng (
 
   # validate apache_php parameters
 
-  validate_re($apache_php_php_pkg_version, ['^5\.[4-6]\.[0-9]{1,2}$','^7\.1\.[0-9][0-9]$'])
+  validate_re($apache_php_php_pkg_version, ['^5\.[4-6]\.[0-9]{1,2}$','^7\.1\.[0-9][0-9]$','^7\.3\.[0-9]$'])
   validate_integer($apache_php_php_pkg_build)
   #$apache_php_php_error_reporting
   #$apache_php_apache_https_port
@@ -162,6 +167,7 @@ class sugarcrmstack_ng (
   #$apache_php_php_memory_limit
   #$apache_php_php_max_execution_time
   #$apache_php_php_upload_max_filesize
+  #$apache_php_php_post_max_size
   validate_bool($apache_php_manage_firewall)
   validate_bool($apache_php_apache_http_redirect)
   validate_array($apache_php_apache_default_mods)

@@ -24,7 +24,7 @@ class sugarcrmstack_ng::memcached_server (
   $memcached_php_module_ensure = $sugarcrmstack_ng::memcached_php_module_ensure,
 ) {
 
-  if ($sugar_version == '7.5' or $sugar_version == '7.9' or $sugar_version == '8.0'){
+  if ($sugar_version == '7.5' or $sugar_version == '7.9' or $sugar_version == '8.0' or $sugar_version == '9.0'){
 
     if ($memcached_server_enable){
       class { '::memcached':
